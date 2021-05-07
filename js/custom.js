@@ -104,10 +104,11 @@ $(document).ready(function () {
     });
 
     //animatedModal
-    $("#demo05,#demo06,#demo07,#demo08,#demo09").animatedModal();
+    $("#demo06,#demo07,#demo08,#demo09").animatedModal();
     $("#demo02").animatedModal2({modaltarget:'modal-02'});
     $("#demo03").animatedModal3({modaltarget:'modal-03'});
     $("#demo04").animatedModal4({modaltarget:'modal-04'});
+    $("#demo05").animatedModal5({modaltarget:'modal-05'});
 
     // Contact Form 	
 
