@@ -11,11 +11,11 @@ redirect_from:
 
 Education
 ======
-* B.S. in GitHub, GitHub University, 2012
-* M.S. in Jekyll, GitHub University, 2014
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
+* Ph.D student in Computer science and engineering, University of California, Santa Cruz (current)
+* M.S. in Control science and engineering, Zhejiang University, 2022
+* B.S. in Landscape Gardening, Zhejiang University University, 2019
 
-Work experience
+<!-- Work experience
 ======
 * Summer 2015: Research Assistant
   * Github University
@@ -25,17 +25,17 @@ Work experience
 * Fall 2015: Research Assistant
   * Github University
   * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
-  
+  * Supervisor: Professor Hub -->
+
+
 Skills
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* Programming: Python, C#, Matlab.
+* Visual Design: Blender, Photoshop, Illustrator, Creative Video Editting, Photography. 
 
+
+
+<!-- 
 Publications
 ======
   <ul>{% for post in site.publications %}
@@ -56,4 +56,4 @@ Teaching
   
 Service and leadership
 ======
-* Currently signed in to 43 different slack teams
+* Currently signed in to 43 different slack teams -->
