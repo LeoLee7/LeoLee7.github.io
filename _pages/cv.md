@@ -16,7 +16,7 @@ Education
 ======
 * Ph.D student in Computer science and engineering, University of California, Santa Cruz (current)
 * M.S. in Control science and engineering, Zhejiang University, 2022
-* B.S. in Landscape Gardening, Zhejiang University University, 2019
+* B.S. in Landscape Gardening, Zhejiang University, 2019
 
 <!-- Work experience
 ======
