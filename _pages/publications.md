@@ -27,5 +27,5 @@ Hengyang Wang\*, Xianghao Zhan\*, **Li Liu\***, Asif Ullah, Huiyan Li, Han Gao, 
 **Li Liu\***, Xianghao Zhan\*, Rumeng Wu, Xiaoqing Guan, Zhan Wang, Wei Zhang, Mert Pilanci, You Wang, Zhiyuan Luo, Guang Li. **IEEE Sensors Jouranl** (Published), 2021. 
 
 * [Quantitatively Recognizing Stimuli Intensity of Primary Taste Based on Surface Electromyography](https://www.mdpi.com/1424-8220/21/21/6965) <br/>
-Hengyang Wang,Dongcheng Lu,**Li Liu\***, Han Gao,Rumeng Wu,Yueling Zhou,Qing Ai,You Wang, Guang Li.
+Hengyang Wang,Dongcheng Lu,**Li Liu**, Han Gao,Rumeng Wu,Yueling Zhou,Qing Ai,You Wang, Guang Li.
 **Sensors** (Published), 2021. 
