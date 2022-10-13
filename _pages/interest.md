@@ -3,8 +3,8 @@ layout: archive
 title: " "
 permalink: /interest/
 author_profile: true
-redirect_from:
-  - /interest/
+<!-- redirect_from:
+  - /interest/ -->
 ---
 
 I like cooking, especially Szechwan cuisine(川菜). <br>
