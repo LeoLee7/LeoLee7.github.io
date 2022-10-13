@@ -1,7 +1,7 @@
 ---
 title: "Boost AI Power: Data Augmentation Strategies With Unlabeled Data and Conformal Prediction, a Case in Alternative Herbal Medicine Discrimination With Electronic Nose"
 collection: publications
-permalink: /publication/2010-10-01-paper-title-number-2
+permalink: /publication/boost
 excerpt: 'This paper is about the number 2. The number 3 is left for future work.'
 date: 2022-10-15
 venue: 'IEEE Sensors Journal'
