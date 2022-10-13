@@ -82,13 +82,13 @@ analytics:
 author:
   name             : "Li Liu"
   avatar           : "profile.png"
-  bio              : "Ph.D. student @ UCSC"
-  location         : "Location"
+  bio              : "Ph.D. student @ UCSC CSE department"
+  location         : 
   employer         :
-  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
-  googlescholar    : "http://yourfullgooglescholarurl.com"
-  email            :
-  researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
+  pubmed           : 
+  googlescholar    : "https://scholar.google.com/citations?user=hLHzhqkAAAAJ&hl"
+  email            : "lliu112@ucsc.edu"
+  researchgate     : 
   uri              :
   bitbucket        :
   codepen          :
@@ -96,24 +96,24 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "academicpages"
+  github           : "https://github.com/LeoLee7"
   google_plus      :
   keybase          :
-  instagram        :
+  instagram        : 
   impactstory      : #"https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
   lastfm           :
-  linkedin         :
-  orcid            : "http://orcid.org/yourorcidurl"
-  pinterest        :
+  linkedin         : 
+  orcid            : #"http://orcid.org/yourorcidurl"
+  pinterest        : 
   soundcloud       :
   stackoverflow    : # http://stackoverflow.com/users/123456/username
   steam            :
   tumblr           :
-  twitter          : "replacethistwitterhandle"
+  twitter          : 
   vine             :
   weibo            :
   xing             :
-  youtube          :
+  youtube          : "https://www.youtube.com/channel/UCUIDBE8lIu9gB92hHOsdvSQ"
   wikipedia        :
 
 
