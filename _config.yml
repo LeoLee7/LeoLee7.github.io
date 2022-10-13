@@ -81,7 +81,7 @@ analytics:
 # Site Author
 author:
   name             : "Li Liu"
-  avatar           : "/images/liuli.jpg"
+  avatar           : "liuli.jpg"
   bio              : "Your biography for the left-hand sidebar"
   location         : "Location"
   employer         :
