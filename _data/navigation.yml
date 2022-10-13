@@ -20,4 +20,6 @@ main:
   - title: "CV"
     url: /cv/
     
+  - title: "Extra-curricular"
+    url: /_interest/
 
