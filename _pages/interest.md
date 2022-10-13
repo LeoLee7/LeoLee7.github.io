@@ -4,7 +4,7 @@ title: " "
 permalink: /interest/
 author_profile: true
 redirect_from:
-  - /interest
+  - /interest/
 ---
 
 I like cooking, especially Szechwan cuisine(川菜). <br>
