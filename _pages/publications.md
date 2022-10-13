@@ -15,17 +15,17 @@ author_profile: true
 
 ### 2022
 * [CPSC: Conformal Prediction With Shrunken Centroids for Efficient Prediction Reliability Quantification and Data Augmentation, a Case in Alternative Herbal Medicine Classification With Electronic Nose](https://ieeexplore.ieee.org/abstract/document/9667498) <br/>
-**Li Liu\***, Xianghao Zhan\*, Xikai Yang\*, Xiaoqing Guan,Rumeng Wu, Zhan Wang,Zhiyuan Luo,You Wang, Guang Li. **IEEE Transactions on Instrumentation and Measurement** (Published) 2022. 
+**Li Liu\***, Xianghao Zhan\*, Xikai Yang\*, Xiaoqing Guan,Rumeng Wu, Zhan Wang,Zhiyuan Luo,You Wang, Guang Li. **IEEE Transactions on Instrumentation and Measurement** (Published), 2022. 
 
 * [Unsupervised cross-user adaptation in taste sensation
 recognition based on surface electromyography with conformal prediction and domain regularized component analysis](https://ieeexplore.ieee.org/document/9777907) <br/>
-Hengyang Wang\*, Xianghao Zhan\*, **Li Liu\***, Asif Ullah, Huiyan Li, Han Gao, You Wang, Ruifen Hu, Guang Li. **IEEE Transactions on Instrumentation and Measurement** (Published) 2022. 
+Hengyang Wang\*, Xianghao Zhan\*, **Li Liu\***, Asif Ullah, Huiyan Li, Han Gao, You Wang, Ruifen Hu, Guang Li. **IEEE Transactions on Instrumentation and Measurement** (Published), 2022. 
 
 
 ### 2021
 * [Boost AI Power: Data Augmentation Strategies With Unlabeled Data and Conformal Prediction, a Case in Alternative Herbal Medicine Discrimination With Electronic Nose](https://ieeexplore.ieee.org/abstract/document/9505688) <br/>
-**Li Liu\***, Xianghao Zhan\*, Rumeng Wu, Xiaoqing Guan, Zhan Wang, Wei Zhang, Mert Pilanci, You Wang, Zhiyuan Luo, Guang Li. **IEEE Sensors Jouranl** (Published) 2021. 
+**Li Liu\***, Xianghao Zhan\*, Rumeng Wu, Xiaoqing Guan, Zhan Wang, Wei Zhang, Mert Pilanci, You Wang, Zhiyuan Luo, Guang Li. **IEEE Sensors Jouranl** (Published), 2021. 
 
 * [Quantitatively Recognizing Stimuli Intensity of Primary Taste Based on Surface Electromyography](https://www.mdpi.com/1424-8220/21/21/6965) <br/>
 Hengyang Wang,Dongcheng Lu,**Li Liu\***, Han Gao,Rumeng Wu,Yueling Zhou,Qing Ai,You Wang, Guang Li.
-**Sensors** (Published) 2021. 
+**Sensors** (Published), 2021. 
