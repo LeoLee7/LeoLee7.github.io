@@ -23,8 +23,7 @@ recognition based on surface electromyography with conformal prediction and doma
 Hengyang Wang\*, Xianghao Zhan\*, **Li Liu\***, Asif Ullah, Huiyan Li, Han Gao, You Wang, Ruifen Hu, Guang Li. <br/>
 **IEEE Transactions on Instrumentation and Measurement** (Published), 2022. 
 
-* [Classifying herbal medicine origins by temporal and spectral data mining of electronic nose]
-(https://arxiv.org/abs/2104.06640)<br/>
+* [Classifying herbal medicine origins by temporal and spectral data mining of electronic nose](https://arxiv.org/abs/2104.06640)<br/>
 **Li Liu\***, Xianghao Zhan\*, Ziheng Duan\*, Yi Wu, Rumeng Wu, Xiaoqing Guan, Zhan Wang, You Wang, Guang Li<br/>
 (arxiv)
 
