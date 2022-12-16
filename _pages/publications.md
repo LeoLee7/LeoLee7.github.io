@@ -31,6 +31,10 @@ arxiv, 2022.
 **Li Liu\***, Xianghao Zhan\*, Ziheng Duan\*, Yi Wu, Rumeng Wu, Xiaoqing Guan, Zhan Wang, You Wang, Guang Li<br/>
 arxiv, 2022.
 
+* [A Tri-light Warning System for Hospitalized COVID-19 Patients: Credibility-based Risk Stratification under Data Shift](https://www.medrxiv.org/content/10.1101/2022.12.11.22283309v1#:~:text=CONCLUSION%20The%20tri%2Dlight%20warning,stratification%20of%20COVID%2D19%20patients.)<br/>
+Chuanjun Xu, Qinmei Xu,**Li Liu**, Mu Zhou, Zijian Xing, Zhen Zhou, Changsheng Zhou, Xiao Li, Rong Wang, Yanjun Wu, Jiangtao Wang, Longjiang Zhang, Xianghao Zhan,  View ORCID ProfileOlivier Gevaert, Guangming Lu<br/>
+MedRxiv, 2022.
+
 
 
 ### 2021
