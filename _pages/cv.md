@@ -36,7 +36,7 @@ Skills
 * Programming: Python, C#, Matlab.
 * Visual Design: Blender, Photoshop, Illustrator, Creative Video Editting, Photography. 
 
-[CV](http://LeoLee7.github.io/files/LiuLiCV__UCSC___public_.pdf)
+[CV](http://LeoLee7.github.io/files/LiuLi_resume.pdf)
 
 <!-- 
 Publications
