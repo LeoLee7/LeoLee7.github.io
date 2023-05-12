@@ -12,6 +12,11 @@ author_profile: true
 <!-- {% include base_path %} -->
 (\* Equal Contribution)
 
+### 2023
+
+* Silent Speech Interface with Vocal Speaker Assistance Based on Convolution-augmented Transformer<br/>
+Huiyan Li; Yihao Liang; Han Gao; Li Liu; You Wang; Daqi Chen; Zhiyuan Luo; Guang Li <br/>
+**IEEE Transactions on Instrumentation and Measurement**, 2023
 
 ### 2022
 * [CPSC: Conformal Prediction With Shrunken Centroids for Efficient Prediction Reliability Quantification and Data Augmentation, a Case in Alternative Herbal Medicine Classification With Electronic Nose](https://ieeexplore.ieee.org/abstract/document/9667498) <br/>
