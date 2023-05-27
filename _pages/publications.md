@@ -14,8 +14,12 @@ author_profile: true
 
 ### 2023
 
-* Silent Speech Interface with Vocal Speaker Assistance Based on Convolution-augmented Transformer<br/>
-Huiyan Li; Yihao Liang; Han Gao; Li Liu; You Wang; Daqi Chen; Zhiyuan Luo; Guang Li <br/>
+* [Bimodal Fusion Network for Basic Taste Sensation Recognition from Electroencephalography and Electromyography](https://ieeexplore.ieee.org/document/10095117) <br/>
+Han Gao, Shuo Zhao, Huiyan Li, Li Liu, You Wang, Ruifen Hu, Jin Zhang, Guang Li <br/>
+**ICASSP IEEE International Conference on Acoustics, Speech and Signal Processing**
+
+* [Silent Speech Interface with Vocal Speaker Assistance Based on Convolution-augmented Transformer](https://ieeexplore.ieee.org/document/10121584) <br/>
+Huiyan Li, Yihao Liang, Han Gao, Li Liu, You Wang, Daqi Chen, Zhiyuan Luo, Guang Li <br/>
 **IEEE Transactions on Instrumentation and Measurement**, 2023
 
 ### 2022
