@@ -26,7 +26,7 @@ Han Gao, Shuo Zhao, Huiyan Li, **Li Liu**, You Wang, Ruifen Hu, Jin Zhang, Guang
 Huiyan Li, Yihao Liang, Han Gao, **Li Liu**, You Wang, Daqi Chen, Zhiyuan Luo, Guang Li <br/>
 *IEEE Transactions on Instrumentation and Measurement, 2023.*
 
-* SwinMM: Masked Multi-view with Swin Transformers for 3D Medical Image Segmentation <br/>
+* [SwinMM: Masked Multi-view with Swin Transformers for 3D Medical Image Segmentation](https://arxiv.org/abs/2307.12591) <br/>
 Yiqing Wang, Zihan Li, Zihao Wei, Jieru Mei, **Li Liu**, Chen Wang, Shengtian Sang, Alan Yuille, Cihang Xie, Yuyin Zhou. <br/>
 *MICCAI, 2023.*
 
