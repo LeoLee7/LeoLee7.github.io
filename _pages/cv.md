@@ -30,10 +30,15 @@ Education
   * Duties included: Merging pull requests
   * Supervisor: Professor Hub -->
 
-
+Teaching
+======
+* TA for CSE 164-Computer Vision, UC Santa Cruz
+* TA for CSE 30-Abstraction for Programming Abstractions in Python, UC Santa Cruz
+* Mentor for SIP 2023, UC Santa Cruz
+  
 Skills
 ======
-* Programming: Python, C#, Matlab.
+* Programming: Python, PyTorch, C#, Matlab.
 * Visual Design: Blender, Photoshop, Illustrator, Creative Video Editting, Photography. 
 
 [CV](http://LeoLee7.github.io/files/LiuLi_resume.pdf)
