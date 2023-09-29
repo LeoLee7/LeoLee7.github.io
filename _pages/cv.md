@@ -20,8 +20,7 @@ Education
 
 Work experience
 ======
-* Summer 2023: Data Scientist Intern
-  * Nissan research center
+* Data Scientist @ Nissan research center, 2023 Summer Intern
   * Supervisor:  Vikram Krishnamurthy
 
 Teaching
