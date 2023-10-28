@@ -34,7 +34,7 @@ Skills
 * Programming: Python, PyTorch, C#, Matlab.
 * Visual Design: Blender, Photoshop, Illustrator, Creative Video Editting, Photography. 
 
-[CV](http://LeoLee7.github.io/files/LiuLi_resume.pdf)
+[CV](http://LeoLee7.github.io/files/LiuLi_CV_summer_intern_application.pdf)
 
 <!-- 
 Publications
