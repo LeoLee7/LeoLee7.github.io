@@ -20,21 +20,17 @@ Education
 
 Work experience
 ======
-* Data Scientist @ Nissan research center, 2023 Summer Intern
-  * Supervisor:  Vikram Krishnamurthy
-
+* Applied Scientist @ Amazon, 2024 Summer Intern.
+  - Manager: Omar Alonso. Mentor: Barbara Poblete
+* Data Scientist @ Nissan research center, 2023 Summer Intern.
+  - Mentor: Vikram Krishnamurthy
+    
 Teaching
 ======
 * TA for CSE 164-Computer Vision, UC Santa Cruz
-* TA for CSE 30-Abstraction for Programming Abstractions in Python, UC Santa Cruz
+* TA for CSE 20, CSE 30: Programming with Python, UC Santa Cruz
 * Mentor for SIP 2023, UC Santa Cruz
   
-Skills
-======
-* Programming: Python, PyTorch, C#, Matlab.
-* Visual Design: Blender, Photoshop, Illustrator, Creative Video Editting, Photography. 
-
-[CV](http://LeoLee7.github.io/files/LiuLi_CV_summer_intern_application.pdf)
 
 <!-- 
 Publications
