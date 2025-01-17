@@ -16,7 +16,7 @@ author_profile: true
 ### 2024
 
 * [Right this way: Can VLMs Guide Us to See More to Answer Questions?](https://arxiv.org/abs/2411.00394) <br/>
-**Li Liu***, **Diji Yang***, Sijia Zhong, Kalyana Suma Sree Tholeti, Lei Ding, Yi Zhang, Leilani Gilpin <br/>
+**Li Liu***, Diji Yang*, Sijia Zhong, Kalyana Suma Sree Tholeti, Lei Ding, Yi Zhang, Leilani Gilpin <br/>
 NeurIPS, 2024
 
 * [A tri-light warning system for hospitalized COVID-19 patients: Credibility-based risk stratification for future pandemic preparedness](https://www.sciencedirect.com/science/article/pii/S2352047724000583) <br/>
