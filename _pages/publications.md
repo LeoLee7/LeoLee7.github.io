@@ -12,6 +12,17 @@ author_profile: true
 <!-- {% include base_path %} -->
 (\* Equal Contribution)
 
+
+### 2024
+
+* [Right this way: Can VLMs Guide Us to See More to Answer Questions?](https://arxiv.org/abs/2411.00394) <br/>
+**Li Liu***, **Diji Yang***, Sijia Zhong, Kalyana Suma Sree Tholeti, Lei Ding, Yi Zhang, Leilani Gilpin <br/>
+NeurIPS, 2024
+
+* [A tri-light warning system for hospitalized COVID-19 patients: Credibility-based risk stratification for future pandemic preparedness](https://www.sciencedirect.com/science/article/pii/S2352047724000583) <br/>
+Chuanjun Xu, Qinmei Xu, **Li Liu**, Mu Zhou, Zijian Xing, Zhen Zhou, Danyang Ren, Changsheng Zhou, Longjiang Zhang, Xiao Li, Xianghao Zhan, Olivier Gevaert, Guangming Lu <br/>
+European Journal of Radiology Open, 2024
+
 ### 2023
 
 * [Basic Taste Sensation Recognition from EEG Based on Multi-Scale Convolutional Neural Network with Residual Learning](https://ieeexplore.ieee.org/abstract/document/10138514/) <br/>
@@ -48,9 +59,7 @@ Zichao Li, **Li Liu**, Zeyu Wang, Yuyin Zhou, Cihang Xie. <br/>
 **Li Liu\***, Xianghao Zhan\*, Ziheng Duan\*, Yi Wu, Rumeng Wu, Xiaoqing Guan, Zhan Wang, You Wang, Guang Li<br/>
 *arxiv, 2022.*
 
-* [A Tri-light Warning System for Hospitalized COVID-19 Patients: Credibility-based Risk Stratification under Data Shift](https://www.medrxiv.org/content/10.1101/2022.12.11.22283309v1#:~:text=CONCLUSION%20The%20tri%2Dlight%20warning,stratification%20of%20COVID%2D19%20patients.)<br/>
-Chuanjun Xu\*, Qinmei Xu\*,**Li Liu\***, Mu Zhou, Zijian Xing, Zhen Zhou, Changsheng Zhou, Xiao Li, Rong Wang, Yanjun Wu, Jiangtao Wang, Longjiang Zhang, Xianghao Zhan, Olivier Gevaert, Guangming Lu<br/>
-*MedRxiv, 2022.*
+
 
 
 
