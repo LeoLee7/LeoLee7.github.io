@@ -12,6 +12,8 @@ Here are some of my works:<br>
 <img width = '500' src='/images/artworks/08.jpg'><br>
 <img width = '500' src='/images/artworks/09.jpg'><br>
 <img width = '500' src='/images/artworks/10.jpg'><br>
+<img width = '500' src='/images/artworks/11.jpg'><br>
+<img width = '500' src='/images/artworks/12.jpg'><br>
 <img width = '500' src='/images/artworks/02.jpg'><br>
 <img width = '500' src='/images/artworks/03.jpg'><br>
 <img width = '500' src='/images/artworks/04.jpg'><br>
