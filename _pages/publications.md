@@ -13,15 +13,47 @@ author_profile: true
 (\* Equal Contribution)
 
 
+### 2026
+
+* [Learning to Draw ASCII Improves Spatial Reasoning in Language Models](https://arxiv.org/abs/2604.14641) <br/>
+Shiyuan Huang\*, **Li Liu\***, Jincheng He, Leilani H. Gilpin <br/>
+*COLM, 2026.*
+
+* [From Anonymous Shapes to Named Places: A Tool for Braille and Place-Semantic Annotation of Tactile Maps](https://arxiv.org/abs/2608.23820) <br/>
+**Li Liu**, Ashmita Dua, Jiaming Qu, David T. Lee, Leilani H. Gilpin <br/>
+*ASSETS Posters and Demonstrations, 2026.*
+
+* [Pattern Discovery with Wide-Lens Analysis and Sharp-Focus Validation](https://doi.org/10.1145/3774905.3793105) <br/>
+**Li Liu**, Omar Alonso, Giorgio Ballardin <br/>
+*The Web Conference (WWW) Demo Track, 2026.*
+
+* ["I didn't know how to read a map, but now I can": TouchingSpace, an Audio-Haptic Map for Blind and Low-Vision Readers](https://arxiv.org/abs/2609.36404) <br/>
+**Li Liu**, Yihe Wang, Jiaming Qu, Ashmita Dua, David T. Lee, Leilani H. Gilpin <br/>
+*arXiv, 2026.*
+
+* [Touching Space: Accessible Map Exploration Through Conversational Audio-Haptic Interaction](https://arxiv.org/abs/2604.14637) <br/>
+**Li Liu**, Jiaming Qu, Marc Jowell Bagaoisan, David T. Lee, Leilani H. Gilpin <br/>
+*arXiv, 2026.*
+
+### 2025
+
+* [Frame-Based Scenes Understanding: Structured Representations for Introspective Perception in Autonomous Driving](https://people.ucsc.edu/~lgilpin/publication/frame-based-scenes-understanding-structured-representations-for-introspective-perception-in-autonomous-driving-2025/) <br/>
+**Li Liu**, Leilani H. Gilpin <br/>
+*Advances in Cognitive Systems (ACS), 2025.*
+
 ### 2024
 
 * [Right this way: Can VLMs Guide Us to See More to Answer Questions?](https://arxiv.org/abs/2411.00394) <br/>
 **Li Liu***, Diji Yang*, Sijia Zhong, Kalyana Suma Sree Tholeti, Lei Ding, Yi Zhang, Leilani Gilpin <br/>
-NeurIPS, 2024
+*NeurIPS, 2024.*
 
 * [A tri-light warning system for hospitalized COVID-19 patients: Credibility-based risk stratification for future pandemic preparedness](https://www.sciencedirect.com/science/article/pii/S2352047724000583) <br/>
 Chuanjun Xu, Qinmei Xu, **Li Liu**, Mu Zhou, Zijian Xing, Zhen Zhou, Danyang Ren, Changsheng Zhou, Longjiang Zhang, Xiao Li, Xianghao Zhan, Olivier Gevaert, Guangming Lu <br/>
-European Journal of Radiology Open, 2024
+*European Journal of Radiology Open, 2024.*
+
+* [A Survey on Human-AI Teaming with Large Pre-trained Models](https://arxiv.org/abs/2403.04931) <br/>
+Vanshika Vats, Marzia Binta Nizam, Minghao Liu, Ziyuan Wang, Richard Ho, Mohnish Sai Prasad, Vincent Titterton, Sai Venkat Malreddy, Riya Aggarwal, Yanwen Xu, Lei Ding, Jay Mehta, Nathan Grinnell, **Li Liu**, Sijia Zhong, Devanathan Nallur Gandamani, Xinyi Tang, Rohan Ghosalkar, Celeste Shen, Rachel Shen, Nafisa Hussain, Kesav Ravichandran, James Davis <br/>
+*arXiv, 2024.*
 
 ### 2023
 
