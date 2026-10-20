@@ -1,5 +1,5 @@
-import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261020f";
-import { ABSTRACTS } from "./abstracts.js?v=20261020f";
+import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261020g";
+import { ABSTRACTS } from "./abstracts.js?v=20261020g";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -302,7 +302,10 @@ function renderArt() {
 
 /* ---------- router ---------- */
 const PAGES = ["about", "publications", "projects", "cv", "art", "news", "proj"];
+/* old project slugs that were split or renamed */
+const MOVED = { "project-clinical-ai": "project-trilight" };
 function show() {
+  if (MOVED[location.hash.slice(1)]) { location.replace("#" + MOVED[location.hash.slice(1)]); return; }
   const h = location.hash.replace("#", "");
   const post = h.startsWith("news-") && NEWS.find(n => "news-" + n.slug === h);
   const proj = h.startsWith("project-") && PROJECTS.find(p => "project-" + p.slug === h);

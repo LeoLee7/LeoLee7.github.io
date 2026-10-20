@@ -51,10 +51,14 @@ export const PROJECTS = [
     short: "Recognizing taste and silent speech from EMG and EEG.",
     line: "Models that recognize taste sensations and silent speech from surface electromyography and electroencephalography.",
     links: [] },
-  { slug: "clinical-ai", early: 1, pubs: ["A Tri-Light", "SwinMM"], name: "Reliable AI for Clinical Imaging", img: "swinmm", figs: [["trilight", "Tri-light warning system: CT radiomics and clinical data yield a progression probability and its credibility, which map to high, uncertain, and low risk."]], venue: "EJR Open 2024, MICCAI 2023",
-    short: "Risk stratification and data-efficient segmentation from CT.",
-    line: "A conformal-prediction warning system for COVID-19 patients and self-supervised pre-training for 3D medical image segmentation.",
-    links: [] },
+  { slug: "trilight", early: 1, pub: "A Tri-Light", name: "Tri-Light Warning System", img: "trilight", venue: "EJR Open 2024",
+    short: "Credibility-based risk stratification for hospitalized COVID-19 patients.",
+    line: "A conformal-prediction warning system that sorts hospitalized COVID-19 patients into high, uncertain, and low risk from CT and clinical data.",
+    links: [["Paper", "https://www.sciencedirect.com/science/article/pii/S2352047724000583"]] },
+  { slug: "swinmm", early: 1, pub: "SwinMM", name: "SwinMM", img: "swinmm", venue: "MICCAI 2023",
+    short: "Self-supervised multi-view pre-training for 3D medical image segmentation.",
+    line: "Masked multi-view pre-training with Swin Transformers for accurate and data-efficient 3D medical image segmentation.",
+    links: [["arXiv", "https://arxiv.org/abs/2307.12591"], ["Code", "https://github.com/UCSC-VLAA/SwinMM"]] },
   { name: "Lotus Pavilion", photo: "lotus", venue: "Undergraduate design, Zhejiang University",
     line: "A light-responsive pavilion inspired by the West Lake in Hangzhou, built from modular units that open to sunlight like lotus petals.",
     links: [["Video", "https://www.youtube.com/watch?v=9G6kR8N1WFM"]] },
@@ -68,9 +72,12 @@ export const OVERVIEW_EARLY = {
   "biosignals": [
     "With collaborators at Zhejiang University, I worked on recognizing taste sensations and silent speech from physiological signals. Surface electromyography (sEMG) records muscle activity and electroencephalography (EEG) records brain activity in response to taste stimuli or articulation.",
     "We adapted sEMG taste models across users with domain regularized component analysis and conformal prediction with shrunken centroids (co-first author), recognized six basic taste sensations from EEG with a multi-scale residual network (EEG-MSRNet), fused EEG and EMG in a bimodal network (Bi-FusionNet), and regressed the intensity of primary tastes from sEMG. A Mandarin silent speech interface converts sEMG from silent speakers into audio with help from paired data of vocal speakers, reaching an average character error rate of 10.69% across four silent speakers."],
-  "clinical-ai": [
-    "The tri-light warning system stratifies hospitalized COVID-19 patients into high-risk, uncertain-risk, and low-risk groups. It combines radiomic features from CT with clinical records and uses conformal prediction to flag uncertain cases, and was built on data from 3,646 patients across multiple centers in China, including a test set for the Delta and Omicron variants.",
-    "SwinMM is a masked multi-view pipeline with Swin Transformers for data-efficient, self-supervised 3D medical image segmentation, which addresses the shortage of pre-training data in medicine."],
+  "trilight": [
+    "COVID-19 kept spreading and mutating, and hospitals needed a way to stratify patients by risk to allocate medical resources. We developed a conformal-prediction-based tri-light warning system that applies to both the original strain and emerging variants.",
+    "The system extracts radiomic features from chest CT, combines them with clinical records, and sorts patients into high-risk (red), uncertain-risk (yellow), and low-risk (green) groups for ICU admission. Built on data from 3,646 patients across multiple centers in China, it held up under data distribution shifts, with an AUROC of 0.89 for the original strains and 0.77 to 0.85 for the Delta and Omicron variants."],
+  "swinmm": [
+    "Large Vision Transformers have improved pre-trained models for medical image segmentation, but they need large amounts of pre-training data, which are scarce in medicine. SwinMM, Masked Multi-view with Swin Transformers, uses multiple views of 3D medical data for accurate and data-efficient self-supervised learning.",
+    "In pre-training, a masked multi-view encoder learns from several proxy tasks: image reconstruction, rotation, contrastive learning, and a mutual learning task that exploits the consistency between predictions from different views. In fine-tuning, a cross-view decoder aggregates the views with cross-attention. SwinMM outperforms the previous state-of-the-art self-supervised method, Swin UNETR, on several medical image segmentation tasks."],
 };
 
 export const OVERVIEW = {
@@ -243,10 +250,10 @@ export const PUBS = [
     t: "A Survey on Human-AI Collaboration with Large Foundation Models",
     a: "Vanshika Vats*, Marzia Binta Nizam*, Minghao Liu, Ziyuan Wang, Richard Ho, Mohnish Sai Prasad, Vincent Titterton, Sai Venkat Malreddy, Riya Aggarwal, Yanwen Xu, Lei Ding, Jay Mehta, Nathan Grinnell, Li Liu, Sijia Zhong, Devanathan Nallur Gandamani, Xinyi Tang, Rohan Ghosalkar, Celeste Shen, Rachel Shen, Nafisa Hussain, Kesav Ravichandran, James Davis",
     l: [["Paper","https://doi.org/10.1145/3841472"]] },
-  { y: 2023, v: "MICCAI", vy: "2023", top: 1, tags: ["hea"],
+  { img: "swinmm", y: 2023, v: "MICCAI", vy: "2023", top: 1, tags: ["hea"],
     t: "SwinMM: Masked Multi-view with Swin Transformers for 3D Medical Image Segmentation",
     a: "Yiqing Wang, Zihan Li, Zihao Wei, Jieru Mei, Li Liu, Chen Wang, Shengtian Sang, Alan Yuille, Cihang Xie, Yuyin Zhou",
-    l: [["arXiv","https://arxiv.org/abs/2307.12591"]] },
+    l: [["arXiv","https://arxiv.org/abs/2307.12591"],["Code","https://github.com/UCSC-VLAA/SwinMM"]] },
   { arx: "oa-bimodal", y: 2023, v: "ICASSP", vy: "2023", tags: ["hea"],
     t: "Bimodal Fusion Network for Basic Taste Sensation Recognition from Electroencephalography and Electromyography",
     a: "Han Gao, Shuo Zhao, Huiyan Li, Li Liu, You Wang, Ruifen Hu, Jin Zhang, Guang Li",
