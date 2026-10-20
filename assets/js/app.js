@@ -347,7 +347,9 @@ box.addEventListener("click", e => {
   const r = img.getBoundingClientRect();
   if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) return;
   const fx = (e.clientX - r.left) / r.width, fy = (e.clientY - r.top) / r.height;
-  const w = Math.max(img.naturalWidth, r.width * 2.5);
+  /* show the original pixels (sharp on retina), never stretch past the source */
+  const dpr = window.devicePixelRatio || 1;
+  const w = Math.min(img.naturalWidth, Math.max(img.naturalWidth / dpr, r.width * 2));
   box.classList.add("zoomed");
   img.style.width = w + "px";
   const h = w * img.naturalHeight / img.naturalWidth;

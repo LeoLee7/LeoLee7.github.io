@@ -273,52 +273,54 @@ export const AVATAR = "assets/img/avatar.jpg";
 export const TEASERS = {
  "2604.14641": {
   "a": "assets/img/papers/2604.14641.jpg",
-  "full": "assets/img/papers/2604.14641-full.jpg"
+  "full": "assets/img/full/2604.14641.png"
  },
  "2608.23820": {
   "a": "assets/img/papers/2608.23820.jpg",
-  "full": "assets/img/papers/2608.23820-full.jpg"
+  "full": "assets/img/full/2608.23820.jpg"
  },
  "2609.36404": {
   "a": "assets/img/papers/2609.36404.jpg",
-  "full": "assets/img/papers/2609.36404-full.jpg"
+  "full": "assets/img/full/2609.36404.png"
  },
  "2604.14637": {
   "a": "assets/img/papers/2604.14637.jpg",
-  "full": "assets/img/papers/2604.14637-full.jpg"
+  "full": "assets/img/full/2604.14637.png"
  },
  "2411.00394": {
   "a": "assets/img/papers/2411.00394.jpg",
-  "full": "assets/img/papers/2411.00394-full.jpg"
+  "full": "assets/img/full/2411.00394.png"
  },
  "colm": {
   "a": "assets/img/posters/colm.jpg",
-  "full": "assets/img/posters/colm-full.jpg"
+  "full": "assets/img/full/colm.png"
  },
  "rtw": {
   "a": "assets/img/posters/rtw.jpg",
-  "full": "assets/img/posters/rtw-full.jpg"
+  "full": "assets/img/full/rtw.png"
  },
  "www": {
   "a": "assets/img/posters/www.jpg",
-  "full": "assets/img/posters/www-full.jpg"
+  "full": "assets/img/full/www.jpg"
  },
  "pitch": {
   "a": "assets/img/news/pitchability-team.jpg",
-  "full": "assets/img/news/pitchability-team-full.jpg"
+  "full": "assets/img/full/pitchability-team.jpg"
  },
  "hall": {
   "a": "assets/img/news/pitchability-hall.jpg",
-  "full": "assets/img/news/pitchability-hall-full.jpg"
+  "full": "assets/img/full/pitchability-hall.jpg"
  },
  "yt_ts": {
   "a": "assets/img/video/touchingspace.jpg"
  },
  "enose": {
-  "a": "assets/img/papers/enose.jpg"
+  "a": "assets/img/papers/enose.jpg",
+  "full": "assets/img/full/enose.png"
  },
  "swinmm": {
-  "a": "assets/img/papers/swinmm.jpg"
+  "a": "assets/img/papers/swinmm.jpg",
+  "full": "assets/img/full/swinmm.png"
  }
 };
 export const ART = {
