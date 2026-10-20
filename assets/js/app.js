@@ -1,5 +1,5 @@
-import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261020d";
-import { ABSTRACTS } from "./abstracts.js?v=20261020d";
+import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261020e";
+import { ABSTRACTS } from "./abstracts.js?v=20261020e";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -19,11 +19,13 @@ const LI = {
 };
 const iconFor = n => /video/i.test(n) ? "play" : /^pdf/i.test(n) ? "pdf" : /code/i.test(n) ? "code" : /demo|tool/i.test(n) ? "demo" : /dataset/i.test(n) ? "data" : /abstract/i.test(n) ? "abs" : /bibtex/i.test(n) ? "bib" : /event|page|project/i.test(n) ? "web" : "doc";
 const svgI = k => `<svg class="li" viewBox="0 0 24 24" aria-hidden="true">${LI[k]}</svg>`;
-const lnk = (u, n) => `<a class="lbtn" href="${u}" target="_blank" rel="noopener">${svgI(iconFor(n))}${n}</a>`;
+const lnk = (u, n) => `<a class="lbtn" href="${u}"${u.startsWith("#") ? "" : ' target="_blank" rel="noopener"'}>${svgI(iconFor(n))}${n}</a>`;
 const projOf = p => PROJECTS.find(x => (x.pub && p.t.startsWith(x.pub)) || (x.pubs || []).some(k => p.t.startsWith(k)));
 const tbd = (links, inPage) => { const miss = (inPage ? ["Video", "Code"] : ["Project page", "Video", "Code"]).filter(k => !links.some(([n]) => n === k || (k === "Project page" && n === "Project"))); return miss.length ? `${miss.join(", ")}: TBD` : ""; };
 /* ---------- lightbox ---------- */
 const LB = [];
+/* lightbox links: our own project page first (unless already on it), then the external links; an external project page becomes "Project website" so the two never share a label */
+const lbLinks = (slug, links, onPage) => [...(slug && !onPage ? [["Project page", `#project-${slug}`]] : []), ...links.map(([n, u]) => [n === "Project page" ? "Project website" : n === "Page" ? "Paper page" : n, u])];
 const lbBtn = (entry, cls, inner) => { LB.push(entry); return `<button class="${cls} zoomable" data-lb="${LB.length - 1}" aria-label="Enlarge figure: ${esc(entry.title)}">${inner}</button>`; };
 function openLB(i) {
   const e = LB[i], d = document.getElementById("lb");
@@ -32,6 +34,7 @@ function openLB(i) {
   d.querySelector(".lb-title").textContent = e.title;
   d.querySelector(".lb-sub").textContent = e.sub || "";
   d.querySelector(".lb-links").innerHTML = e.links.map(([n, u]) => lnk(u, n)).join("") + (e.todo ? `<span class="todo">${e.todo}</span>` : "");
+  d.querySelectorAll('.lb-links a[href^="#"]').forEach(a => a.addEventListener("click", () => d.close()));
   d.showModal();
 }
 /* ---------- publications ---------- */
@@ -63,7 +66,7 @@ function pubHTML(p, tag) {
   if (extras) links.push(`<button class="text lbtn" data-open="bib-${i}" aria-expanded="false">${svgI("bib")}BibTeX</button>`);
   if (inPage && tbd(p.l, 1)) links.push(`<span class="todo">${tbd(p.l, 1)}</span>`);
   const T = p.img && TEASERS[p.img];
-  const thumb = T ? lbBtn({ img: p.img, title: p.t, sub: `${VENUE[p.v] || p.v}, ${p.y}`, links: sorted.map(([n, u]) => [n === "Page" ? "Paper page" : n, u]) }, "thumb", `<img src="${T.a}" alt="">`) : "";
+  const thumb = T ? lbBtn({ img: p.img, title: p.t, sub: `${VENUE[p.v] || p.v}, ${p.y}`, links: lbLinks(pj && pj.slug, sorted, inPage) }, "thumb", `<img src="${T.a}" alt="">`) : "";
   const title = inPage ? `<span class="t">${esc(p.t)}</span>` : pj ? `<a class="t" href="#project-${pj.slug}">${esc(p.t)}</a>` : main ? `<a class="t" href="${main}" target="_blank" rel="noopener">${esc(p.t)}</a>` : `<span class="t">${esc(p.t)}</span>`;
   const ph = p.phase1;
   return `<article class="pub ${T ? "" : "plain"}">${thumb}<div>
@@ -152,10 +155,10 @@ function renderProject(p) {
     <a class="back" href="#projects">All projects</a>
     <div class="d-eyebrow">${p.venue}</div><h1>${p.name}</h1>
     ${pubs.length === 1 ? `<p class="pp-authors">${authors(pub.a)}</p>` : ""}
-    ${T ? lbBtn({ img: p.img, title: p.name, sub: p.venue, links: [] }, "pp-hero", `<img src="${T.full || T.a}" alt="${p.name} figure">`) : `<div class="pp-hero word"><span>${p.name}</span></div>`}
+    ${T ? lbBtn({ img: p.img, title: p.name, sub: p.venue, links: lbLinks(p.slug, p.links || [], 1) }, "pp-hero", `<img src="${T.full || T.a}" alt="${p.name} figure">`) : `<div class="pp-hero word"><span>${p.name}</span></div>`}
     <div class="d-body">
       <div class="d-main"><h2>Overview</h2>${(OVERVIEW[p.slug] || OVERVIEW_EARLY[p.slug] || [p.line]).map(x => `<p>${x}</p>`).join("")}
-        ${(p.figs || []).map(([k, cap]) => `<figure class="pfig">${lbBtn({ img: k, title: p.name, sub: cap, links: [] }, "pimg", `<img src="${TEASERS[k].full || TEASERS[k].a}" alt="${esc(cap)}">`)}<figcaption>${cap}</figcaption></figure>`).join("")}
+        ${(p.figs || []).map(([k, cap]) => `<figure class="pfig">${lbBtn({ img: k, title: p.name, sub: cap, links: lbLinks(p.slug, p.links || [], 1) }, "pimg", `<img src="${TEASERS[k].full || TEASERS[k].a}" alt="${esc(cap)}">`)}<figcaption>${cap}</figcaption></figure>`).join("")}
         ${videoBlock(p.slug)}
         ${pubs.length ? `<h2>${pubs.length > 1 ? "Papers" : "Paper"}</h2>${pubs.map(x => pubHTML(x, "pp")).join("")}` : ""}</div>
       <aside class="d-side">${facts([["Venue", p.venue], ...(topics ? [["Topics", topics]] : [])])}
