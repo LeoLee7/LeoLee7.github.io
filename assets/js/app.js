@@ -1,5 +1,5 @@
-import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261020g";
-import { ABSTRACTS } from "./abstracts.js?v=20261020g";
+import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261020i";
+import { ABSTRACTS } from "./abstracts.js?v=20261020i";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -29,7 +29,7 @@ const lbLinks = (slug, links, onPage) => [...(slug && !onPage ? [["Project page"
 const lbBtn = (entry, cls, inner) => { LB.push(entry); return `<button class="${cls} zoomable" data-lb="${LB.length - 1}" aria-label="Enlarge figure: ${esc(entry.title)}">${inner}</button>`; };
 function openLB(i) {
   const e = LB[i], d = document.getElementById("lb");
-  d.querySelector(".lb-img").innerHTML = `<img src="${(TEASERS[e.img].full || TEASERS[e.img].a)}" alt="${esc(e.title)}">`;
+  d.querySelector(".lb-img").innerHTML = `<img src="${e.src || TEASERS[e.img].full || TEASERS[e.img].a}" alt="${esc(e.title)}">`;
   d.querySelector(".lb-img").classList.remove("zoomed"); d.querySelector(".lb-img").scrollTo(0, 0);
   d.querySelector(".lb-title").textContent = e.title;
   d.querySelector(".lb-sub").textContent = e.sub || "";
@@ -161,7 +161,7 @@ function renderProject(p) {
         ${(p.figs || []).map(([k, cap]) => `<figure class="pfig">${lbBtn({ img: k, title: p.name, sub: cap, links: lbLinks(p.slug, p.links || [], 1) }, "pimg", `<img src="${TEASERS[k].full || TEASERS[k].a}" alt="${esc(cap)}">`)}<figcaption>${cap}</figcaption></figure>`).join("")}
         ${videoBlock(p.slug)}
         ${pubs.length ? `<h2>${pubs.length > 1 ? "Papers" : "Paper"}</h2>${pubs.map(x => pubHTML(x, "pp")).join("")}` : ""}</div>
-      <aside class="d-side">${facts([["Venue", p.venue], ...(topics ? [["Topics", topics]] : [])])}
+      <aside class="d-side">${facts([[pubs.length ? "Venue" : "Context", p.venue], ...(topics ? [["Topics", topics]] : [])])}
         ${updates.length ? `<h3>Updates</h3><ul class="upd">${updates.map(n => `<li><time>${n.d}</time>${n.to === p.slug || n.inline ? `<span>${n.title}</span>` : `<a href="#news-${n.slug}">${n.title}</a>`}</li>`).join("")}</ul>` : ""}</aside>
     </div>
   </article>`;
@@ -265,12 +265,12 @@ function renderProjects() {
   document.getElementById("p-projects").innerHTML = `
     <h1>Projects</h1>
     <p class="lede">Systems, models, and benchmarks for spatial reasoning and human-agent collaboration.</p>
-    ${[["Current research", PROJECTS.filter(p => p.slug && !p.early)], ["Earlier work", PROJECTS.filter(p => p.early)], ["Design", PROJECTS.filter(p => !p.slug)]].map(([h, list]) => `<h2 class="pgh">${h}</h2><div class="pgrid">${list.map(p => {
-      const frame = p.img ? `<span class="frame"><img src="${TEASERS[p.img].a}" alt=""></span>`
-        : p.photo ? `<span class="frame photo"><img src="${ART[p.photo]}" alt=""></span>` : `<span class="frame word"><span>${p.name}</span></span>`;
-      if (p.slug) return `<a class="proj" href="#project-${p.slug}">${frame}<span class="nm">${p.name}</span><span class="vn">${p.venue}</span><p>${p.line}</p></a>`;
-      return `<article class="proj">${frame}<div class="nm">${p.name}</div><div class="vn">${p.venue}</div><p>${p.line}</p><div class="lk">${p.links.map(([n, u]) => lnk(u, n)).join("")}</div></article>`;
-    }).join("")}</div>`).join("")}`;
+    ${THEMES.map(([k, h, d]) => `<section class="ptheme"><h2 class="pgh">${h}</h2><p class="pgd">${d}</p><div class="pgrid">${PROJECTS.filter(p => p.theme === k).map(p => {
+      const frame = p.art ? `<span class="frame photo"><img src="${ART[p.art]}" alt=""></span>`
+        : p.img ? `<span class="frame${p.cover ? " photo" : ""}"><img src="${TEASERS[p.img].a}" alt=""></span>` : `<span class="frame word"><span>${p.name}</span></span>`;
+      const href = p.art ? "#art" : `#project-${p.slug}`;
+      return `<a class="proj" href="${href}">${frame}<span class="nm">${p.name}</span><span class="vn">${p.venue}</span><p>${p.line}</p></a>`;
+    }).join("")}</div></section>`).join("")}`;
 }
 
 /* ---------- CV ---------- */
@@ -296,8 +296,8 @@ function renderArt() {
   const order = ["01", "08", "09", "10", "11", "12", "02", "03", "04", "05", "06", "07"];
   document.getElementById("p-art").innerHTML = `
     <h1>Art</h1>
-    <p class="lede">I enjoy drawing, photography, and visual design, and I like cooking, especially Sichuan cuisine.</p>
-    <div class="art">${order.map(k => `<img src="${ART[k]}" alt="Artwork ${k}" loading="lazy">`).join("")}</div>`;
+    <p class="lede">I like making things by hand: painting, photography, visual design, and physical prototypes such as the <a href="#project-lotus-pavilion">Lotus Pavilion</a>. I also love cooking, especially Sichuan cuisine.</p>
+    <div class="art">${order.map(k => lbBtn({ src: ART[k], title: "Art", links: [] }, "artimg", `<img src="${ART[k]}" alt="Artwork ${k}" loading="lazy">`)).join("")}</div>`;
 }
 
 /* ---------- router ---------- */

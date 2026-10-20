@@ -24,44 +24,51 @@ export const TOPICS = [["acc", "Accessibility"], ["spa", "Spatial reasoning"], [
 export const SCHOLAR = "https://scholar.google.com/citations?user=hLHzhqkAAAAJ";
 
 export const PROJECTS = [
-  { slug: "touchingspace", pub: "\u201cI didn", name: "TouchingSpace", img: "ts_overview", figs: [["2609.36404", "System pipeline: map retrieval, map transformation, and exploration on the trackpad."]], venue: "Under review, 2026", short: "An audio-haptic map that blind and low-vision people explore by hand.",
+  { slug: "touchingspace", theme: "acc", pub: "\u201cI didn", name: "TouchingSpace", img: "ts_overview", figs: [["2609.36404", "System pipeline: map retrieval, map transformation, and exploration on the trackpad."]], venue: "Under review, 2026", short: "An audio-haptic map that blind and low-vision people explore by hand.",
     line: "An audio-haptic map that blind and low-vision people explore by hand on a laptop trackpad, asking a conversational agent open questions along the way. Studied with fourteen BLV participants.",
     links: [["arXiv", "https://arxiv.org/abs/2609.36404"], ["Video", "https://youtu.be/t3qaVIrDDa4"]] },
-  { slug: "ascii", pub: "Learning to Draw", name: "Learning to Draw ASCII", img: "colm", venue: "COLM 2026", short: "Drawing layouts from text improves spatial reasoning in language models.",
+  { slug: "ascii", theme: "spa", pub: "Learning to Draw", name: "Learning to Draw ASCII", img: "colm", venue: "COLM 2026", short: "Drawing layouts from text improves spatial reasoning in language models.",
     line: "Language models read ASCII layouts well but struggle to write them. Training them to construct layouts from text improves spatial reasoning, and the gains transfer to three external benchmarks.",
     links: [["Project page", "https://aiea-lab.github.io/Text2Space/"], ["arXiv", "https://arxiv.org/abs/2604.14641"], ["Dataset", "https://huggingface.co/datasets/ShiyuanHuang/Text2Space"]] },
-  { slug: "right-this-way", pub: "Right This Way", name: "Right This Way", img: "rtw", venue: "NeurIPS 2024", short: "Vision-language models that say how to adjust an image to answer.",
+  { slug: "right-this-way", theme: "spa", pub: "Right This Way", name: "Right This Way", img: "rtw", venue: "NeurIPS 2024", short: "Vision-language models that say how to adjust an image to answer.",
     line: "A benchmark and a synthetic data framework that teach vision-language models to say how to adjust an image when it cannot answer the question, a common need for visually impaired users.",
     links: [["Paper", "https://proceedings.neurips.cc/paper_files/paper/2024/file/efe4e50d492fedc0dfd2959f3320a974-Paper-Conference.pdf"], ["Code", "https://github.com/LeoLee7/Directional_guidance"]] },
-  { slug: "tactile-annotation", pub: "From Anonymous", name: "Tactile Map Annotation", img: "2608.23820", venue: "ASSETS 2026 Demo", short: "Braille and place labels for 3D-printed tactile maps.",
+  { slug: "tactile-annotation", theme: "acc", pub: "From Anonymous", name: "Tactile Map Annotation", img: "2608.23820", venue: "ASSETS 2026 Demo", short: "Braille and place labels for 3D-printed tactile maps.",
     line: "A web tool that lets a sighted helper add Braille and place labels to a generated 3D-printed tactile map, so each footprint can be identified by touch.",
     links: [["arXiv", "https://arxiv.org/abs/2608.23820"], ["Demo", "https://leolee7.github.io/Annotate_Braille/"]] },
-  { slug: "pattern-insights", pub: "Pattern Discovery", name: "Pattern Insights Explorer", img: "www", venue: "WWW 2026 Demo, Amazon",
+  { slug: "pattern-insights", theme: "hai", pub: "Pattern Discovery", name: "Pattern Insights Explorer", img: "www", venue: "WWW 2026 Demo, Amazon",
     line: "A modular framework that pairs wide-lens views of where candidate patterns cluster with sharp-focus checks of whether they are meaningful, for unlabeled data without ground truth.",
     links: [["Paper", "https://doi.org/10.1145/3774905.3793105"]] },
-  { slug: "hai-survey", pub: "A Survey on Human-AI", name: "Human-AI Collaboration Survey", img: "tist", figs: [["tist-lifecycle", "The lifecycle of human-AI collaboration with large foundation models, as organized in the survey."]], venue: "ACM TIST 2026",
+  { slug: "hai-survey", theme: "hai", pub: "A Survey on Human-AI", name: "Human-AI Collaboration Survey", img: "tist", figs: [["tist-lifecycle", "The lifecycle of human-AI collaboration with large foundation models, as organized in the survey."]], venue: "ACM TIST 2026",
     short: "How people and large foundation models work together, from model building to deployment.",
     line: "A survey of human-AI collaboration with large foundation models, covering human-guided model development, collaboration patterns, governance, and high-stakes applications.",
     links: [["Paper", "https://doi.org/10.1145/3841472"]] },
-  { slug: "enose", early: 1, pubs: ["CPSC", "Boost AI", "Classifying Herbal"], name: "Conformal Prediction for Electronic Noses", img: "enose", venue: "IEEE TIM 2022, IEEE Sensors Journal 2021",
+  { slug: "enose", theme: "hea", pubs: ["CPSC", "Boost AI", "Classifying Herbal"], name: "Conformal Prediction for Electronic Noses", img: "enose", venue: "IEEE TIM 2022, IEEE Sensors Journal 2021",
     short: "Reliable predictions for e-nose sensing with little labeled data.",
     line: "Conformal prediction methods that attach a reliability estimate to each electronic-nose prediction and use it to learn from unlabeled data.",
     links: [] },
-  { slug: "biosignals", early: 1, pubs: ["Unsupervised Cross-User", "Basic Taste", "Bimodal Fusion", "Quantitatively Recognizing", "Silent Speech"], name: "Biosignal Sensing for Taste and Speech", venue: "IEEE TIM, ICASSP, Sensors, 2021 to 2023",
+  { slug: "biosignals", theme: "hea", pubs: ["Unsupervised Cross-User", "Basic Taste", "Bimodal Fusion", "Quantitatively Recognizing", "Silent Speech"], name: "Biosignal Sensing for Taste and Speech", venue: "IEEE TIM, ICASSP, Sensors, 2021 to 2023",
     short: "Recognizing taste and silent speech from EMG and EEG.",
     line: "Models that recognize taste sensations and silent speech from surface electromyography and electroencephalography.",
     links: [] },
-  { slug: "trilight", early: 1, pub: "A Tri-Light", name: "Tri-Light Warning System", img: "trilight", venue: "EJR Open 2024",
+  { slug: "trilight", theme: "hea", pub: "A Tri-Light", name: "Tri-Light Warning System", img: "trilight", venue: "EJR Open 2024",
     short: "Credibility-based risk stratification for hospitalized COVID-19 patients.",
     line: "A conformal-prediction warning system that sorts hospitalized COVID-19 patients into high, uncertain, and low risk from CT and clinical data.",
     links: [["Paper", "https://www.sciencedirect.com/science/article/pii/S2352047724000583"]] },
-  { slug: "swinmm", early: 1, pub: "SwinMM", name: "SwinMM", img: "swinmm", venue: "MICCAI 2023",
+  { slug: "swinmm", theme: "hea", pub: "SwinMM", name: "SwinMM", img: "swinmm", venue: "MICCAI 2023",
     short: "Self-supervised multi-view pre-training for 3D medical image segmentation.",
     line: "Masked multi-view pre-training with Swin Transformers for accurate and data-efficient 3D medical image segmentation.",
     links: [["arXiv", "https://arxiv.org/abs/2307.12591"], ["Code", "https://github.com/UCSC-VLAA/SwinMM"]] },
-  { name: "Lotus Pavilion", photo: "lotus", venue: "Undergraduate design, Zhejiang University",
-    line: "A light-responsive pavilion inspired by the West Lake in Hangzhou, built from modular units that open to sunlight like lotus petals.",
+  { slug: "lotus-pavilion", theme: "make", name: "Lotus Pavilion", img: "lotus-07", cover: 1, venue: "Undergraduate design, Zhejiang University",
+    short: "A light-responsive pavilion inspired by the lotus on West Lake.",
+    line: "A light-responsive pavilion inspired by West Lake in Hangzhou, built from modular units that open to sunlight like lotus petals.",
+    figs: [["lotus-01", "West Lake, Hangzhou, the site that inspired the design."], ["lotus-02", "Lotus leaves on the lake."],
+      ["lotus-03", "Form studies: from the lotus leaf to a hexagonal module."], ["lotus-04", "A lotus opening, the motion each unit imitates."],
+      ["lotus-05", "The light-responsive unit: section drawing and the built prototype."], ["lotus-06", "Generating the canopy form in eight steps."],
+      ["lotus-08", "Rendering of the pavilion by the lake."]],
     links: [["Video", "https://www.youtube.com/watch?v=9G6kR8N1WFM"]] },
+  { theme: "make", name: "Art", art: "09", venue: "Painting, photography, and visual design",
+    line: "Seascape and pet paintings, photographs, and digital illustration." },
 ];
 
 export const OVERVIEW_EARLY = {
@@ -81,6 +88,9 @@ export const OVERVIEW_EARLY = {
 };
 
 export const OVERVIEW = {
+  "lotus-pavilion": [
+    "A light-responsive pavilion I designed during my undergraduate study at Zhejiang University. It takes its cue from the lotus on West Lake in Hangzhou: the canopy is a field of hexagonal modules, and each module adapts to sunlight and mimics the petals of a lotus.",
+    "The design grew from form studies of lotus leaves and flowers. I built a working prototype of the responsive unit and developed the canopy form step by step from a single leaf-like surface."],
   "hai-survey": [
     "Large foundation models greatly expand what people and AI systems can achieve together, but realizing that potential responsibly requires addressing persistent challenges in safety, fairness, and control. This survey reviews human-AI collaboration with large foundation models along four lines: human-guided model development, design principles for collaboration, ethical and governance frameworks, and applications in high-stakes domains.",
     "At run time, it organizes collaboration into recurring patterns: human-steered AI, AI-augmented human work, mixed-initiative interaction, control handoff and delegation, and supervisory orchestration of agentic systems, a newer mode in which people monitor, guide, and intervene in multi-step AI workflows. The review finds that successful collaboration is not the automatic result of stronger models but the product of careful, human-centered design."],
@@ -201,6 +211,15 @@ export const EDUCATION = [
   { logo: "zju", org: "Zhejiang University", role: "B.S., Chu Kochen Honors College", y: "2015 to 2019" },
 ];
 
+/* Projects page sections, in display order */
+export const THEMES = [
+  ["spa", "Spatial reasoning", "Teaching language and vision-language models to understand space."],
+  ["acc", "Accessible spatial interaction", "Maps and tools that blind and low-vision people explore by touch, sound, and conversation."],
+  ["hai", "Human-agent collaboration", "Systems and surveys on people and AI working together."],
+  ["hea", "Health and sensing", "Reliable models for clinical imaging, biosignals, and electronic noses."],
+  ["make", "Design and making", "Things I designed and built by hand."],
+];
+
 export const GROUPS = [
   ["spa", "Spatial reasoning", "Benchmarks and training methods for spatial understanding in language and vision-language models."],
   ["acc", "Accessibility", "Audio-haptic and tactile systems that help blind and low-vision people understand places."],
@@ -218,7 +237,7 @@ export const EDU_THEME = [
   { logo: "ucsc", deg: `Ph.D., Computer Science and Engineering, UC Santa Cruz`, org: "Advised by Leilani H. Gilpin, Sep 2022 to May 2027", theme: "Spatial reasoning and human-agent collaboration" },
 ];
 
-export const VIDEOS = { touchingspace: { id: "t3qaVIrDDa4", thumb: "yt_ts" } };
+export const VIDEOS = { touchingspace: { id: "t3qaVIrDDa4", thumb: "yt_ts" }, "lotus-pavilion": { id: "9G6kR8N1WFM", thumb: "yt_lotus" } };
 
 export const PUBS = [
   { img: "colm", y: 2026, v: "COLM", vy: "2026", top: 1, sel: 1, first: 1, tags: ["spa","llm"],
@@ -294,6 +313,15 @@ export const PUBS = [
 
 export const AVATAR = "assets/img/avatar.jpg";
 export const TEASERS = {
+ "lotus-01": { "a": "assets/img/design/lotus-01.jpg" },
+ "lotus-02": { "a": "assets/img/design/lotus-02.jpg" },
+ "lotus-03": { "a": "assets/img/design/lotus-03.jpg" },
+ "lotus-04": { "a": "assets/img/design/lotus-04.jpg" },
+ "lotus-05": { "a": "assets/img/design/lotus-05.jpg" },
+ "lotus-06": { "a": "assets/img/design/lotus-06.jpg" },
+ "lotus-07": { "a": "assets/img/design/lotus-07.jpg" },
+ "lotus-08": { "a": "assets/img/design/lotus-08.jpg" },
+ "yt_lotus": { "a": "assets/img/video/lotus.jpg" },
  "tist": { "a": "assets/img/papers/tist.jpg", "full": "assets/img/full/tist.png" },
  "tist-lifecycle": { "a": "assets/img/papers/tist-lifecycle.jpg", "full": "assets/img/full/tist-lifecycle.png" },
  "trilight": { "a": "assets/img/papers/trilight.jpg", "full": "assets/img/full/trilight.png" },
@@ -365,8 +393,7 @@ export const ART = {
  "09": "assets/img/art/09.jpg",
  "10": "assets/img/art/10.jpg",
  "11": "assets/img/art/11.jpg",
- "12": "assets/img/art/12.jpg",
- "lotus": "assets/img/art/lotus.jpg"
+ "12": "assets/img/art/12.jpg"
 };
 export const LOGOS = {
  "amazon": "assets/img/logos/amazon.png",
