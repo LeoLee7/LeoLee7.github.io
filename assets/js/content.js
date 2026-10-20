@@ -16,6 +16,7 @@ export const VENUE = {
   "NeurIPS": "Neural Information Processing Systems (NeurIPS)", "EJR Open": "European Journal of Radiology Open",
   "MICCAI": "MICCAI", "ICASSP": "ICASSP", "IEEE TIM": "IEEE Transactions on Instrumentation and Measurement",
   "IEEE Sensors": "IEEE Sensors Journal", "Sensors": "Sensors",
+  "ACM TIST": "ACM Transactions on Intelligent Systems and Technology",
 };
 
 export const TOPICS = [["acc", "Accessibility"], ["spa", "Spatial reasoning"], ["llm", "Language and vision models"], ["hai", "Human-agent collaboration"], ["hea", "Health and sensing"]];
@@ -38,6 +39,10 @@ export const PROJECTS = [
   { slug: "pattern-insights", pub: "Pattern Discovery", name: "Pattern Insights Explorer", img: "www", venue: "WWW 2026 Demo, Amazon",
     line: "A modular framework that pairs wide-lens views of where candidate patterns cluster with sharp-focus checks of whether they are meaningful, for unlabeled data without ground truth.",
     links: [["Paper", "https://doi.org/10.1145/3774905.3793105"]] },
+  { slug: "hai-survey", pub: "A Survey on Human-AI", name: "Human-AI Collaboration Survey", img: "tist", figs: [["tist-lifecycle", "The lifecycle of human-AI collaboration with large foundation models, as organized in the survey."]], venue: "ACM TIST 2026",
+    short: "How people and large foundation models work together, from model building to deployment.",
+    line: "A survey of human-AI collaboration with large foundation models, covering human-guided model development, collaboration patterns, governance, and high-stakes applications.",
+    links: [["Paper", "https://doi.org/10.1145/3841472"]] },
   { slug: "enose", early: 1, pubs: ["CPSC", "Boost AI", "Classifying Herbal"], name: "Conformal Prediction for Electronic Noses", img: "enose", venue: "IEEE TIM 2022, IEEE Sensors Journal 2021",
     short: "Reliable predictions for e-nose sensing with little labeled data.",
     line: "Conformal prediction methods that attach a reliability estimate to each electronic-nose prediction and use it to learn from unlabeled data.",
@@ -46,7 +51,7 @@ export const PROJECTS = [
     short: "Recognizing taste and silent speech from EMG and EEG.",
     line: "Models that recognize taste sensations and silent speech from surface electromyography and electroencephalography.",
     links: [] },
-  { slug: "clinical-ai", early: 1, pubs: ["A Tri-Light", "SwinMM"], name: "Reliable AI for Clinical Imaging", img: "swinmm", venue: "EJR Open 2024, MICCAI 2023",
+  { slug: "clinical-ai", early: 1, pubs: ["A Tri-Light", "SwinMM"], name: "Reliable AI for Clinical Imaging", img: "swinmm", figs: [["trilight", "Tri-light warning system: CT radiomics and clinical data yield a progression probability and its credibility, which map to high, uncertain, and low risk."]], venue: "EJR Open 2024, MICCAI 2023",
     short: "Risk stratification and data-efficient segmentation from CT.",
     line: "A conformal-prediction warning system for COVID-19 patients and self-supervised pre-training for 3D medical image segmentation.",
     links: [] },
@@ -69,6 +74,9 @@ export const OVERVIEW_EARLY = {
 };
 
 export const OVERVIEW = {
+  "hai-survey": [
+    "Large foundation models greatly expand what people and AI systems can achieve together, but realizing that potential responsibly requires addressing persistent challenges in safety, fairness, and control. This survey reviews human-AI collaboration with large foundation models along four lines: human-guided model development, design principles for collaboration, ethical and governance frameworks, and applications in high-stakes domains.",
+    "At run time, it organizes collaboration into recurring patterns: human-steered AI, AI-augmented human work, mixed-initiative interaction, control handoff and delegation, and supervisory orchestration of agentic systems, a newer mode in which people monitor, guide, and intervene in multi-step AI workflows. The review finds that successful collaboration is not the automatic result of stronger models but the product of careful, human-centered design."],
   "touchingspace": [
     "Accessible map systems either make a layout explorable by hand or convey information through speech, and few combine both to support pre-travel spatial understanding for blind and low-vision (BLV) people. TouchingSpace retrieves map data for an outdoor place and renders its surroundings as bounded regions at fixed positions on a laptop trackpad. While exploring, people receive audio and haptic feedback and can ask a conversational agent open-ended questions.",
     "In a study with fourteen BLV participants, people used sound and vibration to locate places and speech to identify and describe them. The bounded surface supported discovery, revision, and spatial checks by hand, and participants expected this awareness to support future travel."],
@@ -116,6 +124,14 @@ export const NEWS = [
     ],
     imgs: [["2609.36404", "TouchingSpace overview."]],
     links: [["arXiv", "https://arxiv.org/abs/2609.36404"], ["Demo video", "https://youtu.be/t3qaVIrDDa4"], ["Phase 1 on arXiv", "https://arxiv.org/abs/2604.14637"]] },
+  { slug: "tist-2026", to: "hai-survey", d: "Sep 2026", img: "tist",
+    title: "Survey on human-AI collaboration published in ACM TIST",
+    h: "Our survey <a href='#news-tist-2026'>A Survey on Human-AI Collaboration with Large Foundation Models</a> is published in ACM Transactions on Intelligent Systems and Technology.",
+    body: [
+      "The survey reviews how people and large foundation models work together, from human-guided model development and collaboration patterns to governance and high-stakes applications. It finds that successful human-AI systems are not the automatic result of stronger models but the product of careful, human-centered design.",
+    ],
+    imgs: [["tist", "Collaboration patterns and role allocation."]],
+    links: [["Paper", "https://doi.org/10.1145/3841472"]] },
   { slug: "assets-2026", to: "tactile-annotation", d: "Aug 2026", img: "2608.23820",
     title: "Braille annotation tool accepted to ASSETS 2026",
     h: "Our Braille annotation tool for tactile maps is accepted to the ASSETS 2026 Posters and Demonstrations track.",
@@ -219,14 +235,14 @@ export const PUBS = [
     t: "Right This Way: Can VLMs Guide Us to See More to Answer Questions?",
     a: "Li Liu*, Diji Yang*, Sijia Zhong, Kalyana Suma Sree Tholeti, Lei Ding, Yi Zhang, Leilani H. Gilpin",
     arx: "2411.00394", l: [["Paper","https://proceedings.neurips.cc/paper_files/paper/2024/file/efe4e50d492fedc0dfd2959f3320a974-Paper-Conference.pdf"],["Code","https://github.com/LeoLee7/Directional_guidance"]] },
-  { arx: "oa-covid", y: 2024, v: "EJR Open", vy: "2024", tags: ["hea","tml"],
+  { arx: "oa-covid", y: 2024, v: "EJR Open", vy: "2024", img: "trilight", tags: ["hea","tml"],
     t: "A Tri-Light Warning System for Hospitalized COVID-19 Patients: Credibility-Based Risk Stratification for Future Pandemic Preparedness",
     a: "Chuanjun Xu, Qinmei Xu, Li Liu, Mu Zhou, Zijian Xing, Zhen Zhou, Danyang Ren, Changsheng Zhou, Longjiang Zhang, Xiao Li, Xianghao Zhan, Olivier Gevaert, Guangming Lu",
     l: [["Paper","https://www.sciencedirect.com/science/article/pii/S2352047724000583"]] },
-  { y: 2024, v: "arXiv", vy: "2024", tags: ["hai","llm"],
-    t: "A Survey on Human-AI Teaming with Large Pre-trained Models",
-    a: "Vanshika Vats, Marzia Binta Nizam, Minghao Liu, Ziyuan Wang, Richard Ho, Mohnish Sai Prasad, Vincent Titterton, Sai Venkat Malreddy, Riya Aggarwal, Yanwen Xu, Lei Ding, Jay Mehta, Nathan Grinnell, Li Liu, Sijia Zhong, Devanathan Nallur Gandamani, Xinyi Tang, Rohan Ghosalkar, Celeste Shen, Rachel Shen, Nafisa Hussain, Kesav Ravichandran, James Davis",
-    l: [["arXiv","https://arxiv.org/abs/2403.04931"]] },
+  { arx: "oa-tist", y: 2026, v: "ACM TIST", vy: "2026", img: "tist", tags: ["hai","llm"],
+    t: "A Survey on Human-AI Collaboration with Large Foundation Models",
+    a: "Vanshika Vats*, Marzia Binta Nizam*, Minghao Liu, Ziyuan Wang, Richard Ho, Mohnish Sai Prasad, Vincent Titterton, Sai Venkat Malreddy, Riya Aggarwal, Yanwen Xu, Lei Ding, Jay Mehta, Nathan Grinnell, Li Liu, Sijia Zhong, Devanathan Nallur Gandamani, Xinyi Tang, Rohan Ghosalkar, Celeste Shen, Rachel Shen, Nafisa Hussain, Kesav Ravichandran, James Davis",
+    l: [["Paper","https://doi.org/10.1145/3841472"]] },
   { y: 2023, v: "MICCAI", vy: "2023", top: 1, tags: ["hea"],
     t: "SwinMM: Masked Multi-view with Swin Transformers for 3D Medical Image Segmentation",
     a: "Yiqing Wang, Zihan Li, Zihao Wei, Jieru Mei, Li Liu, Chen Wang, Shengtian Sang, Alan Yuille, Cihang Xie, Yuyin Zhou",
@@ -271,6 +287,9 @@ export const PUBS = [
 
 export const AVATAR = "assets/img/avatar.jpg";
 export const TEASERS = {
+ "tist": { "a": "assets/img/papers/tist.jpg", "full": "assets/img/full/tist.png" },
+ "tist-lifecycle": { "a": "assets/img/papers/tist-lifecycle.jpg", "full": "assets/img/full/tist-lifecycle.png" },
+ "trilight": { "a": "assets/img/papers/trilight.jpg", "full": "assets/img/full/trilight.png" },
  "2604.14641": {
   "a": "assets/img/papers/2604.14641.jpg",
   "full": "assets/img/full/2604.14641.png"
