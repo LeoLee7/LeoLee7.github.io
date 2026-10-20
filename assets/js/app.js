@@ -1,5 +1,5 @@
-import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261020c";
-import { ABSTRACTS } from "./abstracts.js?v=20261020c";
+import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261020d";
+import { ABSTRACTS } from "./abstracts.js?v=20261020d";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -50,7 +50,7 @@ function bibtex(p) {
 }
 function pubHTML(p, tag) {
   const i = PUBS.indexOf(p) + tag;
-  const order = ["Project", "arXiv", "PDF", "Paper", "IEEE", "MDPI", "Page", "Video", "Demo", "Code", "Dataset"];
+  const order = ["Project page", "Project", "arXiv", "PDF", "Paper", "IEEE", "MDPI", "Page", "Video", "Demo", "Code", "Dataset"];
   const sorted = [...p.l].sort((x, y) => order.indexOf(x[0]) - order.indexOf(y[0]));
   const main = (sorted[0] || [])[1];
   const pj = projOf(p);
