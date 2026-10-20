@@ -1,5 +1,5 @@
-import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261020i";
-import { ABSTRACTS } from "./abstracts.js?v=20261020i";
+import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261020k";
+import { ABSTRACTS } from "./abstracts.js?v=20261020k";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -136,14 +136,14 @@ function newsList(items) {
 function renderNewsIndex() {
   return `<a class="back" href="#about">Back to About</a><h1>News</h1><p class="lede">Updates on papers, talks, and internships.</p><ul class="news big">${newsList(NEWS)}</ul>`;
 }
-function videoBlock(slug) {
+function videoBlock(slug, bare) {
   const v = VIDEOS[slug];
   if (!v) return "";
   const url = `https://youtu.be/${v.id}`;
   const embed = /github\.io$/.test(location.hostname)
     ? `<div class="vframe"><iframe src="https://www.youtube-nocookie.com/embed/${v.id}" title="Demo video" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe></div>`
     : `<a class="vframe vthumb" href="${url}" target="_blank" rel="noopener"><img src="${TEASERS[v.thumb].a}" alt="Demo video"><span class="vplay" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span></a>`;
-  return `<h2>Video</h2>${embed}`;
+  return bare ? embed : `<h2>Video</h2>${embed}`;
 }
 function renderProject(p) {
   const pubs = p.pubs ? p.pubs.map(k => PUBS.find(x => x.t.startsWith(k))).filter(Boolean) : [PUBS.find(x => x.t.startsWith(p.pub))].filter(Boolean);
@@ -155,11 +155,11 @@ function renderProject(p) {
     <a class="back" href="#projects">All projects</a>
     <div class="d-eyebrow">${p.venue}</div><h1>${p.name}</h1>
     ${pubs.length === 1 ? `<p class="pp-authors">${authors(pub.a)}</p>` : ""}
-    ${T ? lbBtn({ img: p.img, title: p.name, sub: p.venue, links: lbLinks(p.slug, p.links || [], 1) }, "pp-hero", `<img src="${T.full || T.a}" alt="${p.name} figure">`) : `<div class="pp-hero word"><span>${p.name}</span></div>`}
+    ${p.videoHero ? `<div class="pp-video">${videoBlock(p.slug, 1)}</div>` : T ? lbBtn({ img: p.img, title: p.name, sub: p.venue, links: lbLinks(p.slug, p.links || [], 1) }, "pp-hero", `<img src="${T.full || T.a}" alt="${p.name} figure">`) : `<div class="pp-hero word"><span>${p.name}</span></div>`}
     <div class="d-body">
       <div class="d-main"><h2>Overview</h2>${(OVERVIEW[p.slug] || OVERVIEW_EARLY[p.slug] || [p.line]).map(x => `<p>${x}</p>`).join("")}
         ${(p.figs || []).map(([k, cap]) => `<figure class="pfig">${lbBtn({ img: k, title: p.name, sub: cap, links: lbLinks(p.slug, p.links || [], 1) }, "pimg", `<img src="${TEASERS[k].full || TEASERS[k].a}" alt="${esc(cap)}">`)}<figcaption>${cap}</figcaption></figure>`).join("")}
-        ${videoBlock(p.slug)}
+        ${p.videoHero ? "" : videoBlock(p.slug)}
         ${pubs.length ? `<h2>${pubs.length > 1 ? "Papers" : "Paper"}</h2>${pubs.map(x => pubHTML(x, "pp")).join("")}` : ""}</div>
       <aside class="d-side">${facts([[pubs.length ? "Venue" : "Context", p.venue], ...(topics ? [["Topics", topics]] : [])])}
         ${updates.length ? `<h3>Updates</h3><ul class="upd">${updates.map(n => `<li><time>${n.d}</time>${n.to === p.slug || n.inline ? `<span>${n.title}</span>` : `<a href="#news-${n.slug}">${n.title}</a>`}</li>`).join("")}</ul>` : ""}</aside>
@@ -266,7 +266,7 @@ function renderProjects() {
     <h1>Projects</h1>
     <p class="lede">Systems, models, and benchmarks for spatial reasoning and human-agent collaboration.</p>
     ${THEMES.map(([k, h, d]) => `<section class="ptheme"><h2 class="pgh">${h}</h2><p class="pgd">${d}</p><div class="pgrid">${PROJECTS.filter(p => p.theme === k).map(p => {
-      const frame = p.art ? `<span class="frame photo"><img src="${ART[p.art]}" alt=""></span>`
+      const frame = p.art ? `<span class="frame fit"><img src="${ART[p.art]}" alt=""></span>`
         : p.img ? `<span class="frame${p.cover ? " photo" : ""}"><img src="${TEASERS[p.img].a}" alt=""></span>` : `<span class="frame word"><span>${p.name}</span></span>`;
       const href = p.art ? "#art" : `#project-${p.slug}`;
       return `<a class="proj" href="${href}">${frame}<span class="nm">${p.name}</span><span class="vn">${p.venue}</span><p>${p.line}</p></a>`;

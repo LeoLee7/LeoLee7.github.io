@@ -170,6 +170,7 @@ section + section, .block + .block { margin-top: 72px; }
 .pfig .pimg { padding: 14px; background: var(--frame); }
 .pfig figcaption { font-size: 13.5px; color: var(--muted); margin-top: 8px; }
 .vframe { display: block; position: relative; aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden; background: #000; margin-bottom: 8px; }
+.pp-video { margin-bottom: 8px; }
 .vframe iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .vthumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .vplay { position: absolute; left: 50%; top: 50%; width: 68px; height: 68px; border-radius: 50%; background: rgba(255,255,255,.92); transform: translate(-50%, -50%); display: grid; place-items: center; box-shadow: 0 6px 24px rgba(0,0,0,.3); transition: transform .15s; }
@@ -287,6 +288,8 @@ a.proj:hover .nm { color: var(--accent); }
 .proj .frame { aspect-ratio: 16 / 9; background: var(--frame); border-radius: 14px; padding: 18px; display: grid; place-items: center; margin-bottom: 16px; overflow: hidden; }
 .proj .frame img { width: 100%; height: 100%; object-fit: contain; border-radius: 4px; }
 .proj .frame.photo { padding: 0; }
+.proj .frame.fit { position: relative; }
+.proj .frame.fit img { position: absolute; inset: 14px; width: calc(100% - 28px); height: calc(100% - 28px); object-fit: contain; }
 .proj .frame.photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 0; max-height: none; }
 .proj .frame .word { font-size: 22px; font-weight: 650; color: var(--muted); letter-spacing: -.01em; }
 .proj .nm { font-size: 20px; font-weight: 650; color: var(--ink); letter-spacing: -.01em; }

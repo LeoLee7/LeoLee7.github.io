@@ -59,15 +59,15 @@ export const PROJECTS = [
     short: "Self-supervised multi-view pre-training for 3D medical image segmentation.",
     line: "Masked multi-view pre-training with Swin Transformers for accurate and data-efficient 3D medical image segmentation.",
     links: [["arXiv", "https://arxiv.org/abs/2307.12591"], ["Code", "https://github.com/UCSC-VLAA/SwinMM"]] },
-  { slug: "lotus-pavilion", theme: "make", name: "Lotus Pavilion", img: "lotus-07", cover: 1, venue: "Undergraduate design, Zhejiang University",
+  { slug: "lotus-pavilion", theme: "make", name: "Lotus Pavilion", img: "lotus-07", cover: 1, videoHero: 1, venue: "Undergraduate design, Zhejiang University",
     short: "A light-responsive pavilion inspired by the lotus on West Lake.",
     line: "A light-responsive pavilion inspired by West Lake in Hangzhou, built from modular units that open to sunlight like lotus petals.",
     figs: [["lotus-01", "West Lake, Hangzhou, the site that inspired the design."], ["lotus-02", "Lotus leaves on the lake."],
       ["lotus-03", "Form studies: from the lotus leaf to a hexagonal module."], ["lotus-04", "A lotus opening, the motion each unit imitates."],
       ["lotus-05", "The light-responsive unit: section drawing and the built prototype."], ["lotus-06", "Generating the canopy form in eight steps."],
-      ["lotus-08", "Rendering of the pavilion by the lake."]],
+      ["lotus-07", "Rendering of the pavilion canopy in sunlight."], ["lotus-08", "Rendering of the pavilion by the lake."]],
     links: [["Video", "https://www.youtube.com/watch?v=9G6kR8N1WFM"]] },
-  { theme: "make", name: "Art", art: "09", venue: "Painting, photography, and visual design",
+  { theme: "make", name: "Art", art: "10", venue: "Painting, photography, and visual design",
     line: "Seascape and pet paintings, photographs, and digital illustration." },
 ];
 
