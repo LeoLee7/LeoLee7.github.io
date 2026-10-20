@@ -1,27 +1,40 @@
-This was forked (then detached) by [Stuart Geiger](https://github.com/staeiou) from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/), which is © 2016 Michael Rose and released under the MIT License. See LICENSE.md.
+# leolee7.github.io
 
-# Instructions
+Personal academic homepage of Li Liu, served by GitHub Pages as a plain static site (no build step, no Jekyll).
 
-1. Register a GitHub account if you don't have one and confirm your e-mail (required!)
-1. Fork [this repository](https://github.com/academicpages/academicpages.github.io) by clicking the "fork" button in the top right. 
-1. Go to the repository's settings (rightmost item in the tabs that start with "Code", should be below "Unwatch"). Rename the repository "[your GitHub username].github.io", which will also be your website's URL.
-1. Set site-wide configuration and create content & metadata (see below -- also see [this set of diffs](http://archive.is/3TPas) showing what files were changed to set up [an example site](https://getorg-testacct.github.io) for a user with the username "getorg-testacct")
-1. Upload any files (like PDFs, .zip files, etc.) to the files/ directory. They will appear at https://[your GitHub username].github.io/files/example.pdf.  
-1. Check status by going to the repository settings, in the "GitHub pages" section
-1. (Optional) Use the Jupyter notebooks or python scripts in the `markdown_generator` folder to generate markdown files for publications and talks from a TSV file.
+## Structure
 
-See more info at https://academicpages.github.io/
+```
+index.html              page shell, metadata, page containers
+404.html                redirects unknown paths to the homepage
+.nojekyll               tells GitHub Pages to serve files as-is
+favicon.svg
+assets/css/site.css     all styles (design tokens at the top)
+assets/js/content.js    all site content: publications, projects, news, timeline
+assets/js/abstracts.js  paper abstracts used by the Abstract buttons
+assets/js/app.js        rendering and hash routing (#publications, #project-<slug>, #news-<slug>)
+assets/img/             images (papers, posters, news, logos, art)
+files/                  downloadable files (CV)
+```
 
-## To run locally (not on GitHub Pages, to serve on your own computer)
+## Common edits
 
-1. Clone the repository and made updates as detailed above
-1. Make sure you have ruby-dev, bundler, and nodejs installed: `sudo apt install ruby-dev ruby-bundler nodejs`
-1. Run `bundle clean` to clean up the directory (no need to run `--force`)
-1. Run `bundle install` to install ruby dependencies. If you get errors, delete Gemfile.lock and try again.
-1. Run `bundle exec jekyll liveserve` to generate the HTML and serve it from `localhost:4000` the local server will automatically rebuild and refresh the pages on change.
+- **Add a news item**: add an entry at the top of `NEWS` in `assets/js/content.js`.
+  Set `to: "<project slug>"` to link it to a project page; otherwise give it `title`, `body`,
+  and optional `imgs`, `facts`, `links` to get its own post at `#news-<slug>`.
+- **Add a paper**: add an entry to `PUBS` in `assets/js/content.js`. Add `sel: 1` to show it on the homepage.
+  Put the thumbnail in `assets/img/papers/` and register it in `TEASERS`.
+- **Add a project page**: add an entry with a `slug` to `PROJECTS` and its paragraphs to `OVERVIEW`.
+- **Update the CV**: replace `files/Li_Liu_resume.pdf`.
 
-# Changelog -- bugfixes and enhancements
+## Local preview
 
-There is one logistical issue with a ready-to-fork template theme like academic pages that makes it a little tricky to get bug fixes and updates to the core theme. If you fork this repository, customize it, then pull again, you'll probably get merge conflicts. If you want to save your various .yml configuration files and markdown files, you can delete the repository and fork it again. Or you can manually patch. 
+ES modules need a web server (opening `index.html` from disk will not work):
 
-To support this, all changes to the underlying code appear as a closed issue with the tag 'code change' -- get the list [here](https://github.com/academicpages/academicpages.github.io/issues?q=is%3Aclosed%20is%3Aissue%20label%3A%22code%20change%22%20). Each issue thread includes a comment linking to the single commit or a diff across multiple commits, so those with forked repositories can easily identify what they need to patch.
+```
+python3 -m http.server 8000
+```
+
+then open http://localhost:8000.
+
+The previous academicpages (Jekyll) version of the site is kept on the `legacy-academicpages` branch.
