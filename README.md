@@ -38,3 +38,9 @@ python3 -m http.server 8000
 then open http://localhost:8000.
 
 The previous academicpages (Jekyll) version of the site is kept on the `legacy-academicpages` branch.
+
+## Caching
+
+GitHub Pages lets browsers cache files for about 10 minutes. After changing CSS or JS, bump the
+`?v=` version string in `index.html` (stylesheet and app.js) and at the top of `assets/js/app.js`
+(content.js and abstracts.js imports) so visitors get the new files right away.

@@ -1,5 +1,5 @@
-import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js";
-import { ABSTRACTS } from "./abstracts.js";
+import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261020c";
+import { ABSTRACTS } from "./abstracts.js?v=20261020c";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -155,6 +155,7 @@ function renderProject(p) {
     ${T ? lbBtn({ img: p.img, title: p.name, sub: p.venue, links: [] }, "pp-hero", `<img src="${T.full || T.a}" alt="${p.name} figure">`) : `<div class="pp-hero word"><span>${p.name}</span></div>`}
     <div class="d-body">
       <div class="d-main"><h2>Overview</h2>${(OVERVIEW[p.slug] || OVERVIEW_EARLY[p.slug] || [p.line]).map(x => `<p>${x}</p>`).join("")}
+        ${(p.figs || []).map(([k, cap]) => `<figure class="pfig">${lbBtn({ img: k, title: p.name, sub: cap, links: [] }, "pimg", `<img src="${TEASERS[k].full || TEASERS[k].a}" alt="${esc(cap)}">`)}<figcaption>${cap}</figcaption></figure>`).join("")}
         ${videoBlock(p.slug)}
         ${pubs.length ? `<h2>${pubs.length > 1 ? "Papers" : "Paper"}</h2>${pubs.map(x => pubHTML(x, "pp")).join("")}` : ""}</div>
       <aside class="d-side">${facts([["Venue", p.venue], ...(topics ? [["Topics", topics]] : [])])}

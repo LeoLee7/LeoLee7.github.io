@@ -23,7 +23,7 @@ export const TOPICS = [["acc", "Accessibility"], ["spa", "Spatial reasoning"], [
 export const SCHOLAR = "https://scholar.google.com/citations?user=hLHzhqkAAAAJ";
 
 export const PROJECTS = [
-  { slug: "touchingspace", pub: "\u201cI didn", name: "TouchingSpace", img: "2609.36404", venue: "Under review, 2026", short: "An audio-haptic map that blind and low-vision people explore by hand.",
+  { slug: "touchingspace", pub: "\u201cI didn", name: "TouchingSpace", img: "ts_overview", figs: [["2609.36404", "System pipeline: map retrieval, map transformation, and exploration on the trackpad."]], venue: "Under review, 2026", short: "An audio-haptic map that blind and low-vision people explore by hand.",
     line: "An audio-haptic map that blind and low-vision people explore by hand on a laptop trackpad, asking a conversational agent open questions along the way. Studied with fourteen BLV participants.",
     links: [["arXiv", "https://arxiv.org/abs/2609.36404"], ["Video", "https://youtu.be/t3qaVIrDDa4"]] },
   { slug: "ascii", pub: "Learning to Draw", name: "Learning to Draw ASCII", img: "colm", venue: "COLM 2026", short: "Drawing layouts from text improves spatial reasoning in language models.",
@@ -210,7 +210,7 @@ export const PUBS = [
     t: "Pattern Discovery with Wide-Lens Analysis and Sharp-Focus Validation",
     a: "Li Liu, Omar Alonso, Giorgio Ballardin",
     l: [["Paper","https://doi.org/10.1145/3774905.3793105"]] },
-  { img: "2609.36404", y: 2026, v: "arXiv", vy: "2026", sel: 1, first: 1, tags: ["acc","hai","spa"],
+  { img: "ts_overview", y: 2026, v: "arXiv", vy: "2026", sel: 1, first: 1, tags: ["acc","hai","spa"],
     t: "“I didn’t know how to read a map, but now I can”: TouchingSpace, an Audio-Haptic Map for Blind and Low-Vision Readers",
     a: "Li Liu, Yihe Wang, Jiaming Qu, Ashmita Dua, David T. Lee, Leilani H. Gilpin",
     l: [["arXiv","https://arxiv.org/abs/2609.36404"],["Video","https://youtu.be/t3qaVIrDDa4"]],
@@ -321,6 +321,10 @@ export const TEASERS = {
  "swinmm": {
   "a": "assets/img/papers/swinmm.jpg",
   "full": "assets/img/full/swinmm.png"
+ },
+ "ts_overview": {
+  "a": "assets/img/papers/ts-overview.jpg",
+  "full": "assets/img/full/ts-overview.png"
  }
 };
 export const ART = {
