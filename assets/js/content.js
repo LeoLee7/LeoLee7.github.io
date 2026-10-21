@@ -166,7 +166,7 @@ export const OVERVIEW = {
 export const NEWS = [
   { slug: "colm-2026", to: "ascii", d: "Oct 2026", img: "colm",
     title: "Presented Learning to Draw ASCII at COLM 2026",
-    h: "Presented <a href='#news-colm-2026'>Learning to Draw ASCII Improves Spatial Reasoning in Language Models</a> at COLM 2026 in San Francisco.",
+    h: "Presented <b>Learning to Draw ASCII</b> at <b>COLM 2026</b> in San Francisco.",
     body: [
       "People sketch layouts to organize their thinking about space. We asked whether learning to build explicit layouts from spatial descriptions can give language models real spatial understanding.",
       "We introduce Text2Space, a dataset that pairs text descriptions with ASCII grid layouts, and find a read-write asymmetry: models read ASCII layouts well but struggle to construct them from text. Training on layout construction improves spatial reasoning from text alone, and the gains transfer to three external benchmarks. This is joint work with Shiyuan Huang (co-first author), Jincheng He, and Leilani H. Gilpin.",
@@ -175,7 +175,7 @@ export const NEWS = [
     links: [["Project page", "https://aiea-lab.github.io/Text2Space/"], ["arXiv", "https://arxiv.org/abs/2604.14641"], ["Dataset", "https://huggingface.co/datasets/ShiyuanHuang/Text2Space"]] },
   { slug: "pitchability-2026", rel: ["touchingspace"], d: "Sep 2026", img: "pitch",
     title: "Presenting TouchingSpace at PitchAbility 2026",
-    h: "Presented TouchingSpace and our 3D-printed tactile maps with the AIEA Lab at PitchAbility 2026, Vista Center's international pitch competition for assistive technology.",
+    h: "Presented <b>TouchingSpace</b> and our 3D-printed tactile maps with the AIEA Lab at <b>PitchAbility 2026</b>, <b>Vista Center</b>'s international pitch competition for assistive technology.",
     body: [
       "Our AIEA Lab team presented TouchingSpace and our 3D-printed tactile maps at the Exhibit & Demo Hall of PitchAbility 2026, the international pitch competition hosted by Vista Center for the Blind and Visually Impaired.",
       "PitchAbility drew applicants from more than 8 countries, and more than 35 companies exhibited assistive technology for people who are blind, have low vision, or are DeafBlind. Vista Center's recap of the event, sent to more than 6,000 people, listed the AIEA Lab among the exhibitors.",
@@ -187,15 +187,15 @@ export const NEWS = [
     links: [["Event page", "https://vistacenter.org/pitchability-vista-international-pitch-competition-2026/"], ["arXiv", "https://arxiv.org/abs/2609.36404"], ["Video", "https://youtu.be/t3qaVIrDDa4"]] },
   { slug: "amazon-2026", d: "Sep 2026",
     title: "Wrapping up my Applied Scientist internship at Amazon",
-    h: "Finished my Applied Scientist internship at Amazon in Seattle, working on structured skill engineering for agents.",
+    h: "Finished my Applied Scientist internship at <b>Amazon</b> in Seattle, building <b>Skills on Board</b> for structured skill engineering for agents.",
     body: [
       "From June to September 2026 I worked as an Applied Scientist Intern at Amazon in Seattle on structured skill engineering for agents.",
       "I encoded free-text SKILL.md prompts as typed, versioned graphs of each skill's solution approach and key steps. The same graph serves as documentation for people and as executable instructions for agents, and it cut agent output tokens by about 50% at equal or better task performance.",
       "I also linked each skill to its evidence and rollouts, so that every failure can be traced to the agent, the task, or the benchmark. This surfaced defects in the benchmarks themselves.",
-    ], imgs: [], links: [], facts: [["Role", "Applied Scientist Intern"], ["Location", "Seattle, WA, USA"], ["Dates", "June to Sept. 2026"], ["Focus", "Structured skill engineering for agents"]] },
+    ], imgs: [], links: [["Video", "https://youtu.be/G_XJpzWnH_c"]], facts: [["Role", "Applied Scientist Intern"], ["Location", "Seattle, WA, USA"], ["Dates", "June to Sept. 2026"], ["Focus", "Structured skill engineering for agents"]] },
   { slug: "touchingspace-preprint", to: "touchingspace", d: "Sep 2026", img: "2609.36404",
     title: "New preprint: TouchingSpace",
-    h: "New preprint on <a href='#news-touchingspace-preprint'>TouchingSpace</a>, an audio-haptic map for blind and low-vision readers.",
+    h: "New preprint on <b>TouchingSpace</b>, an audio-haptic map for blind and low-vision readers.",
     body: [
       "Accessible map systems either make a layout explorable by hand or convey information through speech, and few combine both to support pre-travel spatial understanding for blind and low-vision (BLV) people. TouchingSpace retrieves map data for an outdoor place and renders its surroundings as bounded regions at fixed positions on a laptop trackpad. While exploring, people receive audio and haptic feedback and can ask a conversational agent open-ended questions.",
       "In a study with fourteen BLV participants, people used sound and vibration to locate places and speech to identify and describe them. The bounded surface supported discovery, revision, and spatial checks by hand, and participants expected this awareness to support future travel.",
@@ -204,7 +204,7 @@ export const NEWS = [
     links: [["arXiv", "https://arxiv.org/abs/2609.36404"], ["Demo video", "https://youtu.be/t3qaVIrDDa4"], ["Phase 1 on arXiv", "https://arxiv.org/abs/2604.14637"]] },
   { slug: "tist-2026", to: "hai-survey", d: "Sep 2026", img: "tist",
     title: "Survey on human-AI collaboration published in ACM TIST",
-    h: "Our survey <a href='#news-tist-2026'>A Survey on Human-AI Collaboration with Large Foundation Models</a> is published in ACM Transactions on Intelligent Systems and Technology.",
+    h: "Our survey <b>A Survey on Human-AI Collaboration with Large Foundation Models</b> is published in <b>ACM Transactions on Intelligent Systems and Technology</b>.",
     body: [
       "The survey reviews how people and large foundation models work together, from human-guided model development and collaboration patterns to governance and high-stakes applications. It finds that successful human-AI systems are not the automatic result of stronger models but the product of careful, human-centered design.",
     ],
@@ -212,7 +212,7 @@ export const NEWS = [
     links: [["Paper", "https://doi.org/10.1145/3841472"]] },
   { slug: "assets-2026", to: "tactile-annotation", d: "Aug 2026", img: "2608.23820",
     title: "Braille annotation tool accepted to ASSETS 2026",
-    h: "Our Braille annotation tool for tactile maps is accepted to the ASSETS 2026 Posters and Demonstrations track.",
+    h: "Our Braille annotation tool for tactile maps is accepted to <b>ASSETS 2026</b> Posters and Demonstrations.",
     body: [
       "On a 3D-printed tactile map, a building felt under the finger is an anonymous shape. Touch alone cannot tell which footprint is which, and a spoken description cannot reliably tie a shape to a specific place.",
       "We built a web-based tool that lets a sighted helper add Braille and place labels to a generated map model. Labeling happens after geometry generation, so the person doing it can account for the reader and the local Braille standard. The work appears in the ASSETS 2026 Posters and Demonstrations track.",
@@ -221,24 +221,28 @@ export const NEWS = [
     links: [["arXiv", "https://arxiv.org/abs/2608.23820"], ["Try the tool", "https://leolee7.github.io/Annotate_Braille/"]] },
   { slug: "colm-accept-2026", to: "ascii", d: "Jul 2026",
     title: "Learning to Draw ASCII accepted to COLM 2026",
-    h: "<a href='#project-ascii'>Learning to Draw ASCII Improves Spatial Reasoning in Language Models</a> is accepted to COLM 2026.",
+    h: "<b>Learning to Draw ASCII</b> is accepted to <b>COLM 2026</b>.",
     body: [], imgs: [], links: [["arXiv", "https://arxiv.org/abs/2604.14641"]] },
   { slug: "www-2026", to: "pattern-insights", d: "Jul 2026", img: "www",
     title: "Pattern Insights Explorer at the WWW 2026 Demo Track",
-    h: "Presented <a href='#news-www-2026'>Pattern Insights Explorer</a> at the WWW 2026 Demo Track.",
+    h: "Presented <b>Pattern Insights Explorer</b> at the <b>WWW 2026</b> Demo Track.",
     body: [
       "Discovering patterns in unfamiliar text is circular: extraction needs a taxonomy, but the taxonomy needs the patterns, and there are no ground-truth labels to resolve it. Pattern Insights Explorer alternates between a wide-lens view of where candidate patterns cluster and a sharp-focus check of whether each pattern is extracted correctly.",
       "I built the demo during my 2025 internship at Amazon, with Omar Alonso and Giorgio Ballardin. It runs on 5,000 customer-service conversations and was presented at the WWW 2026 Posters and Demos session.",
     ],
     imgs: [["www", "Our WWW 2026 demo poster."]],
     links: [["Paper", "https://doi.org/10.1145/3774905.3793105"]] },
+  { slug: "touchingspace-study-2026", to: "touchingspace", d: "Jun 2026",
+    title: "TouchingSpace user studies completed",
+    h: "Completed two weeks of in-person <b>TouchingSpace</b> studies with 15 blind and low-vision participants at <b>Vista Center</b> and across San Jose, Santa Cruz, and Palo Alto.",
+    body: [], imgs: [], links: [] },
   { slug: "touchingspace-phase1-2026", to: "touchingspace", d: "Apr 2026",
     title: "New preprint: Touching Space",
-    h: "New preprint on the first phase of <a href='#project-touchingspace'>TouchingSpace</a>, which helps blind and low-vision people build a cognitive map of an unfamiliar place before travel.",
+    h: "New preprint on the first phase of <b>TouchingSpace</b>, which helps blind and low-vision people build a cognitive map of an unfamiliar place before travel.",
     body: [], imgs: [], links: [["arXiv", "https://arxiv.org/abs/2604.14637"]] },
   { slug: "amazon-2025", rel: ["pattern-insights"], d: "Sep 2025",
     title: "Finished my 2025 internship at Amazon",
-    h: "Finished my Applied Scientist internship at Amazon on human-in-the-loop pattern discovery.",
+    h: "Finished my Applied Scientist internship at <b>Amazon</b> on human-in-the-loop pattern discovery.",
     body: [
       "From June to September 2025 I worked as an Applied Scientist Intern at Amazon in Santa Clara. I developed a human-in-the-loop framework that grows a validated taxonomy over large unlabeled conversation logs from a few seed keywords, with every pattern traceable to its source.",
       "The work became Pattern Insights Explorer, presented at the WWW 2026 Demo Track.",
@@ -290,7 +294,7 @@ export const EDU_THEME = [
   { logo: "ucsc", deg: `Ph.D., Computer Science and Engineering, UC Santa Cruz`, org: "Advised by Leilani H. Gilpin, Sep 2022 to May 2027", theme: "Spatial reasoning and human-agent collaboration" },
 ];
 
-export const VIDEOS = { touchingspace: { id: "t3qaVIrDDa4", thumb: "yt_ts" }, "lotus-pavilion": { id: "9G6kR8N1WFM", thumb: "yt_lotus" } };
+export const VIDEOS = { touchingspace: { id: "t3qaVIrDDa4", thumb: "yt_ts" }, "lotus-pavilion": { id: "9G6kR8N1WFM", thumb: "yt_lotus" }, "amazon-2026": { id: "G_XJpzWnH_c", thumb: "yt_sob" } };
 
 export const PUBS = [
   { img: "colm", y: 2026, v: "COLM", vy: "2026", top: 1, sel: 1, first: 1, tags: ["spa","llm"],
@@ -366,6 +370,7 @@ export const PUBS = [
 
 export const AVATAR = "assets/img/avatar.jpg";
 export const TEASERS = {
+ "yt_sob": { "a": "assets/img/video/skillsonboard.jpg" },
  "fgsm": { "a": "assets/img/papers/fgsm.jpg", "full": "assets/img/full/fgsm.png" },
  "trilight-overview": { "a": "assets/img/papers/trilight-overview.jpg", "full": "assets/img/full/trilight-overview.jpg" },
  "herbal-origins": { "a": "assets/img/papers/herbal-origins.jpg", "full": "assets/img/full/herbal-origins.jpg" },

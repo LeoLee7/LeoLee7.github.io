@@ -25,6 +25,7 @@ a { color: var(--accent); text-decoration: none; font-weight: 500; }
 a:hover { text-decoration: underline; text-underline-offset: 3px; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
 b, strong { color: var(--ink); font-weight: 600; }
+.ntext b { font-weight: 600; color: var(--ink); }
 .todo { color: var(--muted); font-style: italic; font-weight: 400; }
 button.text { font: inherit; background: none; border: 0; padding: 0; cursor: pointer; color: var(--muted); font-weight: 500; }
 button.text:hover { color: var(--ink); }
@@ -203,8 +204,8 @@ details.phase > div { margin-top: 10px; padding: 12px 14px; background: var(--fr
 .psnav button:hover { color: var(--ink); }
 .psnav button.on { color: var(--accent); border-bottom-color: var(--accent); }
 .psnav .n { color: var(--muted); font-weight: 400; font-size: 13.5px; font-variant-numeric: tabular-nums; }
-@media (min-width: 1500px) {
-  .prail { display: block; position: absolute; top: 0; bottom: 0; right: calc(100% + 48px); width: 200px; }
+@media (min-width: 1560px) {
+  .prail { display: block; position: absolute; top: 0; bottom: 0; right: calc(100% + 36px); width: 172px; }
   .psnav { top: 96px; display: grid; gap: 2px; margin: 44px 0 0; overflow: visible; border-bottom: 0; border-left: 1px solid var(--line); background: none; backdrop-filter: none; }
   .psnav button { justify-content: space-between; white-space: normal; text-align: left; padding: 7px 0 7px 14px; margin: 0 0 0 -1px; border-bottom: 0; border-left: 2px solid transparent; line-height: 1.35; }
   .psnav button.on { border-left-color: var(--accent); }
