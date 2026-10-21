@@ -204,11 +204,17 @@ details.phase > div { margin-top: 10px; padding: 12px 14px; background: var(--fr
 .psnav button:hover { color: var(--ink); }
 .psnav button.on { color: var(--accent); border-bottom-color: var(--accent); }
 .psnav .n { color: var(--muted); font-weight: 400; font-size: 13.5px; font-variant-numeric: tabular-nums; }
+.psnav-h { display: none; }
 @media (min-width: 1560px) {
-  .prail { display: block; position: absolute; top: 0; bottom: 0; right: calc(100% + 36px); width: 172px; }
-  .psnav { top: 96px; display: grid; gap: 2px; margin: 44px 0 0; overflow: visible; border-bottom: 0; border-left: 1px solid var(--line); background: none; backdrop-filter: none; }
-  .psnav button { justify-content: space-between; white-space: normal; text-align: left; padding: 7px 0 7px 14px; margin: 0 0 0 -1px; border-bottom: 0; border-left: 2px solid transparent; line-height: 1.35; }
-  .psnav button.on { border-left-color: var(--accent); }
+  .prail { display: block; position: absolute; top: 0; bottom: 0; right: calc(100% + 32px); width: 208px; }
+  .psnav { top: 96px; display: grid; gap: 0; margin: 44px 0 0; overflow: visible; border-bottom: 0; background: none; backdrop-filter: none; }
+  .psnav-h { display: block; padding: 0 0 10px 16px; font-size: 13px; font-weight: 500; color: var(--muted); }
+  .psnav button { position: relative; justify-content: flex-start; gap: 8px; padding: 8px 0 8px 16px; margin: 0; border: 0; font-size: 14.5px; line-height: 1.3; }
+  .psnav button::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: var(--line); }
+  .psnav button.on { color: var(--ink); font-weight: 600; }
+  .psnav button.on::before { left: -0.5px; width: 2px; background: var(--accent); border-radius: 2px; }
+  .psnav button.on .n { color: var(--accent); }
+  .psnav .n { font-size: 12.5px; }
 }
 .pgd { margin: 6px 0 0; color: var(--muted); font-size: 15.5px; }
 .pgd + .pgrid { margin-top: 24px; }
