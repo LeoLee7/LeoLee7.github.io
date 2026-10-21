@@ -1,5 +1,5 @@
-import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261020v";
-import { ABSTRACTS } from "./abstracts.js?v=20261020v";
+import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261020y";
+import { ABSTRACTS } from "./abstracts.js?v=20261020y";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -263,12 +263,25 @@ function renderProjects() {
   document.getElementById("p-projects").innerHTML = `
     <h1>Projects</h1>
     <p class="lede">Systems, models, and benchmarks for spatial reasoning and human-agent collaboration.</p>
-    ${THEMES.map(([k, h, d]) => `<section class="ptheme"><h2 class="pgh">${h}</h2><p class="pgd">${d}</p><div class="pgrid">${PROJECTS.filter(p => p.theme === k).map(p => {
+    <div class="pwrap"><nav class="psnav" aria-label="Project categories">${THEMES.map(([k, h]) => `<button class="text" data-sec="${k}">${h}<span class="n">${PROJECTS.filter(p => p.theme === k).length}</span></button>`).join("")}</nav><div>
+    ${THEMES.map(([k, h, d]) => `<section class="ptheme" id="sec-${k}"><h2 class="pgh">${h}</h2><p class="pgd">${d}</p><div class="pgrid">${PROJECTS.filter(p => p.theme === k).map(p => {
       const frame = p.art ? `<span class="frame"><img src="${ART[p.art]}" alt=""></span>`
         : p.img ? `<span class="frame${p.cover ? " photo" : ""}"><img src="${TEASERS[p.img].a}" alt=""></span>` : `<span class="frame word"><span>${p.name}</span></span>`;
       const href = p.art ? "#art" : `#project-${p.slug}`;
       return `<a class="proj" href="${href}">${frame}<span class="nm">${p.name}</span><span class="vn">${p.venue}</span><p>${p.line}</p></a>`;
-    }).join("")}</div></section>`).join("")}`;
+    }).join("")}</div></section>`).join("")}</div></div>`;
+  /* highlight the category in view */
+  addEventListener("scroll", markSection, { passive: true });
+}
+function markSection() {
+  const page = document.getElementById("p-projects");
+  if (page.hidden) return;
+  const secs = [...page.querySelectorAll(".ptheme")];
+  const atEnd = innerHeight + scrollY >= document.documentElement.scrollHeight - 4;
+  let cur = secs[0];
+  for (const s of secs) if (s.getBoundingClientRect().top < 160) cur = s;
+  if (atEnd) cur = secs[secs.length - 1];
+  page.querySelectorAll(".psnav button").forEach(b => b.classList.toggle("on", "sec-" + b.dataset.sec === cur.id));
 }
 
 /* ---------- CV ---------- */
@@ -295,6 +308,7 @@ function renderArt() {
   document.getElementById("p-art").innerHTML = `
     <h1>Art</h1>
     <p class="lede">I like making things by hand: painting, photography, visual design, and physical prototypes such as the <a href="#project-lotus-pavilion">Lotus Pavilion</a>. I also love cooking, especially Sichuan cuisine.</p>
+    ${(p => `<a class="artfeat" href="#project-${p.slug}"><span class="frame photo"><img src="${TEASERS[p.img].a}" alt=""></span><span class="af-text"><span class="nm">${p.name}</span><span class="vn">${p.venue}</span><span class="af-line">${p.line}</span></span></a>`)(PROJECTS.find(p => p.slug === "lotus-pavilion"))}
     <div class="art">${order.map(k => lbBtn({ src: ART[k], title: "Art", links: [] }, "artimg", `<img src="${ART[k]}" alt="Artwork ${k}" loading="lazy">`)).join("")}</div>`;
 }
 
@@ -313,6 +327,7 @@ function show() {
   PAGES.forEach(k => { document.getElementById("p-" + k).hidden = k !== page; });
   document.querySelectorAll(".top nav a").forEach(a => a.classList.toggle("on", a.dataset.page === (page === "news" ? "about" : page === "proj" ? "projects" : page)));
   window.scrollTo(0, 0);
+  markSection();
 }
 renderAbout(); renderPubs(); renderProjects(); renderCV(); renderArt();
 window.addEventListener("hashchange", show);
@@ -381,6 +396,7 @@ document.addEventListener("click", e => {
       () => { const r = document.createRange(); r.selectNodeContents(pre); const s = getSelection(); s.removeAllRanges(); s.addRange(r); });
     return;
   }
+  if (t.dataset.sec) { const s = document.getElementById("sec-" + t.dataset.sec); scrollTo({ top: s.getBoundingClientRect().top + scrollY - 84, behavior: "smooth" }); return; }
   if (t.dataset.home) { homeTopic = t.dataset.home; document.getElementById("homepubs").innerHTML = homePubs(); return; }
   if (t.dataset.view) state.view = t.dataset.view;
   else if (t.dataset.first) state.firstOnly = !state.firstOnly;
