@@ -98,45 +98,64 @@ const NEAR = print(11, `
   <rect class="k" x="160" y="44" width="12" height="12" opacity=".85"/><rect class="a" x="84" y="100" width="12" height="12"/>
   <circle class="al" stroke-width="2.5" cx="120" cy="75" r="68" opacity=".45"/>`);
 
+/* several senses meeting on one place */
+const MULTI = print(12, `
+  <rect class="a" x="96" y="44" width="72" height="62"/>
+  <rect class="ln" stroke-width="2.5" x="88" y="36" width="88" height="78"/>
+  <path class="al" stroke-width="4" d="M62 120 a26 26 0 0 1 26 -26"/>
+  <path class="al" stroke-width="2.5" d="M48 120 a40 40 0 0 1 40 -40" opacity=".55"/>
+  <path class="ln" stroke-width="3.5" d="M190 58 v34 M202 50 v50 M214 64 v22"/>
+  <circle class="k" cx="62" cy="120" r="7"/>`);
+
+/* nothing but the pad already under the hand */
+const PAD = print(13, `
+  <rect class="g" x="40" y="22" width="160" height="70" rx="3"/>
+  <rect class="g" x="28" y="98" width="184" height="36" rx="3" opacity=".7"/>
+  <rect class="a" x="94" y="104" width="52" height="24" rx="2"/>
+  <circle class="k" cx="120" cy="116" r="5"/>`);
+
+/* a map that changes: layers added and taken away */
+const LAYERS = print(14, `
+  ${[0, 1, 2, 3].flatMap(c => [0, 1].map(r => `<rect class="g" x="${36 + c * 44}" y="${30 + r * 46}" width="30" height="30"/>`)).join("")}
+  <rect class="a" x="80" y="30" width="30" height="30"/><rect class="a" x="168" y="76" width="30" height="30"/>
+  <path class="ln" stroke-width="3" d="M52 128 h40 M148 128 h40 M168 118 v20"/>`);
+
 export const STORY = {
   touchingspace: {
     pull: "I didn't know how to read a map, but now I can.",
     pullNote: "A participant, whose words became the title of our paper.",
     pullArt: MAP,
-    /* the whole experience, in participants' words; shown as one scrolling row of identical cards */
+    /* the whole experience, from blind and low-vision participants after using the system.
+       One quote at a time in a spotlight; the [[...]] part is set in the accent color. */
+    saidNote: "Real feedback from blind and low-vision participants after using TouchingSpace, in their own words.",
     said: [
-      { q: "It'll help many people, maybe even millions." },
-      { q: "I think of anything I've seen, this has the best possibility of doing that.", note: "On conveying how to approach a hard-to-find entrance." },
-      { q: "Really nice work. It's going to help a lot of people." },
-      { q: "I started getting a picture in my mind of where everything was." },
-      { q: "It made me feel confident." },
-      { q: "It's a lot more helpful to read a map and find a bigger understanding of where you are." },
-      { q: "I like that it's dynamic — not a static map where you constantly have to print something out... I could see this being something big." },
-      { q: "Se lo recomendaría como un excelente aparato para la vida diaria de uno que no mira.", tr: "I would recommend it as an excellent device for the daily life of someone who does not see." },
-      { q: "This is the first time I've used something like this. So if it's not hard for me to get it, it's going to be pretty good for somebody else." },
-      { q: "It's to the point, it's basic, and it gives you all the information that you need on the moment or on the go." },
-      { q: "I love that I can really explore what's around a location." },
-      { q: "That is really cool. I'm impressed with that. I would love that." },
-      { q: "When I first came, one of the volunteers walked me to the bus stop for the first time. This map would have been very helpful for me." },
-      { q: "If you had a map of Trader Joe's, I think people would be able to have confidence and know their surroundings and walk in there independently." },
-      { q: "Honestly, glad that young students are thinking about how to change life for people with disabilities." },
+      { q: "It'll help many people, [[maybe even millions]]." },
+      { q: "I think of anything I've seen, this has [[the best possibility]] of doing that.", note: "On conveying how to approach a hard-to-find entrance." },
+      { q: "Really nice work. It's going to [[help a lot of people]]." },
+      { q: "I started getting [[a picture in my mind]] of where everything was." },
+      { q: "It made me feel [[confident]]." },
+      { q: "It's a lot more helpful to read a map and find [[a bigger understanding of where you are]]." },
+      { q: "I could see this being [[something big]]." },
+      { q: "Se lo recomendaría como un [[excelente aparato para la vida diaria]] de uno que no mira.", tr: "I would recommend it as an excellent device for the daily life of someone who does not see." },
+      { q: "This is the first time I've used something like this. So if it's not hard for me to get it, it's going to be [[pretty good for somebody else]]." },
+      { q: "It's to the point, it's basic, and it gives you [[all the information that you need]] on the moment or on the go." },
+      { q: "I love that I can [[really explore what's around a location]]." },
+      { q: "That is really cool. [[I'm impressed]] with that. I would love that." },
+      { q: "When I first came, one of the volunteers walked me to the bus stop for the first time. This map would have been [[very helpful for me]]." },
+      { q: "If you had a map of Trader Joe's, I think people would be able to have confidence and know their surroundings and [[walk in there independently]]." },
+      { q: "Honestly, glad that young students are thinking about how to [[change life for people with disabilities]]." },
     ],
-    /* one participant's before and after, set as a feature */
-    feature: { art: ROUTE, title: "Now giving directions to someone sighted",
-      text: "One participant answers the phone at the front desk of the center their map was built around. Callers ask how to get there.",
-      before: "When we're working at reception and answering the phone, we don't know how to answer any of those questions. The only thing we know is our address... That's it. Period. Nothing else.",
-      after: ["Pass yoga — which I never knew there was one — the Bagelry restaurant... I can tell someone sighted how to get somewhere now.",
-        "Someone calls and says \"I'm coming from Santa Cruz.\" ... You're going to pass the Crepe Place, you're going to pass the parking lot, and you're going to turn right... See, now I can give that instruction to someone sighted."] },
-    /* one surface, four channels; each with one or two quotes */
+    /* what makes it work: four aspects, one quote each */
+    sensesTitle: "What makes it work",
     senses: [
-      { art: HUM, label: "Hum", line: "grows as the finger nears a place",
-        quotes: ["It gets stronger and stronger as soon as you get near. It's like the radar on a car.", "I just start low, and start going up and sideways . . . until I start hearing a hum. And then I follow the hum."] },
-      { art: EDGE, label: "Vibration", line: "marks the inside of a place",
-        quotes: ["It's like a wall. So the vibration is inside only.", "It gives you strong feedback that you are there."] },
-      { art: NAME, label: "Name", line: "spoken when the finger arrives",
-        quotes: ["It starts humming, and once you get there it says [the center].", "And the part about 'you're in the southwest corner of the building' — when I'm inside a building, I don't think about which direction that is. That was neat."] },
-      { art: DEEPER, label: "Conversation", line: "open questions about any place",
-        quotes: ["I really love that chatbot. It's super cool.", "Having the map and it spelling out each of the buildings, but then you're able to go deeper."] },
+      { art: MULTI, label: "Multi-sensory", line: "A hum as the finger nears a place, a vibration at its edge, and its name when the finger arrives.",
+        quote: "I think it's good to have a multimodal way because you're going to remember it more in general." },
+      { art: DEEPER, label: "Conversation", line: "A conversational agent answers open questions about any place.",
+        quote: "I really love that chatbot... having the map and it spelling out each of the buildings, but then you're able to go deeper." },
+      { art: PAD, label: "No extra hardware", line: "It runs on the trackpad of an everyday laptop. Nothing to buy, print, or carry.",
+        quote: "I can have it on my computer... the product itself is just software." },
+      { art: LAYERS, label: "A digital map", line: "Any place can be loaded, and layers of places can be added or taken away.",
+        quote: "I like that it's dynamic — not a static map where you constantly have to print something out." },
     ],
     /* what changed afterwards; each with one or more quotes */
     panels: [
@@ -152,12 +171,15 @@ export const STORY = {
       { art: UNASKED, title: "Places nobody asked for",
         text: "Seven participants found a place they had not asked about, and four changed a trip they already make. One learned that a pharmacy they reached by going home first was close to the center they visit.",
         quotes: ["I didn't know it was this close to [the center]... See, this map — I learned something today.", "Now that I know [the pharmacy] is right there and it's on my way home, I just stop there instead of going all the way home and coming all the way back.", "And no one tells you. It could be that way forever."] },
+      { art: ROUTE, title: "Passing it on",
+        text: "What one person learned could reach others. A participant who answers the phone at a front desk could now direct callers past the places along the way.",
+        quotes: ["I can tell someone sighted how to get somewhere now."] },
       { art: PLAN, title: "Planning before the trip",
         text: "Participants placed the reading before travel: lunch near where they are going, a bus stop to find, a place to go if a plan fails.",
         quotes: ["This exploration is done before you leave your house.", "I could use this all the time when I'm planning my trip, especially when I know that I'm going to go someplace I've never been before."] },
     ],
     close: { q: "Me va alzando las ubicaciones y las cosas que están alrededor mías como si lo estuviera mirando. Me sentí súper contento y libre de poder yo hacer las cosas yo solo.",
       tr: "It keeps raising up for me the locations and the things that are around me, as if I were looking at it. I felt super happy and free to be able to do things by myself.",
-      note: "A participant, speaking through a Spanish interpreter." },
+      note: "A Spanish speaker, after using our system." },
   },
 };

@@ -396,20 +396,28 @@ a.proj:hover .nm { color: var(--accent); }
 .st-hero blockquote { margin: 0; }
 .st-hero p { margin: 0; font-size: 31px; line-height: 1.2; font-weight: 650; letter-spacing: -.015em; color: var(--ink); }
 .st-h { margin: 40px 0 14px; font-size: 17px; }
-.st-said { overflow: hidden; margin: 0 -4px; padding: 2px 4px; mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
-.st-track { list-style: none; margin: 0; padding: 0; display: flex; gap: 12px; width: max-content; animation: st-scroll 70s linear infinite; }
-.st-said:hover .st-track, .st-said:focus-within .st-track { animation-play-state: paused; }
-.st-track li { flex: 0 0 280px; padding: 18px 20px; background: var(--frame); border-radius: 12px; color: var(--ink); line-height: 1.45; }
-@keyframes st-scroll { to { transform: translateX(calc(-50% - 6px)); } }
-@media (prefers-reduced-motion: reduce) { .st-said { overflow-x: auto; } .st-track { animation: none; } .st-track li[aria-hidden] { display: none; } }
-.st-feat { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 40px; padding: 26px; border: 1px solid var(--line); border-radius: 14px; }
-.st-feat h3 { margin: 0 0 6px; font-size: 21px; letter-spacing: -.01em; }
-.st-feat > div > p { margin: 0 0 14px; color: var(--muted); }
-.st-feat dl { margin: 0; display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 12px 14px; }
-.st-feat dt { font-size: 13.5px; font-weight: 600; color: var(--muted); padding-top: 2px; }
-.st-feat dd { margin: 0; color: var(--ink); line-height: 1.5; }
-.st-feat dd p { margin: 0; }
-.st-feat dd p + p { margin-top: 10px; }
+.st-sub { margin: -6px 0 14px; color: var(--ink); }
+.st-spot { position: relative; padding: 34px 40px 22px; border-radius: 16px; background: var(--frame); }
+.st-spot::before { content: "\201C"; position: absolute; top: -6px; left: 22px; font-size: 120px; line-height: 1; font-weight: 700; color: var(--accent); opacity: .18; }
+.st-stage { display: grid; }
+.st-stage figure { grid-area: 1 / 1; margin: 0; opacity: 0; transform: translateY(8px); transition: opacity .6s ease, transform .6s ease; pointer-events: none; align-self: center; }
+.st-stage figure.on { opacity: 1; transform: none; pointer-events: auto; }
+.st-stage blockquote { margin: 0; }
+.st-stage p { margin: 0; font-size: 28px; line-height: 1.28; font-weight: 650; letter-spacing: -.015em; color: var(--ink); }
+.st-stage mark { background: none; color: var(--accent); }
+.st-stage .tr { margin-top: 12px; font-size: 17px; }
+.st-stage figcaption { margin-top: 10px; font-size: 14px; color: var(--muted); }
+.st-ctl { display: flex; align-items: center; gap: 10px; margin-top: 26px; }
+.st-btn { width: 32px; height: 32px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: var(--bg); color: var(--ink); cursor: pointer; }
+.st-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.st-btn:hover { border-color: var(--accent); color: var(--accent); }
+.st-n { font-size: 13.5px; color: var(--muted); font-variant-numeric: tabular-nums; min-width: 56px; text-align: center; }
+.st-n b { color: var(--ink); font-weight: 600; }
+.st-bar { flex: 1; height: 2px; background: var(--line); border-radius: 2px; overflow: hidden; }
+.st-bar i { display: block; height: 100%; width: 100%; background: var(--accent); transform-origin: left; animation: st-prog 7s linear forwards; }
+.st-spot:hover .st-bar i { animation-play-state: paused; }
+@keyframes st-prog { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) { .st-stage figure { transition: none; } .st-bar { display: none; } }
 .st-senses { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
 .st-senses li { display: flex; flex-direction: column; gap: 3px; font-size: 14px; line-height: 1.4; }
 .st-senses .sart { margin-bottom: 8px; }
@@ -431,7 +439,7 @@ a.proj:hover .nm { color: var(--accent); }
 .st-close .tr { font-size: 17px; }
 @media (max-width: 900px) { .st-senses { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 720px) {
-  .st-hero, .st-feat, .story li, .story li:nth-child(even) { grid-template-columns: minmax(0, 1fr); }
+  .st-hero, .story li, .story li:nth-child(even) { grid-template-columns: minmax(0, 1fr); }
   .story li:nth-child(even) .sart { order: 0; }
-  .st-hero p { font-size: 24px; } .story .sart { max-width: 320px; }
+  .st-hero p { font-size: 24px; } .st-spot { padding: 28px 20px 18px; } .st-stage p { font-size: 22px; } .story .sart { max-width: 320px; }
 }
