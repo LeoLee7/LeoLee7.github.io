@@ -1,6 +1,6 @@
-import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261021x";
-import { ABSTRACTS } from "./abstracts.js?v=20261021x";
-import { STORY } from "./story.js?v=20261021x";
+import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261021y";
+import { ABSTRACTS } from "./abstracts.js?v=20261021y";
+import { STORY } from "./story.js?v=20261021y";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -156,7 +156,7 @@ function storyBlock(s) {
     <div class="st-flow">
       <div class="st-track">${[0, 1].map(k => s.said.map(x => `<figure${k ? ' aria-hidden="true"' : ""}><p>${mark(x.q)}</p>${x.tr ? `<span class="tr">${x.tr}</span>` : ""}${x.note ? `<figcaption>${x.note}</figcaption>` : ""}</figure>`).join("")).join("")}</div>
     </div>
-    <button class="st-all" data-flow aria-expanded="false">Show all ${n}</button>
+    <div class="st-ctl"><button class="st-btn" data-step="-1" aria-label="Previous quote"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><button class="st-btn" data-step="1" aria-label="Next quote"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button><button class="st-all" data-flow aria-expanded="false">Show all ${n}</button></div>
     <h3 class="st-h">${s.sensesTitle}</h3>
     <ul class="st-senses">${s.senses.map(x => `<li><div class="sart">${x.art}</div><b>${x.label}</b><span>${x.line}</span><q>${x.quote}</q></li>`).join("")}</ul>
     <h3 class="st-h">What changed</h3>
@@ -165,12 +165,41 @@ function storyBlock(s) {
     <blockquote class="st-close"><p>&ldquo;${s.close.q}&rdquo;</p><span class="tr">&ldquo;${s.close.tr}&rdquo;</span><cite>${s.close.note}</cite></blockquote>
   </section>`;
 }
-/* feedback flow: quotes drift by on their own (paused on hover); the button lays them all out to read together */
+/* feedback flow: quotes drift by on their own (paused on hover); arrows jump one quote and hold a few seconds; Show all lays them out together */
+const FLOW_SPEED = 30, FLOW_HOLD = 4000, FLOW_INSET = 40;
+const flowState = el => el._f || (el._f = { x: 0, until: 0 });
+function flowSpan(el) { const figs = el.querySelectorAll(".st-track figure"), n = figs.length / 2; return figs[n].offsetLeft - figs[0].offsetLeft; }
+function flowSet(el, x, smooth) {
+  const f = flowState(el), span = flowSpan(el), t = el.querySelector(".st-track");
+  f.x = ((x % span) + span) % span;
+  t.style.transition = smooth ? "transform .6s ease" : "none";
+  t.style.transform = `translateX(${-f.x}px)`;
+}
+function flowStep(el, d) {
+  const f = flowState(el), stops = [...el.querySelectorAll(".st-track figure:not([aria-hidden])")].map(g => g.offsetLeft - FLOW_INSET);
+  const cur = f.x, i = stops.findLastIndex(v => v <= cur + 2);
+  let to = d > 0 ? (stops[i + 1] ?? flowSpan(el) - FLOW_INSET) : (cur - stops[Math.max(i, 0)] > 8 ? stops[Math.max(i, 0)] : (stops[i - 1] ?? stops[stops.length - 1] - flowSpan(el)));
+  if (d > 0 && cur < stops[0]) to = stops[0] > cur + 2 ? stops[0] : stops[1];
+  flowSet(el, to, true);
+  f.until = performance.now() + FLOW_HOLD;
+}
 document.addEventListener("click", e => {
+  const s = e.target.closest("[data-step]"); if (s) return flowStep(s.closest(".st").querySelector(".st-flow"), +s.dataset.step);
   const b = e.target.closest("[data-flow]"); if (!b) return;
-  const f = b.previousElementSibling, open = f.classList.toggle("all");
+  const f = b.closest(".st").querySelector(".st-flow"), open = f.classList.toggle("all");
+  b.closest(".st-ctl").classList.toggle("open", open);
   b.setAttribute("aria-expanded", open); b.textContent = open ? "Show less" : `Show all ${f.querySelectorAll("figure:not([aria-hidden])").length}`;
 });
+const flowStill = matchMedia("(prefers-reduced-motion: reduce)").matches;
+let flowT = performance.now();
+(function flowTick(now) {
+  const dt = Math.min(now - flowT, 100) / 1000; flowT = now;
+  if (!flowStill) document.querySelectorAll(".st-flow:not(.all)").forEach(el => {
+    if (!el.offsetParent || el.matches(":hover") || now < flowState(el).until) return;
+    flowSet(el, flowState(el).x + FLOW_SPEED * dt, false);
+  });
+  requestAnimationFrame(flowTick);
+})(flowT);
 function renderProject(p) {
   const pubs = p.pubs ? p.pubs.map(k => PUBS.find(x => x.t.startsWith(k))).filter(Boolean) : [PUBS.find(x => x.t.startsWith(p.pub))].filter(Boolean);
   const pub = pubs[0];

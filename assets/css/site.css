@@ -398,21 +398,24 @@ a.proj:hover .nm { color: var(--accent); }
 .st-h { margin: 40px 0 14px; font-size: 17px; }
 .st-sub { margin: -6px 0 14px; color: var(--ink); }
 .st-flow { overflow: hidden; margin: 0 -8px; padding: 4px 8px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
-.st-track { display: flex; gap: 16px; width: max-content; animation: st-drift 150s linear infinite; }
-.st-flow:hover .st-track { animation-play-state: paused; }
-@keyframes st-drift { to { transform: translateX(calc(-50% - 8px)); } }
+.st-track { display: flex; gap: 16px; width: max-content; will-change: transform; }
 .st-track figure { width: 320px; flex: none; margin: 0; padding: 20px 22px; border-radius: 12px; background: var(--frame); }
 .st-track p { margin: 0; font-size: 17px; line-height: 1.5; font-weight: 500; color: var(--ink); }
 .st-track mark { background: none; color: var(--accent); font-weight: 650; }
 .st-track .tr { display: block; margin-top: 8px; font-size: 15px; line-height: 1.5; color: var(--muted); }
 .st-track figcaption { margin-top: 10px; font-size: 13.5px; line-height: 1.45; color: var(--muted); }
 .st-flow.all { overflow: visible; margin: 0; padding: 0; -webkit-mask-image: none; mask-image: none; }
-.st-flow.all .st-track { display: block; width: auto; animation: none; columns: 3 260px; column-gap: 16px; }
+.st-flow.all .st-track { display: block; width: auto; transform: none !important; transition: none !important; columns: 3 260px; column-gap: 16px; }
 .st-flow.all figure { width: auto; margin: 0 0 16px; break-inside: avoid; }
 .st-flow.all figure[aria-hidden] { display: none; }
-.st-all { margin-top: 14px; padding: 0; border: 0; background: none; font: inherit; font-size: 14.5px; color: var(--accent); cursor: pointer; }
+.st-ctl { display: flex; align-items: center; gap: 8px; margin-top: 14px; }
+.st-ctl.open .st-btn { display: none; }
+.st-btn { width: 30px; height: 30px; display: grid; place-items: center; padding: 0; border: 1px solid var(--line); border-radius: 50%; background: var(--bg); color: var(--ink); cursor: pointer; }
+.st-btn svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.st-btn:hover { border-color: var(--accent); color: var(--accent); }
+.st-all { margin-left: 8px; padding: 0; border: 0; background: none; font: inherit; font-size: 14.5px; color: var(--accent); cursor: pointer; }
 .st-all:hover { text-decoration: underline; }
-@media (prefers-reduced-motion: reduce) { .st-flow { overflow-x: auto; } .st-track { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .st-track { transition: none !important; } }
 .st-senses { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
 .st-senses li { display: flex; flex-direction: column; gap: 3px; font-size: 14px; line-height: 1.4; }
 .st-senses .sart { margin-bottom: 8px; }
