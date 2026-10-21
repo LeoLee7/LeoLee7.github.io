@@ -55,7 +55,7 @@ export const PROJECTS = [
     short: "Telling where a herbal medicine comes from by its smell.",
     line: "Temporal and spectral feature extraction that lets an electronic nose distinguish the geographic origins of herbal medicines.",
     links: [["arXiv", "https://arxiv.org/abs/2104.06640"]] },
-  { slug: "taste-xuser", theme: "hea", pub: "Unsupervised Cross-User", name: "Cross-User Taste Recognition", venue: "IEEE TIM 2022",
+  { slug: "taste-xuser", theme: "hea", pub: "Unsupervised Cross-User", name: "Cross-User Taste Recognition", img: "taste-xuser", venue: "IEEE TIM 2022",
     short: "Adapting sEMG taste models to new users without labels.",
     line: "Domain regularized component analysis and conformal prediction that let taste recognition models trained on one person work on others without new labels.",
     links: [["IEEE", "https://ieeexplore.ieee.org/document/9777907"]] },
@@ -330,7 +330,7 @@ export const PUBS = [
     t: "CPSC: Conformal Prediction With Shrunken Centroids for Efficient Prediction Reliability Quantification and Data Augmentation, a Case in Alternative Herbal Medicine Classification With Electronic Nose",
     a: "Li Liu*, Xianghao Zhan*, Xikai Yang*, Xiaoqing Guan, Rumeng Wu, Zhan Wang, Zhiyuan Luo, You Wang, Guang Li",
     l: [["IEEE","https://ieeexplore.ieee.org/abstract/document/9667498"]] },
-  { arx: "oa-xuser", y: 2022, v: "IEEE TIM", vy: "2022", first: 1, tags: ["tml","hea"],
+  { arx: "oa-xuser", img: "taste-xuser", y: 2022, v: "IEEE TIM", vy: "2022", first: 1, tags: ["tml","hea"],
     t: "Unsupervised Cross-User Adaptation in Taste Sensation Recognition Based on Surface Electromyography with Conformal Prediction and Domain Regularized Component Analysis",
     a: "Hengyang Wang*, Xianghao Zhan*, Li Liu*, Asif Ullah, Huiyan Li, Han Gao, You Wang, Ruifen Hu, Guang Li",
     l: [["IEEE","https://ieeexplore.ieee.org/document/9777907"]] },
@@ -354,6 +354,7 @@ export const PUBS = [
 
 export const AVATAR = "assets/img/avatar.jpg";
 export const TEASERS = {
+ "taste-xuser": { "a": "assets/img/papers/taste-xuser.jpg", "full": "assets/img/full/taste-xuser.png" },
  "cpsc": { "a": "assets/img/papers/cpsc.svg" },
  "taste-intensity": { "a": "assets/img/papers/taste-intensity.jpg", "full": "assets/img/full/taste-intensity.jpg" },
  "ssi": { "a": "assets/img/papers/ssi.jpg", "full": "assets/img/full/ssi.png" },
