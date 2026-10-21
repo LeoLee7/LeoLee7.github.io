@@ -1,5 +1,5 @@
-import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261020n";
-import { ABSTRACTS } from "./abstracts.js?v=20261020n";
+import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261020o";
+import { ABSTRACTS } from "./abstracts.js?v=20261020o";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -21,7 +21,6 @@ const iconFor = n => /video/i.test(n) ? "play" : /^pdf/i.test(n) ? "pdf" : /code
 const svgI = k => `<svg class="li" viewBox="0 0 24 24" aria-hidden="true">${LI[k]}</svg>`;
 const lnk = (u, n) => `<a class="lbtn" href="${u}"${u.startsWith("#") ? "" : ' target="_blank" rel="noopener"'}>${svgI(iconFor(n))}${n}</a>`;
 const projOf = p => PROJECTS.find(x => (x.pub && p.t.startsWith(x.pub)) || (x.pubs || []).some(k => p.t.startsWith(k)));
-const tbd = (links, inPage) => { const miss = (inPage ? ["Video", "Code"] : ["Project page", "Video", "Code"]).filter(k => !links.some(([n]) => n === k || (k === "Project page" && n === "Project"))); return miss.length ? `${miss.join(", ")}: TBD` : ""; };
 /* ---------- lightbox ---------- */
 const LB = [];
 /* lightbox links: our own project page first (unless already on it), then the external links; an external project page becomes "Project website" so the two never share a label */
@@ -33,7 +32,7 @@ function openLB(i) {
   d.querySelector(".lb-img").classList.remove("zoomed"); d.querySelector(".lb-img").scrollTo(0, 0);
   d.querySelector(".lb-title").textContent = e.title;
   d.querySelector(".lb-sub").textContent = e.sub || "";
-  d.querySelector(".lb-links").innerHTML = e.links.map(([n, u]) => lnk(u, n)).join("") + (e.todo ? `<span class="todo">${e.todo}</span>` : "");
+  d.querySelector(".lb-links").innerHTML = e.links.map(([n, u]) => lnk(u, n)).join("");
   d.querySelectorAll('.lb-links a[href^="#"]').forEach(a => a.addEventListener("click", () => d.close()));
   d.showModal();
 }
@@ -58,13 +57,12 @@ function pubHTML(p, tag) {
   const main = (sorted[0] || [])[1];
   const pj = projOf(p);
   const inPage = tag === "pp";
-  /* abstract, bibtex, phase 1 and TBD notes live on the project page; papers without one keep them in the full list */
+  /* abstract, bibtex and phase 1 live on the project page; papers without one keep them in the full list */
   const extras = inPage || (tag === "p" && !pj);
   const links = sorted.map(([n, u]) => lnk(u, n === "Page" ? "Paper page" : n));
   const id = arxivId(p);
   if (extras && id && ABSTRACTS[id]) links.push(`<button class="text lbtn" data-open="abs-${i}" aria-expanded="false">${svgI("abs")}Abstract</button>`);
   if (extras) links.push(`<button class="text lbtn" data-open="bib-${i}" aria-expanded="false">${svgI("bib")}BibTeX</button>`);
-  if (inPage && tbd(p.l, 1)) links.push(`<span class="todo">${tbd(p.l, 1)}</span>`);
   const T = p.img && TEASERS[p.img];
   const thumb = T ? lbBtn({ img: p.img, title: p.t, sub: `${VENUE[p.v] || p.v}, ${p.y}`, links: lbLinks(pj && pj.slug, sorted, inPage) }, "thumb", `<img src="${T.a}" alt="">`) : "";
   const title = inPage ? `<span class="t">${esc(p.t)}</span>` : pj ? `<a class="t" href="#project-${pj.slug}">${esc(p.t)}</a>` : main ? `<a class="t" href="${main}" target="_blank" rel="noopener">${esc(p.t)}</a>` : `<span class="t">${esc(p.t)}</span>`;
