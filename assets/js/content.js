@@ -43,10 +43,18 @@ export const PROJECTS = [
     short: "How people and large foundation models work together, from model building to deployment.",
     line: "A survey of human-AI collaboration with large foundation models, covering human-guided model development, collaboration patterns, governance, and high-stakes applications.",
     links: [["Paper", "https://doi.org/10.1145/3841472"]] },
-  { slug: "enose", theme: "hea", pubs: ["CPSC", "Boost AI", "Classifying Herbal"], name: "Conformal Prediction for Electronic Noses", img: "enose", venue: "IEEE TIM 2022, IEEE Sensors Journal 2021",
-    short: "Reliable predictions for e-nose sensing with little labeled data.",
-    line: "Conformal prediction methods that attach a reliability estimate to each electronic-nose prediction and use it to learn from unlabeled data.",
-    links: [] },
+  { slug: "cpsc", theme: "hea", pub: "CPSC", name: "CPSC", img: "cpsc", venue: "IEEE TIM 2022",
+    short: "Conformal prediction with shrunken centroids for reliable e-nose predictions.",
+    line: "Conformal prediction with shrunken centroids, which quantifies how reliable each prediction is at lower cost than k-nearest-neighbor conformal prediction.",
+    links: [["IEEE", "https://ieeexplore.ieee.org/abstract/document/9667498"]] },
+  { slug: "boost-ai", theme: "hea", pub: "Boost AI", name: "Boost AI Power", venue: "IEEE Sensors Journal 2021",
+    short: "Data augmentation with unlabeled data and conformal prediction.",
+    line: "A systematic comparison of data augmentation strategies for electronic noses with scarce labels, including a new ensemble inductive conformal prediction method.",
+    links: [["IEEE", "https://ieeexplore.ieee.org/abstract/document/9505688"]] },
+  { slug: "herbal-origins", theme: "hea", pub: "Classifying Herbal", name: "Herbal Medicine Origins", img: "enose", venue: "arXiv 2021",
+    short: "Telling where a herbal medicine comes from by its smell.",
+    line: "Temporal and spectral feature extraction that lets an electronic nose distinguish the geographic origins of herbal medicines.",
+    links: [["arXiv", "https://arxiv.org/abs/2104.06640"]] },
   { slug: "taste-xuser", theme: "hea", pub: "Unsupervised Cross-User", name: "Cross-User Taste Recognition", venue: "IEEE TIM 2022",
     short: "Adapting sEMG taste models to new users without labels.",
     line: "Domain regularized component analysis and conformal prediction that let taste recognition models trained on one person work on others without new labels.",
@@ -88,10 +96,15 @@ export const PROJECTS = [
 ];
 
 export const OVERVIEW_EARLY = {
-  "enose": [
-    "Electronic noses can tell herbal medicines apart, but supervised models need labeled samples that are slow and costly to collect, and they give no measure of how reliable each prediction is. This line of work, co-led with Xianghao Zhan at Zhejiang University, uses conformal prediction to quantify that reliability and to put unlabeled data to work.",
-    "Boost AI Power compares five data augmentation strategies under scarce training data and simulated sensor drift, including a new ensemble inductive conformal prediction (EICP) online learning method. CPSC, conformal prediction with shrunken centroids, regularizes class centroids to suppress irrelevant features, addressing the variance, bias, and computational cost of k-nearest-neighbor conformal prediction as feature dimensionality grows. It is evaluated both offline and in online learning where reliability decides which unlabeled samples join the training set.",
-    "A companion study compares manual feature extraction, mathematical transformations, and deep learning for distinguishing the geographic origins of herbal medicines, whose odor fingerprints differ only slightly."],
+  "cpsc": [
+    "For assisted decisions and risk control, a model should say how reliable each prediction is. Conformal prediction (CP) quantifies this reliability, and is commonly built on k-nearest neighbors (CPKNN), which suffers from high variance and bias and long computation as feature dimensionality grows.",
+    "CPSC, conformal prediction with shrunken centroids, regularizes class centroids to attenuate irrelevant features and shrink the sample space for prediction and reliability quantification. On a herbal medicine dataset from an electronic nose, we compared it with CP based on k-nearest neighbors, SVM, LightGBM, and random forests in offline prediction and in online prediction, where reliability decides which unlabeled samples augment the training set. CPSC reached significantly higher accuracy at lower computational cost than CPKNN, and augmentation with CPSC gave a statistically significant accuracy gain across reliability thresholds, with more class-balanced augmented data."],
+  "boost-ai": [
+    "Electronic noses can classify alternative herbal medicines, but supervised models depend on labeled training data that are slow and labor-intensive to collect. This study asks how far data augmentation can reduce that dependency.",
+    "We compared five strategies, noise-adding augmentation, semi-supervised learning, classifier-based online learning, inductive conformal prediction (ICP) online learning, and our ensemble ICP online learning (EICP), against supervised baselines with LDA and SVM classifiers. Experiments covered different amounts of unlabeled data and simulated sensor drift from Gaussian noise and translational shift. EICP never lowered accuracy and improved it significantly on 25 of 36 simulated tasks (p \u2264 0.05)."],
+  "herbal-origins": [
+    "The origin of a herbal medicine matters for its treatment effect, and an electronic nose can potentially tell origins apart. Because odor fingerprints from different origins differ only slightly, this is much harder than telling categories apart, and feature extraction becomes the deciding factor.",
+    "We classified the origins of three categories of herbal medicines with manual feature extraction, mathematical transformations, and deep learning, over 50 bootstrapped repetitions with three base classifiers. Compared with conventional aggregated features, the Fast Fourier Transform and our longitudinal-information-in-a-line approach improved accuracy significantly (p < 0.05) for all classifiers and categories, and a 1D CNN and multivariate time pooling (MTPool) gave partially significant gains."],
   "taste-xuser": [
     "Human taste sensation can be described with surface electromyography (sEMG), but pattern recognition models trained on one person do not generalize well to others. This work, where I am a co-first author, improves how taste models transfer across users by using unlabeled data from the new user.",
     "We applied two methods, domain regularized component analysis (DRCA) and conformal prediction with shrunken centroids (CPSC), in an unlabeled data augmentation pipeline evaluated on six subjects. DRCA improved classification accuracy over baselines trained only on the source user (p < 0.05), and combining DRCA with CPSC gave a statistically significant improvement as well, addressing cross-user distribution drift in sEMG-based taste recognition."],
@@ -313,7 +326,7 @@ export const PUBS = [
     t: "Silent Speech Interface with Vocal Speaker Assistance Based on Convolution-augmented Transformer",
     a: "Huiyan Li, Yihao Liang, Han Gao, Li Liu, You Wang, Daqi Chen, Zhiyuan Luo, Guang Li",
     l: [["IEEE","https://ieeexplore.ieee.org/document/10121584"]] },
-  { arx: "oa-cpsc", y: 2022, v: "IEEE TIM", vy: "2022", first: 1, tags: ["tml","hea"],
+  { arx: "oa-cpsc", img: "cpsc", y: 2022, v: "IEEE TIM", vy: "2022", first: 1, tags: ["tml","hea"],
     t: "CPSC: Conformal Prediction With Shrunken Centroids for Efficient Prediction Reliability Quantification and Data Augmentation, a Case in Alternative Herbal Medicine Classification With Electronic Nose",
     a: "Li Liu*, Xianghao Zhan*, Xikai Yang*, Xiaoqing Guan, Rumeng Wu, Zhan Wang, Zhiyuan Luo, You Wang, Guang Li",
     l: [["IEEE","https://ieeexplore.ieee.org/abstract/document/9667498"]] },
@@ -329,7 +342,7 @@ export const PUBS = [
     t: "Boost AI Power: Data Augmentation Strategies With Unlabeled Data and Conformal Prediction, a Case in Alternative Herbal Medicine Discrimination With Electronic Nose",
     a: "Li Liu*, Xianghao Zhan*, Rumeng Wu, Xiaoqing Guan, Zhan Wang, Wei Zhang, Mert Pilanci, You Wang, Zhiyuan Luo, Guang Li",
     l: [["IEEE","https://ieeexplore.ieee.org/abstract/document/9505688"]] },
-  { y: 2021, v: "arXiv", vy: "2021", first: 1, tags: ["hea"],
+  { img: "enose", y: 2021, v: "arXiv", vy: "2021", first: 1, tags: ["hea"],
     t: "Classifying Herbal Medicine Origins by Temporal and Spectral Data Mining of Electronic Nose",
     a: "Li Liu*, Xianghao Zhan*, Ziheng Duan*, Yi Wu, Rumeng Wu, Xiaoqing Guan, Zhan Wang, You Wang, Guang Li",
     l: [["arXiv","https://arxiv.org/abs/2104.06640"]] },
@@ -341,6 +354,7 @@ export const PUBS = [
 
 export const AVATAR = "assets/img/avatar.jpg";
 export const TEASERS = {
+ "cpsc": { "a": "assets/img/papers/cpsc.svg" },
  "taste-intensity": { "a": "assets/img/papers/taste-intensity.jpg", "full": "assets/img/full/taste-intensity.jpg" },
  "ssi": { "a": "assets/img/papers/ssi.jpg", "full": "assets/img/full/ssi.png" },
  "lotus-01": { "a": "assets/img/design/lotus-01.jpg" },

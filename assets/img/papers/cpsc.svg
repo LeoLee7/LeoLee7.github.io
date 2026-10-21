@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 690" width="2000" height="1380">
+<defs>
+<marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#8c949c" stroke-width="1.6"/></marker>
+<marker id="ahd" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#1f2933" stroke-width="1.6"/></marker>
+<style>text{font-family:Geist,Helvetica,Arial,sans-serif;fill:#1f2933} .lab{font-size:24px;font-weight:600} .q{font-size:24px;font-weight:700;text-anchor:middle} .w{fill:#fff} .sm{font-size:22px} .halo{paint-order:stroke;stroke:#fff;stroke-width:8px;stroke-linejoin:round}</style>
+</defs>
+<rect width="1000" height="690" fill="#fff"/>
+<circle cx="350" cy="300" r="280" fill="none" stroke="#9aa3ad" stroke-width="2.4" stroke-dasharray="0 11" stroke-linecap="round"/>
+<circle cx="350" cy="300" r="82" fill="none" stroke="#9aa3ad" stroke-width="2.4" stroke-dasharray="0 9" stroke-linecap="round"/>
+<circle cx="100" cy="46" r="17" fill="#fff" stroke="#d0473a" stroke-width="3.2"/>
+<circle cx="196" cy="92" r="17" fill="#fff" stroke="#d0473a" stroke-width="3.2"/>
+<circle cx="26" cy="138" r="17" fill="#fff" stroke="#d0473a" stroke-width="3.2"/>
+<circle cx="204" cy="176" r="17" fill="#fff" stroke="#d0473a" stroke-width="3.2"/>
+<circle cx="96" cy="226" r="17" fill="#fff" stroke="#d0473a" stroke-width="3.2"/>
+<circle cx="118" cy="138" r="17" fill="#d0473a"/>
+<line x1="141.0" y1="154.0" x2="261.5" y2="238.2" stroke="#8c949c" stroke-width="2.2" marker-end="url(#ah)"/>
+<circle cx="282.8" cy="253.1" r="15" fill="#f1b3ac" stroke="#d0473a" stroke-width="2.4"/>
+<circle cx="598" cy="250" r="17" fill="#fff" stroke="#4f9a68" stroke-width="3.2"/>
+<circle cx="694" cy="286" r="17" fill="#fff" stroke="#4f9a68" stroke-width="3.2"/>
+<circle cx="676" cy="348" r="17" fill="#fff" stroke="#4f9a68" stroke-width="3.2"/>
+<circle cx="568" cy="376" r="17" fill="#fff" stroke="#4f9a68" stroke-width="3.2"/>
+<circle cx="628" cy="315" r="17" fill="#4f9a68"/>
+<line x1="600.0" y1="313.5" x2="457.8" y2="305.8" stroke="#8c949c" stroke-width="2.2" marker-end="url(#ah)"/>
+<circle cx="431.9" cy="304.4" r="15" fill="#bfe0c9" stroke="#4f9a68" stroke-width="2.4"/>
+<circle cx="150" cy="494" r="17" fill="#fff" stroke="#3b82c8" stroke-width="3.2"/>
+<circle cx="300" cy="526" r="17" fill="#fff" stroke="#3b82c8" stroke-width="3.2"/>
+<circle cx="160" cy="572" r="17" fill="#fff" stroke="#3b82c8" stroke-width="3.2"/>
+<circle cx="250" cy="598" r="17" fill="#fff" stroke="#3b82c8" stroke-width="3.2"/>
+<circle cx="212" cy="540" r="17" fill="#3b82c8"/>
+<line x1="226.0" y1="515.7" x2="296.2" y2="393.6" stroke="#8c949c" stroke-width="2.2" marker-end="url(#ah)"/>
+<circle cx="309.1" cy="371.1" r="15" fill="#b7d6f2" stroke="#3b82c8" stroke-width="2.4"/>
+<circle cx="350" cy="300" r="9" fill="#1f2933"/>
+<text x="256" y="308" class="lab halo" text-anchor="end">Shrunken centroids</text>
+<path d="M403.0 375.2 L548 600 L632 600" fill="none" stroke="#1f2933" stroke-width="2.4" marker-end="url(#ahd)"/>
+<circle cx="664" cy="600" r="22" fill="#fff" stroke="#1f2933" stroke-width="2.6"/><text x="664" y="609" class="q">?</text>
+<text x="850" y="452" class="lab" text-anchor="middle">Prediction reliability</text>
+<line x1="770" y1="486" x2="770" y2="574" stroke="#1f2933" stroke-width="2.2"/><circle cx="770" cy="482" r="6" fill="#fff" stroke="#1f2933" stroke-width="2.2"/>
+<circle cx="770" cy="600" r="22" fill="#fff" stroke="#1f2933" stroke-width="2.4"/><circle cx="770" cy="600" r="17" fill="#d0473a"/><text x="770" y="609" class="q w">?</text>
+<line x1="850" y1="486" x2="850" y2="574" stroke="#1f2933" stroke-width="2.2"/><circle cx="850" cy="482" r="6" fill="#fff" stroke="#1f2933" stroke-width="2.2"/>
+<circle cx="850" cy="600" r="22" fill="#fff" stroke="#1f2933" stroke-width="2.4"/><circle cx="850" cy="600" r="17" fill="#4f9a68"/><text x="850" y="609" class="q w">?</text>
+<line x1="930" y1="486" x2="930" y2="574" stroke="#1f2933" stroke-width="2.2"/><circle cx="930" cy="482" r="6" fill="#fff" stroke="#1f2933" stroke-width="2.2"/>
+<circle cx="930" cy="600" r="22" fill="#fff" stroke="#1f2933" stroke-width="2.4"/><circle cx="930" cy="600" r="17" fill="#3b82c8"/><text x="930" y="609" class="q w">?</text>
+<path d="M716 540 H984 V662 H970 M716 540 V662 H730" fill="none" stroke="#1f2933" stroke-width="2.2"/>
+<text x="850" y="670" class="lab sm" text-anchor="middle">Conformal prediction</text>
+</svg>
