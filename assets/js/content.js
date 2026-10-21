@@ -35,7 +35,7 @@ export const PROJECTS = [
     line: "A benchmark and a synthetic data framework that teach vision-language models to say how to adjust an image when it cannot answer the question, a common need for visually impaired users.",
     links: [["Paper", "https://proceedings.neurips.cc/paper_files/paper/2024/file/efe4e50d492fedc0dfd2959f3320a974-Paper-Conference.pdf"], ["Code", "https://github.com/LeoLee7/Directional_guidance"]] },
   { slug: "touchingspace", theme: "acc", pub: "\u201cI didn", name: "TouchingSpace", img: "ts_overview", figs: [["2609.36404", "System pipeline: map retrieval, map transformation, and exploration on the trackpad."]], venue: "Under review, 2026", short: "An audio-haptic map that blind and low-vision people explore by hand.",
-    line: "An audio-haptic map that blind and low-vision people explore by hand on a laptop trackpad, asking a conversational agent open questions along the way. Studied with fourteen BLV participants.",
+    line: "An audio-haptic map that blind and low-vision people explore by hand on a laptop trackpad, asking a conversational agent open questions along the way. Studied with fifteen BLV participants.",
     links: [["arXiv", "https://arxiv.org/abs/2609.36404"], ["Video", "https://youtu.be/t3qaVIrDDa4"]] },
   { slug: "tactile-annotation", theme: "acc", pub: "From Anonymous", name: "Tactile Map Annotation", img: "2608.23820", venue: "ASSETS 2026 Demo", short: "Braille and place labels for 3D-printed tactile maps.",
     line: "A web tool that lets a sighted helper add Braille and place labels to a generated 3D-printed tactile map, so each footprint can be identified by touch.",
@@ -148,7 +148,7 @@ export const OVERVIEW = {
     "At run time, it organizes collaboration into recurring patterns: human-steered AI, AI-augmented human work, mixed-initiative interaction, control handoff and delegation, and supervisory orchestration of agentic systems, a newer mode in which people monitor, guide, and intervene in multi-step AI workflows. The review finds that successful collaboration is not the automatic result of stronger models but the product of careful, human-centered design."],
   "touchingspace": [
     "Accessible map systems either make a layout explorable by hand or convey information through speech, and few combine both to support pre-travel spatial understanding for blind and low-vision (BLV) people. TouchingSpace retrieves map data for an outdoor place and renders its surroundings as bounded regions at fixed positions on a laptop trackpad. While exploring, people receive audio and haptic feedback and can ask a conversational agent open-ended questions.",
-    "In a study with fourteen BLV participants, people used sound and vibration to locate places and speech to identify and describe them. The bounded surface supported discovery, revision, and spatial checks by hand, and participants expected this awareness to support future travel."],
+    "In a study with fifteen BLV participants, people used sound and vibration to locate places and speech to identify and describe them. The bounded surface supported discovery, revision, and spatial checks by hand, and participants expected this awareness to support future travel."],
   "ascii": [
     "People sketch layouts to organize their thinking about space. We asked whether learning to build explicit layouts from spatial descriptions can give language models real spatial understanding.",
     "We introduce Text2Space, a dataset that pairs text descriptions with ASCII grid layouts, and find a read-write asymmetry: models read ASCII layouts well but struggle to construct them from text. Training on layout construction improves spatial reasoning from text alone, and the gains transfer to three external benchmarks."],
@@ -198,7 +198,7 @@ export const NEWS = [
     h: "New preprint on <b>TouchingSpace</b>, an audio-haptic map for blind and low-vision readers, built on in-person studies with 15 blind and low-vision participants at <b>Vista Center</b> and across San Jose, Santa Cruz, and Palo Alto.",
     body: [
       "Accessible map systems either make a layout explorable by hand or convey information through speech, and few combine both to support pre-travel spatial understanding for blind and low-vision (BLV) people. TouchingSpace retrieves map data for an outdoor place and renders its surroundings as bounded regions at fixed positions on a laptop trackpad. While exploring, people receive audio and haptic feedback and can ask a conversational agent open-ended questions.",
-      "In a study with fourteen BLV participants, people used sound and vibration to locate places and speech to identify and describe them. The bounded surface supported discovery, revision, and spatial checks by hand, and participants expected this awareness to support future travel.",
+      "In a study with fifteen BLV participants, people used sound and vibration to locate places and speech to identify and describe them. The bounded surface supported discovery, revision, and spatial checks by hand, and participants expected this awareness to support future travel.",
     ],
     imgs: [["2609.36404", "TouchingSpace overview."]],
     links: [["arXiv", "https://arxiv.org/abs/2609.36404"], ["Demo video", "https://youtu.be/t3qaVIrDDa4"], ["Phase 1 on arXiv", "https://arxiv.org/abs/2604.14637"]] },
