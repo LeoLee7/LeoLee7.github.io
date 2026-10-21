@@ -47,10 +47,14 @@ export const PROJECTS = [
     short: "Reliable predictions for e-nose sensing with little labeled data.",
     line: "Conformal prediction methods that attach a reliability estimate to each electronic-nose prediction and use it to learn from unlabeled data.",
     links: [] },
-  { slug: "biosignals", theme: "hea", pubs: ["Unsupervised Cross-User", "Basic Taste", "Bimodal Fusion", "Quantitatively Recognizing", "Silent Speech"], name: "Biosignal Sensing for Taste and Speech", venue: "IEEE TIM, ICASSP, Sensors, 2021 to 2023",
-    short: "Recognizing taste and silent speech from EMG and EEG.",
-    line: "Models that recognize taste sensations and silent speech from surface electromyography and electroencephalography.",
+  { slug: "biosignals", theme: "hea", pubs: ["Unsupervised Cross-User", "Basic Taste", "Bimodal Fusion", "Quantitatively Recognizing"], name: "Taste Recognition from Biosignals", venue: "IEEE TIM, ICASSP, Sensors, 2021 to 2023",
+    short: "Recognizing taste sensations from EMG and EEG.",
+    line: "Models that recognize taste sensations and their intensity from surface electromyography and electroencephalography.",
     links: [] },
+  { slug: "silent-speech", theme: "hea", pub: "Silent Speech", name: "Silent Speech Interface", img: "ssi", venue: "IEEE TIM 2023",
+    short: "Turning the muscle signals of silent speech into audio.",
+    line: "A Mandarin silent speech interface that converts surface EMG from silent speakers into audio, with help from paired EMG and audio of vocal speakers.",
+    links: [["IEEE", "https://ieeexplore.ieee.org/document/10121584"]] },
   { slug: "trilight", theme: "hea", pub: "A Tri-Light", name: "Tri-Light Warning System", img: "trilight", venue: "EJR Open 2024",
     short: "Credibility-based risk stratification for hospitalized COVID-19 patients.",
     line: "A conformal-prediction warning system that sorts hospitalized COVID-19 patients into high, uncertain, and low risk from CT and clinical data.",
@@ -77,8 +81,11 @@ export const OVERVIEW_EARLY = {
     "Boost AI Power compares five data augmentation strategies under scarce training data and simulated sensor drift, including a new ensemble inductive conformal prediction (EICP) online learning method. CPSC, conformal prediction with shrunken centroids, regularizes class centroids to suppress irrelevant features, addressing the variance, bias, and computational cost of k-nearest-neighbor conformal prediction as feature dimensionality grows. It is evaluated both offline and in online learning where reliability decides which unlabeled samples join the training set.",
     "A companion study compares manual feature extraction, mathematical transformations, and deep learning for distinguishing the geographic origins of herbal medicines, whose odor fingerprints differ only slightly."],
   "biosignals": [
-    "With collaborators at Zhejiang University, I worked on recognizing taste sensations and silent speech from physiological signals. Surface electromyography (sEMG) records muscle activity and electroencephalography (EEG) records brain activity in response to taste stimuli or articulation.",
-    "We adapted sEMG taste models across users with domain regularized component analysis and conformal prediction with shrunken centroids (co-first author), recognized six basic taste sensations from EEG with a multi-scale residual network (EEG-MSRNet), fused EEG and EMG in a bimodal network (Bi-FusionNet), and regressed the intensity of primary tastes from sEMG. A Mandarin silent speech interface converts sEMG from silent speakers into audio with help from paired data of vocal speakers, reaching an average character error rate of 10.69% across four silent speakers."],
+    "With collaborators at Zhejiang University, I worked on recognizing taste sensations from physiological signals. Surface electromyography (sEMG) records muscle activity and electroencephalography (EEG) records brain activity in response to taste stimuli.",
+    "We adapted sEMG taste models across users with domain regularized component analysis and conformal prediction with shrunken centroids (co-first author), recognized six basic taste sensations from EEG with a multi-scale residual network (EEG-MSRNet), fused EEG and EMG in a bimodal network (Bi-FusionNet), and regressed the intensity of primary tastes from sEMG."],
+  "silent-speech": [
+    "A silent speech interface lets people communicate without producing sound, which can help, for example, people who have undergone a laryngectomy. Surface electromyography (sEMG) captures the neuromuscular activity of articulation, but without acoustic sound it is hard to convert a silent speaker's signals into the corresponding audio.",
+    "This Mandarin silent speech interface learns the conversion with help from an auxiliary set of paired sEMG and audio recordings from vocal speakers. A hybrid of convolutional networks and Transformers (Conformer) uses both local and global information, and a pre-trained Parallel WaveGAN vocoder synthesizes speech from the predicted mel spectrograms. With four silent speakers, it reaches an average character error rate of 10.69% under automatic speech recognition, in a cross-subject setting."],
   "trilight": [
     "COVID-19 kept spreading and mutating, and hospitals needed a way to stratify patients by risk to allocate medical resources. We developed a conformal-prediction-based tri-light warning system that applies to both the original strain and emerging variants.",
     "The system extracts radiomic features from chest CT, combines them with clinical records, and sorts patients into high-risk (red), uncertain-risk (yellow), and low-risk (green) groups for ICU admission. Built on data from 3,646 patients across multiple centers in China, it held up under data distribution shifts, with an AUROC of 0.89 for the original strains and 0.77 to 0.85 for the Delta and Omicron variants."],
@@ -281,7 +288,7 @@ export const PUBS = [
     t: "Basic Taste Sensation Recognition from EEG Based on Multi-Scale Convolutional Neural Network with Residual Learning",
     a: "Han Gao, Shuo Zhao, Huiyan Li, Li Liu, Hengyang Wang, You Wang, Zhiyuan Luo, Jin Zhang, Guang Li",
     l: [["IEEE","https://ieeexplore.ieee.org/abstract/document/10138514/"]] },
-  { arx: "oa-silent", y: 2023, v: "IEEE TIM", vy: "2023", tags: ["hea"],
+  { arx: "oa-silent", img: "ssi", y: 2023, v: "IEEE TIM", vy: "2023", tags: ["hea"],
     t: "Silent Speech Interface with Vocal Speaker Assistance Based on Convolution-augmented Transformer",
     a: "Huiyan Li, Yihao Liang, Han Gao, Li Liu, You Wang, Daqi Chen, Zhiyuan Luo, Guang Li",
     l: [["IEEE","https://ieeexplore.ieee.org/document/10121584"]] },
@@ -313,6 +320,7 @@ export const PUBS = [
 
 export const AVATAR = "assets/img/avatar.jpg";
 export const TEASERS = {
+ "ssi": { "a": "assets/img/papers/ssi.jpg", "full": "assets/img/full/ssi.png" },
  "lotus-01": { "a": "assets/img/design/lotus-01.jpg" },
  "lotus-02": { "a": "assets/img/design/lotus-02.jpg" },
  "lotus-03": { "a": "assets/img/design/lotus-03.jpg" },
