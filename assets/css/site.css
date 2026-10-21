@@ -112,8 +112,8 @@ section + section, .block + .block { margin-top: 72px; }
 .hfilter .n, .filters .n { color: var(--muted); font-weight: 400; font-size: 13.5px; margin-left: 2px; }
 .more { margin: 18px 0 0; font-size: 15px; }
 /* highlights */
-.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
-@media (max-width: 720px) { .cards { grid-template-columns: minmax(0, 1fr); } }
+.cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+@media (max-width: 900px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .card { display: grid; gap: 4px; align-content: start; color: var(--text); font-weight: 400; }
 .card:hover { text-decoration: none; }
 .card .frame { aspect-ratio: 4 / 3; background: var(--frame); border-radius: 12px; padding: 14px; display: grid; place-items: center; margin-bottom: 12px; transition: background .2s; }
@@ -396,19 +396,18 @@ a.proj:hover .nm { color: var(--accent); }
 .st-hero blockquote { margin: 0; }
 .st-hero p { margin: 0; font-size: 31px; line-height: 1.2; font-weight: 650; letter-spacing: -.015em; color: var(--ink); }
 .st-h { margin: 40px 0 14px; font-size: 17px; }
-.st-said { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: 12px; }
-.st-said li { break-inside: avoid; margin-bottom: 12px; }
-.st-said li { padding: 16px 18px; background: var(--frame); border-radius: 12px; color: var(--ink); line-height: 1.45; }
-.st-lead { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-bottom: 12px; }
-.st-lead blockquote { margin: 0; padding: 22px 24px; border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 4px 12px 12px 4px; }
-.st-lead p { margin: 0; font-size: 23px; line-height: 1.28; font-weight: 650; letter-spacing: -.012em; color: var(--ink); }
+.st-said { overflow: hidden; margin: 0 -4px; padding: 2px 4px; mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.st-track { list-style: none; margin: 0; padding: 0; display: flex; gap: 12px; width: max-content; animation: st-scroll 70s linear infinite; }
+.st-said:hover .st-track, .st-said:focus-within .st-track { animation-play-state: paused; }
+.st-track li { flex: 0 0 280px; padding: 18px 20px; background: var(--frame); border-radius: 12px; color: var(--ink); line-height: 1.45; }
+@keyframes st-scroll { to { transform: translateX(calc(-50% - 6px)); } }
+@media (prefers-reduced-motion: reduce) { .st-said { overflow-x: auto; } .st-track { animation: none; } .st-track li[aria-hidden] { display: none; } }
 .st-feat { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 40px; padding: 26px; border: 1px solid var(--line); border-radius: 14px; }
 .st-feat h3 { margin: 0 0 6px; font-size: 21px; letter-spacing: -.01em; }
 .st-feat > div > p { margin: 0 0 14px; color: var(--muted); }
 .st-feat dl { margin: 0; display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 12px 14px; }
 .st-feat dt { font-size: 13.5px; font-weight: 600; color: var(--muted); padding-top: 2px; }
-.st-feat dd { margin: 0; font-style: italic; color: var(--muted); line-height: 1.5; }
-.st-feat dd.after { color: var(--ink); font-style: normal; font-weight: 600; font-size: 17px; line-height: 1.45; }
+.st-feat dd { margin: 0; color: var(--ink); line-height: 1.5; }
 .st-senses { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
 .st-senses li { display: flex; flex-direction: column; gap: 3px; font-size: 14px; line-height: 1.4; }
 .st-senses .sart { margin-bottom: 8px; }
@@ -429,8 +428,7 @@ a.proj:hover .nm { color: var(--accent); }
 .st-close .tr { font-size: 17px; }
 @media (max-width: 900px) { .st-senses { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 720px) {
-  .st-said { columns: 1; }
-  .st-hero, .st-lead, .st-feat, .story li, .story li:nth-child(even) { grid-template-columns: minmax(0, 1fr); }
+  .st-hero, .st-feat, .story li, .story li:nth-child(even) { grid-template-columns: minmax(0, 1fr); }
   .story li:nth-child(even) .sart { order: 0; }
-  .st-hero p { font-size: 24px; } .st-said li.lead { font-size: 19px; } .story .sart { max-width: 320px; }
+  .st-hero p { font-size: 24px; } .story .sart { max-width: 320px; }
 }

@@ -95,12 +95,10 @@ export const STORY = {
     pull: "I didn't know how to read a map, but now I can.",
     pullNote: "A participant, whose words became the title of our paper.",
     pullArt: MAP,
-    /* the whole experience, in participants' words; the two leads are set large */
-    lead: [
-      { q: "It'll help many people, maybe even millions.", note: "On carrying what the map taught them into real travel." },
-      { q: "I think of anything I've seen, this has the best possibility of doing that.", note: "On conveying how to approach a hard-to-find entrance." },
-    ],
+    /* the whole experience, in participants' words; shown as one scrolling row of identical cards */
     said: [
+      { q: "It'll help many people, maybe even millions." },
+      { q: "I think of anything I've seen, this has the best possibility of doing that.", note: "On conveying how to approach a hard-to-find entrance." },
       { q: "Really nice work. It's going to help a lot of people." },
       { q: "I started getting a picture in my mind of where everything was." },
       { q: "It made me feel confident." },

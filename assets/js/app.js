@@ -1,6 +1,6 @@
-import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261021q";
-import { ABSTRACTS } from "./abstracts.js?v=20261021q";
-import { STORY } from "./story.js?v=20261021q";
+import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261021s";
+import { ABSTRACTS } from "./abstracts.js?v=20261021s";
+import { STORY } from "./story.js?v=20261021s";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -151,10 +151,9 @@ function storyBlock(s) {
     <h2>The story</h2>
     <div class="st-hero"><blockquote><p>&ldquo;${s.pull}&rdquo;</p><cite>${s.pullNote}</cite></blockquote><div class="sart">${s.pullArt}</div></div>
     <h3 class="st-h">What it could mean</h3>
-    <div class="st-lead">${s.lead.map(x => `<blockquote><p>&ldquo;${x.q}&rdquo;</p><cite>${x.note}</cite></blockquote>`).join("")}</div>
-    <ul class="st-said">${s.said.map(x => `<li><q>${x.q}</q>${tr(x)}</li>`).join("")}</ul>
+    <div class="st-said"><ul class="st-track">${[0, 1].map(dup => s.said.map(x => `<li${dup ? ' aria-hidden="true"' : ""}><q>${x.q}</q>${tr(x)}${x.note ? `<cite>${x.note}</cite>` : ""}</li>`).join("")).join("")}</ul></div>
     ${s.feature ? `<div class="st-feat"><div class="sart">${s.feature.art}</div><div><h3>${s.feature.title}</h3><p>${s.feature.text}</p>
-      <dl><dt>Before</dt><dd>&ldquo;${s.feature.before}&rdquo;</dd><dt>After</dt><dd class="after">&ldquo;${s.feature.after}&rdquo;</dd></dl></div></div>` : ""}
+      <dl><dt>Before</dt><dd>&ldquo;${s.feature.before}&rdquo;</dd><dt>After</dt><dd>&ldquo;${s.feature.after}&rdquo;</dd></dl></div></div>` : ""}
     <h3 class="st-h">Four senses on one surface</h3>
     <ul class="st-senses">${s.senses.map(x => `<li><div class="sart">${x.art}</div><b>${x.label}</b><span>${x.line}</span><q>${x.quote}</q></li>`).join("")}</ul>
     <h3 class="st-h">What changed</h3>
@@ -224,7 +223,7 @@ function homePubs() {
     <p class="more"><a href="#publications">${homeTopic === "all" ? `All ${total} publications` : `All ${total} papers on ${GNAME[homeTopic]}`}, by year or topic</a></p>`;
 }
 function renderAbout() {
-  const hl = PROJECTS.slice(0, 3).map(p => `<a class="card" href="#project-${p.slug}">
+  const hl = HIGHLIGHTS.map(k => PROJECTS.find(p => p.slug === k)).map(p => `<a class="card" href="#project-${p.slug}">
       <span class="frame"><img src="${TEASERS[p.img].a}" alt=""></span>
       <span class="nm">${p.name}</span><span class="vn">${p.venue}</span>
       <span class="ln">${p.short}</span></a>`).join("");

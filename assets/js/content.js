@@ -16,16 +16,19 @@ export const VENUE = {
   "NeurIPS": "Neural Information Processing Systems (NeurIPS)", "EJR Open": "European Journal of Radiology Open",
   "MICCAI": "MICCAI", "ICASSP": "ICASSP", "IEEE TIM": "IEEE Transactions on Instrumentation and Measurement",
   "IEEE Sensors": "IEEE Sensors Journal", "Sensors": "Sensors",
-  "ACM TIST": "ACM Transactions on Intelligent Systems and Technology",
+  "ACM TIST": "ACM Transactions on Intelligent Systems and Technology", "Under review": "Under review",
 };
 
 /* venue weight used to order papers within a topic (lower comes first) */
 export const TIER = { "NeurIPS": 1, "COLM": 1, "MICCAI": 2, "ACM TIST": 2, "IEEE TIM": 3, "IEEE Sensors": 3, "ICASSP": 3,
-  "WWW": 4, "ASSETS": 4, "EJR Open": 4, "Sensors": 5, "arXiv": 6 };
+  "WWW": 4, "ASSETS": 4, "EJR Open": 4, "Sensors": 5, "arXiv": 6, "Under review": 6 };
 
 export const TOPICS = [["acc", "Accessibility"], ["spa", "Spatial reasoning"], ["llm", "Language and vision models"], ["hai", "Human-agent collaboration"], ["hea", "Health and sensing"]];
 
 export const SCHOLAR = "https://scholar.google.com/citations?user=hLHzhqkAAAAJ";
+
+/* homepage research highlights, in order */
+export const HIGHLIGHTS = ["ascii", "right-this-way", "touchingspace", "skills-on-board"];
 
 export const PROJECTS = [
   { slug: "ascii", theme: "spa", pub: "Learning to Draw", name: "Learning to Draw ASCII", img: "colm", venue: "COLM 2026", short: "Drawing layouts from text improves spatial reasoning in language models.",
@@ -47,6 +50,9 @@ export const PROJECTS = [
   { slug: "pattern-insights", theme: "hai", pub: "Pattern Discovery", name: "Pattern Insights Explorer", img: "www", venue: "WWW 2026 Demo, Amazon",
     line: "A modular framework that pairs wide-lens views of where candidate patterns cluster with sharp-focus checks of whether they are meaningful, for unlabeled data without ground truth.",
     links: [["Paper", "https://doi.org/10.1145/3774905.3793105"]] },
+  { slug: "skills-on-board", theme: "hai", pub: "Skills on Board", name: "Skills on Board", img: "sob", figs: [["sob-board", "The interface: source files, the Skill Tree, the structured SKILL.md the agent receives, and the Edit Board, where one typed edit updates everywhere the step is used."]], venue: "Under review, 2026", short: "Agent skills kept as typed data that people audit and edit and agents run.",
+    line: "A system that turns a free-text SKILL.md into a typed meta file, rendered as a board for people and compiled into a structured skill for agents. Built during my internship at Amazon.",
+    links: [["Video", "https://youtu.be/G_XJpzWnH_c"]] },
   { slug: "swinmm", theme: "hea", pub: "SwinMM", name: "SwinMM", img: "swinmm", venue: "MICCAI 2023",
     short: "Self-supervised multi-view pre-training for 3D medical image segmentation.",
     line: "Masked multi-view pre-training with Swin Transformers for accurate and data-efficient 3D medical image segmentation.",
@@ -137,6 +143,10 @@ export const OVERVIEW_EARLY = {
 };
 
 export const OVERVIEW = {
+  "skills-on-board": [
+    "Skills package the instructions an agent follows on a task, and most live as free-text Markdown in a SKILL.md file. That makes them hard to maintain: revising one step means searching a long document without knowing what depends on it, and reusing a skill means finding every value tied to the original task.",
+    "Skills on Board treats skill maintenance as a data representation problem. A declared schema converts a skill into a typed meta file in which every step, learned rule, and source excerpt is a record with a stable identity. The meta file compiles into a structured SKILL.md for the agent and renders as a board for the user, who can trace a step to its evidence, edit it once to update it everywhere, and compare a new version with its parent record by record.",
+    "I built it during my Applied Scientist internship at Amazon in Seattle, with Jiaming Qu, Zhiyu Chen, Pei Zhang, and Omar Alonso."],
   "fgsm": [
     "Adversarial training with samples from the Fast Gradient Sign Method (FGSM-AT) is a computationally simple way to train robust networks, but it suffers from catastrophic overfitting: robust accuracy can drop to zero within a single training step. Existing fixes rely on gradient regularizers or random initialization, which either cost much more computation or lower robust accuracy.",
     "We study a collection of tricks from three perspectives, data initialization, network structure, and optimization. Simple tricks turn out to be enough: masking partial pixels (even without randomness), using a large convolution stride and smooth activation functions, or regularizing the weights of the first convolutional layer. With PreActResNet-18 on CIFAR-10, the method reaches 49.8% accuracy against PGD-50 and 46.4% against AutoAttack, showing that pure FGSM-AT can train robust learners."],
@@ -187,7 +197,7 @@ export const NEWS = [
     links: [["Event page", "https://vistacenter.org/pitchability-vista-international-pitch-competition-2026/"], ["arXiv", "https://arxiv.org/abs/2609.36404"], ["Video", "https://youtu.be/t3qaVIrDDa4"]] },
   { slug: "amazon-2026", d: "Sep 2026",
     title: "Wrapping up my Applied Scientist internship at Amazon",
-    h: "Finished my Applied Scientist internship at <b>Amazon</b> in Seattle, building <b>Skills on Board</b> for structured skill engineering for agents.",
+    h: "Finished my Applied Scientist internship at <b>Amazon</b> in Seattle, building <b>Skills on Board</b> for structured skill engineering for agents.", rel: ["skills-on-board"],
     body: [
       "From June to September 2026 I worked as an Applied Scientist Intern at Amazon in Seattle on structured skill engineering for agents.",
       "I encoded free-text SKILL.md prompts as typed, versioned graphs of each skill's solution approach and key steps. The same graph serves as documentation for people and as executable instructions for agents, and it cut agent output tokens by about 50% at equal or better task performance.",
@@ -278,7 +288,7 @@ export const GROUPS = [
 ];
 
 export const PRIMARY = [["Learning to Draw", "spa"], ["Right This Way", "spa"], ["From Anonymous", "acc"], ["“I didn", "acc"], ["Touching Space", "acc"],
-  ["Pattern Discovery", "hai"], ["A Survey on Human-AI", "hai"], ["CPSC", "tml"], ["Bag of Tricks", "tml"], ["Boost AI", "tml"]];
+  ["Pattern Discovery", "hai"], ["Skills on Board", "hai"], ["A Survey on Human-AI", "hai"], ["CPSC", "tml"], ["Bag of Tricks", "tml"], ["Boost AI", "tml"]];
 
 export const EDU_THEME = [
   { logo: "zju", deg: `B.S., Chu Kochen Honors College, Zhejiang University`, org: "2015 to 2019", theme: "Spatial interaction" },
@@ -286,7 +296,7 @@ export const EDU_THEME = [
   { logo: "ucsc", deg: `Ph.D., Computer Science and Engineering, UC Santa Cruz`, org: "Advised by Leilani H. Gilpin, Sep 2022 to May 2027", theme: "Spatial reasoning and human-agent collaboration" },
 ];
 
-export const VIDEOS = { touchingspace: { id: "t3qaVIrDDa4", thumb: "yt_ts" }, "lotus-pavilion": { id: "9G6kR8N1WFM", thumb: "yt_lotus" }, "amazon-2026": { id: "G_XJpzWnH_c", thumb: "yt_sob" } };
+export const VIDEOS = { touchingspace: { id: "t3qaVIrDDa4", thumb: "yt_ts" }, "skills-on-board": { id: "G_XJpzWnH_c", thumb: "yt_sob" }, "lotus-pavilion": { id: "9G6kR8N1WFM", thumb: "yt_lotus" }, "amazon-2026": { id: "G_XJpzWnH_c", thumb: "yt_sob" } };
 
 export const PUBS = [
   { img: "colm", y: 2026, v: "COLM", vy: "2026", top: 1, sel: 1, first: 1, tags: ["spa","llm"],
@@ -301,6 +311,10 @@ export const PUBS = [
     t: "Pattern Discovery with Wide-Lens Analysis and Sharp-Focus Validation",
     a: "Li Liu, Omar Alonso, Giorgio Ballardin",
     l: [["Paper","https://doi.org/10.1145/3774905.3793105"]] },
+  { img: "sob", y: 2026, v: "Under review", vy: "2026", first: 1, tags: ["hai"],
+    t: "Skills on Board: Maintaining Agent Skills as Typed Data",
+    a: "Li Liu, Jiaming Qu, Zhiyu Chen, Pei Zhang, Omar Alonso",
+    l: [["Video","https://youtu.be/G_XJpzWnH_c"]] },
   { img: "ts_overview", y: 2026, v: "arXiv", vy: "2026", sel: 1, first: 1, tags: ["acc","hai","spa"],
     t: "“I didn’t know how to read a map, but now I can”: TouchingSpace, an Audio-Haptic Map for Blind and Low-Vision Readers",
     a: "Li Liu, Yihe Wang, Jiaming Qu, Ashmita Dua, David T. Lee, Leilani H. Gilpin",
@@ -437,6 +451,8 @@ export const TEASERS = {
   "a": "assets/img/papers/swinmm.jpg",
   "full": "assets/img/full/swinmm.png"
  },
+ "sob": { "a": "assets/img/papers/sob.jpg", "full": "assets/img/full/sob.png" },
+ "sob-board": { "a": "assets/img/papers/sob-board.jpg", "full": "assets/img/full/sob-board.png" },
  "ts_overview": {
   "a": "assets/img/papers/ts-overview.jpg",
   "full": "assets/img/full/ts-overview.png"
