@@ -47,7 +47,7 @@ const FOUND = svg(`
 export const STORY = {
   touchingspace: {
     pull: "I didn't know how to read a map, but now I can.",
-    pullNote: "The title of our paper.",
+    pullNote: "P13, whose words became the title of our paper.",
     panels: [
       { art: HOME, title: "At home, before the trip",
         text: "Fourteen blind and low-vision participants each explored a place they chose, on an everyday laptop trackpad, with the reading done before they set out.",
