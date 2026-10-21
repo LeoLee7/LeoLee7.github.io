@@ -1,5 +1,5 @@
-import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261020s";
-import { ABSTRACTS } from "./abstracts.js?v=20261020s";
+import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261020u";
+import { ABSTRACTS } from "./abstracts.js?v=20261020u";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -89,7 +89,7 @@ function renderPubs() {
   if (!list.length) body = `<p class="foot">No papers match these filters.</p>`;
   else if (state.view === "topic") {
     for (const [k, n, d] of GROUPS) {
-      const g = list.filter(p => primary(p) === k);
+      const g = list.filter(p => primary(p) === k).sort((x, y) => (TIER[x.v] || 9) - (TIER[y.v] || 9) || (y.first || 0) - (x.first || 0) || y.y - x.y);
       if (!g.length) continue;
       body += `<div class="group"><div class="gh"><h3>${n}</h3><span>${g.length}</span></div><p class="gd">${d}</p>${g.map(p => pubHTML(p, "p")).join("")}</div>`;
     }
