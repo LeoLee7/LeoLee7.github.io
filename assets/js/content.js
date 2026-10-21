@@ -20,7 +20,7 @@ export const VENUE = {
 };
 
 /* venue weight used to order papers within a topic (lower comes first) */
-export const TIER = { "NeurIPS": 1, "COLM": 1.5, "MICCAI": 2, "ACM TIST": 2, "IEEE TIM": 3, "IEEE Sensors": 3, "ICASSP": 3,
+export const TIER = { "NeurIPS": 1, "COLM": 1, "MICCAI": 2, "ACM TIST": 2, "IEEE TIM": 3, "IEEE Sensors": 3, "ICASSP": 3,
   "WWW": 4, "ASSETS": 4, "EJR Open": 4, "Sensors": 5, "arXiv": 6 };
 
 export const TOPICS = [["acc", "Accessibility"], ["spa", "Spatial reasoning"], ["llm", "Language and vision models"], ["hai", "Human-agent collaboration"], ["hea", "Health and sensing"]];
@@ -28,12 +28,12 @@ export const TOPICS = [["acc", "Accessibility"], ["spa", "Spatial reasoning"], [
 export const SCHOLAR = "https://scholar.google.com/citations?user=hLHzhqkAAAAJ";
 
 export const PROJECTS = [
-  { slug: "right-this-way", theme: "spa", pub: "Right This Way", name: "Right This Way", img: "rtw", venue: "NeurIPS 2024", short: "Vision-language models that say how to adjust an image to answer.",
-    line: "A benchmark and a synthetic data framework that teach vision-language models to say how to adjust an image when it cannot answer the question, a common need for visually impaired users.",
-    links: [["Paper", "https://proceedings.neurips.cc/paper_files/paper/2024/file/efe4e50d492fedc0dfd2959f3320a974-Paper-Conference.pdf"], ["Code", "https://github.com/LeoLee7/Directional_guidance"]] },
   { slug: "ascii", theme: "spa", pub: "Learning to Draw", name: "Learning to Draw ASCII", img: "colm", venue: "COLM 2026", short: "Drawing layouts from text improves spatial reasoning in language models.",
     line: "Language models read ASCII layouts well but struggle to write them. Training them to construct layouts from text improves spatial reasoning, and the gains transfer to three external benchmarks.",
     links: [["Project page", "https://aiea-lab.github.io/Text2Space/"], ["arXiv", "https://arxiv.org/abs/2604.14641"], ["Dataset", "https://huggingface.co/datasets/ShiyuanHuang/Text2Space"]] },
+  { slug: "right-this-way", theme: "spa", pub: "Right This Way", name: "Right This Way", img: "rtw", venue: "NeurIPS 2024", short: "Vision-language models that say how to adjust an image to answer.",
+    line: "A benchmark and a synthetic data framework that teach vision-language models to say how to adjust an image when it cannot answer the question, a common need for visually impaired users.",
+    links: [["Paper", "https://proceedings.neurips.cc/paper_files/paper/2024/file/efe4e50d492fedc0dfd2959f3320a974-Paper-Conference.pdf"], ["Code", "https://github.com/LeoLee7/Directional_guidance"]] },
   { slug: "touchingspace", theme: "acc", pub: "\u201cI didn", name: "TouchingSpace", img: "ts_overview", figs: [["2609.36404", "System pipeline: map retrieval, map transformation, and exploration on the trackpad."]], venue: "Under review, 2026", short: "An audio-haptic map that blind and low-vision people explore by hand.",
     line: "An audio-haptic map that blind and low-vision people explore by hand on a laptop trackpad, asking a conversational agent open questions along the way. Studied with fourteen BLV participants.",
     links: [["arXiv", "https://arxiv.org/abs/2609.36404"], ["Video", "https://youtu.be/t3qaVIrDDa4"]] },
@@ -302,7 +302,7 @@ export const PUBS = [
     a: "Li Liu, Yihe Wang, Jiaming Qu, Ashmita Dua, David T. Lee, Leilani H. Gilpin",
     l: [["arXiv","https://arxiv.org/abs/2609.36404"],["Video","https://youtu.be/t3qaVIrDDa4"]],
     phase1: { t: "Touching Space: Accessible Map Exploration Through Conversational Audio-Haptic Interaction", a: "Li Liu, Jiaming Qu, Marc Jowell Bagaoisan, David T. Lee, Leilani H. Gilpin", y: 2026, u: "https://arxiv.org/abs/2604.14637" } },
-  { img: "rtw", y: 2024, v: "NeurIPS", vy: "2024", top: 1, sel: 1, first: 1, tags: ["acc","llm","spa"],
+  { img: "rtw", y: 2024, v: "NeurIPS", vy: "2024", top: 1, sel: 1, pin: 2, first: 1, tags: ["acc","llm","spa"],
     t: "Right This Way: Can VLMs Guide Us to See More to Answer Questions?",
     a: "Li Liu*, Diji Yang*, Sijia Zhong, Kalyana Suma Sree Tholeti, Lei Ding, Yi Zhang, Leilani H. Gilpin",
     arx: "2411.00394", l: [["Paper","https://proceedings.neurips.cc/paper_files/paper/2024/file/efe4e50d492fedc0dfd2959f3320a974-Paper-Conference.pdf"],["Code","https://github.com/LeoLee7/Directional_guidance"]] },

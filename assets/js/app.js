@@ -1,5 +1,5 @@
-import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261020z";
-import { ABSTRACTS } from "./abstracts.js?v=20261020z";
+import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261021a";
+import { ABSTRACTS } from "./abstracts.js?v=20261021a";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -185,6 +185,8 @@ const logo = k => `<span class="logo ${k}"><img src="${LOGOS[k]}" alt=""></span>
 let homeTopic = "all";
 function homePubs() {
   const list = homeTopic === "all" ? PUBS.filter(p => p.sel) : PUBS.filter(p => p.tags.includes(homeTopic));
+  /* a paper with `pin: n` is shown at position n among the selected papers */
+  if (homeTopic === "all") list.filter(p => p.pin).forEach(p => { list.splice(list.indexOf(p), 1); list.splice(p.pin - 1, 0, p); });
   const total = homeTopic === "all" ? PUBS.length : list.length;
   const n = k => k === "all" ? PUBS.filter(p => p.sel).length : PUBS.filter(p => p.tags.includes(k)).length;
   return `<div class="hfilter">${btn("data-home", "all", `Selected <span class="n">${n("all")}</span>`, homeTopic === "all")}${GROUPS.map(([k, nm]) => btn("data-home", k, `${nm} <span class="n">${n(k)}</span>`, homeTopic === k)).join("")}</div>
