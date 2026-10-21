@@ -50,7 +50,7 @@ export const PROJECTS = [
   { slug: "pattern-insights", theme: "hai", pub: "Pattern Discovery", name: "Pattern Insights Explorer", img: "www", venue: "WWW 2026 Demo, Amazon",
     line: "A modular framework that pairs wide-lens views of where candidate patterns cluster with sharp-focus checks of whether they are meaningful, for unlabeled data without ground truth.",
     links: [["Paper", "https://doi.org/10.1145/3774905.3793105"]] },
-  { slug: "skills-on-board", theme: "hai", pub: "Skills on Board", name: "Skills on Board", img: "sob", figs: [["sob-board", "The interface: source files, the Skill Tree, the structured SKILL.md the agent receives, and the Edit Board, where one typed edit updates everywhere the step is used."]], venue: "Under review, 2026", short: "Agent skills kept as typed data that people audit and edit and agents run.",
+  { slug: "skills-on-board", theme: "hai", pub: "Skills on Board", name: "Skills on Board", img: "sob", venue: "Under review, 2026", short: "Agent skills kept as typed data that people audit and edit and agents run.",
     line: "A system that turns a free-text SKILL.md into a typed meta file, rendered as a board for people and compiled into a structured skill for agents. Built during my internship at Amazon.",
     links: [["Video", "https://youtu.be/G_XJpzWnH_c"]] },
   { slug: "swinmm", theme: "hea", pub: "SwinMM", name: "SwinMM", img: "swinmm", venue: "MICCAI 2023",
@@ -452,7 +452,6 @@ export const TEASERS = {
   "full": "assets/img/full/swinmm.png"
  },
  "sob": { "a": "assets/img/papers/sob.jpg", "full": "assets/img/full/sob.png" },
- "sob-board": { "a": "assets/img/papers/sob-board.jpg", "full": "assets/img/full/sob-board.png" },
  "ts_overview": {
   "a": "assets/img/papers/ts-overview.jpg",
   "full": "assets/img/full/ts-overview.png"
