@@ -1,5 +1,6 @@
 /*
- * Illustrated stories on project pages: abstract geometric prints plus verbatim participant quotes.
+ * Illustrated stories on project pages: abstract geometric prints plus verbatim participant quotes,
+ * in three layers: what the whole experience meant, how each sense works, and what changed afterwards.
  * Quotes come from the public arXiv paper (arXiv:2609.36404) and the study testimonials shared for PitchAbility 2026.
  * Speakers stay anonymous. Shapes use classes .k (ink), .a (accent), .g (soft gray), .ln (ink line), .al (accent line);
  * each print gets its own filter for a hand-cut edge and a grainy, printed fill.
@@ -59,23 +60,59 @@ const ROUTE = print(6, `
   <circle class="al" stroke-width="5" cx="196" cy="50" r="12"/>
   <rect class="a" x="84" y="64" width="16" height="16"/><rect class="a" x="140" y="88" width="16" height="16"/>`);
 
+
+/* the map coming into view under one fingertip */
+const MAP = print(7, `
+  ${[0, 1, 2, 3, 4, 5].flatMap(c => [0, 1, 2].map(r => `<rect class="g" x="${22 + c * 34}" y="${20 + r * 38}" width="${c % 2 ? 22 : 28}" height="${r % 2 ? 20 : 26}"/>`)).join("")}
+  <rect class="a" x="90" y="58" width="28" height="20"/><rect class="a" x="124" y="96" width="22" height="26"/>
+  <rect class="k" x="56" y="96" width="22" height="26" opacity=".85"/>
+  <circle class="al" stroke-width="3" cx="118" cy="80" r="30" opacity=".6"/>
+  <circle class="al" stroke-width="2" cx="118" cy="80" r="46" opacity=".3"/>
+  <circle class="k" cx="118" cy="80" r="8"/>`);
+
+/* a place with a felt edge */
+const EDGE = print(8, `
+  <rect class="a" x="62" y="34" width="116" height="82"/>
+  <rect class="ln" stroke-width="3" x="54" y="26" width="132" height="98"/>
+  <rect class="ln" stroke-width="1.5" x="46" y="18" width="148" height="114" opacity=".45"/>
+  <circle class="k" cx="120" cy="75" r="8"/>`);
+
+/* a place that speaks its name */
+const NAME = print(9, `
+  <circle class="a" cx="96" cy="75" r="34"/>
+  <path class="ln" stroke-width="4" d="M146 58 v34 M160 48 v54 M174 62 v26 M188 54 v42"/>
+  <circle class="k" cx="96" cy="75" r="7"/>`);
+
 export const STORY = {
   touchingspace: {
     pull: "I didn't know how to read a map, but now I can.",
     pullNote: "A participant, whose words became the title of our paper.",
+    pullArt: MAP,
+    /* the whole experience, in participants' words; the first is set large */
+    said: [
+      { q: "I think of anything I've seen, this has the best possibility of doing that.", note: "On conveying how to approach a hard-to-find entrance." },
+      { q: "I started getting a picture in my mind of where everything was." },
+      { q: "I like that it's dynamic — not a static map where you constantly have to print something out... I could see this being something big." },
+      { q: "This is the first time I've used something like this. So if it's not hard for me to get it, it's going to be pretty good for somebody else." },
+      { q: "Se lo recomendaría como un excelente aparato para la vida diaria de uno que no mira.", tr: "I would recommend it as an excellent device for the daily life of someone who does not see." },
+      { q: "I could use this all the time when I'm planning my trip, especially when I know that I'm going to go someplace I've never been before." },
+      { q: "When I first came, one of the volunteers walked me to the bus stop for the first time. This map would have been very helpful for me." },
+    ],
+    /* one surface, four channels */
+    senses: [
+      { art: HUM, label: "Hum", line: "grows as the finger nears a place", quote: "It gets stronger and stronger as soon as you get near. It's like the radar on a car." },
+      { art: EDGE, label: "Vibration", line: "marks the inside of a place", quote: "It's like a wall. So the vibration is inside only." },
+      { art: NAME, label: "Name", line: "spoken when the finger arrives", quote: "It starts humming, and once you get there it says [the center]." },
+      { art: DEEPER, label: "Conversation", line: "open questions about any place", quote: "Having the map and it spelling out each of the buildings, but then you're able to go deeper." },
+    ],
+    /* what changed afterwards */
     panels: [
-      { art: SPOTS, title: "One spot in the mind",
-        text: "Before exploring, a familiar place was often a single point. One participant knew a plaza only as the spot their family drives them to. By the end they could name four businesses in it.",
+      { art: SPOTS, title: "One spot became many",
+        text: "A familiar place was often a single point. One participant knew a plaza only as the spot their family drives them to. By the end they could name four businesses in it.",
         quote: "In my mind there was only one spot... So now there are a lot of spots." },
-      { art: HUM, title: "Follow the hum",
-        text: "Each place sits at a fixed position on the trackpad. A hum grows as the finger nears it, and a vibration marks its edge.",
-        quote: "I just start low, and start going up and sideways . . . until I start hearing a hum. And then I follow the hum." },
       { art: STREETS, title: "A picture of the streets",
         text: "Tracing by hand, participants gave the area a shape of their own: an L of streets, a butterfly, a row of shops.",
         quote: "I thought it would be hard for me to build a mental map, but I was able to kind of draw that L-shape or square shape of the streets." },
-      { art: DEEPER, title: "Asking to go deeper",
-        text: "The pad names each place, and a conversational agent answers open questions about it: store hours, menus, which side of the street.",
-        quote: "I really love that chatbot. It's super cool... having the map and it spelling out each of the buildings, but then you're able to go deeper." },
       { art: UNASKED, title: "Places nobody asked for",
         text: "Seven participants found a place they had not asked about, and four changed a trip they already make. One learned that a pharmacy they reached by going home first was close to the center they visit.",
         quote: "And no one tells you. It could be that way forever." },
@@ -86,13 +123,5 @@ export const STORY = {
     close: { q: "Me sentí súper contento y libre de poder yo hacer las cosas yo solo.",
       tr: "I felt super happy and free to be able to do things by myself.",
       note: "A participant, speaking through a Spanish interpreter." },
-    voices: [
-      "I started getting a picture in my mind of where everything was.",
-      "I think of anything I've seen, this has the best possibility of doing that [conveying how to approach a hard-to-find entrance].",
-      "I could use this all the time when I'm planning my trip, especially when I know that I'm going to go someplace I've never been before.",
-      "When I first came, one of the volunteers walked me to the bus stop for the first time. This map would have been very helpful for me.",
-      "I like that it's dynamic — not a static map where you constantly have to print something out... I could see this being something big.",
-      "Se lo recomendaría como un excelente aparato para la vida diaria de uno que no mira. (I would recommend it as an excellent device for the daily life of someone who does not see.)",
-    ],
   },
 };

@@ -1,6 +1,6 @@
-import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261021n";
-import { ABSTRACTS } from "./abstracts.js?v=20261021n";
-import { STORY } from "./story.js?v=20261021n";
+import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261021o";
+import { ABSTRACTS } from "./abstracts.js?v=20261021o";
+import { STORY } from "./story.js?v=20261021o";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -144,15 +144,21 @@ function videoBlock(slug, bare) {
     : `<a class="vframe vthumb" href="${url}" target="_blank" rel="noopener"><img src="${TEASERS[v.thumb].a}" alt="Demo video"><span class="vplay" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span></a>`;
   return bare ? embed : `<h2>Video</h2>${embed}`;
 }
-/* illustrated story: a pull quote, then panels of drawing, short text, and a participant quote */
+/* illustrated story, in three layers: what it meant overall, how each sense works, and what changed */
 function storyBlock(s) {
-  const q = (t, tr) => `<blockquote><p>&ldquo;${t}&rdquo;</p>${tr ? `<cite>${tr}</cite>` : ""}</blockquote>`;
-  return `<h2>The story</h2>
-    <blockquote class="pull"><p>&ldquo;${s.pull}&rdquo;</p><cite>${s.pullNote}</cite></blockquote>
-    <ol class="story">${s.panels.map((x, i) => `<li><div class="sart">${x.art}</div><div class="stext"><h3><span>${i + 1}</span>${x.title}</h3><p>${x.text}</p>
-      ${q(x.quote, x.tr)}</div></li>`).join("")}</ol>
-    ${s.close ? `<blockquote class="pull close"><p>&ldquo;${s.close.q}&rdquo;</p><p class="tr">&ldquo;${s.close.tr}&rdquo;</p><cite>${s.close.note}</cite></blockquote>` : ""}
-    ${s.voices ? `<h3 class="voices-h">In their words</h3><ul class="voices">${s.voices.map(v => `<li>&ldquo;${v}&rdquo;</li>`).join("")}</ul>` : ""}`;
+  const tr = x => x.tr ? `<span class="tr">${x.tr}</span>` : "";
+  return `<section class="st">
+    <h2>The story</h2>
+    <div class="st-hero"><blockquote><p>&ldquo;${s.pull}&rdquo;</p><cite>${s.pullNote}</cite></blockquote><div class="sart">${s.pullArt}</div></div>
+    <h3 class="st-h">What it opened up</h3>
+    <ul class="st-said">${s.said.map((x, i) => `<li class="${i ? "" : "lead"}"><q>${x.q}</q>${tr(x)}${x.note ? `<cite>${x.note}</cite>` : ""}</li>`).join("")}</ul>
+    <h3 class="st-h">Four senses on one surface</h3>
+    <ul class="st-senses">${s.senses.map(x => `<li><div class="sart">${x.art}</div><b>${x.label}</b><span>${x.line}</span><q>${x.quote}</q></li>`).join("")}</ul>
+    <h3 class="st-h">What changed</h3>
+    <ol class="story">${s.panels.map((x, i) => `<li><div class="sart">${x.art}</div><div class="stext"><h4><span>${i + 1}</span>${x.title}</h4><p>${x.text}</p>
+      <blockquote><p>&ldquo;${x.quote}&rdquo;</p></blockquote></div></li>`).join("")}</ol>
+    <blockquote class="st-close"><p>&ldquo;${s.close.q}&rdquo;</p><span class="tr">&ldquo;${s.close.tr}&rdquo;</span><cite>${s.close.note}</cite></blockquote>
+  </section>`;
 }
 function renderProject(p) {
   const pubs = p.pubs ? p.pubs.map(k => PUBS.find(x => x.t.startsWith(k))).filter(Boolean) : [PUBS.find(x => x.t.startsWith(p.pub))].filter(Boolean);
@@ -167,9 +173,9 @@ function renderProject(p) {
     ${VIDEOS[p.slug] ? `<div class="pp-video">${videoBlock(p.slug, 1)}</div>` : T ? lbBtn({ img: p.img, title: p.name, sub: p.venue, links: lbLinks(p.slug, p.links || [], 1) }, "pp-hero", `<img src="${T.full || T.a}" alt="${p.name} figure">`) : `<div class="pp-hero word"><span>${p.name}</span></div>`}
     <div class="d-body">
       <div class="d-main"><h2>Overview</h2>${(OVERVIEW[p.slug] || OVERVIEW_EARLY[p.slug] || [p.line]).map(x => `<p>${x}</p>`).join("")}
-        ${STORY[p.slug] ? storyBlock(STORY[p.slug]) : ""}
         ${(VIDEOS[p.slug] && T && !p.videoHero ? [[p.img, p.line], ...(p.figs || [])] : p.figs || []).map(([k, cap]) => `<figure class="pfig">${lbBtn({ img: k, title: p.name, sub: cap, links: lbLinks(p.slug, p.links || [], 1) }, "pimg", `<img src="${TEASERS[k].full || TEASERS[k].a}" alt="${esc(cap)}">`)}<figcaption>${cap}</figcaption></figure>`).join("")}
-        ${pubs.length ? `<h2>${pubs.length > 1 ? "Papers" : "Paper"}</h2>${pubs.map(x => pubHTML(x, "pp")).join("")}` : ""}</div>
+        ${pubs.length ? `<h2>${pubs.length > 1 ? "Papers" : "Paper"}</h2>${pubs.map(x => pubHTML(x, "pp")).join("")}` : ""}
+        ${STORY[p.slug] ? storyBlock(STORY[p.slug]) : ""}</div>
       <aside class="d-side">${facts([[pubs.length ? "Venue" : "Context", p.venue], ...(topics ? [["Topics", topics]] : [])])}
         ${updates.length ? `<h3>Updates</h3><ul class="upd">${updates.map(n => `<li><time>${n.d}</time>${n.to === p.slug || n.inline ? `<span>${n.title}</span>` : `<a href="#news-${n.slug}">${n.title}</a>`}</li>`).join("")}</ul>` : ""}</aside>
     </div>
@@ -196,7 +202,7 @@ function renderPost(n) {
     <div class="d-eyebrow">${n.d}</div><h1>${n.title}</h1>
     ${vid ? `<div class="pp-video">${videoBlock(vid, 1)}</div>` : ""}
     <div class="d-body">
-      <div class="d-main">${n.body.map(p => `<p>${p}</p>`).join("")}${imgs ? `<div class="pgal ${n.imgs.length > 1 ? "two" : ""}">${imgs}</div>` : ""}${n.about ? aboutProject(n.about, !!vid) : ""}</div>
+      <div class="d-main">${n.body.map(p => `<p>${p}</p>`).join("")}${imgs ? `<div class="pgal ${n.imgs.length > 1 ? "two" : ""}">${imgs}</div>` : ""}${n.about ? aboutProject(n.about, !!vid) : ""}${n.about && STORY[n.about] ? storyBlock(STORY[n.about]) : ""}</div>
       <aside class="d-side">${n.extra ? EXTRA[n.extra]() : ""}${facts(n.facts)}${btns ? `<div class="d-links">${btns}</div>` : ""}</aside>
     </div>
   </article>`;
