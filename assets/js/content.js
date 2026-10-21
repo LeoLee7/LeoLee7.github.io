@@ -51,7 +51,7 @@ export const PROJECTS = [
     short: "Self-supervised multi-view pre-training for 3D medical image segmentation.",
     line: "Masked multi-view pre-training with Swin Transformers for accurate and data-efficient 3D medical image segmentation.",
     links: [["arXiv", "https://arxiv.org/abs/2307.12591"], ["Code", "https://github.com/UCSC-VLAA/SwinMM"]] },
-  { slug: "cpsc", theme: "hea", pub: "CPSC", name: "CPSC", img: "cpsc", venue: "IEEE TIM 2022",
+  { slug: "cpsc", theme: "tml", pub: "CPSC", name: "CPSC", img: "cpsc", venue: "IEEE TIM 2022",
     short: "Conformal prediction with shrunken centroids for reliable e-nose predictions.",
     line: "Conformal prediction with shrunken centroids, which quantifies how reliable each prediction is at lower cost than k-nearest-neighbor conformal prediction.",
     links: [["IEEE", "https://ieeexplore.ieee.org/abstract/document/9667498"]] },
@@ -59,10 +59,14 @@ export const PROJECTS = [
     short: "Adapting sEMG taste models to new users without labels.",
     line: "Domain regularized component analysis and conformal prediction that let taste recognition models trained on one person work on others without new labels.",
     links: [["IEEE", "https://ieeexplore.ieee.org/document/9777907"]] },
-  { slug: "boost-ai", theme: "hea", pub: "Boost AI", name: "Boost AI Power", img: "boost-ai", figs: [["boost-ai-processes", "The six processes compared over 30 random dataset partitions, with statistical significance tests."]], venue: "IEEE Sensors Journal 2021",
+  { slug: "boost-ai", theme: "tml", pub: "Boost AI", name: "Boost AI Power", img: "boost-ai", figs: [["boost-ai-processes", "The six processes compared over 30 random dataset partitions, with statistical significance tests."]], venue: "IEEE Sensors Journal 2021",
     short: "Data augmentation with unlabeled data and conformal prediction.",
     line: "A systematic comparison of data augmentation strategies for electronic noses with scarce labels, including a new ensemble inductive conformal prediction method.",
     links: [["IEEE", "https://ieeexplore.ieee.org/abstract/document/9505688"]] },
+  { slug: "fgsm", theme: "tml", pub: "Bag of Tricks", name: "Bag of Tricks for FGSM-AT", img: "fgsm", venue: "arXiv 2022",
+    short: "Simple tricks that stop catastrophic overfitting in fast adversarial training.",
+    line: "Simple tricks, such as masking partial pixels, that prevent catastrophic overfitting in single-step FGSM adversarial training.",
+    links: [["arXiv", "https://arxiv.org/abs/2209.02684"]] },
   { slug: "taste-eeg", theme: "hea", pub: "Basic Taste", name: "EEG-MSRNet", img: "taste-eeg", venue: "IEEE TIM 2023",
     short: "Recognizing basic tastes from brain signals.",
     line: "A multi-scale fully convolutional network with residual learning that recognizes basic taste sensations from EEG.",
@@ -133,6 +137,9 @@ export const OVERVIEW_EARLY = {
 };
 
 export const OVERVIEW = {
+  "fgsm": [
+    "Adversarial training with samples from the Fast Gradient Sign Method (FGSM-AT) is a computationally simple way to train robust networks, but it suffers from catastrophic overfitting: robust accuracy can drop to zero within a single training step. Existing fixes rely on gradient regularizers or random initialization, which either cost much more computation or lower robust accuracy.",
+    "We study a collection of tricks from three perspectives, data initialization, network structure, and optimization. Simple tricks turn out to be enough: masking partial pixels (even without randomness), using a large convolution stride and smooth activation functions, or regularizing the weights of the first convolutional layer. With PreActResNet-18 on CIFAR-10, the method reaches 49.8% accuracy against PGD-50 and 46.4% against AutoAttack, showing that pure FGSM-AT can train robust learners."],
   "lotus-pavilion": [
     "A light-responsive pavilion I designed during my undergraduate study at Zhejiang University. It takes its cue from the lotus on West Lake in Hangzhou: the canopy is a field of hexagonal modules, and each module adapts to sunlight and mimics the petals of a lotus.",
     "The design grew from form studies of lotus leaves and flowers. I built a working prototype of the responsive unit and developed the canopy form step by step from a single leaf-like surface."],
@@ -261,7 +268,8 @@ export const THEMES = [
   ["spa", "Spatial reasoning", "Teaching language and vision-language models to understand space."],
   ["acc", "Accessible spatial interaction", "Maps and tools that blind and low-vision people explore by touch, sound, and conversation."],
   ["hai", "Human-agent collaboration", "Systems and surveys on people and AI working together."],
-  ["hea", "Health and sensing", "Reliable models for clinical imaging, biosignals, and electronic noses."],
+  ["tml", "Trustworthy ML", "Reliability estimates and robust training for machine learning models."],
+  ["hea", "Health and sensing", "Models for clinical imaging, biosignals, and electronic noses."],
   ["make", "Design and making", "Things I designed and built by hand."],
 ];
 
@@ -338,7 +346,7 @@ export const PUBS = [
     t: "Unsupervised Cross-User Adaptation in Taste Sensation Recognition Based on Surface Electromyography with Conformal Prediction and Domain Regularized Component Analysis",
     a: "Hengyang Wang*, Xianghao Zhan*, Li Liu*, Asif Ullah, Huiyan Li, Han Gao, You Wang, Ruifen Hu, Guang Li",
     l: [["IEEE","https://ieeexplore.ieee.org/document/9777907"]] },
-  { y: 2022, v: "arXiv", vy: "2022", tags: ["tml"],
+  { img: "fgsm", y: 2022, v: "arXiv", vy: "2022", tags: ["tml"],
     t: "Bag of Tricks for FGSM Adversarial Training",
     a: "Zichao Li, Li Liu, Zeyu Wang, Yuyin Zhou, Cihang Xie",
     l: [["arXiv","https://arxiv.org/abs/2209.02684"]] },
@@ -358,6 +366,7 @@ export const PUBS = [
 
 export const AVATAR = "assets/img/avatar.jpg";
 export const TEASERS = {
+ "fgsm": { "a": "assets/img/papers/fgsm.jpg", "full": "assets/img/full/fgsm.png" },
  "trilight-overview": { "a": "assets/img/papers/trilight-overview.jpg", "full": "assets/img/full/trilight-overview.jpg" },
  "herbal-origins": { "a": "assets/img/papers/herbal-origins.jpg", "full": "assets/img/full/herbal-origins.jpg" },
  "boost-ai-processes": { "a": "assets/img/papers/boost-ai-processes.jpg", "full": "assets/img/full/boost-ai-processes.png" },
