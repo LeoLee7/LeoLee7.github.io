@@ -408,12 +408,14 @@ a.proj:hover .nm { color: var(--accent); }
 .st-feat dl { margin: 0; display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 12px 14px; }
 .st-feat dt { font-size: 13.5px; font-weight: 600; color: var(--muted); padding-top: 2px; }
 .st-feat dd { margin: 0; color: var(--ink); line-height: 1.5; }
+.st-feat dd p { margin: 0; }
+.st-feat dd p + p { margin-top: 10px; }
 .st-senses { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
 .st-senses li { display: flex; flex-direction: column; gap: 3px; font-size: 14px; line-height: 1.4; }
 .st-senses .sart { margin-bottom: 8px; }
 .st-senses b { font-size: 15px; color: var(--ink); }
 .st-senses span { color: var(--muted); }
-.st-senses q { margin-top: 6px; font-style: italic; color: var(--ink); }
+.st-senses q { display: block; margin-top: 6px; font-style: italic; color: var(--ink); }
 .story { list-style: none; margin: 0; padding: 0; display: grid; gap: 30px; }
 .story li { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 26px; align-items: center; }
 .story li:nth-child(even) { grid-template-columns: minmax(0, 1fr) 220px; }
@@ -423,6 +425,7 @@ a.proj:hover .nm { color: var(--accent); }
 .story p { margin: 0; }
 .story blockquote { margin: 10px 0 0; padding-left: 14px; border-left: 2px solid var(--accent); }
 .story blockquote p { font-style: italic; color: var(--ink); }
+.story blockquote p + p { margin-top: 8px; }
 .st-close { margin: 44px 0 0; padding: 30px 28px; background: var(--frame); border-radius: 14px; text-align: center; }
 .st-close p { margin: 0; font-size: 24px; line-height: 1.3; font-weight: 650; color: var(--ink); }
 .st-close .tr { font-size: 17px; }

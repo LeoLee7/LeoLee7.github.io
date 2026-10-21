@@ -1,6 +1,6 @@
-import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261021s";
-import { ABSTRACTS } from "./abstracts.js?v=20261021s";
-import { STORY } from "./story.js?v=20261021s";
+import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261021t";
+import { ABSTRACTS } from "./abstracts.js?v=20261021t";
+import { STORY } from "./story.js?v=20261021t";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -153,12 +153,12 @@ function storyBlock(s) {
     <h3 class="st-h">What it could mean</h3>
     <div class="st-said"><ul class="st-track">${[0, 1].map(dup => s.said.map(x => `<li${dup ? ' aria-hidden="true"' : ""}><q>${x.q}</q>${tr(x)}${x.note ? `<cite>${x.note}</cite>` : ""}</li>`).join("")).join("")}</ul></div>
     ${s.feature ? `<div class="st-feat"><div class="sart">${s.feature.art}</div><div><h3>${s.feature.title}</h3><p>${s.feature.text}</p>
-      <dl><dt>Before</dt><dd>&ldquo;${s.feature.before}&rdquo;</dd><dt>After</dt><dd>&ldquo;${s.feature.after}&rdquo;</dd></dl></div></div>` : ""}
+      <dl><dt>Before</dt><dd>&ldquo;${s.feature.before}&rdquo;</dd><dt>After</dt><dd>${s.feature.after.map(q => `<p>&ldquo;${q}&rdquo;</p>`).join("")}</dd></dl></div></div>` : ""}
     <h3 class="st-h">Four senses on one surface</h3>
-    <ul class="st-senses">${s.senses.map(x => `<li><div class="sart">${x.art}</div><b>${x.label}</b><span>${x.line}</span><q>${x.quote}</q></li>`).join("")}</ul>
+    <ul class="st-senses">${s.senses.map(x => `<li><div class="sart">${x.art}</div><b>${x.label}</b><span>${x.line}</span>${x.quotes.map(q => `<q>${q}</q>`).join("")}</li>`).join("")}</ul>
     <h3 class="st-h">What changed</h3>
     <ol class="story">${s.panels.map((x, i) => `<li><div class="sart">${x.art}</div><div class="stext"><h4><span>${i + 1}</span>${x.title}</h4><p>${x.text}</p>
-      <blockquote><p>&ldquo;${x.quote}&rdquo;</p></blockquote></div></li>`).join("")}</ol>
+      <blockquote>${x.quotes.map(q => `<p>&ldquo;${q}&rdquo;</p>`).join("")}</blockquote></div></li>`).join("")}</ol>
     <blockquote class="st-close"><p>&ldquo;${s.close.q}&rdquo;</p><span class="tr">&ldquo;${s.close.tr}&rdquo;</span><cite>${s.close.note}</cite></blockquote>
   </section>`;
 }

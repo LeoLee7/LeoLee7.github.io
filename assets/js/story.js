@@ -90,6 +90,14 @@ const PLAN = print(10, `
   <rect class="a" x="40" y="86" width="140" height="18"/><rect class="g" x="40" y="114" width="90" height="18"/>
   <circle class="k" cx="206" cy="95" r="9"/>`);
 
+/* the neighborhood around a point, filled in */
+const NEAR = print(11, `
+  <circle class="g" cx="120" cy="75" r="56"/>
+  <circle class="k" cx="120" cy="75" r="7"/>
+  <rect class="a" x="70" y="40" width="16" height="16"/><rect class="a" x="152" y="96" width="18" height="18"/>
+  <rect class="k" x="160" y="44" width="12" height="12" opacity=".85"/><rect class="a" x="84" y="100" width="12" height="12"/>
+  <circle class="al" stroke-width="2.5" cx="120" cy="75" r="68" opacity=".45"/>`);
+
 export const STORY = {
   touchingspace: {
     pull: "I didn't know how to read a map, but now I can.",
@@ -102,41 +110,54 @@ export const STORY = {
       { q: "Really nice work. It's going to help a lot of people." },
       { q: "I started getting a picture in my mind of where everything was." },
       { q: "It made me feel confident." },
+      { q: "It's a lot more helpful to read a map and find a bigger understanding of where you are." },
       { q: "I like that it's dynamic — not a static map where you constantly have to print something out... I could see this being something big." },
       { q: "Se lo recomendaría como un excelente aparato para la vida diaria de uno que no mira.", tr: "I would recommend it as an excellent device for the daily life of someone who does not see." },
       { q: "This is the first time I've used something like this. So if it's not hard for me to get it, it's going to be pretty good for somebody else." },
+      { q: "It's to the point, it's basic, and it gives you all the information that you need on the moment or on the go." },
+      { q: "I love that I can really explore what's around a location." },
+      { q: "That is really cool. I'm impressed with that. I would love that." },
       { q: "When I first came, one of the volunteers walked me to the bus stop for the first time. This map would have been very helpful for me." },
+      { q: "If you had a map of Trader Joe's, I think people would be able to have confidence and know their surroundings and walk in there independently." },
       { q: "Honestly, glad that young students are thinking about how to change life for people with disabilities." },
     ],
     /* one participant's before and after, set as a feature */
     feature: { art: ROUTE, title: "Now giving directions to someone sighted",
       text: "One participant answers the phone at the front desk of the center their map was built around. Callers ask how to get there.",
       before: "When we're working at reception and answering the phone, we don't know how to answer any of those questions. The only thing we know is our address... That's it. Period. Nothing else.",
-      after: "Someone calls and says \"I'm coming from Santa Cruz.\" ... You're going to pass the Crepe Place, you're going to pass the parking lot, and you're going to turn right... See, now I can give that instruction to someone sighted." },
-    /* one surface, four channels */
+      after: ["Pass yoga — which I never knew there was one — the Bagelry restaurant... I can tell someone sighted how to get somewhere now.",
+        "Someone calls and says \"I'm coming from Santa Cruz.\" ... You're going to pass the Crepe Place, you're going to pass the parking lot, and you're going to turn right... See, now I can give that instruction to someone sighted."] },
+    /* one surface, four channels; each with one or two quotes */
     senses: [
-      { art: HUM, label: "Hum", line: "grows as the finger nears a place", quote: "It gets stronger and stronger as soon as you get near. It's like the radar on a car." },
-      { art: EDGE, label: "Vibration", line: "marks the inside of a place", quote: "It's like a wall. So the vibration is inside only." },
-      { art: NAME, label: "Name", line: "spoken when the finger arrives", quote: "It starts humming, and once you get there it says [the center]." },
-      { art: DEEPER, label: "Conversation", line: "open questions about any place", quote: "Having the map and it spelling out each of the buildings, but then you're able to go deeper." },
+      { art: HUM, label: "Hum", line: "grows as the finger nears a place",
+        quotes: ["It gets stronger and stronger as soon as you get near. It's like the radar on a car.", "I just start low, and start going up and sideways . . . until I start hearing a hum. And then I follow the hum."] },
+      { art: EDGE, label: "Vibration", line: "marks the inside of a place",
+        quotes: ["It's like a wall. So the vibration is inside only.", "It gives you strong feedback that you are there."] },
+      { art: NAME, label: "Name", line: "spoken when the finger arrives",
+        quotes: ["It starts humming, and once you get there it says [the center].", "And the part about 'you're in the southwest corner of the building' — when I'm inside a building, I don't think about which direction that is. That was neat."] },
+      { art: DEEPER, label: "Conversation", line: "open questions about any place",
+        quotes: ["I really love that chatbot. It's super cool.", "Having the map and it spelling out each of the buildings, but then you're able to go deeper."] },
     ],
-    /* what changed afterwards */
+    /* what changed afterwards; each with one or more quotes */
     panels: [
       { art: SPOTS, title: "One spot became many",
         text: "A familiar place was often a single point. One participant knew a plaza only as the spot their family drives them to. By the end they could name four businesses in it.",
-        quote: "In my mind there was only one spot... So now there are a lot of spots." },
+        quotes: ["In my mind there was only one spot... So now there are a lot of spots."] },
       { art: STREETS, title: "A picture of the streets",
         text: "Tracing by hand, participants gave the area a shape of their own: an L of streets, a butterfly, a row of shops.",
-        quote: "I thought it would be hard for me to build a mental map, but I was able to kind of draw that L-shape or square shape of the streets." },
+        quotes: ["I thought it would be hard for me to build a mental map, but I was able to kind of draw that L-shape or square shape of the streets."] },
+      { art: NEAR, title: "Knowing the neighborhood",
+        text: "Around a place they already visit, participants learned what else was there. One had known five or ten of the fifty-five places around their own workplace.",
+        quotes: ["I think it gives me a better knowledge of maps in general, and directions, and being aware of my surroundings and getting to know more of the neighborhood or the area.", "So now I'm learning — where to eat, where to take a break, maybe have fun, where to drop off mail."] },
       { art: UNASKED, title: "Places nobody asked for",
         text: "Seven participants found a place they had not asked about, and four changed a trip they already make. One learned that a pharmacy they reached by going home first was close to the center they visit.",
-        quote: "And no one tells you. It could be that way forever." },
+        quotes: ["I didn't know it was this close to [the center]... See, this map — I learned something today.", "Now that I know [the pharmacy] is right there and it's on my way home, I just stop there instead of going all the way home and coming all the way back.", "And no one tells you. It could be that way forever."] },
       { art: PLAN, title: "Planning before the trip",
         text: "Participants placed the reading before travel: lunch near where they are going, a bus stop to find, a place to go if a plan fails.",
-        quote: "I could use this all the time when I'm planning my trip, especially when I know that I'm going to go someplace I've never been before." },
+        quotes: ["This exploration is done before you leave your house.", "I could use this all the time when I'm planning my trip, especially when I know that I'm going to go someplace I've never been before."] },
     ],
-    close: { q: "Me sentí súper contento y libre de poder yo hacer las cosas yo solo.",
-      tr: "I felt super happy and free to be able to do things by myself.",
+    close: { q: "Me va alzando las ubicaciones y las cosas que están alrededor mías como si lo estuviera mirando. Me sentí súper contento y libre de poder yo hacer las cosas yo solo.",
+      tr: "It keeps raising up for me the locations and the things that are around me, as if I were looking at it. I felt super happy and free to be able to do things by myself.",
       note: "A participant, speaking through a Spanish interpreter." },
   },
 };
