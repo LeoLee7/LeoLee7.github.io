@@ -1,6 +1,6 @@
-import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261021v";
-import { ABSTRACTS } from "./abstracts.js?v=20261021v";
-import { STORY } from "./story.js?v=20261021v";
+import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261021w";
+import { ABSTRACTS } from "./abstracts.js?v=20261021w";
+import { STORY } from "./story.js?v=20261021w";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -147,16 +147,16 @@ function videoBlock(slug, bare) {
 /* illustrated story: hero quote, a spotlight of participant feedback, what makes it work, what changed */
 const mark = q => q.replace(/\[\[(.+?)\]\]/g, "<mark>$1</mark>");
 function storyBlock(s) {
-  const n = s.said.length, pad = k => String(k).padStart(2, "0");
+  const n = s.said.length;
   return `<section class="st">
     <h2>The story</h2>
     <div class="st-hero"><blockquote><p>&ldquo;${s.pull}&rdquo;</p><cite>${s.pullNote}</cite></blockquote><div class="sart">${s.pullArt}</div></div>
     <h3 class="st-h">What it could mean</h3>
     <p class="st-sub">${s.saidNote}</p>
-    <div class="st-spot" data-i="0" data-n="${n}">
-      <div class="st-stage">${s.said.map((x, i) => `<figure class="${i ? "" : "on"}" aria-hidden="${i ? "true" : "false"}"><blockquote><p>&ldquo;${mark(x.q)}&rdquo;</p>${x.tr ? `<span class="tr">${x.tr}</span>` : ""}</blockquote><figcaption>A blind or low-vision participant${x.note ? `. ${x.note}` : ""}</figcaption></figure>`).join("")}</div>
-      <div class="st-ctl"><button class="st-btn" data-spot="-1" aria-label="Previous quote"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><span class="st-n"><b>01</b> / ${pad(n)}</span><button class="st-btn" data-spot="1" aria-label="Next quote"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button><span class="st-bar"><i></i></span></div>
+    <div class="st-flow">
+      <div class="st-track">${[0, 1].map(k => s.said.map(x => `<figure${k ? ' aria-hidden="true"' : ""}><p>${mark(x.q)}</p>${x.tr ? `<span class="tr">${x.tr}</span>` : ""}${x.note ? `<figcaption>${x.note}</figcaption>` : ""}</figure>`).join("")).join("")}</div>
     </div>
+    <button class="st-all" data-flow aria-expanded="false">Show all ${n}</button>
     <h3 class="st-h">${s.sensesTitle}</h3>
     <ul class="st-senses">${s.senses.map(x => `<li><div class="sart">${x.art}</div><b>${x.label}</b><span>${x.line}</span><q>${x.quote}</q></li>`).join("")}</ul>
     <h3 class="st-h">What changed</h3>
@@ -165,21 +165,12 @@ function storyBlock(s) {
     <blockquote class="st-close"><p>&ldquo;${s.close.q}&rdquo;</p><span class="tr">&ldquo;${s.close.tr}&rdquo;</span><cite>${s.close.note}</cite></blockquote>
   </section>`;
 }
-/* spotlight: one quote at a time, advanced by the buttons or every few seconds while in view and not hovered */
-const SPOT_MS = 7000;
-function spotGo(el, d) {
-  const n = +el.dataset.n, i = ((+el.dataset.i + d) % n + n) % n;
-  el.dataset.i = i;
-  el.querySelectorAll(".st-stage figure").forEach((f, k) => { f.classList.toggle("on", k === i); f.setAttribute("aria-hidden", k === i ? "false" : "true"); });
-  el.querySelector(".st-n b").textContent = String(i + 1).padStart(2, "0");
-  const bar = el.querySelector(".st-bar i"); bar.style.animation = "none"; void bar.offsetWidth; bar.style.animation = "";
-  el.dataset.t = Date.now();
-}
-document.addEventListener("click", e => { const b = e.target.closest("[data-spot]"); if (b) spotGo(b.closest(".st-spot"), +b.dataset.spot); });
-if (!matchMedia("(prefers-reduced-motion: reduce)").matches) setInterval(() => document.querySelectorAll(".st-spot").forEach(el => {
-  if (!el.offsetParent || el.matches(":hover")) { el.dataset.t = Date.now(); return; }
-  if (Date.now() - (+el.dataset.t || 0) >= SPOT_MS) { if (el.dataset.t) spotGo(el, 1); else el.dataset.t = Date.now(); }
-}), 500);
+/* feedback flow: quotes drift by on their own (paused on hover); the button lays them all out to read together */
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-flow]"); if (!b) return;
+  const f = b.previousElementSibling, open = f.classList.toggle("all");
+  b.setAttribute("aria-expanded", open); b.textContent = open ? "Show less" : `Show all ${f.querySelectorAll("figure:not([aria-hidden])").length}`;
+});
 function renderProject(p) {
   const pubs = p.pubs ? p.pubs.map(k => PUBS.find(x => x.t.startsWith(k))).filter(Boolean) : [PUBS.find(x => x.t.startsWith(p.pub))].filter(Boolean);
   const pub = pubs[0];
