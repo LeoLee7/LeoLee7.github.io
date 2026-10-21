@@ -1,6 +1,6 @@
-import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261021z";
-import { ABSTRACTS } from "./abstracts.js?v=20261021z";
-import { STORY } from "./story.js?v=20261021z";
+import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261022a";
+import { ABSTRACTS } from "./abstracts.js?v=20261022a";
+import { STORY } from "./story.js?v=20261022a";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -63,7 +63,8 @@ function pubHTML(p, tag) {
   const links = sorted.map(([n, u]) => lnk(u, n === "Page" ? "Paper page" : n));
   const id = arxivId(p);
   if (extras && id && ABSTRACTS[id]) links.push(`<button class="text lbtn" data-open="abs-${i}" aria-expanded="false">${svgI("abs")}Abstract</button>`);
-  if (extras) links.push(`<button class="text lbtn" data-open="bib-${i}" aria-expanded="false">${svgI("bib")}BibTeX</button>`);
+  const hasBib = extras && !(p.v === "Under review" && !id);
+  if (hasBib) links.push(`<button class="text lbtn" data-open="bib-${i}" aria-expanded="false">${svgI("bib")}BibTeX</button>`);
   const T = p.img && TEASERS[p.img];
   const thumb = T ? lbBtn({ img: p.img, title: p.t, sub: `${VENUE[p.v] || p.v}, ${p.y}`, links: lbLinks(pj && pj.slug, sorted, inPage) }, "thumb", `<img src="${T.a}" alt="">`) : "";
   const title = inPage ? `<span class="t">${esc(p.t)}</span>` : pj ? `<a class="t" href="#project-${pj.slug}">${esc(p.t)}</a>` : main ? `<a class="t" href="${main}" target="_blank" rel="noopener">${esc(p.t)}</a>` : `<span class="t">${esc(p.t)}</span>`;
@@ -74,7 +75,7 @@ function pubHTML(p, tag) {
     <div class="lk">${links.join("")}</div>
     ${inPage && ph ? `<details class="phase"><summary>Phase 1 paper</summary><div class="ph1"><div class="t">${esc(ph.t)}</div><div class="au">${authors(ph.a)}</div><div class="ve"><em>arXiv preprint</em>, ${ph.y}</div><div class="lk">${lnk(ph.u, "arXiv")}</div></div></details>` : ""}
     ${extras && id && ABSTRACTS[id] ? `<div class="drawer" id="abs-${i}" hidden><p>${esc(ABSTRACTS[id])}</p></div>` : ""}
-    ${extras ? `<div class="drawer" id="bib-${i}" hidden><pre>${esc(bibtex(p))}</pre><button class="text" data-copy="bib-${i}" style="color:var(--accent)">Copy</button></div>` : ""}
+    ${hasBib ? `<div class="drawer" id="bib-${i}" hidden><pre>${esc(bibtex(p))}</pre><button class="text" data-copy="bib-${i}" style="color:var(--accent)">Copy</button></div>` : ""}
   </div></article>`;
 }
 const btn = (attr, val, label, on) => `<button class="text" ${attr}="${val}" aria-pressed="${on}">${label}</button>`;
