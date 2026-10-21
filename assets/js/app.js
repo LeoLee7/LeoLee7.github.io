@@ -1,5 +1,5 @@
-import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261020u";
-import { ABSTRACTS } from "./abstracts.js?v=20261020u";
+import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261020v";
+import { ABSTRACTS } from "./abstracts.js?v=20261020v";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -264,7 +264,7 @@ function renderProjects() {
     <h1>Projects</h1>
     <p class="lede">Systems, models, and benchmarks for spatial reasoning and human-agent collaboration.</p>
     ${THEMES.map(([k, h, d]) => `<section class="ptheme"><h2 class="pgh">${h}</h2><p class="pgd">${d}</p><div class="pgrid">${PROJECTS.filter(p => p.theme === k).map(p => {
-      const frame = p.art ? `<span class="frame fit"><img src="${ART[p.art]}" alt=""></span>`
+      const frame = p.art ? `<span class="frame"><img src="${ART[p.art]}" alt=""></span>`
         : p.img ? `<span class="frame${p.cover ? " photo" : ""}"><img src="${TEASERS[p.img].a}" alt=""></span>` : `<span class="frame word"><span>${p.name}</span></span>`;
       const href = p.art ? "#art" : `#project-${p.slug}`;
       return `<a class="proj" href="${href}">${frame}<span class="nm">${p.name}</span><span class="vn">${p.venue}</span><p>${p.line}</p></a>`;

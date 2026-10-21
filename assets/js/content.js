@@ -95,7 +95,7 @@ export const PROJECTS = [
       ["lotus-05", "The light-responsive unit: section drawing and the built prototype."], ["lotus-06", "Generating the canopy form in eight steps."],
       ["lotus-07", "Rendering of the pavilion canopy in sunlight."], ["lotus-08", "Rendering of the pavilion by the lake."]],
     links: [["Video", "https://www.youtube.com/watch?v=9G6kR8N1WFM"]] },
-  { theme: "make", name: "Art", art: "10", venue: "Painting, photography, and visual design",
+  { theme: "make", name: "Art", art: "pets", venue: "Painting, photography, and visual design",
     line: "Seascape and pet paintings, photographs, and digital illustration." },
 ];
 
@@ -445,7 +445,8 @@ export const ART = {
  "09": "assets/img/art/09.jpg",
  "10": "assets/img/art/10.jpg",
  "11": "assets/img/art/11.jpg",
- "12": "assets/img/art/12.jpg"
+ "12": "assets/img/art/12.jpg",
+ "pets": "assets/img/art/pets.jpg"
 };
 export const LOGOS = {
  "amazon": "assets/img/logos/amazon.png",

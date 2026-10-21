@@ -286,11 +286,10 @@ a.proj:hover .nm { color: var(--accent); }
 .proj .nm { display: block; }
 .proj .vn { display: block; }
 .proj .frame { aspect-ratio: 16 / 9; background: var(--frame); border-radius: 14px; padding: 18px; display: grid; place-items: center; margin-bottom: 16px; overflow: hidden; }
-.proj .frame img { width: 100%; height: 100%; object-fit: contain; border-radius: 4px; }
+.proj .frame { position: relative; }
+.proj .frame img { position: absolute; inset: 18px; width: calc(100% - 36px); height: calc(100% - 36px); object-fit: contain; border-radius: 4px; }
 .proj .frame.photo { padding: 0; }
-.proj .frame.fit { position: relative; }
-.proj .frame.fit img { position: absolute; inset: 14px; width: calc(100% - 28px); height: calc(100% - 28px); object-fit: contain; }
-.proj .frame.photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 0; max-height: none; }
+.proj .frame.photo img { inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 0; max-height: none; }
 .proj .frame .word { font-size: 22px; font-weight: 650; color: var(--muted); letter-spacing: -.01em; }
 .proj .nm { font-size: 20px; font-weight: 650; color: var(--ink); letter-spacing: -.01em; }
 .proj .nm a { color: inherit; font-weight: inherit; }
