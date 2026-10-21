@@ -1,6 +1,6 @@
-import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261021y";
-import { ABSTRACTS } from "./abstracts.js?v=20261021y";
-import { STORY } from "./story.js?v=20261021y";
+import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261021z";
+import { ABSTRACTS } from "./abstracts.js?v=20261021z";
+import { STORY } from "./story.js?v=20261021z";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -217,7 +217,7 @@ function renderProject(p) {
         ${pubs.length ? `<h2>${pubs.length > 1 ? "Papers" : "Paper"}</h2>${pubs.map(x => pubHTML(x, "pp")).join("")}` : ""}
         ${STORY[p.slug] ? storyBlock(STORY[p.slug]) : ""}</div>
       <aside class="d-side">${facts([[pubs.length ? "Venue" : "Context", p.venue], ...(topics ? [["Topics", topics]] : [])])}
-        ${updates.length ? `<h3>Updates</h3><ul class="upd">${updates.map(n => `<li><time>${n.d}</time>${n.to === p.slug || n.inline ? `<span>${n.title}</span>` : `<a href="#news-${n.slug}">${n.title}</a>`}</li>`).join("")}</ul>` : ""}</aside>
+        ${updates.length ? `<h3>Updates</h3><ul class="upd">${updates.map(n => `<li><time>${n.d}</time>${n.to === p.slug || n.inline ? (n.links?.[0] ? `<a href="${n.links[0][1]}" target="_blank" rel="noopener">${n.title}</a>` : `<span>${n.title}</span>`) : `<a href="#news-${n.slug}">${n.title}</a>`}</li>`).join("")}</ul>` : ""}</aside>
     </div>
   </article>`;
 }
