@@ -1,6 +1,6 @@
-import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261021m";
-import { ABSTRACTS } from "./abstracts.js?v=20261021m";
-import { STORY } from "./story.js?v=20261021m";
+import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261021n";
+import { ABSTRACTS } from "./abstracts.js?v=20261021n";
+import { STORY } from "./story.js?v=20261021n";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -146,10 +146,13 @@ function videoBlock(slug, bare) {
 }
 /* illustrated story: a pull quote, then panels of drawing, short text, and a participant quote */
 function storyBlock(s) {
+  const q = (t, tr) => `<blockquote><p>&ldquo;${t}&rdquo;</p>${tr ? `<cite>${tr}</cite>` : ""}</blockquote>`;
   return `<h2>The story</h2>
     <blockquote class="pull"><p>&ldquo;${s.pull}&rdquo;</p><cite>${s.pullNote}</cite></blockquote>
     <ol class="story">${s.panels.map((x, i) => `<li><div class="sart">${x.art}</div><div class="stext"><h3><span>${i + 1}</span>${x.title}</h3><p>${x.text}</p>
-      <blockquote><p>&ldquo;${x.quote}&rdquo;</p><cite>${x.who}</cite></blockquote></div></li>`).join("")}</ol>`;
+      ${q(x.quote, x.tr)}</div></li>`).join("")}</ol>
+    ${s.close ? `<blockquote class="pull close"><p>&ldquo;${s.close.q}&rdquo;</p><p class="tr">&ldquo;${s.close.tr}&rdquo;</p><cite>${s.close.note}</cite></blockquote>` : ""}
+    ${s.voices ? `<h3 class="voices-h">In their words</h3><ul class="voices">${s.voices.map(v => `<li>&ldquo;${v}&rdquo;</li>`).join("")}</ul>` : ""}`;
 }
 function renderProject(p) {
   const pubs = p.pubs ? p.pubs.map(k => PUBS.find(x => x.t.startsWith(k))).filter(Boolean) : [PUBS.find(x => x.t.startsWith(p.pub))].filter(Boolean);
@@ -161,12 +164,11 @@ function renderProject(p) {
     <a class="back" href="#projects">All projects</a>
     <div class="d-eyebrow">${p.venue}</div><h1>${p.name}</h1>
     ${pubs.length === 1 ? `<p class="pp-authors">${authors(pub.a)}</p>` : ""}
-    ${p.videoHero ? `<div class="pp-video">${videoBlock(p.slug, 1)}</div>` : T ? lbBtn({ img: p.img, title: p.name, sub: p.venue, links: lbLinks(p.slug, p.links || [], 1) }, "pp-hero", `<img src="${T.full || T.a}" alt="${p.name} figure">`) : `<div class="pp-hero word"><span>${p.name}</span></div>`}
+    ${VIDEOS[p.slug] ? `<div class="pp-video">${videoBlock(p.slug, 1)}</div>` : T ? lbBtn({ img: p.img, title: p.name, sub: p.venue, links: lbLinks(p.slug, p.links || [], 1) }, "pp-hero", `<img src="${T.full || T.a}" alt="${p.name} figure">`) : `<div class="pp-hero word"><span>${p.name}</span></div>`}
     <div class="d-body">
       <div class="d-main"><h2>Overview</h2>${(OVERVIEW[p.slug] || OVERVIEW_EARLY[p.slug] || [p.line]).map(x => `<p>${x}</p>`).join("")}
         ${STORY[p.slug] ? storyBlock(STORY[p.slug]) : ""}
-        ${(p.figs || []).map(([k, cap]) => `<figure class="pfig">${lbBtn({ img: k, title: p.name, sub: cap, links: lbLinks(p.slug, p.links || [], 1) }, "pimg", `<img src="${TEASERS[k].full || TEASERS[k].a}" alt="${esc(cap)}">`)}<figcaption>${cap}</figcaption></figure>`).join("")}
-        ${p.videoHero ? "" : videoBlock(p.slug)}
+        ${(VIDEOS[p.slug] && T && !p.videoHero ? [[p.img, p.line], ...(p.figs || [])] : p.figs || []).map(([k, cap]) => `<figure class="pfig">${lbBtn({ img: k, title: p.name, sub: cap, links: lbLinks(p.slug, p.links || [], 1) }, "pimg", `<img src="${TEASERS[k].full || TEASERS[k].a}" alt="${esc(cap)}">`)}<figcaption>${cap}</figcaption></figure>`).join("")}
         ${pubs.length ? `<h2>${pubs.length > 1 ? "Papers" : "Paper"}</h2>${pubs.map(x => pubHTML(x, "pp")).join("")}` : ""}</div>
       <aside class="d-side">${facts([[pubs.length ? "Venue" : "Context", p.venue], ...(topics ? [["Topics", topics]] : [])])}
         ${updates.length ? `<h3>Updates</h3><ul class="upd">${updates.map(n => `<li><time>${n.d}</time>${n.to === p.slug || n.inline ? `<span>${n.title}</span>` : `<a href="#news-${n.slug}">${n.title}</a>`}</li>`).join("")}</ul>` : ""}</aside>
@@ -178,20 +180,23 @@ const EXTRA = {
 };
 const facts = list => list && list.length ? `<dl class="facts">${list.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl>` : "";
 /* a short project summary inside a news post: overview, key figure, and video */
-function aboutProject(slug) {
+function aboutProject(slug, noVideo) {
   const p = PROJECTS.find(x => x.slug === slug), T = TEASERS[p.img];
   return `<h2>About ${p.name}</h2>${(OVERVIEW[slug] || [p.line]).map(x => `<p>${x}</p>`).join("")}
     <figure class="pfig">${lbBtn({ img: p.img, title: p.name, sub: p.venue, links: lbLinks(p.slug, p.links || []) }, "pimg", `<img src="${T.full || T.a}" alt="${esc(p.name)} overview">`)}<figcaption>${p.line}</figcaption></figure>
-    ${videoBlock(slug)}`;
+    ${noVideo ? "" : videoBlock(slug)}`;
 }
 function renderPost(n) {
+  /* a post's own video, else its project's video, sits at the top */
+  const vid = VIDEOS[n.slug] ? n.slug : n.about && VIDEOS[n.about] ? n.about : null;
   const imgs = n.imgs.map(([k, cap]) => `<figure>${lbBtn({ img: k, title: n.title, sub: cap, links: [] }, "pimg", `<img src="${(TEASERS[k].full || TEASERS[k].a)}" alt="${esc(cap)}">`)}<figcaption>${cap}</figcaption></figure>`).join("");
   const btns = (n.rel || []).map(r => `<a class="lbtn" href="#project-${r}">${svgI("web")}${PROJECTS.find(p => p.slug === r).name} project</a>`).join("") + n.links.map(([t, u]) => lnk(u, t)).join("");
   return `<article class="detail">
     <a class="back" href="#news">All news</a>
     <div class="d-eyebrow">${n.d}</div><h1>${n.title}</h1>
+    ${vid ? `<div class="pp-video">${videoBlock(vid, 1)}</div>` : ""}
     <div class="d-body">
-      <div class="d-main">${n.body.map(p => `<p>${p}</p>`).join("")}${imgs ? `<div class="pgal ${n.imgs.length > 1 ? "two" : ""}">${imgs}</div>` : ""}${VIDEOS[n.slug] ? videoBlock(n.slug) : ""}${n.about ? aboutProject(n.about) : ""}</div>
+      <div class="d-main">${n.body.map(p => `<p>${p}</p>`).join("")}${imgs ? `<div class="pgal ${n.imgs.length > 1 ? "two" : ""}">${imgs}</div>` : ""}${n.about ? aboutProject(n.about, !!vid) : ""}</div>
       <aside class="d-side">${n.extra ? EXTRA[n.extra]() : ""}${facts(n.facts)}${btns ? `<div class="d-links">${btns}</div>` : ""}</aside>
     </div>
   </article>`;

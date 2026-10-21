@@ -1,66 +1,98 @@
 /*
- * Illustrated stories on project pages: minimal line drawings plus verbatim participant quotes.
- * Quotes come from the public arXiv paper (arXiv:2609.36404); P-numbers are the paper's participant ids.
- * Drawings use currentColor for lines and the .ac class for the accent color.
+ * Illustrated stories on project pages: abstract geometric prints plus verbatim participant quotes.
+ * Quotes come from the public arXiv paper (arXiv:2609.36404) and the study testimonials shared for PitchAbility 2026.
+ * Speakers stay anonymous. Shapes use classes .k (ink), .a (accent), .g (soft gray), .ln (ink line), .al (accent line);
+ * each print gets its own filter for a hand-cut edge and a grainy, printed fill.
  */
-const svg = body => `<svg viewBox="0 0 240 150" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${body}</svg>`;
+const print = (id, body) => `<svg viewBox="0 0 240 150" aria-hidden="true">
+  <defs><filter id="tx${id}" x="-6%" y="-6%" width="112%" height="112%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="${id * 7}" result="w"/>
+    <feDisplacementMap in="SourceGraphic" in2="w" scale="3.2" xChannelSelector="R" yChannelSelector="G" result="d"/>
+    <feTurbulence type="fractalNoise" baseFrequency="1.2" numOctaves="1" seed="${id}" result="n"/>
+    <feColorMatrix in="n" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1.3 1.45" result="m"/>
+    <feComposite in="d" in2="m" operator="in"/>
+  </filter></defs>
+  <g filter="url(#tx${id})">${body}</g></svg>`;
 
-const HOME = svg(`
-  <path d="M24 58 L120 16 L216 58"/>
-  <path d="M36 128 H204"/><path d="M58 128 V112 H182 V128"/>
-  <circle cx="74" cy="64" r="10"/>
-  <path d="M74 75 C64 80 61 94 62 112"/>
-  <path d="M70 86 C82 92 96 98 108 104"/>
-  <path d="M48 52 L58 112"/>
-  <path class="ac" d="M116 104 L120 76 L160 76 L164 104 Z"/>
-  <path d="M108 106 H172"/>
-  <path class="ac" d="M176 72 a10 10 0 0 1 0 16 M184 66 a18 18 0 0 1 0 28"/>`);
+/* one point becomes many */
+const SPOTS = print(1, `
+  <circle class="g" cx="72" cy="76" r="34"/>
+  <circle class="k" cx="72" cy="76" r="6"/>
+  <circle class="a" cx="160" cy="54" r="11"/><circle class="k" cx="188" cy="70" r="6"/>
+  <circle class="k" cx="150" cy="92" r="7"/><circle class="a" cx="182" cy="104" r="9"/>
+  <circle class="k" cx="206" cy="46" r="4"/><circle class="k" cx="132" cy="64" r="4"/>
+  <circle class="k" cx="210" cy="92" r="4.5"/>`);
 
-const WHERE = svg(`
-  <rect x="34" y="22" width="172" height="108" rx="12"/>
-  <rect class="acf" x="118" y="46" width="62" height="44" rx="4"/>
-  <path class="ac" d="M70 92 a16 16 0 0 1 22 -22 M62 98 a28 28 0 0 1 36 -36"/>
-  <path d="M96 106 c-4 -10 2 -22 10 -26 c6 -3 12 2 10 8 l-6 14 c-3 6 -10 8 -14 4 z"/>
-  <path class="ac" d="M112 50 l-5 4 l5 4 l-5 4 M186 66 l5 4 l-5 4 l5 4"/>`);
+/* a hum widening toward a place */
+const HUM = print(2, `
+  <rect class="a" x="138" y="34" width="72" height="56" rx="2"/>
+  <path class="al" stroke-width="5" d="M96 112 a30 30 0 0 1 30 -30"/>
+  <path class="al" stroke-width="3.5" d="M80 112 a46 46 0 0 1 46 -46" opacity=".7"/>
+  <path class="al" stroke-width="2.5" d="M64 112 a62 62 0 0 1 62 -62" opacity=".45"/>
+  <circle class="k" cx="96" cy="112" r="9"/>`);
 
-const WHAT = svg(`
-  <rect x="22" y="58" width="104" height="72" rx="10"/>
-  <rect class="acf" x="62" y="80" width="38" height="28" rx="3"/>
-  <path d="M74 118 c-3 -8 1 -17 8 -20 c5 -2 9 2 8 6 l-4 10 c-2 5 -8 7 -12 4 z"/>
-  <path d="M36 16 H148 a8 8 0 0 1 8 8 V40 a8 8 0 0 1 -8 8 H60 L48 58 V48 H36 a8 8 0 0 1 -8 -8 V24 a8 8 0 0 1 8 -8 z"/>
-  <text x="92" y="37" text-anchor="middle" stroke="none" fill="currentColor" font-size="13" font-family="inherit">What's around me?</text>
-  <path class="ac" d="M150 72 H214 a8 8 0 0 1 8 8 V118 a8 8 0 0 1 -8 8 H150 a8 8 0 0 1 -8 -8 V96 L132 90 L142 86 V80 a8 8 0 0 1 8 -8 z"/>
-  <path class="ac" d="M156 90 H208 M156 102 H200 M156 114 H186"/>`);
+/* streets drawn as an L, blocks along them */
+const STREETS = print(3, `
+  <circle class="g" cx="132" cy="76" r="62"/>
+  <path class="ln" stroke-width="10" stroke-linecap="square" d="M70 26 V118 H206"/>
+  <rect class="a" x="86" y="40" width="22" height="22"/><rect class="k" x="86" y="74" width="22" height="30"/>
+  <rect class="a" x="124" y="84" width="32" height="20"/><rect class="k" x="168" y="90" width="18" height="14"/>`);
 
-const FOUND = svg(`
-  <path d="M20 46 H220 M20 104 H220 M78 16 V134 M162 16 V134"/>
-  <rect x="28" y="56" width="40" height="38" rx="3"/>
-  <rect x="88" y="56" width="64" height="38" rx="3"/>
-  <rect x="172" y="114" width="40" height="18" rx="3"/>
-  <rect x="88" y="114" width="64" height="18" rx="3"/>
-  <rect class="acf" x="172" y="56" width="40" height="38" rx="3"/>
-  <path class="ac" d="M192 66 V84 M183 75 H201"/>
-  <path class="ac" d="M200 30 l3 -8 l3 8 l8 3 l-8 3 l-3 8 l-3 -8 l-8 -3 z"/>
-  <path d="M48 75 C 90 30, 140 30, 166 68" stroke-dasharray="2 7"/>
-  <path d="M40 66 L48 58 L56 66 V82 H40 Z"/>`);
+/* layers of a place, read further down */
+const DEEPER = print(4, `
+  <path class="k" d="M30 52 a22 22 0 0 1 44 0 z"/>
+  <rect class="g" x="70" y="30" width="96" height="56"/>
+  <rect class="g" x="92" y="52" width="96" height="56" opacity=".8"/>
+  <rect class="a" x="114" y="74" width="96" height="56"/>`);
+
+/* a grid, and the one square nobody asked for */
+const UNASKED = print(5, `
+  ${[0, 1, 2, 3, 4].flatMap(c => [0, 1, 2].map(r => (c === 3 && r === 1) ? "" : `<rect class="g" x="${34 + c * 36}" y="${22 + r * 38}" width="26" height="26"/>`)).join("")}
+  <rect class="k" x="146" y="62" width="26" height="26" opacity=".85"/>
+  <rect class="a" x="142" y="58" width="26" height="26"/>
+  <circle class="al" stroke-width="2.5" cx="157" cy="73" r="27"/>`);
+
+/* a route told to someone else, past named places */
+const ROUTE = print(6, `
+  <path class="ln" stroke-width="3" stroke-dasharray="1 9" stroke-linecap="round" d="M48 104 C 80 40, 116 130, 150 70 S 196 50, 196 50"/>
+  <circle class="k" cx="48" cy="104" r="12"/>
+  <circle class="al" stroke-width="5" cx="196" cy="50" r="12"/>
+  <rect class="a" x="84" y="64" width="16" height="16"/><rect class="a" x="140" y="88" width="16" height="16"/>`);
 
 export const STORY = {
   touchingspace: {
     pull: "I didn't know how to read a map, but now I can.",
-    pullNote: "P13, whose words became the title of our paper.",
+    pullNote: "A participant, whose words became the title of our paper.",
     panels: [
-      { art: HOME, title: "At home, before the trip",
-        text: "Fifteen blind and low-vision participants each explored a place they chose, on an everyday laptop trackpad, with the reading done before they set out.",
-        quote: "This exploration is done before you leave your house.", who: "P14" },
-      { art: WHERE, title: "Where, by touch",
-        text: "Each place sits at a fixed position on the pad. A hum grows as the finger nears a place, and a vibration marks its edge.",
-        quote: "It's like the radar on a car.", who: "P13" },
-      { art: WHAT, title: "What, by asking",
-        text: "The pad speaks each place's name, and a conversational agent answers questions about it. Nearly every participant asked about hours, menus, prices, and more.",
-        quote: "having the map and it spelling out each of the buildings, but then you're able to go deeper.", who: "P02" },
-      { art: FOUND, title: "Places nobody asked for",
-        text: "Seven participants found a place they had not asked about, and four changed a trip they already make.",
-        quote: "now that I know [the pharmacy] is right there and it's on my way home, I just stop there instead of going all the way home and coming all the way back.", who: "P06" },
+      { art: SPOTS, title: "One spot in the mind",
+        text: "Before exploring, a familiar place was often a single point. One participant knew a plaza only as the spot their family drives them to. By the end they could name four businesses in it.",
+        quote: "In my mind there was only one spot... So now there are a lot of spots." },
+      { art: HUM, title: "Follow the hum",
+        text: "Each place sits at a fixed position on the trackpad. A hum grows as the finger nears it, and a vibration marks its edge.",
+        quote: "I just start low, and start going up and sideways . . . until I start hearing a hum. And then I follow the hum." },
+      { art: STREETS, title: "A picture of the streets",
+        text: "Tracing by hand, participants gave the area a shape of their own: an L of streets, a butterfly, a row of shops.",
+        quote: "I thought it would be hard for me to build a mental map, but I was able to kind of draw that L-shape or square shape of the streets." },
+      { art: DEEPER, title: "Asking to go deeper",
+        text: "The pad names each place, and a conversational agent answers open questions about it: store hours, menus, which side of the street.",
+        quote: "I really love that chatbot. It's super cool... having the map and it spelling out each of the buildings, but then you're able to go deeper." },
+      { art: UNASKED, title: "Places nobody asked for",
+        text: "Seven participants found a place they had not asked about, and four changed a trip they already make. One learned that a pharmacy they reached by going home first was close to the center they visit.",
+        quote: "And no one tells you. It could be that way forever." },
+      { art: ROUTE, title: "Directions for a sighted friend",
+        text: "After exploring, a participant could give directions past places the map had named, some of them a few doors from where they work.",
+        quote: "Pass yoga — which I never knew there was one — the Bagelry restaurant... I can tell someone sighted how to get somewhere now." },
+    ],
+    close: { q: "Me sentí súper contento y libre de poder yo hacer las cosas yo solo.",
+      tr: "I felt super happy and free to be able to do things by myself.",
+      note: "A participant, speaking through a Spanish interpreter." },
+    voices: [
+      "I started getting a picture in my mind of where everything was.",
+      "I think of anything I've seen, this has the best possibility of doing that [conveying how to approach a hard-to-find entrance].",
+      "I could use this all the time when I'm planning my trip, especially when I know that I'm going to go someplace I've never been before.",
+      "When I first came, one of the volunteers walked me to the bus stop for the first time. This map would have been very helpful for me.",
+      "I like that it's dynamic — not a static map where you constantly have to print something out... I could see this being something big.",
+      "Se lo recomendaría como un excelente aparato para la vida diaria de uno que no mira. (I would recommend it as an excellent device for the daily life of someone who does not see.)",
     ],
   },
 };
