@@ -120,6 +120,14 @@ const LAYERS = print(14, `
   <rect class="a" x="80" y="30" width="30" height="30"/><rect class="a" x="168" y="76" width="30" height="30"/>
   <path class="ln" stroke-width="3" d="M52 128 h40 M148 128 h40 M168 118 v20"/>`);
 
+/* where other tools stop: a list on one side, a place you can read on the other */
+const BEYOND = print(15, `
+  <rect class="g" x="30" y="34" width="62" height="12"/><rect class="g" x="30" y="56" width="62" height="12" opacity=".7"/>
+  <rect class="g" x="30" y="78" width="62" height="12" opacity=".45"/><rect class="g" x="30" y="100" width="62" height="12" opacity=".3"/>
+  <rect class="ln" stroke-width="2.5" x="124" y="28" width="88" height="92"/>
+  <circle class="k" cx="146" cy="52" r="5"/><circle class="k" cx="190" cy="62" r="4"/><circle class="k" cx="158" cy="100" r="4"/>
+  <rect class="a" x="174" y="84" width="22" height="22"/>`);
+
 export const STORY = {
   touchingspace: {
     pull: "I didn't know how to read a map, but now I can.",
@@ -136,6 +144,7 @@ export const STORY = {
       { q: "It made me feel [[confident]]." },
       { q: "It's a lot more helpful to read a map and find [[a bigger understanding of where you are]]." },
       { q: "I could see this being [[something big]]." },
+      { q: "Está súper bien esta aplicación. [[Me parece magnífico.]] Porque a veces se encuentra uno desorientado. Y desubicado de su ubicación.", tr: "This app is really great. I think it is magnificent. Because sometimes you find yourself disoriented, and lost from where you are." },
       { q: "Se lo recomendaría como un [[excelente aparato para la vida diaria]] de uno que no mira.", tr: "I would recommend it as an excellent device for the daily life of someone who does not see." },
       { q: "This is the first time I've used something like this. So if it's not hard for me to get it, it's going to be [[pretty good for somebody else]]." },
       { q: "It's to the point, it's basic, and it gives you [[all the information that you need]] on the moment or on the go." },
@@ -160,23 +169,30 @@ export const STORY = {
     /* what changed afterwards; each with one or more quotes */
     panels: [
       { art: SPOTS, title: "One spot became many",
-        text: "A familiar place was often a single point. One participant knew a plaza only as the spot their family drives them to. By the end they could name four businesses in it.",
+        text: "A familiar place was often a single point, the spot someone drives you to. Tracing around it, the point filled with places.",
         quotes: ["In my mind there was only one spot... So now there are a lot of spots."] },
       { art: STREETS, title: "A picture of the streets",
         text: "Tracing by hand, participants gave the area a shape of their own: an L of streets, a butterfly, a row of shops.",
         quotes: ["I thought it would be hard for me to build a mental map, but I was able to kind of draw that L-shape or square shape of the streets."] },
       { art: NEAR, title: "Knowing the neighborhood",
-        text: "Knowing what is around matters most when something goes wrong: where to sit down, where to ask for help. Around a place they already visit, participants learned what else was there. One had known five or ten of the fifty-five places around their own workplace.",
+        text: "Knowing what is around matters most when something goes wrong: where to sit down, where to ask for help. Around places they already visit, participants learned what else was there.",
         quotes: ["I think it gives me a better knowledge of maps in general, and directions, and being aware of my surroundings and getting to know more of the neighborhood or the area.", "What if you're feeling sick? At least you know, okay, I know what's around me. I need to go sit down... Just to know what's around you, I think it does help the independent traveler feel more safe and confident."] },
       { art: UNASKED, title: "Places nobody asked for",
-        text: "You cannot ask about a place you do not know is there. On the map, seven participants found a place they had not asked about, and four changed a trip they already make. One learned that a pharmacy they reached by going home first was close to the center they visit.",
+        text: "You cannot ask about a place you do not know is there. On the map, places nobody asked for came up on their own, and some changed trips people already make.",
         quotes: ["Now that I know [the pharmacy] is right there and it's on my way home, I just stop there instead of going all the way home and coming all the way back.", "And no one tells you. It could be that way forever."] },
       { art: ROUTE, title: "Passing it on",
-        text: "What one person learned could reach others. A participant who answers the phone at a front desk could now direct callers past the places along the way.",
-        quotes: ["I can tell someone sighted how to get somewhere now."] },
+        text: "What one person learned could reach others. At a front desk staffed by blind people, the most common call is how to get there, and they could barely answer it themselves.",
+        quotes: ["We have blind people who work here and they get phone calls. One of the biggest questions is \u201chow do I get here?\u201d... We don't know what's around here. We can barely answer that question ourselves.",
+          "The only thing we know is our address... That's it. Period. Nothing else.",
+          "I can tell someone sighted how to get somewhere now."] },
       { art: PLAN, title: "Planning before the trip",
         text: "Participants placed the reading before travel: lunch near where they are going, a bus stop to find, a place to go if a plan fails.",
         quotes: ["This exploration is done before you leave your house.", "I could use this all the time when I'm planning my trip, especially when I know that I'm going to go someplace I've never been before."] },
+      { art: BEYOND, title: "Where other tools stop",
+        text: "The apps participants already use give a route or a list of results. They rarely say what lies around a place, and they often assume you drive.",
+        quotes: ["With [another map app] I tried to explore the place but it doesn't work well... it just zooms the area but doesn't say the names of the places or the statue. This is the first time I know there is a statue for Nikola Tesla.",
+          "It always wants to tell you what's nearby with a car... I don't drive.",
+          "Between the existing ones... compared to this prototype, I'd say this prototype in particular is a lot more helpful, especially the way it vibrates and hums as soon as you reach a destination."] },
     ],
     close: { q: "Me va alzando las ubicaciones y las cosas que están alrededor mías como si lo estuviera mirando. Me sentí súper contento y libre de poder yo hacer las cosas yo solo.",
       tr: "It keeps raising up for me the locations and the things that are around me, as if I were looking at it. I felt super happy and free to be able to do things by myself.",
