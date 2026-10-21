@@ -195,18 +195,19 @@ details.phase > div { margin-top: 10px; padding: 12px 14px; background: var(--fr
 @media (max-width: 860px) { .d-body { grid-template-columns: minmax(0, 1fr); gap: 28px; } .d-side { position: static; } }
 .pgh { margin: 44px 0 0; font-size: 20px; }
 .ptheme + .ptheme { margin-top: 64px; }
-.pwrap { display: grid; grid-template-columns: 196px minmax(0, 1fr); gap: 44px; margin-top: 8px; }
-.psnav { position: sticky; top: 96px; align-self: start; display: grid; gap: 2px; margin-top: 44px; border-left: 1px solid var(--line); }
-.psnav button { display: flex; justify-content: space-between; gap: 12px; text-align: left; padding: 7px 0 7px 14px; margin-left: -1px; border-left: 2px solid transparent; color: var(--muted); font-size: 15px; font-weight: 500; line-height: 1.35; }
+.pwrap { position: relative; }
+.prail { display: contents; }
+/* category navigation: a tab bar under the header by default, a side rail outside the content width on wide screens */
+.psnav { position: sticky; top: 60px; z-index: 10; display: flex; gap: 24px; overflow-x: auto; scrollbar-width: none; margin: 28px 0 0; border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--bg) 94%, transparent); backdrop-filter: blur(8px); }
+.psnav button { flex: none; display: flex; gap: 6px; align-items: baseline; padding: 12px 0 10px; margin-bottom: -1px; border-bottom: 2px solid transparent; color: var(--muted); font-size: 15px; font-weight: 500; white-space: nowrap; }
 .psnav button:hover { color: var(--ink); }
-.psnav button.on { color: var(--accent); border-left-color: var(--accent); }
-.psnav .n { color: var(--muted); font-weight: 400; font-variant-numeric: tabular-nums; }
-@media (max-width: 900px) {
-  .pwrap { grid-template-columns: minmax(0, 1fr); gap: 0; }
-  .psnav { top: 60px; z-index: 10; margin: 20px -20px 0; padding: 0 20px; display: flex; gap: 22px; overflow-x: auto; scrollbar-width: none; border-left: 0; border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--bg) 94%, transparent); backdrop-filter: blur(8px); }
-  .psnav button { flex: none; padding: 12px 0 10px; margin: 0 0 -1px; border-left: 0; border-bottom: 2px solid transparent; }
-  .psnav button.on { border-bottom-color: var(--accent); }
-  .psnav .n { display: none; }
+.psnav button.on { color: var(--accent); border-bottom-color: var(--accent); }
+.psnav .n { color: var(--muted); font-weight: 400; font-size: 13.5px; font-variant-numeric: tabular-nums; }
+@media (min-width: 1500px) {
+  .prail { display: block; position: absolute; top: 0; bottom: 0; right: calc(100% + 48px); width: 200px; }
+  .psnav { top: 96px; display: grid; gap: 2px; margin: 44px 0 0; overflow: visible; border-bottom: 0; border-left: 1px solid var(--line); background: none; backdrop-filter: none; }
+  .psnav button { justify-content: space-between; white-space: normal; text-align: left; padding: 7px 0 7px 14px; margin: 0 0 0 -1px; border-bottom: 0; border-left: 2px solid transparent; line-height: 1.35; }
+  .psnav button.on { border-left-color: var(--accent); }
 }
 .pgd { margin: 6px 0 0; color: var(--muted); font-size: 15.5px; }
 .pgd + .pgrid { margin-top: 24px; }

@@ -1,5 +1,5 @@
-import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261021c";
-import { ABSTRACTS } from "./abstracts.js?v=20261021c";
+import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261021e";
+import { ABSTRACTS } from "./abstracts.js?v=20261021e";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -272,7 +272,7 @@ function renderProjects() {
   document.getElementById("p-projects").innerHTML = `
     <h1>Projects</h1>
     <p class="lede">Systems, models, and benchmarks for spatial reasoning and human-agent collaboration.</p>
-    <div class="pwrap"><nav class="psnav" aria-label="Project categories">${THEMES.map(([k, h]) => `<button class="text" data-sec="${k}">${h}<span class="n">${PROJECTS.filter(p => p.theme === k).length}</span></button>`).join("")}</nav><div>
+    <div class="pwrap"><div class="prail"><nav class="psnav" aria-label="Project categories">${THEMES.map(([k, h]) => `<button class="text" data-sec="${k}">${h}<span class="n">${PROJECTS.filter(p => p.theme === k).length}</span></button>`).join("")}</nav></div><div>
     ${THEMES.map(([k, h, d]) => `<section class="ptheme" id="sec-${k}"><h2 class="pgh">${h}</h2><p class="pgd">${d}</p><div class="pgrid">${PROJECTS.filter(p => p.theme === k).map(p => {
       const frame = p.art ? `<span class="frame"><img src="${ART[p.art]}" alt=""></span>`
         : p.img ? `<span class="frame${p.cover ? " photo" : ""}"><img src="${TEASERS[p.img].a}" alt=""></span>` : `<span class="frame word"><span>${p.name}</span></span>`;
