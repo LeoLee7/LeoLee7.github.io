@@ -1,5 +1,6 @@
-import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261021j";
-import { ABSTRACTS } from "./abstracts.js?v=20261021j";
+import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261021k";
+import { ABSTRACTS } from "./abstracts.js?v=20261021k";
+import { STORY } from "./story.js?v=20261021k";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -143,6 +144,13 @@ function videoBlock(slug, bare) {
     : `<a class="vframe vthumb" href="${url}" target="_blank" rel="noopener"><img src="${TEASERS[v.thumb].a}" alt="Demo video"><span class="vplay" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span></a>`;
   return bare ? embed : `<h2>Video</h2>${embed}`;
 }
+/* illustrated story: a pull quote, then panels of drawing, short text, and a participant quote */
+function storyBlock(s) {
+  return `<h2>The story</h2>
+    <blockquote class="pull"><p>&ldquo;${s.pull}&rdquo;</p><cite>${s.pullNote}</cite></blockquote>
+    <ol class="story">${s.panels.map((x, i) => `<li><div class="sart">${x.art}</div><div class="stext"><h3><span>${i + 1}</span>${x.title}</h3><p>${x.text}</p>
+      <blockquote><p>&ldquo;${x.quote}&rdquo;</p><cite>${x.who}</cite></blockquote></div></li>`).join("")}</ol>`;
+}
 function renderProject(p) {
   const pubs = p.pubs ? p.pubs.map(k => PUBS.find(x => x.t.startsWith(k))).filter(Boolean) : [PUBS.find(x => x.t.startsWith(p.pub))].filter(Boolean);
   const pub = pubs[0];
@@ -156,6 +164,7 @@ function renderProject(p) {
     ${p.videoHero ? `<div class="pp-video">${videoBlock(p.slug, 1)}</div>` : T ? lbBtn({ img: p.img, title: p.name, sub: p.venue, links: lbLinks(p.slug, p.links || [], 1) }, "pp-hero", `<img src="${T.full || T.a}" alt="${p.name} figure">`) : `<div class="pp-hero word"><span>${p.name}</span></div>`}
     <div class="d-body">
       <div class="d-main"><h2>Overview</h2>${(OVERVIEW[p.slug] || OVERVIEW_EARLY[p.slug] || [p.line]).map(x => `<p>${x}</p>`).join("")}
+        ${STORY[p.slug] ? storyBlock(STORY[p.slug]) : ""}
         ${(p.figs || []).map(([k, cap]) => `<figure class="pfig">${lbBtn({ img: k, title: p.name, sub: cap, links: lbLinks(p.slug, p.links || [], 1) }, "pimg", `<img src="${TEASERS[k].full || TEASERS[k].a}" alt="${esc(cap)}">`)}<figcaption>${cap}</figcaption></figure>`).join("")}
         ${p.videoHero ? "" : videoBlock(p.slug)}
         ${pubs.length ? `<h2>${pubs.length > 1 ? "Papers" : "Paper"}</h2>${pubs.map(x => pubHTML(x, "pp")).join("")}` : ""}</div>
