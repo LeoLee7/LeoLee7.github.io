@@ -47,10 +47,22 @@ export const PROJECTS = [
     short: "Reliable predictions for e-nose sensing with little labeled data.",
     line: "Conformal prediction methods that attach a reliability estimate to each electronic-nose prediction and use it to learn from unlabeled data.",
     links: [] },
-  { slug: "biosignals", theme: "hea", pubs: ["Unsupervised Cross-User", "Basic Taste", "Bimodal Fusion", "Quantitatively Recognizing"], name: "Taste Recognition from Biosignals", venue: "IEEE TIM, ICASSP, Sensors, 2021 to 2023",
-    short: "Recognizing taste sensations from EMG and EEG.",
-    line: "Models that recognize taste sensations and their intensity from surface electromyography and electroencephalography.",
-    links: [] },
+  { slug: "taste-xuser", theme: "hea", pub: "Unsupervised Cross-User", name: "Cross-User Taste Recognition", venue: "IEEE TIM 2022",
+    short: "Adapting sEMG taste models to new users without labels.",
+    line: "Domain regularized component analysis and conformal prediction that let taste recognition models trained on one person work on others without new labels.",
+    links: [["IEEE", "https://ieeexplore.ieee.org/document/9777907"]] },
+  { slug: "taste-eeg", theme: "hea", pub: "Basic Taste", name: "EEG-MSRNet", venue: "IEEE TIM 2023",
+    short: "Recognizing basic tastes from brain signals.",
+    line: "A multi-scale fully convolutional network with residual learning that recognizes basic taste sensations from EEG.",
+    links: [["IEEE", "https://ieeexplore.ieee.org/abstract/document/10138514/"]] },
+  { slug: "taste-bimodal", theme: "hea", pub: "Bimodal Fusion", name: "Bi-FusionNet", venue: "ICASSP 2023",
+    short: "Fusing EEG and EMG to recognize tastes.",
+    line: "A bimodal network that fuses complementary EEG and EMG features to recognize basic taste sensations.",
+    links: [["IEEE", "https://ieeexplore.ieee.org/document/10095117"]] },
+  { slug: "taste-intensity", theme: "hea", pub: "Quantitatively Recognizing", name: "Taste Intensity from Facial sEMG", img: "taste-intensity", venue: "Sensors 2021",
+    short: "Measuring how strong a taste is from facial muscle signals.",
+    line: "Quantitative recognition of the intensity of the five primary tastes from facial surface electromyography.",
+    links: [["MDPI", "https://www.mdpi.com/1424-8220/21/21/6965"]] },
   { slug: "silent-speech", theme: "hea", pub: "Silent Speech", name: "Silent Speech Interface", img: "ssi", venue: "IEEE TIM 2023",
     short: "Turning the muscle signals of silent speech into audio.",
     line: "A Mandarin silent speech interface that converts surface EMG from silent speakers into audio, with help from paired EMG and audio of vocal speakers.",
@@ -80,9 +92,18 @@ export const OVERVIEW_EARLY = {
     "Electronic noses can tell herbal medicines apart, but supervised models need labeled samples that are slow and costly to collect, and they give no measure of how reliable each prediction is. This line of work, co-led with Xianghao Zhan at Zhejiang University, uses conformal prediction to quantify that reliability and to put unlabeled data to work.",
     "Boost AI Power compares five data augmentation strategies under scarce training data and simulated sensor drift, including a new ensemble inductive conformal prediction (EICP) online learning method. CPSC, conformal prediction with shrunken centroids, regularizes class centroids to suppress irrelevant features, addressing the variance, bias, and computational cost of k-nearest-neighbor conformal prediction as feature dimensionality grows. It is evaluated both offline and in online learning where reliability decides which unlabeled samples join the training set.",
     "A companion study compares manual feature extraction, mathematical transformations, and deep learning for distinguishing the geographic origins of herbal medicines, whose odor fingerprints differ only slightly."],
-  "biosignals": [
-    "With collaborators at Zhejiang University, I worked on recognizing taste sensations from physiological signals. Surface electromyography (sEMG) records muscle activity and electroencephalography (EEG) records brain activity in response to taste stimuli.",
-    "We adapted sEMG taste models across users with domain regularized component analysis and conformal prediction with shrunken centroids (co-first author), recognized six basic taste sensations from EEG with a multi-scale residual network (EEG-MSRNet), fused EEG and EMG in a bimodal network (Bi-FusionNet), and regressed the intensity of primary tastes from sEMG."],
+  "taste-xuser": [
+    "Human taste sensation can be described with surface electromyography (sEMG), but pattern recognition models trained on one person do not generalize well to others. This work, where I am a co-first author, improves how taste models transfer across users by using unlabeled data from the new user.",
+    "We applied two methods, domain regularized component analysis (DRCA) and conformal prediction with shrunken centroids (CPSC), in an unlabeled data augmentation pipeline evaluated on six subjects. DRCA improved classification accuracy over baselines trained only on the source user (p < 0.05), and combining DRCA with CPSC gave a statistically significant improvement as well, addressing cross-user distribution drift in sEMG-based taste recognition."],
+  "taste-eeg": [
+    "Taste sensation recognition is a keystone for taste-related brain-computer interfaces, with uses such as taste disorder diagnosis and virtual taste. EEG measures brain activity in response to stimulation, but accurate and generalizable EEG-based taste measurement remains hard.",
+    "EEG-MSRNet is a fully convolutional network that classifies six classes (blank, sour, sweet, bitter, salty, umami). Multi-scale temporal convolutions with residual learning extract features at different frequencies, multi-scale spatial convolutions combine them across channels, and a convolutional layer with global average pooling replaces fully connected layers for prediction. Comparison experiments and ablations on a self-collected EEG dataset show stable and generalizable performance."],
+  "taste-bimodal": [
+    "Taste sensation can be measured objectively with EEG or EMG, but using the complementary information in both signals is still challenging.",
+    "Bi-FusionNet uses two similar convolutional backbones to extract EEG and EMG features separately, then concatenates them for bimodal interaction. Training combines a center loss that pulls samples of the same class together, a mean squared error loss over sequence positions during stimulation, and a softmax loss. On a taste sensation dataset, bimodal fusion improves recognition, and Bi-FusionNet outperforms single-modal methods and other fusion methods."],
+  "taste-intensity": [
+    "Beyond telling tastes apart, this work asks whether sEMG from facial muscles can measure how strong a taste is. Subjects tasted filter paper soaked in solutions of citric acid, sucrose, magnesium chloride, sodium chloride, and sodium glutamate at different concentrations, covering sour, sweet, bitter, salty, and umami.",
+    "After removing baseline wandering with Quadratic Variation Reduction and power frequency interference with an adaptive notch, we extracted 330 features per sample and trained an SVM regressor with five-fold cross-validation. It reached R\u00b2 scores of 0.7277, 0.1963, 0.7450, 0.7642, and 0.5055 for the five tastes, showing that the intensity of sour, bitter, and salty can be recognized quantitatively. Channel-wise feature selection then reduced the feature dimensionality for each taste, and we analyzed how performance relates to the number of subjects."],
   "silent-speech": [
     "A silent speech interface lets people communicate without producing sound, which can help, for example, people who have undergone a laryngectomy. Surface electromyography (sEMG) captures the neuromuscular activity of articulation, but without acoustic sound it is hard to convert a silent speaker's signals into the corresponding audio.",
     "This Mandarin silent speech interface learns the conversion with help from an auxiliary set of paired sEMG and audio recordings from vocal speakers. A hybrid of convolutional networks and Transformers (Conformer) uses both local and global information, and a pre-trained Parallel WaveGAN vocoder synthesizes speech from the predicted mel spectrograms. With four silent speakers, it reaches an average character error rate of 10.69% under automatic speech recognition, in a cross-subject setting."],
@@ -312,7 +333,7 @@ export const PUBS = [
     t: "Classifying Herbal Medicine Origins by Temporal and Spectral Data Mining of Electronic Nose",
     a: "Li Liu*, Xianghao Zhan*, Ziheng Duan*, Yi Wu, Rumeng Wu, Xiaoqing Guan, Zhan Wang, You Wang, Guang Li",
     l: [["arXiv","https://arxiv.org/abs/2104.06640"]] },
-  { arx: "oa-intensity", y: 2021, v: "Sensors", vy: "2021", tags: ["hea"],
+  { arx: "oa-intensity", img: "taste-intensity", y: 2021, v: "Sensors", vy: "2021", tags: ["hea"],
     t: "Quantitatively Recognizing Stimuli Intensity of Primary Taste Based on Surface Electromyography",
     a: "Hengyang Wang, Dongcheng Lu, Li Liu, Han Gao, Rumeng Wu, Yueling Zhou, Qing Ai, You Wang, Guang Li",
     l: [["MDPI","https://www.mdpi.com/1424-8220/21/21/6965"]] },
@@ -320,6 +341,7 @@ export const PUBS = [
 
 export const AVATAR = "assets/img/avatar.jpg";
 export const TEASERS = {
+ "taste-intensity": { "a": "assets/img/papers/taste-intensity.jpg", "full": "assets/img/full/taste-intensity.jpg" },
  "ssi": { "a": "assets/img/papers/ssi.jpg", "full": "assets/img/full/ssi.png" },
  "lotus-01": { "a": "assets/img/design/lotus-01.jpg" },
  "lotus-02": { "a": "assets/img/design/lotus-02.jpg" },

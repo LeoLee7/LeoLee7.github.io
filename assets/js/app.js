@@ -1,5 +1,5 @@
-import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261020l";
-import { ABSTRACTS } from "./abstracts.js?v=20261020l";
+import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261020m";
+import { ABSTRACTS } from "./abstracts.js?v=20261020m";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -303,7 +303,7 @@ function renderArt() {
 /* ---------- router ---------- */
 const PAGES = ["about", "publications", "projects", "cv", "art", "news", "proj"];
 /* old project slugs that were split or renamed */
-const MOVED = { "project-clinical-ai": "project-trilight" };
+const MOVED = { "project-clinical-ai": "project-trilight", "project-biosignals": "project-taste-xuser" };
 function show() {
   if (MOVED[location.hash.slice(1)]) { location.replace("#" + MOVED[location.hash.slice(1)]); return; }
   const h = location.hash.replace("#", "");
