@@ -112,7 +112,8 @@ section + section, .block + .block { margin-top: 72px; }
 .hfilter .n, .filters .n { color: var(--muted); font-weight: 400; font-size: 13.5px; margin-left: 2px; }
 .more { margin: 18px 0 0; font-size: 15px; }
 /* highlights */
-.cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+@media (max-width: 720px) { .cards { grid-template-columns: minmax(0, 1fr); } }
 .card { display: grid; gap: 4px; align-content: start; color: var(--text); font-weight: 400; }
 .card:hover { text-decoration: none; }
 .card .frame { aspect-ratio: 4 / 3; background: var(--frame); border-radius: 12px; padding: 14px; display: grid; place-items: center; margin-bottom: 12px; transition: background .2s; }
@@ -358,7 +359,6 @@ a.proj:hover .nm { color: var(--accent); }
 @media (max-width: 900px) {
   .tl-wrap { padding: 16px 14px 12px; }
     .tl-detail em { margin-left: 0; }
-  .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .split { grid-template-columns: minmax(0, 1fr); gap: 40px; }
 }
 @media (max-width: 720px) {

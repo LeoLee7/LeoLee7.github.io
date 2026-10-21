@@ -1,6 +1,6 @@
-import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261021p";
-import { ABSTRACTS } from "./abstracts.js?v=20261021p";
-import { STORY } from "./story.js?v=20261021p";
+import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261021q";
+import { ABSTRACTS } from "./abstracts.js?v=20261021q";
+import { STORY } from "./story.js?v=20261021q";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -224,7 +224,7 @@ function homePubs() {
     <p class="more"><a href="#publications">${homeTopic === "all" ? `All ${total} publications` : `All ${total} papers on ${GNAME[homeTopic]}`}, by year or topic</a></p>`;
 }
 function renderAbout() {
-  const hl = PROJECTS.slice(0, 4).map(p => `<a class="card" href="#project-${p.slug}">
+  const hl = PROJECTS.slice(0, 3).map(p => `<a class="card" href="#project-${p.slug}">
       <span class="frame"><img src="${TEASERS[p.img].a}" alt=""></span>
       <span class="nm">${p.name}</span><span class="vn">${p.venue}</span>
       <span class="ln">${p.short}</span></a>`).join("");
