@@ -1,5 +1,5 @@
-import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261021a";
-import { ABSTRACTS } from "./abstracts.js?v=20261021a";
+import { VENUE, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS } from "./content.js?v=20261021b";
+import { ABSTRACTS } from "./abstracts.js?v=20261021b";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -168,6 +168,13 @@ const EXTRA = {
   pitchability: () => `<div class="stats side">${[["35+", "exhibitors"], ["8+", "countries"], ["6,000+", "recap readers"]].map(([n, l]) => `<div><b>${n}</b><span>${l}</span></div>`).join("")}</div>`,
 };
 const facts = list => list && list.length ? `<dl class="facts">${list.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl>` : "";
+/* a short project summary inside a news post: overview, key figure, and video */
+function aboutProject(slug) {
+  const p = PROJECTS.find(x => x.slug === slug), T = TEASERS[p.img];
+  return `<h2>About ${p.name}</h2>${(OVERVIEW[slug] || [p.line]).map(x => `<p>${x}</p>`).join("")}
+    <figure class="pfig">${lbBtn({ img: p.img, title: p.name, sub: p.venue, links: lbLinks(p.slug, p.links || []) }, "pimg", `<img src="${T.full || T.a}" alt="${esc(p.name)} overview">`)}<figcaption>${p.line}</figcaption></figure>
+    ${videoBlock(slug)}`;
+}
 function renderPost(n) {
   const imgs = n.imgs.map(([k, cap]) => `<figure>${lbBtn({ img: k, title: n.title, sub: cap, links: [] }, "pimg", `<img src="${(TEASERS[k].full || TEASERS[k].a)}" alt="${esc(cap)}">`)}<figcaption>${cap}</figcaption></figure>`).join("");
   const btns = (n.rel || []).map(r => `<a class="lbtn" href="#project-${r}">${svgI("web")}${PROJECTS.find(p => p.slug === r).name} project</a>`).join("") + n.links.map(([t, u]) => lnk(u, t)).join("");
@@ -175,7 +182,7 @@ function renderPost(n) {
     <a class="back" href="#news">All news</a>
     <div class="d-eyebrow">${n.d}</div><h1>${n.title}</h1>
     <div class="d-body">
-      <div class="d-main">${n.body.map(p => `<p>${p}</p>`).join("")}${imgs ? `<div class="pgal ${n.imgs.length > 1 ? "two" : ""}">${imgs}</div>` : ""}</div>
+      <div class="d-main">${n.body.map(p => `<p>${p}</p>`).join("")}${imgs ? `<div class="pgal ${n.imgs.length > 1 ? "two" : ""}">${imgs}</div>` : ""}${n.about ? aboutProject(n.about) : ""}</div>
       <aside class="d-side">${n.extra ? EXTRA[n.extra]() : ""}${facts(n.facts)}${btns ? `<div class="d-links">${btns}</div>` : ""}</aside>
     </div>
   </article>`;
