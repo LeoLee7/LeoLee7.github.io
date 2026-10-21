@@ -268,9 +268,9 @@ export const THEMES = [
   ["spa", "Spatial reasoning", "Teaching language and vision-language models to understand space."],
   ["acc", "Accessible spatial interaction", "Maps and tools that blind and low-vision people explore by touch, sound, and conversation."],
   ["hai", "Human-agent collaboration", "Systems and surveys on people and AI working together."],
-  ["tml", "Trustworthy ML", "Reliability estimates and robust training for machine learning models."],
-  ["hea", "Health and sensing", "Models for clinical imaging, biosignals, and electronic noses."],
   ["make", "Design and making", "Things I designed and built by hand."],
+  ["hea", "Health and sensing", "Models for clinical imaging, biosignals, and electronic noses."],
+  ["tml", "Trustworthy ML", "Reliability estimates and robust training for machine learning models."],
 ];
 
 export const GROUPS = [
