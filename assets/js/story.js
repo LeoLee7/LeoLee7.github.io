@@ -1,7 +1,8 @@
 /*
  * Illustrated stories on project pages: abstract geometric prints plus verbatim participant quotes,
  * in three layers: what the whole experience meant, how each sense works, and what changed afterwards.
- * Quotes come from the public arXiv paper (arXiv:2609.36404) and the study testimonials shared for PitchAbility 2026.
+ * Quotes come from the public arXiv paper (arXiv:2609.36404), the study testimonials shared for PitchAbility 2026,
+ * and the study session transcripts, used with Li Liu's approval.
  * Speakers stay anonymous. Shapes use classes .k (ink), .a (accent), .g (soft gray), .ln (ink line), .al (accent line);
  * each print gets its own filter for a hand-cut edge and a grainy, printed fill.
  */
@@ -83,21 +84,37 @@ const NAME = print(9, `
   <path class="ln" stroke-width="4" d="M146 58 v34 M160 48 v54 M174 62 v26 M188 54 v42"/>
   <circle class="k" cx="96" cy="75" r="7"/>`);
 
+/* planning ahead: a day laid out before leaving */
+const PLAN = print(10, `
+  <rect class="g" x="40" y="30" width="160" height="18"/><rect class="g" x="40" y="58" width="120" height="18"/>
+  <rect class="a" x="40" y="86" width="140" height="18"/><rect class="g" x="40" y="114" width="90" height="18"/>
+  <circle class="k" cx="206" cy="95" r="9"/>`);
+
 export const STORY = {
   touchingspace: {
     pull: "I didn't know how to read a map, but now I can.",
     pullNote: "A participant, whose words became the title of our paper.",
     pullArt: MAP,
-    /* the whole experience, in participants' words; the first is set large */
-    said: [
+    /* the whole experience, in participants' words; the two leads are set large */
+    lead: [
+      { q: "It'll help many people, maybe even millions.", note: "On carrying what the map taught them into real travel." },
       { q: "I think of anything I've seen, this has the best possibility of doing that.", note: "On conveying how to approach a hard-to-find entrance." },
-      { q: "I started getting a picture in my mind of where everything was." },
-      { q: "I like that it's dynamic — not a static map where you constantly have to print something out... I could see this being something big." },
-      { q: "This is the first time I've used something like this. So if it's not hard for me to get it, it's going to be pretty good for somebody else." },
-      { q: "Se lo recomendaría como un excelente aparato para la vida diaria de uno que no mira.", tr: "I would recommend it as an excellent device for the daily life of someone who does not see." },
-      { q: "I could use this all the time when I'm planning my trip, especially when I know that I'm going to go someplace I've never been before." },
-      { q: "When I first came, one of the volunteers walked me to the bus stop for the first time. This map would have been very helpful for me." },
     ],
+    said: [
+      { q: "Really nice work. It's going to help a lot of people." },
+      { q: "I started getting a picture in my mind of where everything was." },
+      { q: "It made me feel confident." },
+      { q: "I like that it's dynamic — not a static map where you constantly have to print something out... I could see this being something big." },
+      { q: "Se lo recomendaría como un excelente aparato para la vida diaria de uno que no mira.", tr: "I would recommend it as an excellent device for the daily life of someone who does not see." },
+      { q: "This is the first time I've used something like this. So if it's not hard for me to get it, it's going to be pretty good for somebody else." },
+      { q: "When I first came, one of the volunteers walked me to the bus stop for the first time. This map would have been very helpful for me." },
+      { q: "Honestly, glad that young students are thinking about how to change life for people with disabilities." },
+    ],
+    /* one participant's before and after, set as a feature */
+    feature: { art: ROUTE, title: "Now giving directions to someone sighted",
+      text: "One participant answers the phone at the front desk of the center their map was built around. Callers ask how to get there.",
+      before: "When we're working at reception and answering the phone, we don't know how to answer any of those questions. The only thing we know is our address... That's it. Period. Nothing else.",
+      after: "Someone calls and says \"I'm coming from Santa Cruz.\" ... You're going to pass the Crepe Place, you're going to pass the parking lot, and you're going to turn right... See, now I can give that instruction to someone sighted." },
     /* one surface, four channels */
     senses: [
       { art: HUM, label: "Hum", line: "grows as the finger nears a place", quote: "It gets stronger and stronger as soon as you get near. It's like the radar on a car." },
@@ -116,9 +133,9 @@ export const STORY = {
       { art: UNASKED, title: "Places nobody asked for",
         text: "Seven participants found a place they had not asked about, and four changed a trip they already make. One learned that a pharmacy they reached by going home first was close to the center they visit.",
         quote: "And no one tells you. It could be that way forever." },
-      { art: ROUTE, title: "Directions for a sighted friend",
-        text: "After exploring, a participant could give directions past places the map had named, some of them a few doors from where they work.",
-        quote: "Pass yoga — which I never knew there was one — the Bagelry restaurant... I can tell someone sighted how to get somewhere now." },
+      { art: PLAN, title: "Planning before the trip",
+        text: "Participants placed the reading before travel: lunch near where they are going, a bus stop to find, a place to go if a plan fails.",
+        quote: "I could use this all the time when I'm planning my trip, especially when I know that I'm going to go someplace I've never been before." },
     ],
     close: { q: "Me sentí súper contento y libre de poder yo hacer las cosas yo solo.",
       tr: "I felt super happy and free to be able to do things by myself.",

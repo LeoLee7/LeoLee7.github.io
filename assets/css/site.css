@@ -396,10 +396,19 @@ a.proj:hover .nm { color: var(--accent); }
 .st-hero blockquote { margin: 0; }
 .st-hero p { margin: 0; font-size: 31px; line-height: 1.2; font-weight: 650; letter-spacing: -.015em; color: var(--ink); }
 .st-h { margin: 40px 0 14px; font-size: 17px; }
-.st-said { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.st-said { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: 12px; }
+.st-said li { break-inside: avoid; margin-bottom: 12px; }
 .st-said li { padding: 16px 18px; background: var(--frame); border-radius: 12px; color: var(--ink); line-height: 1.45; }
-.st-said li.lead { grid-column: 1 / -1; padding: 22px 24px; background: none; border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 4px 12px 12px 4px; font-size: 22px; line-height: 1.3; font-weight: 600; letter-spacing: -.01em; }
-.st-said li.lead cite { font-weight: 400; letter-spacing: 0; }
+.st-lead { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-bottom: 12px; }
+.st-lead blockquote { margin: 0; padding: 22px 24px; border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 4px 12px 12px 4px; }
+.st-lead p { margin: 0; font-size: 23px; line-height: 1.28; font-weight: 650; letter-spacing: -.012em; color: var(--ink); }
+.st-feat { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 40px; padding: 26px; border: 1px solid var(--line); border-radius: 14px; }
+.st-feat h3 { margin: 0 0 6px; font-size: 21px; letter-spacing: -.01em; }
+.st-feat > div > p { margin: 0 0 14px; color: var(--muted); }
+.st-feat dl { margin: 0; display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 12px 14px; }
+.st-feat dt { font-size: 13.5px; font-weight: 600; color: var(--muted); padding-top: 2px; }
+.st-feat dd { margin: 0; font-style: italic; color: var(--muted); line-height: 1.5; }
+.st-feat dd.after { color: var(--ink); font-style: normal; font-weight: 600; font-size: 17px; line-height: 1.45; }
 .st-senses { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
 .st-senses li { display: flex; flex-direction: column; gap: 3px; font-size: 14px; line-height: 1.4; }
 .st-senses .sart { margin-bottom: 8px; }
@@ -420,7 +429,8 @@ a.proj:hover .nm { color: var(--accent); }
 .st-close .tr { font-size: 17px; }
 @media (max-width: 900px) { .st-senses { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 720px) {
-  .st-hero, .st-said, .story li, .story li:nth-child(even) { grid-template-columns: minmax(0, 1fr); }
+  .st-said { columns: 1; }
+  .st-hero, .st-lead, .st-feat, .story li, .story li:nth-child(even) { grid-template-columns: minmax(0, 1fr); }
   .story li:nth-child(even) .sart { order: 0; }
   .st-hero p { font-size: 24px; } .st-said li.lead { font-size: 19px; } .story .sart { max-width: 320px; }
 }
