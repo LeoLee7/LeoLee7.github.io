@@ -1,6 +1,6 @@
-import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HQ, KEY } from "./content.js?v=20261022i";
-import { ABSTRACTS } from "./abstracts.js?v=20261022i";
-import { STORY } from "./story.js?v=20261022i";
+import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HQ, KEY } from "./content.js?v=20261022j";
+import { ABSTRACTS } from "./abstracts.js?v=20261022j";
+import { STORY } from "./story.js?v=20261022j";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -302,8 +302,8 @@ function renderAbout() {
         <h1>Li Liu</h1>
         <div class="role">Ph.D. Candidate, Computer Science and Engineering, UC Santa Cruz</div>
         <p>I am fortunate to be advised by <a href="https://people.ucsc.edu/~lgilpin/">Prof. Leilani H. Gilpin</a>. I work on <b>multimodal foundation models and agents</b>, with a focus on <b>spatial reasoning</b>.</p>
-        <p>I make the space a model perceives and reasons about explicit, so it can be measured, trained, and checked by people. I teach language and vision-language models to build spatial layouts (<a href="https://arxiv.org/abs/2604.14641">COLM 2026</a>) and to ask for a better view when the image is not enough (<a href="https://arxiv.org/abs/2411.00394">NeurIPS 2024</a>), and I build agents that hand this understanding to people, such as <a href="https://arxiv.org/abs/2609.36404">TouchingSpace</a> for blind and low-vision map readers.</p>
-        <p>A language model and a blind map reader often meet space the same way, through words. I treat that shared constraint as a bridge: what helps one represent space can help the other.</p>
+        <p>My research makes spatial understanding explicit, so it can be measured, trained, and checked. I study how models build layouts from language (<a href="https://arxiv.org/abs/2604.14641">COLM 2026</a>) and recognize when an image is not enough to answer (<a href="https://arxiv.org/abs/2411.00394">NeurIPS 2024</a>), and I build agents that carry this understanding to people, such as <a href="https://arxiv.org/abs/2609.36404">TouchingSpace</a> for blind and low-vision map readers.</p>
+        <p>Language models and blind map readers often meet space the same way, through words. Methods that help one represent space can help the other.</p>
         <div class="job"><svg class="smile" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 14.2c1 1.4 2.4 2.1 4 2.1s3-.7 4-2.1"/><circle cx="9" cy="9.6" r="1.1" class="eye"/><circle cx="15" cy="9.6" r="1.1" class="eye"/></svg><span>I am on the 2027 job market for Research Scientist, Applied Scientist, and ML Engineer roles. Happy to chat!</span></div>
       </div>
       <aside class="me">
