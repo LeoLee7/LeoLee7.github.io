@@ -39,7 +39,7 @@ export const HQ = {
 export const HB = {
   "right-this-way": ["VLMs answer even when the image cannot support it.", "Trained them to tell the user how to move the camera for a better view."],
   ascii: ["LLMs read spatial layouts far better than they build them.", "Learning to build layouts improves their spatial reasoning from text alone."],
-  touchingspace: ["An accessible map agent app on a laptop's built-in trackpad, with a native speech model you can talk to.", "Grounds its answers in the map under the finger."],
+  touchingspace: ["An accessible map agent app on a laptop's built-in trackpad, with an assistive companion that reads the map and the finger.", "Runs a real-time sensing loop: it tracks the finger, grounds each spoken answer in the map around it, and responds through sound and vibration."],
   "skills-on-board": ["Agent skills as typed data that people can trace and edit.", "Edit a step once, and the agent follows."],
 };
 /* a related development elsewhere, shown after Overview on a project page */
