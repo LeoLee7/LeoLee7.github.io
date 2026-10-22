@@ -1,6 +1,6 @@
-import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HB, KEY, ECHO, HEADLINE } from "./content.js?v=20261023f";
-import { ABSTRACTS } from "./abstracts.js?v=20261023f";
-import { STORY } from "./story.js?v=20261023f";
+import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HB, KEY, ECHO, HEADLINE } from "./content.js?v=20261023g";
+import { ABSTRACTS } from "./abstracts.js?v=20261023g";
+import { STORY } from "./story.js?v=20261023g";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -154,10 +154,10 @@ function storyBlock(s) {
     <div class="st-hero"><blockquote><p>&ldquo;${s.pull}&rdquo;</p><cite>${s.pullNote}</cite></blockquote><div class="sart">${s.pullArt}</div></div>
     <h3 class="st-h">What it could mean</h3>
     <p class="st-sub">${s.saidNote}</p>
-    <div class="st-flow">
+    <div class="st-flow" role="region" aria-label="Participant quotes, scrolling">
       <div class="st-track">${[0, 1].map(k => s.said.map(x => `<figure${k ? ' aria-hidden="true"' : ""}><p>${mark(x.q)}</p>${x.tr ? `<span class="tr">${x.tr}</span>` : ""}${x.note ? `<figcaption>${x.note}</figcaption>` : ""}</figure>`).join("")).join("")}</div>
     </div>
-    <div class="st-ctl"><button class="st-btn" data-step="-1" aria-label="Previous quote"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><button class="st-btn" data-step="1" aria-label="Next quote"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button><button class="st-all" data-flow aria-expanded="false">Show all ${n}</button></div>
+    <div class="st-ctl"><button class="st-btn" data-step="-1" aria-label="Previous quote"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><button class="st-btn" data-step="1" aria-label="Next quote"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button><button class="st-btn" data-pause aria-pressed="false" aria-label="Pause scrolling"><svg viewBox="0 0 24 24"><path d="M9 6v12M15 6v12"/></svg></button><button class="st-all" data-flow aria-expanded="false">Show all ${n}</button></div>
     <h3 class="st-h">${s.sensesTitle}</h3>
     <ul class="st-senses">${s.senses.map(x => `<li><div class="sart">${x.art}</div><b>${x.label}</b><span>${x.line}</span><q>${x.quote}</q></li>`).join("")}</ul>
     <h3 class="st-h">What changed</h3>
@@ -186,6 +186,10 @@ function flowStep(el, d) {
 }
 document.addEventListener("click", e => {
   const s = e.target.closest("[data-step]"); if (s) return flowStep(s.closest(".st").querySelector(".st-flow"), +s.dataset.step);
+  const pz = e.target.closest("[data-pause]");
+  if (pz) { const f = pz.closest(".st").querySelector(".st-flow"), on = !f.dataset.paused; if (on) f.dataset.paused = 1; else delete f.dataset.paused;
+    pz.setAttribute("aria-pressed", on); pz.setAttribute("aria-label", on ? "Resume scrolling" : "Pause scrolling");
+    pz.innerHTML = on ? '<svg viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></svg>' : '<svg viewBox="0 0 24 24"><path d="M9 6v12M15 6v12"/></svg>'; return; }
   const b = e.target.closest("[data-flow]"); if (!b) return;
   const f = b.closest(".st").querySelector(".st-flow"), open = f.classList.toggle("all");
   b.closest(".st-ctl").classList.toggle("open", open);
@@ -196,7 +200,7 @@ let flowT = performance.now();
 (function flowTick(now) {
   const dt = Math.min(now - flowT, 100) / 1000; flowT = now;
   if (!flowStill) document.querySelectorAll(".st-flow:not(.all)").forEach(el => {
-    if (!el.offsetParent || el.matches(":hover") || now < flowState(el).until) return;
+    if (!el.offsetParent || el.matches(":hover") || el.closest(".st").matches(":focus-within") || el.dataset.paused || now < flowState(el).until) return;
     flowSet(el, flowState(el).x + FLOW_SPEED * dt, false);
   });
   requestAnimationFrame(flowTick);
@@ -214,13 +218,13 @@ function renderProject(p) {
     ${VIDEOS[p.slug] ? `<div class="pp-video">${videoBlock(p.slug, 1)}</div>` : T ? lbBtn({ img: p.img, title: p.name, sub: p.venue, links: lbLinks(p.slug, p.links || [], 1) }, "pp-hero", `<img src="${T.full || T.a}" alt="${p.name} figure">`) : `<div class="pp-hero word"><span>${p.name}</span></div>`}
     <div class="d-body">
       <div class="d-main">${KEY[p.slug] ? `<p class="key"><b>Key finding.</b> ${KEY[p.slug]}</p>` : ""}<h2>Overview</h2>${(OVERVIEW[p.slug] || OVERVIEW_EARLY[p.slug] || [p.line]).map(x => `<p>${x}</p>`).join("")}
-        ${ECHO[p.slug] ? `<aside class="echo"><h3>${ECHO[p.slug].title}</h3><p>${ECHO[p.slug].text}</p><p class="echo-l">${ECHO[p.slug].links.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join("")}</p></aside>` : ""}
+        ${ECHO[p.slug] ? `<div class="echo" role="note"><h3>${ECHO[p.slug].title}</h3><p>${ECHO[p.slug].text}</p><p class="echo-l">${ECHO[p.slug].links.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join("")}</p></div>` : ""}
         ${TECH[p.slug] ? `<h2>How it works</h2><dl class="tech">${TECH[p.slug].map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl>` : ""}
         ${(VIDEOS[p.slug] && T && !p.videoHero ? [[p.img, ""], ...(p.figs || [])] : p.figs || []).map(([k, cap]) => `<figure class="pfig">${lbBtn({ img: k, title: p.name, sub: cap, links: lbLinks(p.slug, p.links || [], 1) }, "pimg", `<img src="${TEASERS[k].full || TEASERS[k].a}" alt="${esc(cap || p.name)}">`)}${cap ? `<figcaption>${cap}</figcaption>` : ""}</figure>`).join("")}
         ${pubs.length ? `<h2>${pubs.length > 1 ? "Papers" : "Paper"}</h2>${pubs.map(x => pubHTML(x, "pp")).join("")}` : ""}
         ${STORY[p.slug] ? storyBlock(STORY[p.slug]) : ""}</div>
-      <aside class="d-side">${facts([[pubs.length ? "Venue" : "Context", p.venue], ...(topics ? [["Topics", topics]] : [])])}
-        ${updates.length ? `<h3>Updates</h3><ul class="upd">${updates.map(n => `<li><time>${n.d}</time>${n.to === p.slug || n.inline ? (n.links?.[0] ? `<a href="${n.links[0][1]}" target="_blank" rel="noopener">${n.title}</a>` : `<span>${n.title}</span>`) : `<a href="#news-${n.slug}">${n.title}</a>`}</li>`).join("")}</ul>` : ""}</aside>
+      <div class="d-side">${facts([[pubs.length ? "Venue" : "Context", p.venue], ...(topics ? [["Topics", topics]] : [])])}
+        ${updates.length ? `<h3>Updates</h3><ul class="upd">${updates.map(n => `<li><time>${n.d}</time>${n.to === p.slug || n.inline ? (n.links?.[0] ? `<a href="${n.links[0][1]}" target="_blank" rel="noopener">${n.title}</a>` : `<span>${n.title}</span>`) : `<a href="#news-${n.slug}">${n.title}</a>`}</li>`).join("")}</ul>` : ""}</div>
     </div>
   </article>`;
 }
@@ -246,7 +250,7 @@ function renderPost(n) {
     ${vid ? `<div class="pp-video">${videoBlock(vid, 1)}</div>` : ""}
     <div class="d-body">
       <div class="d-main">${n.body.map(p => `<p>${p}</p>`).join("")}${imgs ? `<div class="pgal ${n.imgs.length > 1 ? "two" : ""}">${imgs}</div>` : ""}${n.about ? aboutProject(n.about, !!vid) : ""}${n.about && STORY[n.about] ? storyBlock(STORY[n.about]) : ""}</div>
-      <aside class="d-side">${n.extra ? EXTRA[n.extra]() : ""}${facts(n.facts)}${btns ? `<div class="d-links">${btns}</div>` : ""}</aside>
+      <div class="d-side">${n.extra ? EXTRA[n.extra]() : ""}${facts(n.facts)}${btns ? `<div class="d-links">${btns}</div>` : ""}</div>
     </div>
   </article>`;
 }
@@ -294,7 +298,7 @@ function renderAbout() {
       <div class="nowline" style="left:${X(NOW)}"><span>Now</span></div>
       ${scale}
     </div></div>
-    <div class="tl-foot" id="tl-foot">${tlDefault()}</div>
+    <div class="tl-foot" id="tl-foot" aria-live="polite">${tlDefault()}</div>
     </div>
   </section>`;
   document.getElementById("p-about").innerHTML = `
@@ -310,7 +314,7 @@ function renderAbout() {
         </ul>
         <div class="job"><svg class="smile" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 14.2c1 1.4 2.4 2.1 4 2.1s3-.7 4-2.1"/><circle cx="9" cy="9.6" r="1.1" class="eye"/><circle cx="15" cy="9.6" r="1.1" class="eye"/></svg><span>I am on the 2027 job market for Research Scientist, Applied Scientist, and ML Engineer roles. Happy to chat!</span></div>
       </div>
-      <aside class="me">
+      <div class="me">
         <img class="portrait" src="${AVATAR}" alt="Portrait of Li Liu">
         <ul class="contact">
           <li>${ICON.mail}<span class="mail">lliu112@ucsc.edu</span></li>
@@ -319,7 +323,7 @@ function renderAbout() {
           <li>${ICON.linkedin}${ext("https://www.linkedin.com/in/li-liu-a6a92b259/", "LinkedIn")}</li>
           <li>${ICON.cv}<a href="files/Li_Liu_resume.pdf" target="_blank" rel="noopener">CV (PDF)</a></li>
         </ul>
-      </aside>
+      </div>
     </section>
     <div class="tl-sec">${timeline}</div>
     <section>
@@ -405,7 +409,13 @@ function show() {
   document.querySelectorAll(".top nav a").forEach(a => a.classList.toggle("on", a.dataset.page === (page === "news" ? "about" : page === "proj" ? "projects" : page)));
   window.scrollTo(0, 0);
   markSection();
+  const pg = document.getElementById("p-" + page), h1 = pg.querySelector("h1");
+  document.title = page === "about" ? BASE_TITLE : `${h1 ? h1.textContent : page} | Li Liu`;
+  if (routed && h1) { h1.tabIndex = -1; h1.focus({ preventScroll: true }); }
+  routed = true;
 }
+const BASE_TITLE = document.title;
+let routed = false;
 renderAbout(); renderPubs(); renderProjects(); renderCV(); renderArt();
 window.addEventListener("hashchange", show);
 function tlShow(target) {

@@ -15,6 +15,8 @@ assets/js/abstracts.js  paper abstracts used by the Abstract buttons
 assets/js/app.js        rendering and hash routing (#publications, #project-<slug>, #news-<slug>)
 assets/img/             images (papers, posters, news, logos, art)
 files/                  downloadable files (CV)
+tools/static-meta.mjs   regenerates JSON-LD, the noscript summary, and llms.txt from content.js
+llms.txt, robots.txt, sitemap.xml   machine-readable entry points for crawlers and AI agents
 ```
 
 ## Common edits
@@ -26,6 +28,7 @@ files/                  downloadable files (CV)
   Put the thumbnail in `assets/img/papers/` and register it in `TEASERS`.
 - **Add a project page**: add an entry with a `slug` to `PROJECTS` and its paragraphs to `OVERVIEW`.
 - **Update the CV**: replace `files/Li_Liu_resume.pdf`.
+- **After any content edit**: run `node tools/static-meta.mjs`. It rewrites the JSON-LD and the `<noscript>` summary in `index.html` and regenerates `llms.txt`, the parts that search engines and AI agents read without running JavaScript.
 
 ## Local preview
 
