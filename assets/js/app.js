@@ -1,6 +1,6 @@
-import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HQ, HB, KEY, ECHO } from "./content.js?v=20261022r";
-import { ABSTRACTS } from "./abstracts.js?v=20261022r";
-import { STORY } from "./story.js?v=20261022r";
+import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HQ, HB, KEY, ECHO } from "./content.js?v=20261022s";
+import { ABSTRACTS } from "./abstracts.js?v=20261022s";
+import { STORY } from "./story.js?v=20261022s";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -216,7 +216,7 @@ function renderProject(p) {
       <div class="d-main">${KEY[p.slug] ? `<p class="key"><b>Key finding.</b> ${KEY[p.slug]}</p>` : ""}<h2>Overview</h2>${(OVERVIEW[p.slug] || OVERVIEW_EARLY[p.slug] || [p.line]).map(x => `<p>${x}</p>`).join("")}
         ${ECHO[p.slug] ? `<aside class="echo"><h3>${ECHO[p.slug].title}</h3><p>${ECHO[p.slug].text}</p><p class="echo-l">${ECHO[p.slug].links.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join("")}</p></aside>` : ""}
         ${TECH[p.slug] ? `<h2>How it works</h2><dl class="tech">${TECH[p.slug].map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl>` : ""}
-        ${(VIDEOS[p.slug] && T && !p.videoHero ? [[p.img, p.line], ...(p.figs || [])] : p.figs || []).map(([k, cap]) => `<figure class="pfig">${lbBtn({ img: k, title: p.name, sub: cap, links: lbLinks(p.slug, p.links || [], 1) }, "pimg", `<img src="${TEASERS[k].full || TEASERS[k].a}" alt="${esc(cap)}">`)}<figcaption>${cap}</figcaption></figure>`).join("")}
+        ${(VIDEOS[p.slug] && T && !p.videoHero ? [[p.img, ""], ...(p.figs || [])] : p.figs || []).map(([k, cap]) => `<figure class="pfig">${lbBtn({ img: k, title: p.name, sub: cap, links: lbLinks(p.slug, p.links || [], 1) }, "pimg", `<img src="${TEASERS[k].full || TEASERS[k].a}" alt="${esc(cap || p.name)}">`)}${cap ? `<figcaption>${cap}</figcaption>` : ""}</figure>`).join("")}
         ${pubs.length ? `<h2>${pubs.length > 1 ? "Papers" : "Paper"}</h2>${pubs.map(x => pubHTML(x, "pp")).join("")}` : ""}
         ${STORY[p.slug] ? storyBlock(STORY[p.slug]) : ""}</div>
       <aside class="d-side">${facts([[pubs.length ? "Venue" : "Context", p.venue], ...(topics ? [["Topics", topics]] : [])])}
@@ -306,7 +306,7 @@ function renderAbout() {
         <ul class="bio-pts">
           <li><b>Perceive.</b> Vision-language models answer even when an image cannot support an answer; I trained them to say how to move the camera instead (<a href="https://arxiv.org/abs/2411.00394">NeurIPS 2024</a>).</li>
           <li><b>Represent.</b> Language models read spatial layouts far better than they build them; learning to build layouts improves their spatial reasoning (<a href="https://arxiv.org/abs/2604.14641">COLM 2026</a>).</li>
-          <li><b>Act.</b> I built a real-time voice-and-touch agent on Gemini native audio that grounds its answers in a map, tested with blind and low-vision users (<a href="https://arxiv.org/abs/2609.36404">TouchingSpace</a>).</li>
+          <li><b>Act.</b> I built from zero a real-time voice-and-touch agent on Gemini native audio that grounds its answers in a map, and tested it in studies with 14 blind and low-vision adults (<a href="https://arxiv.org/abs/2609.36404">TouchingSpace</a>).</li>
         </ul>
         <div class="job"><svg class="smile" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 14.2c1 1.4 2.4 2.1 4 2.1s3-.7 4-2.1"/><circle cx="9" cy="9.6" r="1.1" class="eye"/><circle cx="15" cy="9.6" r="1.1" class="eye"/></svg><span>I am on the 2027 job market for Research Scientist, Applied Scientist, and ML Engineer roles. Happy to chat!</span></div>
       </div>
