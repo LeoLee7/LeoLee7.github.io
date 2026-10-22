@@ -188,7 +188,7 @@ export const STORY = {
       { art: PLAN, title: "Planning before the trip",
         text: "Participants placed the reading before travel: lunch near where they are going, a bus stop to find, a place to go if a plan fails.",
         quotes: ["This exploration is done before you leave your house.", "I could use this all the time when I'm planning my trip, especially when I know that I'm going to go someplace I've never been before."] },
-      { art: BEYOND, title: "Where other tools stop",
+      { art: BEYOND, title: "What's new in our app",
         text: "The tools participants already use each cover one piece. Camera assistants describe what is in front of the lens, navigation apps give the next turn, and touchscreen maps rarely say what lies where. Few let a person feel the layout of a place and ask about it.",
         quotes: ["Most of the time, if you're using [a camera assistant] and you're standing somewhere, you're only going to see what's immediately in front of you... It may tell me there are other buildings around you, but it won't tell you the cardinal directions of where those buildings are.",
           "With [another map app] I tried to explore the place but it doesn't work well... it just zooms the area but doesn't say the names of the places or the statue. This is the first time I know there is a statue for Nikola Tesla.",
