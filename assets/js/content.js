@@ -85,7 +85,7 @@ export const PROJECTS = [
     line: "A voice-and-touch map agent on Gemini native audio. People explore a place by hand on a laptop trackpad and ask open questions; the agent reaches 83% accuracy on 393 spoken spatial questions. Built from zero with a blind co-designer and studied with 14 blind and low-vision adults.",
     links: [["arXiv", "https://arxiv.org/abs/2609.36404"], ["Video", "https://youtu.be/SRBqu2IxBNY"]] },
   { slug: "tactile-annotation", theme: "acc", pub: "From Anonymous", name: "Tactile Map Annotation", img: "named-places", figs: [["2608.23820", "Printed tactile maps (A, B), the annotation editor (C), and the exported legend, map content, and annotation files (D to F)."]], venue: "ASSETS 2026 Demo", short: "Braille and place labels for 3D-printed tactile maps.",
-    line: "A web tool that lets a sighted helper add Braille and place labels to a generated 3D-printed tactile map, so each footprint can be identified by touch.",
+    line: "A web tool that lets a sighted helper add Braille and place labels to a generated 3D-printed tactile map, so each footprint can be identified by touch. Ten blind and low-vision readers compared unlabeled and annotated prints in formative sessions.",
     links: [["arXiv", "https://arxiv.org/abs/2608.23820"], ["Demo", "https://leolee7.github.io/Annotate_Braille/"], ["Video", "https://youtu.be/4KqVa0DeqdM"]] },
   { slug: "hai-survey", theme: "hai", pub: "A Survey on Human-AI", name: "Human-AI Collaboration Survey", img: "tist", figs: [["tist-lifecycle", "The lifecycle of human-AI collaboration with large foundation models, as organized in the survey."]], venue: "ACM TIST 2026",
     short: "How people and large foundation models work together, from model building to deployment.",
@@ -228,7 +228,8 @@ export const OVERVIEW = {
     "We release a human-labeled benchmark for this directional guidance task and a framework that generates synthetic training data by simulating \u201cwhere to know\u201d scenarios. Fine-tuning on this data significantly improves mainstream VLMs."],
   "tactile-annotation": [
     "On a 3D-printed tactile map, a building felt under the finger is an anonymous shape. Touch alone cannot tell which footprint is which, and a spoken description cannot reliably tie a shape to a specific place.",
-    "We built a web-based tool that lets a sighted helper add Braille and place labels to a generated map model. Labeling happens after geometry generation, so the person doing it can account for the reader and the local Braille standard."],
+    "We built a web-based tool that lets a sighted helper add Braille and place labels to a generated map model. Labeling happens after geometry generation, so the person doing it can account for the reader and the local Braille standard.",
+    "We demonstrated it on five printed maps of different place types, from a downtown core to a college campus and a small dining mall. In formative sessions at a blind services center, ten blind and low-vision readers, one of them a Braille instructor, compared an unlabeled print with an annotated print of the same area. Four of the ten read Braille fluently, so the same per-label record is built to also drive an audio readout or a non-Braille code."],
   "pattern-insights": [
     "Discovering patterns in unfamiliar text is circular: extraction needs a taxonomy, but the taxonomy needs the patterns, and there are no ground-truth labels to resolve it. Pattern Insights Explorer alternates between a wide-lens view of where candidate patterns cluster and a sharp-focus check of whether each pattern is extracted correctly.",
     "I built it during my 2025 Applied Scientist internship at Amazon with Omar Alonso and Giorgio Ballardin. The framework grows a validated taxonomy over unlabeled conversation logs from a few seed keywords, with every pattern traceable to its source, and was demonstrated on 5,000 customer-service conversations."],
@@ -541,4 +542,16 @@ export const LOGOS = {
  "nissan": "assets/img/logos/nissan.png",
  "ucsc": "assets/img/logos/ucsc.png",
  "zju": "assets/img/logos/zju.png"
+};
+
+/* photo mosaics on project pages: one portrait on the left, two landscapes stacked on the right */
+export const PHOTOS = {
+  "tactile-annotation": {
+    items: [
+      ["assets/img/photos/tactile-campus.jpg", "A 3D-printed tactile map of a campus and its surroundings, held up outdoors."],
+      ["assets/img/photos/tactile-reading.jpg", "Two hands explore a printed tactile map beside a refreshable Braille display."],
+      ["assets/img/photos/tactile-tiles.jpg", "Six printed map tiles: the top row without labels, the bottom row with Braille labels on the buildings."],
+    ],
+    cap: "Printed maps: a campus map; reading a map by hand next to a refreshable Braille display; three areas printed without labels (top row) and with Braille labels (bottom row).",
+  },
 };
