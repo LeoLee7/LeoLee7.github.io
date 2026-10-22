@@ -37,10 +37,10 @@ export const HQ = {
   "skills-on-board": "Inspectable agents",
 };
 export const HB = {
-  "right-this-way": ["VLMs answer even when the image cannot support it.", "Trained them to ask for a better view instead: up to 16 points higher, ahead of GPT-4o."],
-  ascii: ["LLMs read spatial layouts far better than they build them.", "Learning to build layouts more than doubles layout accuracy and lifts spatial reasoning."],
-  touchingspace: ["A voice-and-touch map agent on Gemini native audio.", "83% correct on 393 spoken spatial questions; studied with 14 blind and low-vision adults."],
-  "skills-on-board": ["Agent skills as typed data that people trace and edit.", "Half the output tokens on SkillLearnBench, at equal or better task performance."],
+  "right-this-way": ["VLMs answer even when the image cannot support it.", "Trained them to tell the user how to move the camera for a better view."],
+  ascii: ["LLMs read spatial layouts far better than they build them.", "Learning to build layouts improves their spatial reasoning from text alone."],
+  touchingspace: ["Built from zero: an accessible map on a laptop's built-in trackpad, voiced by a native speech model.", "Grounds its answers in the map under the finger; studied with 14 blind and low-vision adults."],
+  "skills-on-board": ["Agent skills as typed data that people can trace and edit.", "Edit a step once, and the agent follows."],
 };
 /* a related development elsewhere, shown after Overview on a project page */
 export const ECHO = {

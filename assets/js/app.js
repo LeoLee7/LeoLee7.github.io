@@ -1,6 +1,6 @@
-import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HQ, HB, KEY, ECHO } from "./content.js?v=20261022n";
-import { ABSTRACTS } from "./abstracts.js?v=20261022n";
-import { STORY } from "./story.js?v=20261022n";
+import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HQ, HB, KEY, ECHO } from "./content.js?v=20261022o";
+import { ABSTRACTS } from "./abstracts.js?v=20261022o";
+import { STORY } from "./story.js?v=20261022o";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -302,8 +302,12 @@ function renderAbout() {
       <div>
         <h1>Li Liu</h1>
         <div class="role">Ph.D. Candidate, Computer Science and Engineering, UC Santa Cruz</div>
-        <p>I am fortunate to be advised by <a href="https://people.ucsc.edu/~lgilpin/">Prof. Leilani H. Gilpin</a>. I work on <b>multimodal foundation models and agents</b>.</p>
-        <p>I study spatial intelligence in multimodal models: how they perceive space, build an internal map of it, and act when what they see is not enough. Vision-language models answer even when an image cannot support an answer; I trained them to say how to move the camera instead (<a href="https://arxiv.org/abs/2411.00394">NeurIPS 2024</a>). Language models read spatial layouts far better than they build them, and learning to build layouts improves their spatial reasoning (<a href="https://arxiv.org/abs/2604.14641">COLM 2026</a>). I also built a real-time voice-and-touch agent on Gemini native audio that grounds its answers in a map, tested with blind and low-vision users (<a href="https://arxiv.org/abs/2609.36404">TouchingSpace</a>).</p>
+        <p>I am fortunate to be advised by <a href="https://people.ucsc.edu/~lgilpin/">Prof. Leilani H. Gilpin</a>. I study spatial intelligence in multimodal models and the agents built on them: how models perceive space, build an internal map of it, and act when what they see is not enough.</p>
+        <ul class="bio-pts">
+          <li><b>Perceive.</b> Vision-language models answer even when an image cannot support an answer; I trained them to say how to move the camera instead (<a href="https://arxiv.org/abs/2411.00394">NeurIPS 2024</a>).</li>
+          <li><b>Represent.</b> Language models read spatial layouts far better than they build them; learning to build layouts improves their spatial reasoning (<a href="https://arxiv.org/abs/2604.14641">COLM 2026</a>).</li>
+          <li><b>Act.</b> I built a real-time voice-and-touch agent on Gemini native audio that grounds its answers in a map, tested with blind and low-vision users (<a href="https://arxiv.org/abs/2609.36404">TouchingSpace</a>).</li>
+        </ul>
         <div class="job"><svg class="smile" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 14.2c1 1.4 2.4 2.1 4 2.1s3-.7 4-2.1"/><circle cx="9" cy="9.6" r="1.1" class="eye"/><circle cx="15" cy="9.6" r="1.1" class="eye"/></svg><span>I am on the 2027 job market for Research Scientist, Applied Scientist, and ML Engineer roles. Happy to chat!</span></div>
       </div>
       <aside class="me">

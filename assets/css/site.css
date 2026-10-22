@@ -472,3 +472,9 @@ a.proj:hover .nm { color: var(--accent); }
 .card .hb { margin: 6px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; }
 .card .hb li { position: relative; padding-left: 14px; font-size: 15px; line-height: 1.5; }
 .card .hb li::before { content: ""; position: absolute; left: 0; top: .62em; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+
+/* bio: one sentence of prose, then three short points */
+.bio-pts { margin: 4px 0 18px; padding: 0; list-style: none; display: grid; gap: 8px; }
+.bio-pts li { position: relative; padding-left: 16px; }
+.bio-pts li::before { content: ""; position: absolute; left: 0; top: .7em; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+.bio-pts b { color: var(--ink); }
