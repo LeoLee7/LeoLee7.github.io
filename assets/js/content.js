@@ -29,12 +29,18 @@ export const SCHOLAR = "https://scholar.google.com/citations?user=hLHzhqkAAAAJ";
 
 /* homepage research highlights, in order */
 export const HIGHLIGHTS = ["right-this-way", "ascii", "touchingspace", "skills-on-board"];
-/* the question each highlight answers, shown above its name */
+/* homepage highlight: the capability it addresses, and two short points */
 export const HQ = {
-  "right-this-way": "Does a model know when it cannot see enough?",
-  ascii: "Can a model build the space it reads about?",
-  touchingspace: "Can a real-time agent ground what it says in space?",
-  "skills-on-board": "Can people check what an agent knows?",
+  "right-this-way": "Active perception",
+  ascii: "Spatial representation",
+  touchingspace: "Grounded real-time agents",
+  "skills-on-board": "Inspectable agents",
+};
+export const HB = {
+  "right-this-way": ["VLMs answer even when the image cannot support it.", "Trained them to ask for a better view instead: up to 16 points higher, ahead of GPT-4o."],
+  ascii: ["LLMs read spatial layouts far better than they build them.", "Learning to build layouts more than doubles layout accuracy and lifts spatial reasoning."],
+  touchingspace: ["A voice-and-touch map agent on Gemini native audio.", "83% correct on 393 spoken spatial questions; studied with 14 blind and low-vision adults."],
+  "skills-on-board": ["Agent skills as typed data that people trace and edit.", "Half the output tokens on SkillLearnBench, at equal or better task performance."],
 };
 /* a related development elsewhere, shown after Overview on a project page */
 export const ECHO = {

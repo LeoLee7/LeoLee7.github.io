@@ -1,6 +1,6 @@
-import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HQ, KEY, ECHO } from "./content.js?v=20261022m";
-import { ABSTRACTS } from "./abstracts.js?v=20261022m";
-import { STORY } from "./story.js?v=20261022m";
+import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HQ, HB, KEY, ECHO } from "./content.js?v=20261022n";
+import { ABSTRACTS } from "./abstracts.js?v=20261022n";
+import { STORY } from "./story.js?v=20261022n";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -267,7 +267,7 @@ function renderAbout() {
   const hl = HIGHLIGHTS.map(k => PROJECTS.find(p => p.slug === k)).map(p => `<a class="card" href="#project-${p.slug}">
       <span class="frame"><img src="${TEASERS[p.img].a}" alt=""></span>
       <span class="q">${HQ[p.slug] || ""}</span><span class="nm">${p.name}</span><span class="vn">${p.venue}</span>
-      <span class="ln">${p.short}</span></a>`).join("");
+      ${HB[p.slug] ? `<ul class="hb">${HB[p.slug].map(b => `<li>${b}</li>`).join("")}</ul>` : `<span class="ln">${p.short}</span>`}</a>`).join("");
   const news = newsList(NEWS.slice(0, 6));
   /* roadmap: two lanes on one year grid; past years squeezed into 24%, Ph.D. years fill the rest */
   const d = new Date(), GRAD = 2027.37, START = 2022.67;
@@ -323,7 +323,7 @@ function renderAbout() {
     </section>
     <section>
       <div class="sechead"><h2>Research highlights</h2><a href="#projects">All projects</a></div>
-      <p class="seclead">Four questions on spatial intelligence in multimodal models and the agents built on it.</p>
+      <p class="seclead">Spatial intelligence in multimodal models, and the agents built on it.</p>
       <div class="cards">${hl}</div>
     </section>
     <section>
