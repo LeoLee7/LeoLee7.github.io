@@ -29,13 +29,31 @@ export const SCHOLAR = "https://scholar.google.com/citations?user=hLHzhqkAAAAJ";
 
 /* homepage research highlights, in order */
 export const HIGHLIGHTS = ["right-this-way", "ascii", "touchingspace", "skills-on-board"];
-/* homepage highlight: the capability it addresses, and two short points */
-export const HQ = {
-  "right-this-way": "Active perception",
-  ascii: "Spatial representation",
-  touchingspace: "Grounded real-time agents",
-  "skills-on-board": "Inspectable agents",
+/* technical headline per project, shown large on cards and project pages; the project name sits beneath it */
+export const HEADLINE = {
+  "right-this-way": "Directional Guidance for Vision-Language Models",
+  ascii: "Spatial Reasoning in LLMs through Layout Construction",
+  touchingspace: "Real-Time Multimodal Agent for Non-Visual Maps",
+  "tactile-annotation": "Braille and Semantic Annotation for 3D-Printed Maps",
+  "hai-survey": "Human-AI Collaboration with Foundation Models: A Survey",
+  "pattern-insights": "Human-in-the-Loop Pattern Discovery in Unlabeled Conversations",
+  "skills-on-board": "Agent Skills as Typed, Inspectable Data",
+  ser: "Experiential Search over User Reviews",
+  swinmm: "Multi-View Self-Supervised Pre-Training for 3D Medical Segmentation",
+  cpsc: "Efficient Conformal Prediction with Shrunken Centroids",
+  "taste-xuser": "Cross-User sEMG Domain Adaptation",
+  "boost-ai": "Data Augmentation for Label-Scarce Electronic Noses",
+  fgsm: "Preventing Catastrophic Overfitting in FGSM Adversarial Training",
+  "taste-eeg": "Multi-Scale CNN for EEG Taste Recognition",
+  "silent-speech": "sEMG-to-Speech Silent Speech Interface",
+  "taste-bimodal": "EEG-EMG Fusion for Taste Recognition",
+  trilight: "Conformal Risk Triage for COVID-19 from CT",
+  "taste-intensity": "Taste Intensity Recognition from Facial sEMG",
+  "herbal-origins": "Temporal-Spectral Feature Extraction for Electronic Noses",
+  "lotus-pavilion": "Light-Responsive Kinetic Pavilion",
 };
+
+/* homepage highlight: two short points per card */
 export const HB = {
   "right-this-way": ["VLMs answer even when the image cannot support it.", "Trained them to tell the user how to move the camera for a better view."],
   ascii: ["LLMs read spatial layouts far better than they build them.", "Learning to build layouts improves their spatial reasoning from text alone."],
@@ -122,7 +140,7 @@ export const PROJECTS = [
     short: "Measuring how strong a taste is from facial muscle signals.",
     line: "Quantitative recognition of the intensity of the five primary tastes from facial surface electromyography.",
     links: [["MDPI", "https://www.mdpi.com/1424-8220/21/21/6965"]] },
-  { slug: "herbal-origins", theme: "hea", pub: "Classifying Herbal", name: "Temporal-Spectral E-Nose Analysis", img: "herbal-origins", figs: [["enose", "Conventional aggregated features versus the longitudinal-information-in-a-line representation of the sensor signals."]], venue: "arXiv 2021",
+  { slug: "herbal-origins", theme: "hea", pub: "Classifying Herbal", name: "Herbal Medicine Origins", img: "herbal-origins", figs: [["enose", "Conventional aggregated features versus the longitudinal-information-in-a-line representation of the sensor signals."]], venue: "arXiv 2021",
     short: "Temporal and spectral features for fine-grained electronic-nose classification.",
     line: "Temporal and spectral feature extraction that lets an electronic nose distinguish the geographic origins of herbal medicines.",
     links: [["arXiv", "https://arxiv.org/abs/2104.06640"]] },

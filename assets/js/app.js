@@ -1,6 +1,6 @@
-import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HQ, HB, KEY, ECHO } from "./content.js?v=20261023d";
-import { ABSTRACTS } from "./abstracts.js?v=20261023d";
-import { STORY } from "./story.js?v=20261023d";
+import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HB, KEY, ECHO, HEADLINE } from "./content.js?v=20261023f";
+import { ABSTRACTS } from "./abstracts.js?v=20261023f";
+import { STORY } from "./story.js?v=20261023f";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -209,7 +209,7 @@ function renderProject(p) {
   const topics = [...new Set(pubs.flatMap(x => x.tags.filter(t => GNAME[t]).map(t => GNAME[t])))].join(", ");
   return `<article class="detail">
     <a class="back" href="#projects">All projects</a>
-    <div class="d-eyebrow">${p.venue}</div><h1>${p.name}</h1>
+    <div class="d-eyebrow">${HEADLINE[p.slug] ? `${p.name} · ` : ""}${p.venue}</div><h1>${HEADLINE[p.slug] || p.name}</h1>
     ${pubs.length === 1 ? `<p class="pp-authors">${authors(pub.a)}</p>` : ""}
     ${VIDEOS[p.slug] ? `<div class="pp-video">${videoBlock(p.slug, 1)}</div>` : T ? lbBtn({ img: p.img, title: p.name, sub: p.venue, links: lbLinks(p.slug, p.links || [], 1) }, "pp-hero", `<img src="${T.full || T.a}" alt="${p.name} figure">`) : `<div class="pp-hero word"><span>${p.name}</span></div>`}
     <div class="d-body">
@@ -266,7 +266,7 @@ function homePubs() {
 function renderAbout() {
   const hl = HIGHLIGHTS.map(k => PROJECTS.find(p => p.slug === k)).map(p => `<a class="card" href="#project-${p.slug}">
       <span class="frame"><img src="${TEASERS[p.img].a}" alt=""></span>
-      <span class="q">${HQ[p.slug] || ""}</span><span class="nm">${p.name}</span><span class="vn">${p.venue}</span>
+      <span class="nm">${HEADLINE[p.slug] || p.name}</span><span class="vn">${HEADLINE[p.slug] ? `${p.name} · ` : ""}${p.venue}</span>
       ${HB[p.slug] ? `<ul class="hb">${HB[p.slug].map(b => `<li>${b}</li>`).join("")}</ul>` : `<span class="ln">${p.short}</span>`}</a>`).join("");
   const news = newsList(NEWS.slice(0, 6));
   /* roadmap: two lanes on one year grid; past years squeezed into 24%, Ph.D. years fill the rest */
@@ -345,7 +345,7 @@ function renderProjects() {
       const frame = p.art ? `<span class="frame"><img src="${ART[p.art]}" alt=""></span>`
         : p.img ? `<span class="frame${p.cover ? " photo" : ""}"><img src="${TEASERS[p.img].a}" alt=""></span>` : `<span class="frame word"><span>${p.name}</span></span>`;
       const href = p.art ? "#art" : `#project-${p.slug}`;
-      return `<a class="proj" href="${href}">${frame}<span class="pt"><span class="nm">${p.name}</span><span class="vn">${p.venue}</span><p>${p.line}</p></span></a>`;
+      return `<a class="proj" href="${href}">${frame}<span class="pt"><span class="nm">${HEADLINE[p.slug] || p.name}</span><span class="vn">${HEADLINE[p.slug] ? `${p.name} · ` : ""}${p.venue}</span><p>${p.line}</p></span></a>`;
     }).join("")}</div></section>`).join("")}</div></div>`;
   /* highlight the category in view */
   addEventListener("scroll", markSection, { passive: true });
