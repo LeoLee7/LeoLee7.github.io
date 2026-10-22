@@ -65,7 +65,7 @@ export const PROJECTS = [
     links: [["Project page", "https://aiea-lab.github.io/Text2Space/"], ["arXiv", "https://arxiv.org/abs/2604.14641"], ["Code", "https://github.com/aiea-lab/Text2Space"], ["Dataset", "https://huggingface.co/datasets/ShiyuanHuang/Text2Space"]] },
   { slug: "touchingspace", theme: "acc", pub: "\u201cI didn", name: "TouchingSpace", img: "ts_overview", figs: [["2609.36404", "System pipeline: map retrieval, map transformation, and exploration on the trackpad."]], venue: "Under review, 2026", short: "A real-time voice-and-touch agent on Gemini native audio that grounds its answers in a map, with 83% accuracy on 393 spoken spatial questions, tested with blind and low-vision users.",
     line: "A voice-and-touch map agent on Gemini native audio. People explore a place by hand on a laptop trackpad and ask open questions; the agent reaches 83% accuracy on 393 spoken spatial questions. Built from zero with a blind co-designer and studied with 14 blind and low-vision adults.",
-    links: [["arXiv", "https://arxiv.org/abs/2609.36404"], ["Video", "https://youtu.be/t3qaVIrDDa4"]] },
+    links: [["arXiv", "https://arxiv.org/abs/2609.36404"], ["Video", "https://youtu.be/SRBqu2IxBNY"]] },
   { slug: "tactile-annotation", theme: "acc", pub: "From Anonymous", name: "Tactile Map Annotation", img: "2608.23820", venue: "ASSETS 2026 Demo", short: "Braille and place labels for 3D-printed tactile maps.",
     line: "A web tool that lets a sighted helper add Braille and place labels to a generated 3D-printed tactile map, so each footprint can be identified by touch.",
     links: [["arXiv", "https://arxiv.org/abs/2608.23820"], ["Demo", "https://leolee7.github.io/Annotate_Braille/"]] },
@@ -237,7 +237,7 @@ export const NEWS = [
     imgs: [["pitch", "The AIEA Lab team at our exhibit table."], ["hall", "The Exhibit & Demo Hall at PitchAbility 2026. Photo: Vista Center."]],
     extra: "pitchability", about: "touchingspace",
     facts: [["Event", "PitchAbility 2026"], ["Host", "Vista Center for the Blind and Visually Impaired"], ["Where we were", "Exhibit & Demo Hall"]],
-    links: [["Event page", "https://vistacenter.org/pitchability-vista-international-pitch-competition-2026/"], ["arXiv", "https://arxiv.org/abs/2609.36404"], ["Video", "https://youtu.be/t3qaVIrDDa4"]] },
+    links: [["Event page", "https://vistacenter.org/pitchability-vista-international-pitch-competition-2026/"], ["arXiv", "https://arxiv.org/abs/2609.36404"], ["Video", "https://youtu.be/SRBqu2IxBNY"]] },
   { slug: "amazon-2026", d: "Sep 2026",
     title: "Wrapping up my Applied Scientist internship at Amazon",
     h: "Finished my Applied Scientist internship at <b>Amazon</b> in Seattle, building <b>Skills on Board</b> for structured skill engineering for agents.", rel: ["skills-on-board"],
@@ -254,7 +254,7 @@ export const NEWS = [
       "In a study with fourteen BLV participants, people used sound and vibration to locate places and speech to identify and describe them. The bounded surface supported discovery, revision, and spatial checks by hand, and participants expected this awareness to support future travel.",
     ],
     imgs: [["2609.36404", "TouchingSpace overview."]],
-    links: [["arXiv", "https://arxiv.org/abs/2609.36404"], ["Demo video", "https://youtu.be/t3qaVIrDDa4"], ["Phase 1 on arXiv", "https://arxiv.org/abs/2604.14637"]] },
+    links: [["arXiv", "https://arxiv.org/abs/2609.36404"], ["Demo video", "https://youtu.be/SRBqu2IxBNY"], ["Phase 1 on arXiv", "https://arxiv.org/abs/2604.14637"]] },
   { slug: "tist-2026", to: "hai-survey", d: "Sep 2026", img: "tist",
     title: "Survey on human-AI collaboration published in ACM TIST",
     h: "Our survey <b>A Survey on Human-AI Collaboration with Large Foundation Models</b> is published in <b>ACM Transactions on Intelligent Systems and Technology</b>.",
@@ -338,7 +338,7 @@ export const EDU_THEME = [
   { logo: "ucsc", deg: `Ph.D., Computer Science and Engineering, UC Santa Cruz`, org: "Advised by Leilani H. Gilpin, Sep 2022 to May 2027", theme: "Spatial intelligence in multimodal models and agents" },
 ];
 
-export const VIDEOS = { touchingspace: { id: "t3qaVIrDDa4", thumb: "yt_ts" }, "skills-on-board": { id: "G_XJpzWnH_c", thumb: "yt_sob" }, "lotus-pavilion": { id: "9G6kR8N1WFM", thumb: "yt_lotus" }, "amazon-2026": { id: "G_XJpzWnH_c", thumb: "yt_sob" }, ser: { id: "TGy4yoTbdyI", thumb: "yt_ser" } };
+export const VIDEOS = { touchingspace: { id: "SRBqu2IxBNY", thumb: "yt_ts" }, "skills-on-board": { id: "G_XJpzWnH_c", thumb: "yt_sob" }, "lotus-pavilion": { id: "9G6kR8N1WFM", thumb: "yt_lotus" }, "amazon-2026": { id: "G_XJpzWnH_c", thumb: "yt_sob" }, ser: { id: "TGy4yoTbdyI", thumb: "yt_ser" } };
 
 export const PUBS = [
   { img: "colm", y: 2026, v: "COLM", vy: "2026", top: 1, sel: 1, first: 1, tags: ["spa","llm"],
@@ -360,7 +360,7 @@ export const PUBS = [
   { img: "ts_overview", y: 2026, v: "arXiv", vy: "2026", sel: 1, first: 1, tags: ["acc","hai","spa"],
     t: "“I didn’t know how to read a map, but now I can”: TouchingSpace, an Audio-Haptic Map for Blind and Low-Vision Readers",
     a: "Li Liu, Yihe Wang, Jiaming Qu, Ashmita Dua, David T. Lee, Leilani H. Gilpin",
-    l: [["arXiv","https://arxiv.org/abs/2609.36404"],["Video","https://youtu.be/t3qaVIrDDa4"]],
+    l: [["arXiv","https://arxiv.org/abs/2609.36404"],["Video","https://youtu.be/SRBqu2IxBNY"]],
     phase1: { t: "Touching Space: Accessible Map Exploration Through Conversational Audio-Haptic Interaction", a: "Li Liu, Jiaming Qu, Marc Jowell Bagaoisan, David T. Lee, Leilani H. Gilpin", y: 2026, u: "https://arxiv.org/abs/2604.14637" } },
   { img: "rtw", y: 2024, v: "NeurIPS", vy: "2024", top: 1, sel: 1, pin: 2, first: 1, tags: ["acc","llm","spa"],
     t: "Right This Way: Can VLMs Guide Us to See More to Answer Questions?",
