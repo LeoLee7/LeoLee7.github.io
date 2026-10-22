@@ -53,6 +53,9 @@ export const PROJECTS = [
   { slug: "skills-on-board", theme: "hai", pub: "Skills on Board", name: "Skills on Board", img: "sob", venue: "Under review, 2026", short: "Agent skills become living boards: trace any step to its evidence, edit it once, and the agent follows.",
     line: "A system that turns a free-text SKILL.md into a typed meta file, rendered as a board for people and compiled into a structured skill for agents. Built during my internship at Amazon.",
     links: [["Video", "https://youtu.be/G_XJpzWnH_c"]] },
+  { slug: "ser", theme: "hai", name: "SER", img: "ser", venue: "Amazon internship, 2024", short: "Search for what reviews know: who a product is for, how it feels, and the occasion it fits.",
+    line: "A search system that answers subjective needs with experiences extracted from user reviews, indexed beside the product catalog. Built during my internship at Amazon.",
+    links: [["Video", "https://youtu.be/TGy4yoTbdyI"]] },
   { slug: "swinmm", theme: "hea", pub: "SwinMM", name: "SwinMM", img: "swinmm", venue: "MICCAI 2023",
     short: "Self-supervised multi-view pre-training for 3D medical image segmentation.",
     line: "Masked multi-view pre-training with Swin Transformers for accurate and data-efficient 3D medical image segmentation.",
@@ -143,6 +146,9 @@ export const OVERVIEW_EARLY = {
 };
 
 export const OVERVIEW = {
+  "ser": [
+    "Search and recommendation systems handle specific goals well, but not subjective needs such as a healthy birthday meal for a parent or a movie worth watching. Product catalogs rarely hold that kind of insight. Reviews and other user-generated content do.",
+    "SER, an experiential search and retrieval system, extracts subjective information from user-generated content into EXP-DB, a domain-centric experiences database. A taxonomy of subjective needs and its classifiers connect user intent to item relevance, and the resulting experience index sits beside the catalog index to power faceted search by audience, feeling, and occasion."],
   "skills-on-board": [
     "Skills package the instructions an agent follows on a task, and most live as free-text Markdown in a SKILL.md file. That makes them hard to maintain: revising one step means searching a long document without knowing what depends on it, and reusing a skill means finding every value tied to the original task.",
     "Skills on Board treats skill maintenance as a data representation problem. A declared schema converts a skill into a typed meta file in which every step, learned rule, and source excerpt is a record with a stable identity. The meta file compiles into a structured SKILL.md for the agent and renders as a board for the user, who can trace a step to its evidence, edit it once to update it everywhere, and compare a new version with its parent record by record."],
@@ -295,7 +301,7 @@ export const EDU_THEME = [
   { logo: "ucsc", deg: `Ph.D., Computer Science and Engineering, UC Santa Cruz`, org: "Advised by Leilani H. Gilpin, Sep 2022 to May 2027", theme: "Spatial reasoning and human-agent collaboration" },
 ];
 
-export const VIDEOS = { touchingspace: { id: "t3qaVIrDDa4", thumb: "yt_ts" }, "skills-on-board": { id: "G_XJpzWnH_c", thumb: "yt_sob" }, "lotus-pavilion": { id: "9G6kR8N1WFM", thumb: "yt_lotus" }, "amazon-2026": { id: "G_XJpzWnH_c", thumb: "yt_sob" } };
+export const VIDEOS = { touchingspace: { id: "t3qaVIrDDa4", thumb: "yt_ts" }, "skills-on-board": { id: "G_XJpzWnH_c", thumb: "yt_sob" }, "lotus-pavilion": { id: "9G6kR8N1WFM", thumb: "yt_lotus" }, "amazon-2026": { id: "G_XJpzWnH_c", thumb: "yt_sob" }, ser: { id: "TGy4yoTbdyI", thumb: "yt_ser" } };
 
 export const PUBS = [
   { img: "colm", y: 2026, v: "COLM", vy: "2026", top: 1, sel: 1, first: 1, tags: ["spa","llm"],
@@ -376,6 +382,7 @@ export const PUBS = [
 export const AVATAR = "assets/img/avatar.jpg";
 export const TEASERS = {
  "yt_sob": { "a": "assets/img/video/skillsonboard.jpg" },
+ "yt_ser": { "a": "assets/img/video/ser.jpg" },
  "fgsm": { "a": "assets/img/papers/fgsm.jpg", "full": "assets/img/full/fgsm.png" },
  "trilight-overview": { "a": "assets/img/papers/trilight-overview.jpg", "full": "assets/img/full/trilight-overview.jpg" },
  "herbal-origins": { "a": "assets/img/papers/herbal-origins.jpg", "full": "assets/img/full/herbal-origins.jpg" },
@@ -451,6 +458,7 @@ export const TEASERS = {
   "full": "assets/img/full/swinmm.png"
  },
  "sob": { "a": "assets/img/papers/sob.jpg", "full": "assets/img/full/sob.png" },
+ "ser": { "a": "assets/img/papers/ser.jpg", "full": "assets/img/full/ser.png" },
  "ts_overview": {
   "a": "assets/img/papers/ts-overview.jpg",
   "full": "assets/img/full/ts-overview.png"
