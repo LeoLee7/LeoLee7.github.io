@@ -39,7 +39,7 @@ export const HQ = {
 export const HB = {
   "right-this-way": ["VLMs answer even when the image cannot support it.", "Trained them to tell the user how to move the camera for a better view."],
   ascii: ["LLMs read spatial layouts far better than they build them.", "Learning to build layouts improves their spatial reasoning from text alone."],
-  touchingspace: ["Built from zero: an accessible map agent app on a laptop's built-in trackpad, with a native speech model you can talk to.", "Grounds its answers in the map under the finger; studied with 14 blind and low-vision adults."],
+  touchingspace: ["An accessible map agent app on a laptop's built-in trackpad, with a native speech model you can talk to.", "Grounds its answers in the map under the finger."],
   "skills-on-board": ["Agent skills as typed data that people can trace and edit.", "Edit a step once, and the agent follows."],
 };
 /* a related development elsewhere, shown after Overview on a project page */
@@ -64,7 +64,7 @@ export const PROJECTS = [
     line: "Across six LLMs, accuracy in reading ASCII layouts exceeds accuracy in constructing them by 13 to 27 percentage points. Training on construction more than doubles construction accuracy, improves text-only spatial reasoning, and transfers to three external benchmarks.",
     links: [["Project page", "https://aiea-lab.github.io/Text2Space/"], ["arXiv", "https://arxiv.org/abs/2604.14641"], ["Code", "https://github.com/aiea-lab/Text2Space"], ["Dataset", "https://huggingface.co/datasets/ShiyuanHuang/Text2Space"]] },
   { slug: "touchingspace", theme: "acc", pub: "\u201cI didn", name: "TouchingSpace", img: "ts_overview", figs: [["2609.36404", "System pipeline: map retrieval, map transformation, and exploration on the trackpad."]], venue: "Under review, 2026", short: "A real-time voice-and-touch agent on Gemini native audio that grounds its answers in a map, with 83% accuracy on 393 spoken spatial questions, tested with blind and low-vision users.",
-    line: "A voice-and-touch map agent on Gemini native audio. People explore a place by hand on a laptop trackpad and ask open questions; the agent reaches 83% accuracy on 393 spoken spatial questions. Built from zero, tested, and studied with 15 blind and low-vision people: a co-designer and 14 study participants.",
+    line: "A voice-and-touch map agent on Gemini native audio. People explore a place by hand on a laptop trackpad and ask open questions; the agent reaches 83% accuracy on 393 spoken spatial questions. Built from zero with a blind co-designer and studied with 14 blind and low-vision adults.",
     links: [["arXiv", "https://arxiv.org/abs/2609.36404"], ["Video", "https://youtu.be/t3qaVIrDDa4"]] },
   { slug: "tactile-annotation", theme: "acc", pub: "From Anonymous", name: "Tactile Map Annotation", img: "2608.23820", venue: "ASSETS 2026 Demo", short: "Braille and place labels for 3D-printed tactile maps.",
     line: "A web tool that lets a sighted helper add Braille and place labels to a generated 3D-printed tactile map, so each footprint can be identified by touch.",
@@ -178,7 +178,7 @@ export const TECH = {
     ["Context", "Each turn, the agent sees where the finger is and how every place relates to it, in direction, distance, and containment computed from map geometry."],
     ["Map", "OpenStreetMap places, scaled onto the trackpad and revealed in four stages."],
     ["Feedback", "A hum grows louder near a place; vibration marks its edge."],
-    ["Result", "83% accuracy on 393 spoken spatial questions; 96% on direction and distance from the finger."],
+    ["Result", "83% accuracy on 393 spoken spatial questions."],
   ],
 };
 
@@ -201,7 +201,7 @@ export const OVERVIEW = {
   "touchingspace": [
     "Accessible map systems either make a layout explorable by hand or convey information through speech, and few combine both to support pre-travel spatial understanding for blind and low-vision (BLV) people. TouchingSpace retrieves map data for an outdoor place and renders its surroundings as bounded regions at fixed positions on a laptop trackpad. While exploring, people receive audio and haptic feedback and can ask a conversational agent open-ended questions.",
     "In a study with fourteen BLV participants, people used sound and vibration to locate places and speech to identify and describe them. The bounded surface supported discovery, revision, and spatial checks by hand, and participants expected this awareness to support future travel.",
-    "I led TouchingSpace from zero: I built the system, benchmarked its spatial grounding, co-designed it with a blind collaborator, and ran in-person studies with 14 blind and low-vision adults."],
+    "I led TouchingSpace from zero: I built the system with a blind co-designer, benchmarked its spatial grounding, and ran the in-person studies."],
   "ascii": [
     "People sketch layouts to organize their thinking about space. We asked whether learning to build explicit layouts from spatial descriptions can give language models real spatial understanding.",
     "We introduce Text2Space, a dataset that pairs text descriptions with ASCII grid layouts, and find a read-write asymmetry: models read ASCII layouts well but struggle to construct them from text. Training on layout construction improves spatial reasoning from text alone, and the gains transfer to three external benchmarks."],
@@ -248,7 +248,7 @@ export const NEWS = [
     ], imgs: [], links: [["Video", "https://youtu.be/G_XJpzWnH_c"]], facts: [["Role", "Applied Scientist Intern"], ["Location", "Seattle, WA, USA"], ["Dates", "June to Sept. 2026"], ["Focus", "Structured skill engineering for agents"]] },
   { slug: "touchingspace-preprint", to: "touchingspace", d: "Sep 2026", img: "2609.36404",
     title: "New preprint: TouchingSpace",
-    h: "New preprint on <b>TouchingSpace</b>, an audio-haptic map for blind and low-vision readers that I built from zero and studied with 15 blind and low-vision people, a co-designer and 14 study participants, at <b>Vista Center</b> and across San Jose, Santa Cruz, and Palo Alto.",
+    h: "New preprint on <b>TouchingSpace</b>, an audio-haptic map for blind and low-vision readers, studied in person at <b>Vista Center</b> and across San Jose, Santa Cruz, and Palo Alto.",
     body: [
       "Accessible map systems either make a layout explorable by hand or convey information through speech, and few combine both to support pre-travel spatial understanding for blind and low-vision (BLV) people. TouchingSpace retrieves map data for an outdoor place and renders its surroundings as bounded regions at fixed positions on a laptop trackpad. While exploring, people receive audio and haptic feedback and can ask a conversational agent open-ended questions.",
       "In a study with fourteen BLV participants, people used sound and vibration to locate places and speech to identify and describe them. The bounded surface supported discovery, revision, and spatial checks by hand, and participants expected this awareness to support future travel.",
@@ -315,7 +315,7 @@ export const EDUCATION = [
 /* Projects page sections, in display order */
 export const THEMES = [
   ["spa", "Spatial intelligence in multimodal models", "How vision-language and language models perceive space, build an internal map of it, and act when what they see is not enough."],
-  ["acc", "Grounded spatial agents", "Real-time agents that ground what they say in a map and convey space without vision, built and tested with blind and low-vision users."],
+  ["acc", "Grounded spatial agents", "Real-time agents that ground what they say in a map and convey space without vision."],
   ["hai", "Agents and human-in-the-loop systems", "Agent skills, search, and pattern discovery built at Amazon, and a survey of human-AI collaboration with foundation models."],
   ["make", "Design and making", "Things I designed and built by hand."],
   ["early", "Earlier work", "Clinical imaging, biosignals, electronic noses, and reliable prediction, from my master's and early Ph.D.", ["hea", "tml"]],
