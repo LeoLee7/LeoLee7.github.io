@@ -50,7 +50,7 @@ export const PROJECTS = [
   { slug: "pattern-insights", theme: "hai", pub: "Pattern Discovery", name: "Pattern Insights Explorer", img: "www", venue: "WWW 2026 Demo, Amazon",
     line: "A modular framework that pairs wide-lens views of where candidate patterns cluster with sharp-focus checks of whether they are meaningful, for unlabeled data without ground truth.",
     links: [["Paper", "https://doi.org/10.1145/3774905.3793105"]] },
-  { slug: "skills-on-board", theme: "hai", pub: "Skills on Board", name: "Skills on Board", img: "sob", venue: "Under review, 2026", short: "A human-in-the-loop harness for agent skills: trace any step to its evidence, edit it once, and the agent follows.",
+  { slug: "skills-on-board", theme: "hai", pub: "Skills on Board", name: "Skills on Board", img: "sob", venue: "Under review, 2026", short: "A human-in-the-loop harness for agent skills: trace any step to its evidence and edit it once. On SkillLearnBench, agents use half the output tokens at equal or better task performance.",
     line: "A system that turns a free-text SKILL.md into a typed meta file, rendered as a board for people and compiled into a structured skill for agents. Built during my internship at Amazon.",
     links: [["Video", "https://youtu.be/G_XJpzWnH_c"]] },
   { slug: "ser", theme: "hai", name: "SER", img: "ser", venue: "Amazon internship, 2024", short: "Search for what reviews know: who a product is for, how it feels, and the occasion it fits.",
