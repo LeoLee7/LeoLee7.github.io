@@ -323,6 +323,15 @@ a.proj:hover .nm { color: var(--accent); }
 .proj .vn { font-size: 14.5px; color: var(--muted); font-weight: 500; margin-top: 2px; }
 .proj p { margin: 8px 0 10px; font-size: 15.5px; }
 .proj .lk { display: flex; flex-wrap: wrap; gap: 8px; font-size: 15px; }
+.proj .pt { display: block; }
+/* earlier work: compact rows, small thumbnail beside the text */
+.pgrid.compact { gap: 22px 32px; }
+.pgrid.compact a.proj { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 16px; align-items: start; }
+.pgrid.compact .proj .frame { margin: 0; padding: 8px; border-radius: 10px; aspect-ratio: 4 / 3; }
+.pgrid.compact .proj .frame img { inset: 8px; width: calc(100% - 16px); height: calc(100% - 16px); }
+.pgrid.compact .proj .nm { font-size: 16.5px; }
+.pgrid.compact .proj .vn { font-size: 13.5px; }
+.pgrid.compact .proj p { margin: 4px 0 0; font-size: 14.5px; line-height: 1.5; color: var(--muted); }
 
 /* CV */
 .cvsec { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 32px; padding: 32px 0; border-top: 1px solid var(--line); }
@@ -441,3 +450,9 @@ a.proj:hover .nm { color: var(--accent); }
   .story li:nth-child(even) .sart { order: 0; }
   .st-hero p { font-size: 24px; } .st-track figure { width: 270px; } .story .sart { max-width: 320px; }
 }
+
+/* project tech summary: label column beside the text */
+.tech { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 12px 20px; margin: 0 0 28px; }
+.tech dt { font-weight: 650; color: var(--ink); font-size: 15px; }
+.tech dd { margin: 0; font-size: 15.5px; line-height: 1.6; }
+@media (max-width: 720px) { .tech { grid-template-columns: minmax(0, 1fr); gap: 2px; } .tech dd { margin-bottom: 12px; } }

@@ -23,7 +23,7 @@ export const VENUE = {
 export const TIER = { "NeurIPS": 1, "COLM": 1, "MICCAI": 2, "ACM TIST": 2, "IEEE TIM": 3, "IEEE Sensors": 3, "ICASSP": 3,
   "WWW": 4, "ASSETS": 4, "EJR Open": 4, "Sensors": 5, "arXiv": 6, "Under review": 6 };
 
-export const TOPICS = [["acc", "Accessibility"], ["spa", "Spatial reasoning"], ["llm", "Language and vision models"], ["hai", "Human-agent collaboration"], ["hea", "Health and sensing"]];
+export const TOPICS = [["acc", "Accessibility"], ["spa", "Spatial reasoning"], ["llm", "Language and vision models"], ["hai", "Agents and human-in-the-loop"], ["hea", "Health and sensing"]];
 
 export const SCHOLAR = "https://scholar.google.com/citations?user=hLHzhqkAAAAJ";
 
@@ -31,14 +31,14 @@ export const SCHOLAR = "https://scholar.google.com/citations?user=hLHzhqkAAAAJ";
 export const HIGHLIGHTS = ["ascii", "right-this-way", "touchingspace", "skills-on-board"];
 
 export const PROJECTS = [
-  { slug: "ascii", theme: "spa", pub: "Learning to Draw", name: "Learning to Draw ASCII", img: "colm", venue: "COLM 2026", short: "Teaching LLMs to sketch: training on ASCII layouts sharpens spatial reasoning, and the gains transfer to three external benchmarks.",
-    line: "Language models read ASCII layouts well but struggle to write them. Training them to construct layouts from text improves spatial reasoning, and the gains transfer to three external benchmarks.",
-    links: [["Project page", "https://aiea-lab.github.io/Text2Space/"], ["arXiv", "https://arxiv.org/abs/2604.14641"], ["Dataset", "https://huggingface.co/datasets/ShiyuanHuang/Text2Space"]] },
-  { slug: "right-this-way", theme: "spa", pub: "Right This Way", name: "Right This Way", img: "rtw", venue: "NeurIPS 2024", short: "Instead of guessing, a vision-language model tells the user how to move the camera to get the view it needs. Our synthetic training data lifts mainstream VLMs.",
-    line: "A benchmark and a synthetic data framework that teach vision-language models to say how to adjust an image when it cannot answer the question, a common need for visually impaired users.",
+  { slug: "ascii", theme: "spa", pub: "Learning to Draw", name: "Learning to Draw ASCII", img: "colm", venue: "COLM 2026", short: "Teaching LLMs to sketch: training on ASCII layouts more than doubles layout accuracy and improves text-only spatial reasoning, with gains on three external benchmarks.",
+    line: "Across six LLMs, reading ASCII layouts beats building them by 13 to 27 points. Training on construction more than doubles layout accuracy, improves text-only spatial reasoning, and transfers to three external benchmarks.",
+    links: [["Project page", "https://aiea-lab.github.io/Text2Space/"], ["arXiv", "https://arxiv.org/abs/2604.14641"], ["Code", "https://github.com/aiea-lab/Text2Space"], ["Dataset", "https://huggingface.co/datasets/ShiyuanHuang/Text2Space"]] },
+  { slug: "right-this-way", theme: "spa", pub: "Right This Way", name: "Right This Way", img: "rtw", venue: "NeurIPS 2024", short: "Instead of guessing, a vision-language model tells the user how to move the camera. Our synthetic data raises open VLMs by up to 16 points, the best beating GPT-4o.",
+    line: "A new task, directional guidance, with an open 821-sample human-labeled benchmark and a label-free synthetic data pipeline. Fine-tuning raises open VLMs by up to 16 points, the best beating GPT-4o.",
     links: [["Paper", "https://proceedings.neurips.cc/paper_files/paper/2024/file/efe4e50d492fedc0dfd2959f3320a974-Paper-Conference.pdf"], ["Code", "https://github.com/LeoLee7/Directional_guidance"]] },
-  { slug: "touchingspace", theme: "acc", pub: "\u201cI didn", name: "TouchingSpace", img: "ts_overview", figs: [["2609.36404", "System pipeline: map retrieval, map transformation, and exploration on the trackpad."]], venue: "Under review, 2026", short: "Touch, sound, and a conversational agent turn an everyday laptop trackpad into a map. Tested with 15 blind and low-vision users.",
-    line: "An audio-haptic map that blind and low-vision people explore by hand on a laptop trackpad, asking a conversational agent open questions along the way. Studied with fifteen BLV participants.",
+  { slug: "touchingspace", theme: "acc", pub: "\u201cI didn", name: "TouchingSpace", img: "ts_overview", figs: [["2609.36404", "System pipeline: map retrieval, map transformation, and exploration on the trackpad."]], venue: "Under review, 2026", short: "A voice-and-touch map agent on Gemini native audio turns a laptop trackpad into a map, answering 83% of 393 spoken spatial questions correctly.",
+    line: "A voice-and-touch map agent on Gemini native audio. People explore a place by hand on a laptop trackpad and ask open questions; the agent answers 83% of 393 spoken spatial questions correctly. Built with 15 blind and low-vision people: a co-designer and 14 study participants.",
     links: [["arXiv", "https://arxiv.org/abs/2609.36404"], ["Video", "https://youtu.be/t3qaVIrDDa4"]] },
   { slug: "tactile-annotation", theme: "acc", pub: "From Anonymous", name: "Tactile Map Annotation", img: "2608.23820", venue: "ASSETS 2026 Demo", short: "Braille and place labels for 3D-printed tactile maps.",
     line: "A web tool that lets a sighted helper add Braille and place labels to a generated 3D-printed tactile map, so each footprint can be identified by touch.",
@@ -51,10 +51,10 @@ export const PROJECTS = [
     line: "A modular framework that pairs wide-lens views of where candidate patterns cluster with sharp-focus checks of whether they are meaningful, for unlabeled data without ground truth.",
     links: [["Paper", "https://doi.org/10.1145/3774905.3793105"]] },
   { slug: "skills-on-board", theme: "hai", pub: "Skills on Board", name: "Skills on Board", img: "sob", venue: "Under review, 2026", short: "A human-in-the-loop harness for agent skills: trace any step to its evidence and edit it once. On SkillLearnBench, agents use half the output tokens at equal or better task performance.",
-    line: "A system that turns a free-text SKILL.md into a typed meta file, rendered as a board for people and compiled into a structured skill for agents. Built during my internship at Amazon.",
+    line: "A system that turns a free-text SKILL.md into a typed meta file, rendered as a board for people and compiled into a structured skill for agents. On SkillLearnBench, agents use half the output tokens at equal or better task performance. Built during my internship at Amazon.",
     links: [["Video", "https://youtu.be/G_XJpzWnH_c"]] },
   { slug: "ser", theme: "hai", name: "SER", img: "ser", venue: "Amazon internship, 2024", short: "Search for what reviews know: who a product is for, how it feels, and the occasion it fits.",
-    line: "A search system that answers subjective needs with experiences extracted from user reviews, indexed beside the product catalog. Built during my internship at Amazon.",
+    line: "A search system that turns customer reviews into search facets, each linked to the review sentence behind it, for needs catalogs do not record. On recipes it finds 18% more matches than keyword search. Built during my internship at Amazon.",
     links: [["Video", "https://youtu.be/TGy4yoTbdyI"]] },
   { slug: "swinmm", theme: "hea", pub: "SwinMM", name: "SwinMM", img: "swinmm", venue: "MICCAI 2023",
     short: "Self-supervised multi-view pre-training for 3D medical image segmentation.",
@@ -145,6 +145,17 @@ export const OVERVIEW_EARLY = {
     "In pre-training, a masked multi-view encoder learns from several proxy tasks: image reconstruction, rotation, contrastive learning, and a mutual learning task that exploits the consistency between predictions from different views. In fine-tuning, a cross-view decoder aggregates the views with cross-attention. SwinMM outperforms the previous state-of-the-art self-supervised method, Swin UNETR, on several medical image segmentation tasks."],
 };
 
+/* technical summary shown under Overview on a project page, as [label, text] rows */
+export const TECH = {
+  touchingspace: [
+    ["Model", "Gemini 2.5 Flash native audio, streamed over the Live API, with Google Search grounding."],
+    ["Context", "Each turn, the agent sees where the finger is and how every place relates to it, in direction, distance, and containment computed from map geometry."],
+    ["Map", "OpenStreetMap places, scaled onto the trackpad and revealed in four stages."],
+    ["Feedback", "A hum grows louder near a place; vibration marks its edge."],
+    ["Result", "83% of 393 spoken spatial questions answered correctly, 96% on direction and distance from the finger."],
+  ],
+};
+
 export const OVERVIEW = {
   "ser": [
     "Search and recommendation systems handle specific goals well, but not subjective needs such as a healthy birthday meal for a parent or a movie worth watching. Product catalogs rarely hold that kind of insight. Reviews and other user-generated content do.",
@@ -163,7 +174,7 @@ export const OVERVIEW = {
     "At run time, it organizes collaboration into recurring patterns: human-steered AI, AI-augmented human work, mixed-initiative interaction, control handoff and delegation, and supervisory orchestration of agentic systems, a newer mode in which people monitor, guide, and intervene in multi-step AI workflows. The review finds that successful collaboration is not the automatic result of stronger models but the product of careful, human-centered design."],
   "touchingspace": [
     "Accessible map systems either make a layout explorable by hand or convey information through speech, and few combine both to support pre-travel spatial understanding for blind and low-vision (BLV) people. TouchingSpace retrieves map data for an outdoor place and renders its surroundings as bounded regions at fixed positions on a laptop trackpad. While exploring, people receive audio and haptic feedback and can ask a conversational agent open-ended questions.",
-    "In a study with fifteen BLV participants, people used sound and vibration to locate places and speech to identify and describe them. The bounded surface supported discovery, revision, and spatial checks by hand, and participants expected this awareness to support future travel."],
+    "In a study with fourteen BLV participants, people used sound and vibration to locate places and speech to identify and describe them. The bounded surface supported discovery, revision, and spatial checks by hand, and participants expected this awareness to support future travel."],
   "ascii": [
     "People sketch layouts to organize their thinking about space. We asked whether learning to build explicit layouts from spatial descriptions can give language models real spatial understanding.",
     "We introduce Text2Space, a dataset that pairs text descriptions with ASCII grid layouts, and find a read-write asymmetry: models read ASCII layouts well but struggle to construct them from text. Training on layout construction improves spatial reasoning from text alone, and the gains transfer to three external benchmarks."],
@@ -187,7 +198,7 @@ export const NEWS = [
       "We introduce Text2Space, a dataset that pairs text descriptions with ASCII grid layouts, and find a read-write asymmetry: models read ASCII layouts well but struggle to construct them from text. Training on layout construction improves spatial reasoning from text alone, and the gains transfer to three external benchmarks. This is joint work with Shiyuan Huang (co-first author), Jincheng He, and Leilani H. Gilpin.",
     ],
     imgs: [["colm", "Our COLM 2026 poster."]],
-    links: [["Project page", "https://aiea-lab.github.io/Text2Space/"], ["arXiv", "https://arxiv.org/abs/2604.14641"], ["Dataset", "https://huggingface.co/datasets/ShiyuanHuang/Text2Space"]] },
+    links: [["Project page", "https://aiea-lab.github.io/Text2Space/"], ["arXiv", "https://arxiv.org/abs/2604.14641"], ["Code", "https://github.com/aiea-lab/Text2Space"], ["Dataset", "https://huggingface.co/datasets/ShiyuanHuang/Text2Space"]] },
   { slug: "pitchability-2026", rel: ["touchingspace"], d: "Sep 2026", img: "pitch",
     title: "Presenting TouchingSpace at PitchAbility 2026",
     h: "Presented <b>TouchingSpace</b> and our 3D-printed tactile maps with the AIEA Lab at <b>PitchAbility 2026</b>, <b>Vista Center</b>'s international pitch competition for assistive technology.",
@@ -210,10 +221,10 @@ export const NEWS = [
     ], imgs: [], links: [["Video", "https://youtu.be/G_XJpzWnH_c"]], facts: [["Role", "Applied Scientist Intern"], ["Location", "Seattle, WA, USA"], ["Dates", "June to Sept. 2026"], ["Focus", "Structured skill engineering for agents"]] },
   { slug: "touchingspace-preprint", to: "touchingspace", d: "Sep 2026", img: "2609.36404",
     title: "New preprint: TouchingSpace",
-    h: "New preprint on <b>TouchingSpace</b>, an audio-haptic map for blind and low-vision readers, built on in-person studies with 15 blind and low-vision participants at <b>Vista Center</b> and across San Jose, Santa Cruz, and Palo Alto.",
+    h: "New preprint on <b>TouchingSpace</b>, an audio-haptic map for blind and low-vision readers, built with 15 blind and low-vision people, a co-designer and 14 study participants, at <b>Vista Center</b> and across San Jose, Santa Cruz, and Palo Alto.",
     body: [
       "Accessible map systems either make a layout explorable by hand or convey information through speech, and few combine both to support pre-travel spatial understanding for blind and low-vision (BLV) people. TouchingSpace retrieves map data for an outdoor place and renders its surroundings as bounded regions at fixed positions on a laptop trackpad. While exploring, people receive audio and haptic feedback and can ask a conversational agent open-ended questions.",
-      "In a study with fifteen BLV participants, people used sound and vibration to locate places and speech to identify and describe them. The bounded surface supported discovery, revision, and spatial checks by hand, and participants expected this awareness to support future travel.",
+      "In a study with fourteen BLV participants, people used sound and vibration to locate places and speech to identify and describe them. The bounded surface supported discovery, revision, and spatial checks by hand, and participants expected this awareness to support future travel.",
     ],
     imgs: [["2609.36404", "TouchingSpace overview."]],
     links: [["arXiv", "https://arxiv.org/abs/2609.36404"], ["Demo video", "https://youtu.be/t3qaVIrDDa4"], ["Phase 1 on arXiv", "https://arxiv.org/abs/2604.14637"]] },
@@ -262,8 +273,8 @@ export const EXPERIENCE = [
     "<b>Pipeline-wide failure attribution.</b> Linked each skill to its evidence and rollouts so each failure traces to the agent, the task, or the benchmark, surfacing benchmark defects."] },
   { logo: "amazon", org: "Amazon", role: "Applied Scientist Intern", place: "Santa Clara, CA", y: "2025", dates: "June to Sept. 2025", t0: 2025.42, t1: 2025.67, topic: "Taxonomy discovery from unlabeled conversations (WWW 2026)", bullets: [
     "<b>Taxonomy discovery from unlabeled conversations (WWW 2026).</b> Developed a human-in-the-loop framework that grows a validated taxonomy over large unlabeled conversation logs from a few seed keywords, with every pattern traceable to its source. Demonstrated on 5,000 customer-service conversations."] },
-  { logo: "amazon", org: "Amazon", role: "Applied Scientist Intern", place: "Palo Alto, CA", y: "2024", dates: "June to Sept. 2024", t0: 2024.42, t1: 2024.67, topic: "Evidence-grounded recommendation", bullets: [
-    "<b>Evidence-grounded recommendation.</b> Built a retrieval-augmented recommender for subjective product queries that cites the user-generated content supporting each suggestion."] },
+  { logo: "amazon", org: "Amazon", role: "Applied Scientist Intern", place: "Palo Alto, CA", y: "2024", dates: "June to Sept. 2024", t0: 2024.42, t1: 2024.67, topic: "Evidence-grounded search from reviews (SER)", bullets: [
+    "<b>Evidence-grounded search from reviews (<a href=\"#project-ser\">SER</a>).</b> Built a search system that turns customer reviews into search facets, each linked to the review sentence behind it, to answer needs catalogs do not record. Later shown on recipes to find 18% more matches than keyword search."] },
   { logo: "nissan", org: "Nissan Research Center", role: "Data Scientist Intern", place: "Santa Clara, CA", y: "2023", dates: "July to Sept. 2023", t0: 2023.5, t1: 2023.67, topic: "Driver engagement in autonomous driving", bullets: [
     "<b>Driver engagement in autonomous driving.</b> Developed a time-series model of driver engagement from real-world driving logs, improving prediction accuracy by 16%."] },
 ];
@@ -276,18 +287,17 @@ export const EDUCATION = [
 
 /* Projects page sections, in display order */
 export const THEMES = [
-  ["spa", "Spatial reasoning", "Teaching language and vision-language models to understand space."],
-  ["acc", "Accessible spatial interaction", "Maps and tools that blind and low-vision people explore by touch, sound, and conversation."],
-  ["hai", "Human-agent collaboration", "Systems and surveys on people and AI working together."],
+  ["spa", "Spatial reasoning in LLMs and VLMs", "Benchmarks, data, and training methods that teach language and vision-language models to understand space."],
+  ["acc", "Multimodal spatial agents", "Voice-and-touch agents and tools that let blind and low-vision people read places by hand, sound, and conversation."],
+  ["hai", "Agents and human-in-the-loop systems", "Agent skills, search, and pattern discovery built at Amazon, and a survey of human-AI collaboration with foundation models."],
   ["make", "Design and making", "Things I designed and built by hand."],
-  ["hea", "Health and sensing", "Models for clinical imaging, biosignals, and electronic noses."],
-  ["tml", "Trustworthy ML", "Reliability estimates and robust training for machine learning models."],
+  ["early", "Earlier work", "Clinical imaging, biosignals, electronic noses, and reliable prediction, from my master's and early Ph.D.", ["hea", "tml"]],
 ];
 
 export const GROUPS = [
   ["spa", "Spatial reasoning", "Benchmarks and training methods for spatial understanding in language and vision-language models."],
   ["acc", "Accessibility", "Audio-haptic and tactile systems that help blind and low-vision people understand places."],
-  ["hai", "Human-agent collaboration", "Human-in-the-loop systems and surveys on people working with AI."],
+  ["hai", "Agents and human-in-the-loop", "Agent systems, human-in-the-loop tools, and surveys on people working with AI."],
   ["tml", "Trustworthy ML", "Conformal prediction and robust training for reliable predictions."],
   ["hea", "Health and sensing", "Models for clinical, physiological, and electronic-nose sensor data."],
 ];
@@ -298,7 +308,7 @@ export const PRIMARY = [["Learning to Draw", "spa"], ["Right This Way", "spa"], 
 export const EDU_THEME = [
   { logo: "zju", deg: `B.S., Chu Kochen Honors College, Zhejiang University`, org: "2015 to 2019", theme: "Spatial interaction" },
   { logo: "zju", deg: `M.Eng., Control Science and Engineering, Zhejiang University`, org: "2019 to 2022", theme: "Biosensors" },
-  { logo: "ucsc", deg: `Ph.D., Computer Science and Engineering, UC Santa Cruz`, org: "Advised by Leilani H. Gilpin, Sep 2022 to May 2027", theme: "Spatial reasoning and human-agent collaboration" },
+  { logo: "ucsc", deg: `Ph.D., Computer Science and Engineering, UC Santa Cruz`, org: "Advised by Leilani H. Gilpin, Sep 2022 to May 2027", theme: "Multimodal LLMs, agents, and spatial reasoning" },
 ];
 
 export const VIDEOS = { touchingspace: { id: "t3qaVIrDDa4", thumb: "yt_ts" }, "skills-on-board": { id: "G_XJpzWnH_c", thumb: "yt_sob" }, "lotus-pavilion": { id: "9G6kR8N1WFM", thumb: "yt_lotus" }, "amazon-2026": { id: "G_XJpzWnH_c", thumb: "yt_sob" }, ser: { id: "TGy4yoTbdyI", thumb: "yt_ser" } };
@@ -307,12 +317,12 @@ export const PUBS = [
   { img: "colm", y: 2026, v: "COLM", vy: "2026", top: 1, sel: 1, first: 1, tags: ["spa","llm"],
     t: "Learning to Draw ASCII Improves Spatial Reasoning in Language Models",
     a: "Shiyuan Huang*, Li Liu*, Jincheng He, Leilani H. Gilpin",
-    l: [["Project page","https://aiea-lab.github.io/Text2Space/"],["arXiv","https://arxiv.org/abs/2604.14641"],["Dataset","https://huggingface.co/datasets/ShiyuanHuang/Text2Space"]] },
-  { img: "2608.23820", y: 2026, v: "ASSETS", vy: "2026 Demo", top: 1, sel: 1, first: 1, tags: ["acc"],
+    l: [["Project page","https://aiea-lab.github.io/Text2Space/"],["arXiv","https://arxiv.org/abs/2604.14641"],["Code","https://github.com/aiea-lab/Text2Space"],["Dataset","https://huggingface.co/datasets/ShiyuanHuang/Text2Space"]] },
+  { img: "2608.23820", y: 2026, v: "ASSETS", vy: "2026 Demo", top: 1, first: 1, tags: ["acc"],
     t: "From Anonymous Shapes to Named Places: A Tool for Braille and Place-Semantic Annotation of Tactile Maps",
     a: "Li Liu, Ashmita Dua, Jiaming Qu, David T. Lee, Leilani H. Gilpin",
     l: [["arXiv","https://arxiv.org/abs/2608.23820"],["Demo","https://leolee7.github.io/Annotate_Braille/"]] },
-  { img: "www", y: 2026, v: "WWW", vy: "2026 Demo", top: 1, sel: 1, first: 1, tags: ["hai"],
+  { img: "www", y: 2026, v: "WWW", vy: "2026 Demo", top: 1, first: 1, tags: ["hai"],
     t: "Pattern Discovery with Wide-Lens Analysis and Sharp-Focus Validation",
     a: "Li Liu, Omar Alonso, Giorgio Ballardin",
     l: [["Paper","https://doi.org/10.1145/3774905.3793105"]] },
@@ -333,7 +343,7 @@ export const PUBS = [
     t: "A Tri-Light Warning System for Hospitalized COVID-19 Patients: Credibility-Based Risk Stratification for Future Pandemic Preparedness",
     a: "Chuanjun Xu*, Qinmei Xu*, Li Liu*, Mu Zhou, Zijian Xing, Zhen Zhou, Danyang Ren, Changsheng Zhou, Longjiang Zhang, Xiao Li, Xianghao Zhan, Olivier Gevaert, Guangming Lu",
     l: [["Paper","https://www.sciencedirect.com/science/article/pii/S2352047724000583"]] },
-  { arx: "oa-tist", y: 2026, v: "ACM TIST", vy: "2026", img: "tist", tags: ["hai","llm"],
+  { arx: "oa-tist", y: 2026, v: "ACM TIST", vy: "2026", img: "tist", sel: 1, tags: ["hai","llm"],
     t: "A Survey on Human-AI Collaboration with Large Foundation Models",
     a: "Vanshika Vats*, Marzia Binta Nizam*, Minghao Liu, Ziyuan Wang, Richard Ho, Mohnish Sai Prasad, Vincent Titterton, Sai Venkat Malreddy, Riya Aggarwal, Yanwen Xu, Lei Ding, Jay Mehta, Nathan Grinnell, Li Liu, Sijia Zhong, Devanathan Nallur Gandamani, Xinyi Tang, Rohan Ghosalkar, Celeste Shen, Rachel Shen, Nafisa Hussain, Kesav Ravichandran, James Davis",
     l: [["Paper","https://doi.org/10.1145/3841472"]] },
