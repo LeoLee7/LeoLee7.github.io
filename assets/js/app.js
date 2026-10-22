@@ -1,6 +1,6 @@
-import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HQ, KEY } from "./content.js?v=20261022j";
-import { ABSTRACTS } from "./abstracts.js?v=20261022j";
-import { STORY } from "./story.js?v=20261022j";
+import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HQ, KEY, ECHO } from "./content.js?v=20261022k";
+import { ABSTRACTS } from "./abstracts.js?v=20261022k";
+import { STORY } from "./story.js?v=20261022k";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -214,6 +214,7 @@ function renderProject(p) {
     ${VIDEOS[p.slug] ? `<div class="pp-video">${videoBlock(p.slug, 1)}</div>` : T ? lbBtn({ img: p.img, title: p.name, sub: p.venue, links: lbLinks(p.slug, p.links || [], 1) }, "pp-hero", `<img src="${T.full || T.a}" alt="${p.name} figure">`) : `<div class="pp-hero word"><span>${p.name}</span></div>`}
     <div class="d-body">
       <div class="d-main">${KEY[p.slug] ? `<p class="key"><b>Key finding.</b> ${KEY[p.slug]}</p>` : ""}<h2>Overview</h2>${(OVERVIEW[p.slug] || OVERVIEW_EARLY[p.slug] || [p.line]).map(x => `<p>${x}</p>`).join("")}
+        ${ECHO[p.slug] ? `<aside class="echo"><h3>${ECHO[p.slug].title}</h3><p>${ECHO[p.slug].text}</p><p class="echo-l">${ECHO[p.slug].links.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join("")}</p></aside>` : ""}
         ${TECH[p.slug] ? `<h2>How it works</h2><dl class="tech">${TECH[p.slug].map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl>` : ""}
         ${(VIDEOS[p.slug] && T && !p.videoHero ? [[p.img, p.line], ...(p.figs || [])] : p.figs || []).map(([k, cap]) => `<figure class="pfig">${lbBtn({ img: k, title: p.name, sub: cap, links: lbLinks(p.slug, p.links || [], 1) }, "pimg", `<img src="${TEASERS[k].full || TEASERS[k].a}" alt="${esc(cap)}">`)}<figcaption>${cap}</figcaption></figure>`).join("")}
         ${pubs.length ? `<h2>${pubs.length > 1 ? "Papers" : "Paper"}</h2>${pubs.map(x => pubHTML(x, "pp")).join("")}` : ""}
@@ -302,8 +303,7 @@ function renderAbout() {
         <h1>Li Liu</h1>
         <div class="role">Ph.D. Candidate, Computer Science and Engineering, UC Santa Cruz</div>
         <p>I am fortunate to be advised by <a href="https://people.ucsc.edu/~lgilpin/">Prof. Leilani H. Gilpin</a>. I work on <b>multimodal foundation models and agents</b>, with a focus on <b>spatial reasoning</b>.</p>
-        <p>My research makes spatial understanding explicit, so it can be measured, trained, and checked. I study how models build layouts from language (<a href="https://arxiv.org/abs/2604.14641">COLM 2026</a>) and recognize when an image is not enough to answer (<a href="https://arxiv.org/abs/2411.00394">NeurIPS 2024</a>), and I build agents that carry this understanding to people, such as <a href="https://arxiv.org/abs/2609.36404">TouchingSpace</a> for blind and low-vision map readers.</p>
-        <p>Language models and blind map readers often meet space the same way, through words. Methods that help one represent space can help the other.</p>
+        <p>My research follows one loop: how models represent space, perceive it, and correct what they get wrong, and how that understanding reaches people. Language models learn to build spatial layouts from text (<a href="https://arxiv.org/abs/2604.14641">COLM 2026</a>); vision-language models learn to say when an image is not enough and how to move the camera (<a href="https://arxiv.org/abs/2411.00394">NeurIPS 2024</a>); and agents such as <a href="https://arxiv.org/abs/2609.36404">TouchingSpace</a> carry a map to blind and low-vision readers through touch, sound, and conversation.</p>
         <div class="job"><svg class="smile" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 14.2c1 1.4 2.4 2.1 4 2.1s3-.7 4-2.1"/><circle cx="9" cy="9.6" r="1.1" class="eye"/><circle cx="15" cy="9.6" r="1.1" class="eye"/></svg><span>I am on the 2027 job market for Research Scientist, Applied Scientist, and ML Engineer roles. Happy to chat!</span></div>
       </div>
       <aside class="me">

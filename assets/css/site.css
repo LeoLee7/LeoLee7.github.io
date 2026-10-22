@@ -462,3 +462,9 @@ a.proj:hover .nm { color: var(--accent); }
 .card .q { font-size: 14px; line-height: 1.4; color: var(--accent); font-weight: 600; margin-bottom: 2px; }
 .key { margin: 0 0 22px; padding: 14px 18px; border-left: 3px solid var(--accent); background: var(--frame); border-radius: 0 10px 10px 0; font-size: 16px; line-height: 1.6; }
 .key b { color: var(--ink); }
+
+/* related development elsewhere, on a project page */
+.echo { margin: 6px 0 28px; padding: 18px 22px; border-radius: 12px; background: var(--frame); }
+.echo h3 { margin: 0 0 6px; font-size: 16px; color: var(--ink); }
+.echo p { margin: 0; font-size: 15.5px; line-height: 1.6; }
+.echo .echo-l { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 10px; font-size: 14.5px; }
