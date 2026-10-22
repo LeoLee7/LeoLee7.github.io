@@ -29,15 +29,29 @@ export const SCHOLAR = "https://scholar.google.com/citations?user=hLHzhqkAAAAJ";
 
 /* homepage research highlights, in order */
 export const HIGHLIGHTS = ["ascii", "right-this-way", "touchingspace", "skills-on-board"];
+/* the question each highlight answers, shown above its name */
+export const HQ = {
+  ascii: "Can a model draw what it reads?",
+  "right-this-way": "Does a model know when it cannot see enough?",
+  touchingspace: "Can a model's picture of space become a person's?",
+  "skills-on-board": "Can people check what an agent knows?",
+};
+/* one-line finding shown at the top of a project page */
+export const KEY = {
+  ascii: "Read-write asymmetry: across six LLMs, reading an ASCII layout beats building one from text by 13 to 27 points, and learning to build layouts is what improves spatial reasoning.",
+  "right-this-way": "Vision-language models answer even when the image cannot support an answer. They can learn instead to tell the user how to move the camera.",
+  touchingspace: "Grounding the agent at the finger makes its spatial answers reliable: 96% correct on direction and distance from the finger, against 49% for relations between two named places.",
+  "skills-on-board": "Stable identity, provenance, and deterministic projection are what make an agent skill maintainable.",
+};
 
 export const PROJECTS = [
-  { slug: "ascii", theme: "spa", pub: "Learning to Draw", name: "Learning to Draw ASCII", img: "colm", venue: "COLM 2026", short: "Teaching LLMs to sketch: training on ASCII layouts more than doubles layout accuracy and improves text-only spatial reasoning, with gains on three external benchmarks.",
+  { slug: "ascii", theme: "spa", pub: "Learning to Draw", name: "Learning to Draw ASCII", img: "colm", venue: "COLM 2026", short: "Across six LLMs, reading spatial layouts beats building them. Training models to build ASCII layouts more than doubles layout accuracy and improves text-only spatial reasoning.",
     line: "Across six LLMs, reading ASCII layouts beats building them by 13 to 27 points. Training on construction more than doubles layout accuracy, improves text-only spatial reasoning, and transfers to three external benchmarks.",
     links: [["Project page", "https://aiea-lab.github.io/Text2Space/"], ["arXiv", "https://arxiv.org/abs/2604.14641"], ["Code", "https://github.com/aiea-lab/Text2Space"], ["Dataset", "https://huggingface.co/datasets/ShiyuanHuang/Text2Space"]] },
-  { slug: "right-this-way", theme: "spa", pub: "Right This Way", name: "Right This Way", img: "rtw", venue: "NeurIPS 2024", short: "Instead of guessing, a vision-language model tells the user how to move the camera. Our synthetic data raises open VLMs by up to 16 points, the best beating GPT-4o.",
+  { slug: "right-this-way", theme: "spa", pub: "Right This Way", name: "Right This Way", img: "rtw", venue: "NeurIPS 2024", short: "VLMs answer even when the image cannot support an answer. We taught them to tell the user how to move the camera, raising open VLMs by up to 16 points. Two years later, Google shipped a similar behavior in Gemini Live.",
     line: "A new task, directional guidance, with an open 821-sample human-labeled benchmark and a label-free synthetic data pipeline. Fine-tuning raises open VLMs by up to 16 points, the best beating GPT-4o.",
     links: [["Paper", "https://proceedings.neurips.cc/paper_files/paper/2024/file/efe4e50d492fedc0dfd2959f3320a974-Paper-Conference.pdf"], ["Code", "https://github.com/LeoLee7/Directional_guidance"]] },
-  { slug: "touchingspace", theme: "acc", pub: "\u201cI didn", name: "TouchingSpace", img: "ts_overview", figs: [["2609.36404", "System pipeline: map retrieval, map transformation, and exploration on the trackpad."]], venue: "Under review, 2026", short: "A voice-and-touch map agent on Gemini native audio turns a laptop trackpad into a map, answering 83% of 393 spoken spatial questions correctly.",
+  { slug: "touchingspace", theme: "acc", pub: "\u201cI didn", name: "TouchingSpace", img: "ts_overview", figs: [["2609.36404", "System pipeline: map retrieval, map transformation, and exploration on the trackpad."]], venue: "Under review, 2026", short: "A voice-and-touch map agent on Gemini native audio turns a laptop trackpad into a map for blind readers, answering 83% of 393 spoken spatial questions correctly.",
     line: "A voice-and-touch map agent on Gemini native audio. People explore a place by hand on a laptop trackpad and ask open questions; the agent answers 83% of 393 spoken spatial questions correctly. Built with 15 blind and low-vision people: a co-designer and 14 study participants.",
     links: [["arXiv", "https://arxiv.org/abs/2609.36404"], ["Video", "https://youtu.be/t3qaVIrDDa4"]] },
   { slug: "tactile-annotation", theme: "acc", pub: "From Anonymous", name: "Tactile Map Annotation", img: "2608.23820", venue: "ASSETS 2026 Demo", short: "Braille and place labels for 3D-printed tactile maps.",
@@ -180,7 +194,8 @@ export const OVERVIEW = {
     "We introduce Text2Space, a dataset that pairs text descriptions with ASCII grid layouts, and find a read-write asymmetry: models read ASCII layouts well but struggle to construct them from text. Training on layout construction improves spatial reasoning from text alone, and the gains transfer to three external benchmarks."],
   "right-this-way": [
     "In visual question answering, people judge whether the available information is enough and look for more when it is not, while vision-language models usually answer in one shot. We ask whether VLMs can indicate how to adjust an image when the visual information is insufficient, a capability that matters for visually impaired people who need guidance to capture images.",
-    "We release a human-labeled benchmark for this directional guidance task and a framework that generates synthetic training data by simulating \u201cwhere to know\u201d scenarios. Fine-tuning on this data significantly improves mainstream VLMs."],
+    "We release a human-labeled benchmark for this directional guidance task and a framework that generates synthetic training data by simulating \u201cwhere to know\u201d scenarios. Fine-tuning on this data significantly improves mainstream VLMs.",
+    "In October 2026, Google launched <a href=\"https://blog.google/innovation-and-ai/products/gemini-app/guided-vision-gemini-live/\">Guided Vision</a> in Gemini Live, which asks blind and low-vision users to pan, tilt, or step back when it needs a better view, the behavior this work studied in 2024."],
   "tactile-annotation": [
     "On a 3D-printed tactile map, a building felt under the finger is an anonymous shape. Touch alone cannot tell which footprint is which, and a spoken description cannot reliably tie a shape to a specific place.",
     "We built a web-based tool that lets a sighted helper add Braille and place labels to a generated map model. Labeling happens after geometry generation, so the person doing it can account for the reader and the local Braille standard."],

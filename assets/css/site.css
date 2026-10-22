@@ -456,3 +456,9 @@ a.proj:hover .nm { color: var(--accent); }
 .tech dt { font-weight: 650; color: var(--ink); font-size: 15px; }
 .tech dd { margin: 0; font-size: 15.5px; line-height: 1.6; }
 @media (max-width: 720px) { .tech { grid-template-columns: minmax(0, 1fr); gap: 2px; } .tech dd { margin-bottom: 12px; } }
+
+/* highlight questions and project key findings */
+.seclead { margin: -6px 0 22px; color: var(--muted); font-size: 15.5px; }
+.card .q { font-size: 14px; line-height: 1.4; color: var(--accent); font-weight: 600; margin-bottom: 2px; }
+.key { margin: 0 0 22px; padding: 14px 18px; border-left: 3px solid var(--accent); background: var(--frame); border-radius: 0 10px 10px 0; font-size: 16px; line-height: 1.6; }
+.key b { color: var(--ink); }
