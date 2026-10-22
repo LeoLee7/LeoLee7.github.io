@@ -66,7 +66,7 @@ export const PROJECTS = [
   { slug: "touchingspace", theme: "acc", pub: "\u201cI didn", name: "TouchingSpace", img: "ts_overview", figs: [["2609.36404", "System pipeline: map retrieval, map transformation, and exploration on the trackpad."]], venue: "Under review, 2026", short: "A real-time voice-and-touch agent on Gemini native audio that grounds its answers in a map, with 83% accuracy on 393 spoken spatial questions, tested with blind and low-vision users.",
     line: "A voice-and-touch map agent on Gemini native audio. People explore a place by hand on a laptop trackpad and ask open questions; the agent reaches 83% accuracy on 393 spoken spatial questions. Built from zero with a blind co-designer and studied with 14 blind and low-vision adults.",
     links: [["arXiv", "https://arxiv.org/abs/2609.36404"], ["Video", "https://youtu.be/SRBqu2IxBNY"]] },
-  { slug: "tactile-annotation", theme: "acc", pub: "From Anonymous", name: "Tactile Map Annotation", img: "2608.23820", venue: "ASSETS 2026 Demo", short: "Braille and place labels for 3D-printed tactile maps.",
+  { slug: "tactile-annotation", theme: "acc", pub: "From Anonymous", name: "Tactile Map Annotation", img: "named-places", figs: [["2608.23820", "Printed tactile maps (A, B), the annotation editor (C), and the exported legend, map content, and annotation files (D to F)."]], venue: "ASSETS 2026 Demo", short: "Braille and place labels for 3D-printed tactile maps.",
     line: "A web tool that lets a sighted helper add Braille and place labels to a generated 3D-printed tactile map, so each footprint can be identified by touch.",
     links: [["arXiv", "https://arxiv.org/abs/2608.23820"], ["Demo", "https://leolee7.github.io/Annotate_Braille/"], ["Video", "https://youtu.be/4KqVa0DeqdM"]] },
   { slug: "hai-survey", theme: "hai", pub: "A Survey on Human-AI", name: "Human-AI Collaboration Survey", img: "tist", figs: [["tist-lifecycle", "The lifecycle of human-AI collaboration with large foundation models, as organized in the survey."]], venue: "ACM TIST 2026",
@@ -263,7 +263,7 @@ export const NEWS = [
     ],
     imgs: [["tist", "Collaboration patterns and role allocation."]],
     links: [["Paper", "https://doi.org/10.1145/3841472"]] },
-  { slug: "assets-2026", to: "tactile-annotation", d: "Aug 2026", img: "2608.23820",
+  { slug: "assets-2026", to: "tactile-annotation", d: "Aug 2026", img: "named-places",
     title: "Braille annotation tool accepted to ASSETS 2026",
     h: "Our Braille annotation tool for tactile maps is accepted to <b>ASSETS 2026</b> Posters and Demonstrations.",
     body: [
@@ -345,7 +345,7 @@ export const PUBS = [
     t: "Learning to Draw ASCII Improves Spatial Reasoning in Language Models",
     a: "Shiyuan Huang*, Li Liu*, Jincheng He, Leilani H. Gilpin",
     l: [["Project page","https://aiea-lab.github.io/Text2Space/"],["arXiv","https://arxiv.org/abs/2604.14641"],["Code","https://github.com/aiea-lab/Text2Space"],["Dataset","https://huggingface.co/datasets/ShiyuanHuang/Text2Space"]] },
-  { img: "2608.23820", y: 2026, v: "ASSETS", vy: "2026 Demo", top: 1, first: 1, tags: ["acc"],
+  { img: "named-places", y: 2026, v: "ASSETS", vy: "2026 Demo", top: 1, first: 1, tags: ["acc"],
     t: "From Anonymous Shapes to Named Places: A Tool for Braille and Place-Semantic Annotation of Tactile Maps",
     a: "Li Liu, Ashmita Dua, Jiaming Qu, David T. Lee, Leilani H. Gilpin",
     l: [["arXiv","https://arxiv.org/abs/2608.23820"],["Demo","https://leolee7.github.io/Annotate_Braille/"],["Video","https://youtu.be/4KqVa0DeqdM"]] },
@@ -448,6 +448,7 @@ export const TEASERS = {
   "a": "assets/img/papers/2604.14641.jpg",
   "full": "assets/img/full/2604.14641.png"
  },
+ "named-places": { "a": "assets/img/papers/named-places.jpg", "full": "assets/img/full/named-places.png" },
  "2608.23820": {
   "a": "assets/img/papers/2608.23820.jpg",
   "full": "assets/img/full/2608.23820.jpg"
