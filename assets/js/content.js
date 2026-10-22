@@ -50,21 +50,21 @@ export const ECHO = {
 };
 /* one-line finding shown at the top of a project page */
 export const KEY = {
-  ascii: "Read-write asymmetry: across six LLMs, reading an ASCII layout beats building one from text by 13 to 27 points, and learning to build layouts is what improves spatial reasoning.",
+  ascii: "Read-write asymmetry: across six LLMs, accuracy in reading ASCII layouts exceeds accuracy in constructing them from text by 13 to 27 percentage points. Training on construction, rather than comprehension alone, is what improves spatial reasoning.",
   "right-this-way": "Vision-language models answer even when the image cannot support an answer. They can learn instead to tell the user how to move the camera.",
-  touchingspace: "Grounding the agent at the finger makes its spatial answers reliable: 96% correct on direction and distance from the finger, against 49% for relations between two named places.",
+  touchingspace: "Spatial answers anchored at the finger are the most reliable: 96% accuracy on direction and distance from the finger, compared with 49% on relations between two named places.",
   "skills-on-board": "Stable identity, provenance, and deterministic projection are what make an agent skill maintainable.",
 };
 
 export const PROJECTS = [
-  { slug: "right-this-way", theme: "spa", pub: "Right This Way", name: "Right This Way", img: "rtw", venue: "NeurIPS 2024", short: "VLMs answer even when the image cannot support an answer. We trained them to tell the user how to move the camera, raising open VLMs by up to 16 points. Two years later, Google shipped a similar behavior in Gemini Live.",
-    line: "A new task, directional guidance, with an open 821-sample human-labeled benchmark and a label-free synthetic data pipeline. Fine-tuning raises open VLMs by up to 16 points, the best beating GPT-4o.",
+  { slug: "right-this-way", theme: "spa", pub: "Right This Way", name: "Right This Way", img: "rtw", venue: "NeurIPS 2024", short: "VLMs answer even when the image cannot support an answer. We trained them to tell the user how to move the camera, raising the accuracy of open VLMs by up to 16 percentage points. Two years later, Google shipped a similar behavior in Gemini Live.",
+    line: "A new task, directional guidance, with an open 821-sample human-labeled benchmark and a label-free synthetic data pipeline. Fine-tuning raises the accuracy of open VLMs by up to 16 percentage points, and the best fine-tuned model exceeds GPT-4o.",
     links: [["Paper", "https://proceedings.neurips.cc/paper_files/paper/2024/file/efe4e50d492fedc0dfd2959f3320a974-Paper-Conference.pdf"], ["Code", "https://github.com/LeoLee7/Directional_guidance"]] },
-  { slug: "ascii", theme: "spa", pub: "Learning to Draw", name: "Learning to Draw ASCII", img: "colm", venue: "COLM 2026", short: "Across six LLMs, reading spatial layouts beats building them. Training models to build ASCII layouts more than doubles layout accuracy and improves text-only spatial reasoning.",
-    line: "Across six LLMs, reading ASCII layouts beats building them by 13 to 27 points. Training on construction more than doubles layout accuracy, improves text-only spatial reasoning, and transfers to three external benchmarks.",
+  { slug: "ascii", theme: "spa", pub: "Learning to Draw", name: "Learning to Draw ASCII", img: "colm", venue: "COLM 2026", short: "Across six LLMs, reading spatial layouts beats building them. Training models to build ASCII layouts more than doubles layout-construction accuracy and improves text-only spatial reasoning.",
+    line: "Across six LLMs, accuracy in reading ASCII layouts exceeds accuracy in constructing them by 13 to 27 percentage points. Training on construction more than doubles construction accuracy, improves text-only spatial reasoning, and transfers to three external benchmarks.",
     links: [["Project page", "https://aiea-lab.github.io/Text2Space/"], ["arXiv", "https://arxiv.org/abs/2604.14641"], ["Code", "https://github.com/aiea-lab/Text2Space"], ["Dataset", "https://huggingface.co/datasets/ShiyuanHuang/Text2Space"]] },
-  { slug: "touchingspace", theme: "acc", pub: "\u201cI didn", name: "TouchingSpace", img: "ts_overview", figs: [["2609.36404", "System pipeline: map retrieval, map transformation, and exploration on the trackpad."]], venue: "Under review, 2026", short: "A real-time voice-and-touch agent on Gemini native audio that grounds its answers in a map: 83% of 393 spoken spatial questions correct, tested with blind and low-vision users.",
-    line: "A voice-and-touch map agent on Gemini native audio. People explore a place by hand on a laptop trackpad and ask open questions; the agent answers 83% of 393 spoken spatial questions correctly. Built with 15 blind and low-vision people: a co-designer and 14 study participants.",
+  { slug: "touchingspace", theme: "acc", pub: "\u201cI didn", name: "TouchingSpace", img: "ts_overview", figs: [["2609.36404", "System pipeline: map retrieval, map transformation, and exploration on the trackpad."]], venue: "Under review, 2026", short: "A real-time voice-and-touch agent on Gemini native audio that grounds its answers in a map, with 83% accuracy on 393 spoken spatial questions, tested with blind and low-vision users.",
+    line: "A voice-and-touch map agent on Gemini native audio. People explore a place by hand on a laptop trackpad and ask open questions; the agent reaches 83% accuracy on 393 spoken spatial questions. Built with 15 blind and low-vision people: a co-designer and 14 study participants.",
     links: [["arXiv", "https://arxiv.org/abs/2609.36404"], ["Video", "https://youtu.be/t3qaVIrDDa4"]] },
   { slug: "tactile-annotation", theme: "acc", pub: "From Anonymous", name: "Tactile Map Annotation", img: "2608.23820", venue: "ASSETS 2026 Demo", short: "Braille and place labels for 3D-printed tactile maps.",
     line: "A web tool that lets a sighted helper add Braille and place labels to a generated 3D-printed tactile map, so each footprint can be identified by touch.",
@@ -80,7 +80,7 @@ export const PROJECTS = [
     line: "A system that turns a free-text SKILL.md into a typed meta file, rendered as a board for people and compiled into a structured skill for agents. On SkillLearnBench, agents use half the output tokens at equal or better task performance. Built during my internship at Amazon.",
     links: [["Video", "https://youtu.be/G_XJpzWnH_c"]] },
   { slug: "ser", theme: "hai", name: "SER", img: "ser", venue: "Amazon internship, 2024", short: "Search for what reviews know: who a product is for, how it feels, and the occasion it fits.",
-    line: "A search system that turns customer reviews into search facets, each linked to the review sentence behind it, for needs catalogs do not record. On recipes it finds 18% more matches than keyword search. Built during my internship at Amazon.",
+    line: "A search system that turns customer reviews into search facets, each linked to the review sentence behind it, for needs catalogs do not record. On recipes it finds 18% more facet matches than keyword search. Built during my internship at Amazon.",
     links: [["Video", "https://youtu.be/TGy4yoTbdyI"]] },
   { slug: "swinmm", theme: "hea", pub: "SwinMM", name: "SwinMM", img: "swinmm", venue: "MICCAI 2023",
     short: "Self-supervised multi-view pre-training for 3D medical image segmentation.",
@@ -178,7 +178,7 @@ export const TECH = {
     ["Context", "Each turn, the agent sees where the finger is and how every place relates to it, in direction, distance, and containment computed from map geometry."],
     ["Map", "OpenStreetMap places, scaled onto the trackpad and revealed in four stages."],
     ["Feedback", "A hum grows louder near a place; vibration marks its edge."],
-    ["Result", "83% of 393 spoken spatial questions answered correctly, 96% on direction and distance from the finger."],
+    ["Result", "83% accuracy on 393 spoken spatial questions; 96% on direction and distance from the finger."],
   ],
 };
 
@@ -242,7 +242,7 @@ export const NEWS = [
     h: "Finished my Applied Scientist internship at <b>Amazon</b> in Seattle, building <b>Skills on Board</b> for structured skill engineering for agents.", rel: ["skills-on-board"],
     body: [
       "From June to September 2026 I worked as an Applied Scientist Intern at Amazon in Seattle on structured skill engineering for agents.",
-      "I encoded free-text SKILL.md prompts as typed, versioned graphs of each skill's solution approach and key steps. The same graph serves as documentation for people and as executable instructions for agents, and it cut agent output tokens by about 50% at equal or better task performance.",
+      "I encoded free-text SKILL.md prompts as typed, versioned graphs of each skill's solution approach and key steps. The same graph serves as documentation for people and as executable instructions for agents, and on SkillLearnBench it halved agent output tokens at equal or better task performance.",
       "I also linked each skill to its evidence and rollouts, so that every failure can be traced to the agent, the task, or the benchmark. This surfaced defects in the benchmarks themselves.",
     ], imgs: [], links: [["Video", "https://youtu.be/G_XJpzWnH_c"]], facts: [["Role", "Applied Scientist Intern"], ["Location", "Seattle, WA, USA"], ["Dates", "June to Sept. 2026"], ["Focus", "Structured skill engineering for agents"]] },
   { slug: "touchingspace-preprint", to: "touchingspace", d: "Sep 2026", img: "2609.36404",
@@ -300,9 +300,9 @@ export const EXPERIENCE = [
   { logo: "amazon", org: "Amazon", role: "Applied Scientist Intern", place: "Santa Clara, CA", y: "2025", dates: "June to Sept. 2025", t0: 2025.42, t1: 2025.67, topic: "Taxonomy discovery from unlabeled conversations (WWW 2026)", bullets: [
     "<b>Taxonomy discovery from unlabeled conversations (<a href=\"#project-pattern-insights\">WWW 2026 Demo</a>).</b> Designed a modular, human-in-the-loop framework that evolves its own taxonomy from a few seed keywords, alternating a wide-lens view of where patterns cluster with sharp-focus checks of each extraction; every pattern traces to its source."] },
   { logo: "amazon", org: "Amazon", role: "Applied Scientist Intern", place: "Palo Alto, CA", y: "2024", dates: "June to Sept. 2024", t0: 2024.42, t1: 2024.67, topic: "Evidence-grounded search from reviews (SER)", bullets: [
-    "<b>Evidence-grounded search from reviews (<a href=\"#project-ser\">SER</a>).</b> Built a search system that turns customer reviews into search facets, each linked to the review sentence behind it, to answer needs catalogs do not record. Later shown on recipes to find 18% more matches than keyword search."] },
+    "<b>Evidence-grounded search from reviews (<a href=\"#project-ser\">SER</a>).</b> Built a search system that turns customer reviews into search facets, each linked to the review sentence behind it, to answer needs catalogs do not record. Later shown on recipes to find 18% more facet matches than keyword search."] },
   { logo: "nissan", org: "Nissan Research Center", role: "Data Scientist Intern", place: "Santa Clara, CA", y: "2023", dates: "July to Sept. 2023", t0: 2023.5, t1: 2023.67, topic: "Driver engagement in autonomous driving", bullets: [
-    "<b>Driver engagement in autonomous driving.</b> Developed a time-series model of driver engagement from real-world driving logs, improving prediction accuracy by 16%."] },
+    "<b>Driver engagement in autonomous driving.</b> Developed a time-series model of driver engagement from real-world driving logs, improving prediction accuracy by 16 percentage points."] },
 ];
 
 export const EDUCATION = [
