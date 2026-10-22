@@ -39,7 +39,7 @@ export const HQ = {
 /* a related development elsewhere, shown after Overview on a project page */
 export const ECHO = {
   "right-this-way": { title: "The same question in Gemini Live",
-    text: "Happy to see Google ship this capability in Gemini Live. Guided Vision, launched on October 1, 2026, gives blind and low-vision users spoken cues to pan, tilt, or step back when Gemini needs a better view. It is Google's own work, not built on ours, and it takes on the question this paper asked in 2024: what should a model do when the image is not enough?",
+    text: "Happy to see Google ship this capability in Gemini Live. Guided Vision, launched on October 1, 2026, gives blind and low-vision users spoken cues to pan, tilt, or step back when Gemini needs a better view. It focuses on the same question this paper asked in 2024: what should a model do when the image is not enough?",
     links: [["Google announcement", "https://blog.google/innovation-and-ai/products/gemini-app/guided-vision-gemini-live/"], ["Help Center: Use Guided Vision", "https://support.google.com/accessibility/android/answer/18365638"], ["Android Authority", "https://www.androidauthority.com/gemini-live-guided-vision-launch-3718122/"]] },
 };
 /* one-line finding shown at the top of a project page */

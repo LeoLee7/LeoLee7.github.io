@@ -1,6 +1,6 @@
-import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HQ, KEY, ECHO } from "./content.js?v=20261022k";
-import { ABSTRACTS } from "./abstracts.js?v=20261022k";
-import { STORY } from "./story.js?v=20261022k";
+import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HQ, KEY, ECHO } from "./content.js?v=20261022l";
+import { ABSTRACTS } from "./abstracts.js?v=20261022l";
+import { STORY } from "./story.js?v=20261022l";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -303,7 +303,7 @@ function renderAbout() {
         <h1>Li Liu</h1>
         <div class="role">Ph.D. Candidate, Computer Science and Engineering, UC Santa Cruz</div>
         <p>I am fortunate to be advised by <a href="https://people.ucsc.edu/~lgilpin/">Prof. Leilani H. Gilpin</a>. I work on <b>multimodal foundation models and agents</b>, with a focus on <b>spatial reasoning</b>.</p>
-        <p>My research follows one loop: how models represent space, perceive it, and correct what they get wrong, and how that understanding reaches people. Language models learn to build spatial layouts from text (<a href="https://arxiv.org/abs/2604.14641">COLM 2026</a>); vision-language models learn to say when an image is not enough and how to move the camera (<a href="https://arxiv.org/abs/2411.00394">NeurIPS 2024</a>); and agents such as <a href="https://arxiv.org/abs/2609.36404">TouchingSpace</a> carry a map to blind and low-vision readers through touch, sound, and conversation.</p>
+        <p>I study how models represent space, perceive it, and correct what they get wrong, and how that understanding reaches people. Language models learn to build spatial layouts from text (<a href="https://arxiv.org/abs/2604.14641">COLM 2026</a>), and vision-language models learn to say when an image is not enough and how to move the camera (<a href="https://arxiv.org/abs/2411.00394">NeurIPS 2024</a>). Just as text can carry space to a model, touch, sound, and conversation can carry it to a person: <a href="https://arxiv.org/abs/2609.36404">TouchingSpace</a> conveys a map without vision and extends the spatial perception of blind and low-vision readers.</p>
         <div class="job"><svg class="smile" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 14.2c1 1.4 2.4 2.1 4 2.1s3-.7 4-2.1"/><circle cx="9" cy="9.6" r="1.1" class="eye"/><circle cx="15" cy="9.6" r="1.1" class="eye"/></svg><span>I am on the 2027 job market for Research Scientist, Applied Scientist, and ML Engineer roles. Happy to chat!</span></div>
       </div>
       <aside class="me">
