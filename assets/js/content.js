@@ -31,13 +31,13 @@ export const SCHOLAR = "https://scholar.google.com/citations?user=hLHzhqkAAAAJ";
 export const HIGHLIGHTS = ["ascii", "right-this-way", "touchingspace", "skills-on-board"];
 
 export const PROJECTS = [
-  { slug: "ascii", theme: "spa", pub: "Learning to Draw", name: "Learning to Draw ASCII", img: "colm", venue: "COLM 2026", short: "Drawing layouts from text improves spatial reasoning in language models.",
+  { slug: "ascii", theme: "spa", pub: "Learning to Draw", name: "Learning to Draw ASCII", img: "colm", venue: "COLM 2026", short: "Teaching LLMs to sketch: training on ASCII layouts sharpens spatial reasoning, and the gains transfer to three external benchmarks.",
     line: "Language models read ASCII layouts well but struggle to write them. Training them to construct layouts from text improves spatial reasoning, and the gains transfer to three external benchmarks.",
     links: [["Project page", "https://aiea-lab.github.io/Text2Space/"], ["arXiv", "https://arxiv.org/abs/2604.14641"], ["Dataset", "https://huggingface.co/datasets/ShiyuanHuang/Text2Space"]] },
-  { slug: "right-this-way", theme: "spa", pub: "Right This Way", name: "Right This Way", img: "rtw", venue: "NeurIPS 2024", short: "Vision-language models that say how to adjust an image to answer.",
+  { slug: "right-this-way", theme: "spa", pub: "Right This Way", name: "Right This Way", img: "rtw", venue: "NeurIPS 2024", short: "Instead of guessing, a vision-language model tells the user how to move the camera to get the view it needs. Our synthetic training data lifts mainstream VLMs.",
     line: "A benchmark and a synthetic data framework that teach vision-language models to say how to adjust an image when it cannot answer the question, a common need for visually impaired users.",
     links: [["Paper", "https://proceedings.neurips.cc/paper_files/paper/2024/file/efe4e50d492fedc0dfd2959f3320a974-Paper-Conference.pdf"], ["Code", "https://github.com/LeoLee7/Directional_guidance"]] },
-  { slug: "touchingspace", theme: "acc", pub: "\u201cI didn", name: "TouchingSpace", img: "ts_overview", figs: [["2609.36404", "System pipeline: map retrieval, map transformation, and exploration on the trackpad."]], venue: "Under review, 2026", short: "An audio-haptic map that blind and low-vision people explore by hand, tested with 15 blind and low-vision participants.",
+  { slug: "touchingspace", theme: "acc", pub: "\u201cI didn", name: "TouchingSpace", img: "ts_overview", figs: [["2609.36404", "System pipeline: map retrieval, map transformation, and exploration on the trackpad."]], venue: "Under review, 2026", short: "Touch, sound, and a conversational agent turn an everyday laptop trackpad into a map. Tested with 15 blind and low-vision users.",
     line: "An audio-haptic map that blind and low-vision people explore by hand on a laptop trackpad, asking a conversational agent open questions along the way. Studied with fifteen BLV participants.",
     links: [["arXiv", "https://arxiv.org/abs/2609.36404"], ["Video", "https://youtu.be/t3qaVIrDDa4"]] },
   { slug: "tactile-annotation", theme: "acc", pub: "From Anonymous", name: "Tactile Map Annotation", img: "2608.23820", venue: "ASSETS 2026 Demo", short: "Braille and place labels for 3D-printed tactile maps.",
@@ -50,7 +50,7 @@ export const PROJECTS = [
   { slug: "pattern-insights", theme: "hai", pub: "Pattern Discovery", name: "Pattern Insights Explorer", img: "www", venue: "WWW 2026 Demo, Amazon",
     line: "A modular framework that pairs wide-lens views of where candidate patterns cluster with sharp-focus checks of whether they are meaningful, for unlabeled data without ground truth.",
     links: [["Paper", "https://doi.org/10.1145/3774905.3793105"]] },
-  { slug: "skills-on-board", theme: "hai", pub: "Skills on Board", name: "Skills on Board", img: "sob", venue: "Under review, 2026", short: "Agent skills become living boards: trace any step to its evidence, edit it once, and the agent follows.",
+  { slug: "skills-on-board", theme: "hai", pub: "Skills on Board", name: "Skills on Board", img: "sob", venue: "Under review, 2026", short: "A human-in-the-loop harness for agent skills: trace any step to its evidence, edit it once, and the agent follows.",
     line: "A system that turns a free-text SKILL.md into a typed meta file, rendered as a board for people and compiled into a structured skill for agents. Built during my internship at Amazon.",
     links: [["Video", "https://youtu.be/G_XJpzWnH_c"]] },
   { slug: "ser", theme: "hai", name: "SER", img: "ser", venue: "Amazon internship, 2024", short: "Search for what reviews know: who a product is for, how it feels, and the occasion it fits.",
