@@ -68,7 +68,7 @@ export const PROJECTS = [
     links: [["arXiv", "https://arxiv.org/abs/2609.36404"], ["Video", "https://youtu.be/SRBqu2IxBNY"]] },
   { slug: "tactile-annotation", theme: "acc", pub: "From Anonymous", name: "Tactile Map Annotation", img: "2608.23820", venue: "ASSETS 2026 Demo", short: "Braille and place labels for 3D-printed tactile maps.",
     line: "A web tool that lets a sighted helper add Braille and place labels to a generated 3D-printed tactile map, so each footprint can be identified by touch.",
-    links: [["arXiv", "https://arxiv.org/abs/2608.23820"], ["Demo", "https://leolee7.github.io/Annotate_Braille/"]] },
+    links: [["arXiv", "https://arxiv.org/abs/2608.23820"], ["Demo", "https://leolee7.github.io/Annotate_Braille/"], ["Video", "https://youtu.be/4KqVa0DeqdM"]] },
   { slug: "hai-survey", theme: "hai", pub: "A Survey on Human-AI", name: "Human-AI Collaboration Survey", img: "tist", figs: [["tist-lifecycle", "The lifecycle of human-AI collaboration with large foundation models, as organized in the survey."]], venue: "ACM TIST 2026",
     short: "How people and large foundation models work together, from model building to deployment.",
     line: "A survey of human-AI collaboration with large foundation models, covering human-guided model development, collaboration patterns, governance, and high-stakes applications.",
@@ -271,7 +271,7 @@ export const NEWS = [
       "We built a web-based tool that lets a sighted helper add Braille and place labels to a generated map model. Labeling happens after geometry generation, so the person doing it can account for the reader and the local Braille standard. The work appears in the ASSETS 2026 Posters and Demonstrations track.",
     ],
     imgs: [["2608.23820", "Tactile maps and the annotation tool."]],
-    links: [["arXiv", "https://arxiv.org/abs/2608.23820"], ["Try the tool", "https://leolee7.github.io/Annotate_Braille/"]] },
+    links: [["arXiv", "https://arxiv.org/abs/2608.23820"], ["Try the tool", "https://leolee7.github.io/Annotate_Braille/"], ["Video", "https://youtu.be/4KqVa0DeqdM"]] },
   { slug: "colm-accept-2026", to: "ascii", d: "Jul 2026",
     title: "Learning to Draw ASCII accepted to COLM 2026",
     h: "<b>Learning to Draw ASCII</b> is accepted to <b>COLM 2026</b>.",
@@ -338,7 +338,7 @@ export const EDU_THEME = [
   { logo: "ucsc", deg: `Ph.D., Computer Science and Engineering, UC Santa Cruz`, org: "Advised by Leilani H. Gilpin, Sep 2022 to May 2027", theme: "Spatial intelligence in multimodal models and agents" },
 ];
 
-export const VIDEOS = { touchingspace: { id: "SRBqu2IxBNY", thumb: "yt_ts" }, "skills-on-board": { id: "G_XJpzWnH_c", thumb: "yt_sob" }, "lotus-pavilion": { id: "9G6kR8N1WFM", thumb: "yt_lotus" }, "amazon-2026": { id: "G_XJpzWnH_c", thumb: "yt_sob" }, ser: { id: "TGy4yoTbdyI", thumb: "yt_ser" } };
+export const VIDEOS = { touchingspace: { id: "SRBqu2IxBNY", thumb: "yt_ts" }, "skills-on-board": { id: "G_XJpzWnH_c", thumb: "yt_sob" }, "lotus-pavilion": { id: "9G6kR8N1WFM", thumb: "yt_lotus" }, "amazon-2026": { id: "G_XJpzWnH_c", thumb: "yt_sob" }, ser: { id: "TGy4yoTbdyI", thumb: "yt_ser" }, "tactile-annotation": { id: "4KqVa0DeqdM", thumb: "yt_tactile" } };
 
 export const PUBS = [
   { img: "colm", y: 2026, v: "COLM", vy: "2026", top: 1, sel: 1, first: 1, tags: ["spa","llm"],
@@ -348,7 +348,7 @@ export const PUBS = [
   { img: "2608.23820", y: 2026, v: "ASSETS", vy: "2026 Demo", top: 1, first: 1, tags: ["acc"],
     t: "From Anonymous Shapes to Named Places: A Tool for Braille and Place-Semantic Annotation of Tactile Maps",
     a: "Li Liu, Ashmita Dua, Jiaming Qu, David T. Lee, Leilani H. Gilpin",
-    l: [["arXiv","https://arxiv.org/abs/2608.23820"],["Demo","https://leolee7.github.io/Annotate_Braille/"]] },
+    l: [["arXiv","https://arxiv.org/abs/2608.23820"],["Demo","https://leolee7.github.io/Annotate_Braille/"],["Video","https://youtu.be/4KqVa0DeqdM"]] },
   { img: "www", y: 2026, v: "WWW", vy: "2026 Demo", top: 1, first: 1, tags: ["hai"],
     t: "Pattern Discovery with Wide-Lens Analysis and Sharp-Focus Validation",
     a: "Li Liu, Omar Alonso, Giorgio Ballardin",
@@ -420,6 +420,7 @@ export const AVATAR = "assets/img/avatar.jpg";
 export const TEASERS = {
  "yt_sob": { "a": "assets/img/video/skillsonboard.jpg" },
  "yt_ser": { "a": "assets/img/video/ser.jpg" },
+ "yt_tactile": { "a": "assets/img/video/tactile.jpg" },
  "fgsm": { "a": "assets/img/papers/fgsm.jpg", "full": "assets/img/full/fgsm.png" },
  "trilight-overview": { "a": "assets/img/papers/trilight-overview.jpg", "full": "assets/img/full/trilight-overview.jpg" },
  "herbal-origins": { "a": "assets/img/papers/herbal-origins.jpg", "full": "assets/img/full/herbal-origins.jpg" },
