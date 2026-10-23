@@ -62,8 +62,8 @@ export const HB = {
 };
 /* a related development elsewhere, shown after Overview on a project page */
 export const ECHO = {
-  "right-this-way": { title: "The same question in Gemini Live",
-    text: "Happy to see Google ship this capability in Gemini Live. Guided Vision, launched on October&nbsp;1,&nbsp;2026, gives blind and low-vision users spoken cues to pan, tilt, or step back when Gemini needs a better view. It focuses on the same question this paper asked in 2024: what should a model do when the image is not enough?",
+  "right-this-way": { title: "Gemini Live now guides the camera",
+    text: "Happy to see Google launch Guided Vision in Gemini Live on October&nbsp;1,&nbsp;2026. It gives blind and low-vision users spoken cues to pan, tilt, or step back when Gemini needs a better view. It targets the problem this paper studied in 2024: what a model should do when the image is not enough.",
     links: [["Google announcement", "https://blog.google/innovation-and-ai/products/gemini-app/guided-vision-gemini-live/"], ["Help Center: Use Guided Vision", "https://support.google.com/accessibility/android/answer/18365638"]] },
 };
 /* one-line finding shown at the top of a project page */
@@ -245,6 +245,10 @@ export const NEWS = [
     ],
     imgs: [["colm", "Our COLM 2026 poster."]],
     links: [["Project page", "https://aiea-lab.github.io/Text2Space/"], ["arXiv", "https://arxiv.org/abs/2604.14641"], ["Code", "https://github.com/aiea-lab/Text2Space"], ["Dataset", "https://huggingface.co/datasets/ShiyuanHuang/Text2Space"]] },
+  { slug: "gemini-guided-vision-2026", to: "right-this-way", d: "Oct 2026",
+    title: "Gemini Live launches Guided Vision, on the problem Right This Way studied",
+    h: "Happy to see Google launch <b>Guided Vision</b> in <b>Gemini Live</b>, with spoken cues that tell blind and low-vision users how to move the camera. It targets the problem our <b>NeurIPS 2024</b> paper <b>Right This Way</b> studied.",
+    body: [], imgs: [], links: [["Google announcement", "https://blog.google/innovation-and-ai/products/gemini-app/guided-vision-gemini-live/"]] },
   { slug: "pitchability-2026", rel: ["touchingspace"], d: "Sep 2026", img: "pitch",
     title: "TouchingSpace preprint, tested in person with 14 blind and low-vision users, and shown at PitchAbility 2026",
     h: "New preprint on <b>TouchingSpace</b>, a real-time voice agent on Gemini native audio that grounds its answers in the map under the user's finger, tested in person with <b>14 blind and low-vision users</b>. We also presented it at <b>PitchAbility 2026</b>.",
