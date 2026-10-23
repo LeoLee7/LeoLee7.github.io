@@ -1,8 +1,8 @@
-import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HB, KEY, ECHO, HEADLINE, PHOTOS } from "./content.js?v=20261023o";
-import { ABSTRACTS } from "./abstracts.js?v=20261023o";
-import { STORY } from "./story.js?v=20261023o";
-import { guideHTML, mountGuide } from "./guide-demo.js?v=20261023o";
-import { printScrollHTML, mountPrintScroll } from "./print-scroll.js?v=20261023o";
+import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HB, KEY, ECHO, HEADLINE, PHOTOS } from "./content.js?v=20261023p";
+import { ABSTRACTS } from "./abstracts.js?v=20261023p";
+import { STORY } from "./story.js?v=20261023p";
+import { guideHTML, mountGuide } from "./guide-demo.js?v=20261023p";
+import { printScrollHTML, mountPrintScroll } from "./print-scroll.js?v=20261023p";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
