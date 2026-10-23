@@ -84,7 +84,7 @@ export const PROJECTS = [
   { slug: "touchingspace", theme: "acc", pub: "\u201cI didn", name: "TouchingSpace", img: "ts_overview", figs: [["2609.36404", "System pipeline: map retrieval, map transformation, and exploration on the trackpad."]], venue: "Under review, 2026", short: "A real-time voice-and-touch agent on Gemini native audio that grounds its answers in a map, with 83% accuracy on 393 spoken spatial questions, tested with blind and low-vision users.",
     line: "A voice-and-touch map agent on Gemini native audio. People explore a place by hand on a laptop trackpad and ask open questions; the agent reaches 83% accuracy on 393 spoken spatial questions. Built from zero with a blind co-designer and studied with 14 blind and low-vision adults.",
     links: [["arXiv", "https://arxiv.org/abs/2609.36404"], ["Video", "https://youtu.be/SRBqu2IxBNY"]] },
-  { slug: "tactile-annotation", theme: "acc", pub: "From Anonymous", name: "Tactile Map Annotation", img: "named-places", scene: "print-scroll", figs: [["2608.23820", "Printed tactile maps (A, B), the annotation editor (C), and the exported legend, map content, and annotation files (D to F)."]], venue: "ASSETS 2026 Demo", short: "Braille and place labels for 3D-printed tactile maps.",
+  { slug: "tactile-annotation", theme: "acc", pub: "From Anonymous", name: "Tactile Map Annotation", img: "named-places", scene: "print-scroll", videoHero: 1, figs: [["2608.23820", "Printed tactile maps (A, B), the annotation editor (C), and the exported legend, map content, and annotation files (D to F)."]], venue: "ASSETS 2026 Demo", short: "Braille and place labels for 3D-printed tactile maps.",
     line: "A web tool that lets a sighted helper add Braille and place labels to a generated 3D-printed tactile map, so each footprint can be identified by touch. Ten blind and low-vision readers compared unlabeled and annotated prints in formative sessions.",
     links: [["arXiv", "https://arxiv.org/abs/2608.23820"], ["Demo", "https://leolee7.github.io/Annotate_Braille/"], ["Video", "https://youtu.be/4KqVa0DeqdM"]] },
   { slug: "hai-survey", theme: "hai", pub: "A Survey on Human-AI", name: "Human-AI Collaboration Survey", img: "tist", figs: [["tist-lifecycle", "The lifecycle of human-AI collaboration with large foundation models, as organized in the survey."]], venue: "ACM TIST 2026",
@@ -544,14 +544,14 @@ export const LOGOS = {
  "zju": "assets/img/logos/zju.png"
 };
 
-/* photo mosaics on project pages: one portrait on the left, two landscapes stacked on the right */
+/* photo mosaics on project pages: a large landscape photo on top, then a portrait and a landscape side by side */
 export const PHOTOS = {
   "tactile-annotation": {
     items: [
-      ["assets/img/photos/tactile-campus.jpg", "A 3D-printed tactile map of a campus and its surroundings, held up outdoors."],
       ["assets/img/photos/tactile-reading.jpg", "Two hands explore a printed tactile map beside a refreshable Braille display."],
+      ["assets/img/photos/tactile-campus.jpg", "A 3D-printed tactile map of a campus and its surroundings, without labels, held up outdoors."],
       ["assets/img/photos/tactile-tiles.jpg", "Six printed map tiles: the top row without labels, the bottom row with Braille labels on the buildings."],
     ],
-    cap: "Printed maps: a campus map; reading a map by hand next to a refreshable Braille display; three areas printed without labels (top row) and with Braille labels (bottom row).",
+    cap: "Printed maps: reading a map by hand next to a refreshable Braille display; a campus map printed without labels; three areas printed without labels (top row) and with Braille labels (bottom row).",
   },
 };

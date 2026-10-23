@@ -172,15 +172,14 @@ section + section, .block + .block { margin-top: 72px; }
 .pfig { margin: 6px 0 26px; }
 .pfig .pimg { padding: 14px; background: var(--frame); }
 .pfig figcaption { font-size: 13.5px; color: var(--muted); margin-top: 8px; }
-/* 9:8 columns make a 3:4 portrait match two stacked 4:3 landscapes in height */
-.pmosaic { display: grid; grid-template-columns: 9fr 8fr; grid-template-rows: auto auto; gap: 12px; margin: 22px 0 26px; }
-.pmosaic .pimg { position: relative; }
-.pmosaic .pimg:first-child { grid-row: 1 / 3; }
-.pmosaic .pimg:not(:first-child) { aspect-ratio: 4 / 3; }
+/* a large 4:3 photo on top; below, 9:16 columns give a 3:4 portrait and a 4:3 landscape the same height */
+.pmosaic { display: grid; grid-template-columns: 9fr 16fr; gap: 12px; margin: 22px 0 26px; }
+.pmosaic .pimg:first-child { grid-column: 1 / -1; aspect-ratio: 4 / 3; }
+.pmosaic .pimg:nth-child(2) { aspect-ratio: 3 / 4; }
+.pmosaic .pimg:nth-child(3) { aspect-ratio: 4 / 3; }
 .pmosaic .pimg img { width: 100%; height: 100%; object-fit: cover; }
-.pmosaic .pimg:first-child img { position: absolute; inset: 0; }
 .pmosaic figcaption { grid-column: 1 / -1; font-size: 13.5px; color: var(--muted); margin-top: -4px; }
-@media (max-width: 720px) { .pmosaic { grid-template-columns: minmax(0, 1fr); } .pmosaic .pimg:first-child { grid-row: auto; aspect-ratio: 3 / 4; } }
+@media (max-width: 720px) { .pmosaic { grid-template-columns: minmax(0, 1fr); } }
 .vframe { display: block; position: relative; aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden; background: #000; margin-bottom: 8px; }
 .pp-video { margin-bottom: 8px; }
 .detail h1 + .pp-video { margin-top: 20px; }
