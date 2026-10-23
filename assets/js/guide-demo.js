@@ -11,15 +11,16 @@ const FOV_W = PH_W / ZOOM, FOV_H = PH_H / ZOOM; /* what the camera captures */
 const FOUND = 0.98; /* the object must sit fully inside the clearly visible part of the screen */
 const SAFE_X = .12, SAFE_Y = .07; /* feathered edges and the bezel hide this much of each side */
 const SW = FOV_W * (1 - 2 * SAFE_X), SH = FOV_H * (1 - 2 * SAFE_Y); /* clearly visible view */
+const EDGE_X = .06, EDGE_Y = .04; /* how far past the photo edge the screen may go */
 const NEAR = 1.35; /* outline shows once the object is within this many view sizes */
 const EDGE = 36; /* px band at the room edge where the pointer is released */
 const BLUR_SPEED = 1400; /* room px per second */
 const TILT = 4, YAW = 14, PITCH = 10; /* degrees */
 const LIVE_MS = 220;
 const QUESTIONS = [
-  { t: "What does the sign say?", q: "What does the sign above the fireplace say?", n: "the sign", b: [492, 0, 748, 262], a: "It says \u201cGood all the time.\u201d" },
+  { t: "What does the sign say?", q: "What does the sign above the fireplace say?", n: "the sign", b: [492, 28, 748, 262], a: "It says \u201cGood all the time.\u201d" },
   { t: "Is the fire on?", q: "Is the fireplace on?", n: "the fire", b: [470, 752, 742, 896], a: "No. The logs behind the glass are dark, and there is no flame." },
-  { t: "Where is the monkey?", q: "Where is the stuffed monkey?", n: "the stuffed monkey", b: [1028, 925, 1224, 1072], a: "To the right of the fireplace, draped over the green storage bin." },
+  { t: "Where is the monkey?", q: "Where is the stuffed monkey?", n: "the stuffed monkey", b: [1030, 928, 1185, 1068], a: "To the right of the fireplace, draped over the green storage bin." },
   { t: "What's on the mantel?", q: "What is on the right end of the mantel?", n: "the right end of the mantel", b: [832, 30, 1008, 172], a: "A black iron candle holder with three candles." },
   { t: "What's on the stand?", q: "What is on the stand at the left end of the mantel?", n: "the stand", b: [212, 72, 338, 208], a: "A decorative plate with a blue floral pattern, propped on a stack of books." },
   { t: "What's on the counter?", q: "What is on the counter above the right bookshelf?", n: "that counter", b: [1000, 410, 1148, 538], a: "A large blue glass jar with a lid." },
@@ -64,7 +65,9 @@ export function mountGuide(root) {
   let L = null, cur = { x: IMG.w / 2, y: IMG.h * .62 }, aim = { ...cur }, tilt = 0, yaw = 0, pitch = 0;
   let fadeAt = 0, last = [], qi = -1, shots = 0, done = false, live = false, seen = false, liveAt = 0, liveKey = "";
   const memo = QUESTIONS.map(() => null); /* per question: shots, seen, done, reply html, thumbnail */
-  const clamp = p => ({ x: Math.min(IMG.w - SW / 2, Math.max(SW / 2, p.x)), y: Math.min(IMG.h - SH / 2, Math.max(SH / 2, p.y)) });
+  /* the screen may run past the photo only by a thin feathered band, so the photo edge never shows as a hard line */
+  const MX = FOV_W * (.5 - EDGE_X), MY = FOV_H * (.5 - EDGE_Y);
+  const clamp = p => ({ x: Math.min(IMG.w - MX, Math.max(MX, p.x)), y: Math.min(IMG.h - MY, Math.max(MY, p.y)) });
   function layout() {
     const w = room.clientWidth, h = room.clientHeight, k = Math.min(w / IMG.w, h / IMG.h);
     L = { w, h, k, ox: (w - IMG.w * k) / 2, oy: (h - IMG.h * k) / 2, m: PH_W * k / (HAND.x1 - HAND.x0), vw: PH_W * k, vh: PH_H * k };

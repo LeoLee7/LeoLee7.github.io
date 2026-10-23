@@ -523,10 +523,10 @@ main:focus { outline: none; }
 .rw-room:focus-visible { box-shadow: 0 0 0 3px var(--accent); }
 /* touch: the room takes drags to move the phone; the wide frame around it still scrolls the page */
 @media (hover: none) { .rw-room { cursor: default; height: min(66vh, 500px); } .rw-stage { padding: 4px 20px 20px; } }
-.rw-bg { position: absolute; inset: -40px; background-size: cover; background-position: center; filter: blur(36px) brightness(.34) saturate(.9); }
-.rw-scene { position: absolute; filter: blur(14px) brightness(.46) saturate(.85); pointer-events: none; }
+.rw-bg { position: absolute; inset: -40px; background-size: cover; background-position: center; filter: blur(36px) brightness(.4) saturate(.9); }
+.rw-scene { position: absolute; filter: blur(14px) brightness(.44) saturate(.85); pointer-events: none; -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
 .rw-rig { position: absolute; left: 0; top: 0; pointer-events: none; will-change: transform; transition: opacity .25s, filter .25s; }
-.rw-vf { position: absolute; left: 0; top: 0; overflow: hidden; background: #0c0d0f; --f: 14px;
+.rw-vf { position: absolute; left: 0; top: 0; overflow: hidden; --f: 14px;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 var(--f), #000 calc(100% - var(--f)), transparent), linear-gradient(transparent, #000 var(--f), #000 calc(100% - var(--f)), transparent);
   -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent, #000 var(--f), #000 calc(100% - var(--f)), transparent), linear-gradient(transparent, #000 var(--f), #000 calc(100% - var(--f)), transparent); mask-composite: intersect; }
 .rw-view { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
