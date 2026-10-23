@@ -29,7 +29,7 @@ const QUESTIONS = [
 const ARROW = '<svg viewBox="0 0 100 100" aria-hidden="true"><path d="M18 50h58M56 28l22 22-22 22"/></svg>';
 export const guideHTML = () => `<section class="rw" aria-labelledby="rw-t">
   <div class="rw-head"><h2 id="rw-t">Try it: when the photo is not enough</h2>
-    <p>For blind and low-vision users, a well-framed photo is hard to take. AI assistants answer well once the object is in frame, but getting it in frame is the hard part. Here only the phone screen is in focus: take a photo, then follow the guidance.</p></div>
+    <p>For blind and low-vision users, a well-framed photo is hard to take. AI assistants answer well once the object is in frame, but getting it in frame is the hard part. This concept demo shows the ideal behavior we want from a model. Only the phone screen is in focus: take a photo, then follow the guidance.</p></div>
   <div class="rw-stage">
     <div class="rw-ask"><div class="rw-ask-top"><span class="rw-ask-l" id="rw-ask">Ask a question</span><button class="rw-skipdemo">Skip the demo<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v10M4 9l4 4 4-4"/></svg></button></div><div class="rw-tabs" role="tablist" aria-labelledby="rw-ask">${QUESTIONS.map((x, i) => `<button role="tab" data-q="${i}" aria-selected="false">${x.t}<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"/></svg></button>`).join("")}</div></div>
     <div class="rw-room free" tabindex="0" aria-label="Demo room. Arrow keys move the phone, Enter takes a photo.">
@@ -49,7 +49,7 @@ export const guideHTML = () => `<section class="rw" aria-labelledby="rw-t">
       <div class="rw-free" aria-hidden="true">Pointer released. Move inward to hold the phone again.</div>
     </div>
   </div>
-  <div class="rw-bar"><p class="rw-note">Photo by a blind user, from <a href="https://vizwiz.org/" target="_blank" rel="noopener">VizWiz</a> (VizWiz_train_00023341, living room, CC BY 4.0). A concept demo.</p><span class="rw-btns"><button class="rw-shoot">Take photo</button></span></div>
+  <div class="rw-bar"><p class="rw-note">Photo by a blind user, from <a href="https://vizwiz.org/" target="_blank" rel="noopener">VizWiz</a> (VizWiz_train_00023341, living room, CC BY 4.0).</p><span class="rw-btns"><button class="rw-shoot">Take photo</button></span></div>
 </section>`;
 const dirText = (h, v) => !v ? h : !h ? v : `${v} and to the ${h}`;
 const lim = (v, m) => Math.max(-m, Math.min(m, v));
