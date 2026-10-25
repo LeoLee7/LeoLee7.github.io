@@ -22,6 +22,8 @@ const LAB = {
   ],
   q: ["E", "F"], answer: "lower-right", W: 4, H: 4,
   /* Qwen3-30B-A3B on this instance: zero-shot breaks sentences 4 and 5; after construction training it is exact */
+  /* the ground-truth layout, as [column, row] */
+  truth: { A: [0, 0], D: [0, 1], F: [1, 1], C: [1, 2], E: [2, 2], B: [1, 3] },
   zero: "+--+--+--+\n|A |  |  |\n+--+--+--+\n|D |  |F |\n+--+--+--+\n|  |B |C |\n+--+--+--+\n|  |  |E |\n+--+--+--+",
   tuned: "+--+--+--+\n|A |  |  |\n+--+--+--+\n|D |F |  |\n+--+--+--+\n|  |C |E |\n+--+--+--+\n|  |B |  |\n+--+--+--+",
 };
@@ -71,6 +73,7 @@ export function asciiLabHTML() {
   return `<section class="ax-lab" aria-labelledby="ax-try">
   <div class="ax-head"><h2 id="ax-try">Try it yourself</h2>
     <p>Humans sketch to reason about space. Here is a description from our test set, with a question that needs two of its sentences combined. Do what we ask of the models, in three steps.</p></div>
+  <div class="ax-acts" role="group" aria-label="Answer"><button type="button" data-act="show">Show the answer</button><button type="button" data-act="clear">Clear</button></div>
   <div class="ax-play" data-step="1">
     <div class="ax-desc">
       <div class="ax-k">Description</div>
@@ -247,7 +250,7 @@ function lab(root) {
   const sec = root.querySelector(".ax-lab"); if (!sec) return;
   const play = sec.querySelector(".ax-play"), score = sec.querySelector(".ax-score"), read = sec.querySelector(".ax-read"), said = sec.querySelector(".ax-said");
   const board = sec.querySelector(".ax-board"), compass = sec.querySelector(".ax-compass");
-  const pos = {}; let sel = null, guess = null, lastRead = "";
+  const pos = {}; let sel = null, guess = null, shown = false, lastRead = "";
   const at = (c, r) => Object.keys(pos).find(o => pos[o][0] === c && pos[o][1] === r);
   const rel = (a, b) => [Math.sign(pos[a][0] - pos[b][0]), Math.sign(pos[a][1] - pos[b][1])];
   function render() {
@@ -279,9 +282,9 @@ function lab(root) {
     let html;
     if (a in pos && b in pos) {
       const r2 = rel(a, b), ans = relName(...r2), right = ans === LAB.answer, agree = guess && guess[0] === ans;
-      html = `<p>Your sketch says ${a} is <b class="${right ? "ok" : "bad"}">${relOf(...r2, b)}</b>.${guess ? ` In your head you said <b>${relOf(...guess[1], b)}</b>, so the two <b>${agree ? "agree" : "disagree"}</b>.` : ""}</p>
+      html = `<p>Your sketch says ${a} is <b class="${right ? "ok" : "bad"}">${relOf(...r2, b)}</b>.${guess && !shown ? ` In your head you said <b>${relOf(...guess[1], b)}</b>, so the two <b>${agree ? "agree" : "disagree"}</b>.` : ""}</p>
         <p class="ax-truth">The answer is <b>${LAB.answer}</b>. ${right ? (ok === n ? "Your sketch is right, and so is what you read off it." : "Right, though your sketch still breaks a sentence.") : "A wrong sketch carried into a wrong answer."}</p>
-        <p class="ax-tie">${guess ? "Models are checked the same way, without an answer key: " : "Models are checked by comparing their sketch with their answer: "}Qwen3-30B is right on 88.5% of answers that agree with its sketch, and 56.2% of those that do not.</p>`;
+        <p class="ax-tie">${guess && !shown ? "Models are checked the same way, without an answer key: " : "Models are checked by comparing their sketch with their answer: "}Qwen3-30B is right on 88.5% of answers that agree with its sketch, and 56.2% of those that do not.</p>`;
       play.dataset.step = "3";
     } else {
       html = `<p>Place E and F to read the answer off your sketch.</p>`;
@@ -297,9 +300,21 @@ function lab(root) {
   sec.addEventListener("click", e => {
     const tok = e.target.closest(".ax-tok"), dir = e.target.closest(".ax-compass button"), cell = e.target.closest(".ax-board .ax-cell");
     if (dir) {
-      const d = [+dir.dataset.dx, +dir.dataset.dy]; guess = [relName(...d), d];
+      const d = [+dir.dataset.dx, +dir.dataset.dy]; guess = [relName(...d), d]; shown = false;
       compass.querySelectorAll("button").forEach(b => { b.textContent = b === dir ? LAB.q[0] : ""; b.classList.toggle("has", b === dir); });
       decode(said, `> you said: ${LAB.q[0]} is ${relOf(...guess[1], LAB.q[1])}`);
+      return render();
+    }
+    const act = e.target.closest("[data-act]");
+    if (act) {
+      /* show: the true direction in step 1 and the true layout in step 2; clear: both steps empty */
+      const show = act.dataset.act === "show";
+      Object.keys(pos).forEach(k => delete pos[k]); sel = null;
+      if (show) Object.assign(pos, JSON.parse(JSON.stringify(LAB.truth)));
+      const [a, b] = LAB.q, d = show ? [Math.sign(LAB.truth[a][0] - LAB.truth[b][0]), Math.sign(LAB.truth[a][1] - LAB.truth[b][1])] : null;
+      guess = d ? [relName(...d), d] : null; shown = show;
+      compass.querySelectorAll("button").forEach(x => { const on = !!d && +x.dataset.dx === d[0] && +x.dataset.dy === d[1]; x.textContent = on ? a : ""; x.classList.toggle("has", on); });
+      decode(said, d ? `> answer: ${a} is ${relOf(...d, b)}` : "");
       return render();
     }
     if (tok) { sel = sel === tok.dataset.o ? null : tok.dataset.o; return render(); }
