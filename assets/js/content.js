@@ -67,11 +67,10 @@ export const ECHO = {
     links: [["Google announcement", "https://blog.google/innovation-and-ai/products/gemini-app/guided-vision-gemini-live/"], ["Help Center: Use Guided Vision", "https://support.google.com/accessibility/android/answer/18365638"]] },
 };
 /* one-line finding shown at the top of a project page; projects listed in CORE_IDEA show a design idea instead */
-export const CORE_IDEA = ["skills-on-board", "tactile-annotation"];
+export const CORE_IDEA = ["skills-on-board"];
 export const KEY = {
   "right-this-way": "Fine-tuning on synthetic directional-guidance data raises the accuracy of open VLMs by up to 16 percentage points, and the best fine-tuned model exceeds GPT-4o.",
   touchingspace: "Spatial answers anchored at the finger are the most reliable: 96% accuracy on direction and distance from the finger, compared with 49% on relations between two named places.",
-  "tactile-annotation": "A printed map carries shapes a finger can feel but no names. Each label the tool places is one record that links a footprint's print geometry, in millimeters, to its map coordinates and place semantics, so the same physical map can be read as Braille by touch or as data by software.",
   "skills-on-board": "Stable identity, provenance, and deterministic projection are what make an agent skill maintainable.",
 };
 
@@ -232,7 +231,6 @@ export const OVERVIEW = {
   "tactile-annotation": [
     "On a 3D-printed tactile map, a building felt under the finger is an anonymous shape. Touch alone cannot tell which footprint is which, and a spoken description cannot reliably tie a shape to a specific place.",
     "We built a web-based tool that lets a sighted helper add Braille and place labels to a generated map model. Labeling happens after geometry generation, so the person doing it can account for the reader and the local Braille standard. The helper clicks a footprint on the model, matches it to OpenStreetMap, shortens the name to fit the shape, and reviews the Braille dots before printing.",
-    "Every label is stored as one record that ties the shape on the print, in millimeters, to its coordinates and its meaning as a place. That link between physical geometry and semantics is what lets one annotation drive Braille, an audio readout, or a non-Braille code.",
     "In formative sessions at a blind services center, ten blind and low-vision readers compared an unlabeled print with an annotated print of the same area. Only four of them read Braille fluently, so each label is stored in a form that can also drive an audio readout."],
   "pattern-insights": [
     "Discovering patterns in unfamiliar text is circular: extraction needs a taxonomy, but the taxonomy needs the patterns, and there are no ground-truth labels to resolve it. Pattern Insights Explorer alternates between a wide-lens view of where candidate patterns cluster and a sharp-focus check of whether each pattern is extracted correctly.",
