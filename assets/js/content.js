@@ -81,7 +81,7 @@ export const PROJECTS = [
   { slug: "ascii", theme: "spa", pub: "Learning to Draw", name: "Learning to Draw ASCII", img: "colm", venue: "COLM 2026", short: "Across six LLMs, reading spatial layouts beats building them. Training models to build ASCII layouts more than doubles layout-construction accuracy and improves text-only spatial reasoning.",
     line: "Across six LLMs, accuracy in reading ASCII layouts exceeds accuracy in constructing them by 13 to 27 percentage points. Training on construction more than doubles construction accuracy, improves text-only spatial reasoning, and transfers to three external benchmarks.",
     links: [["Project page", "https://aiea-lab.github.io/Text2Space/"], ["arXiv", "https://arxiv.org/abs/2604.14641"], ["Code", "https://github.com/aiea-lab/Text2Space"], ["Dataset", "https://huggingface.co/datasets/ShiyuanHuang/Text2Space"]] },
-  { slug: "touchingspace", theme: "acc", pub: "\u201cI didn", name: "TouchingSpace", img: "ts_overview", figs: [["2609.36404", "System pipeline: map retrieval, map transformation, and exploration on the trackpad."]], venue: "Under review, 2026", short: "A real-time voice-and-touch agent on Gemini native audio that grounds its answers in a map, with 83% accuracy on 393 spoken spatial questions, tested with blind and low-vision users.",
+  { slug: "touchingspace", theme: "acc", pub: "\u201cI didn", name: "TouchingSpace", img: "ts_overview", videoHero: 1, figs: [["2609.36404", "System pipeline: map retrieval, map transformation, and exploration on the trackpad."]], venue: "Under review, 2026", short: "A real-time voice-and-touch agent on Gemini native audio that grounds its answers in a map, with 83% accuracy on 393 spoken spatial questions, tested with blind and low-vision users.",
     line: "A voice-and-touch map agent on Gemini native audio. People explore a place by hand on a laptop trackpad and ask open questions; the agent reaches 83% accuracy on 393 spoken spatial questions. Built from zero with a blind co-designer and studied with 14 blind and low-vision adults.",
     links: [["arXiv", "https://arxiv.org/abs/2609.36404"], ["Video", "https://youtu.be/SRBqu2IxBNY"]] },
   { slug: "tactile-annotation", theme: "acc", pub: "From Anonymous", name: "Tactile Map Annotation", img: "named-places", scene: "print-scroll", videoHero: 1, figs: [["2608.23820", "Printed tactile maps (A, B), the annotation editor (C), and the exported legend, map content, and annotation files (D to F)."]], venue: "ASSETS 2026 Demo", short: "Braille and place labels for 3D-printed tactile maps.",
@@ -190,6 +190,14 @@ export const OVERVIEW_EARLY = {
 };
 
 /* technical summary shown under Overview on a project page, as [label, text] rows */
+/* project-page section that reads one project from several angles, in causal order */
+export const LENSES = {
+  ascii: { title: "Three ways to read the sketchpad", items: [
+    ["Drawing teaches more than reading", "Models read ASCII layouts far better than they draw them, by 13 to 27 percentage points across six models. Training them to draw raises construction accuracy from 29.2% to 67.9% and improves spatial reasoning from text alone by over 7 points, with no sketch at inference, and the gains transfer to three external benchmarks. Training them only to read does not reliably help."],
+    ["A sketch as a reasoning step", "Drawing first helps only if the drawing is right. The base models' own sketches are 12% to 50% accurate and pull answers down, while a correct sketch beats text alone. After construction training, the model's own sketches start to help."],
+    ["A sketch others can check", "ASCII is human-readable and can be checked relation by relation, so a wrong answer can be traced to a wrong layout or to wrong reasoning over a right one. When the model's sketch and its answer agree, accuracy is much higher, so agreement is a label-free signal of which answers to trust."],
+  ] },
+};
 export const TECH = {
   touchingspace: [
     ["Model", "Gemini 2.5 Flash native audio, streamed over the Live API, with Google Search grounding."],
@@ -221,8 +229,8 @@ export const OVERVIEW = {
     "In a study with fourteen BLV participants, people used sound and vibration to locate places and speech to identify and describe them. The bounded surface supported discovery, revision, and spatial checks by hand, and participants expected this awareness to support future travel.",
     "I led TouchingSpace from zero: I built the system with a blind co-designer, benchmarked its spatial grounding, and ran the in-person studies."],
   "ascii": [
-    "People sketch layouts to organize their thinking about space. We asked whether learning to build explicit layouts from spatial descriptions can give language models real spatial understanding.",
-    "We introduce Text2Space, a dataset that pairs text descriptions with ASCII grid layouts, and find a read-write asymmetry: models read ASCII layouts well but struggle to construct them from text. Training on layout construction improves spatial reasoning from text alone, and the gains transfer to three external benchmarks."],
+    "People sketch a layout to think about space, and drawing it sharpens what they understand. We give language models the same tool, an ASCII grid that works as a sketchpad made of text, and ask whether learning to draw it gives them spatial understanding that carries beyond the sketch.",
+    "We introduce Text2Space, a dataset that pairs text descriptions with ground-truth ASCII layouts and spatial questions, so that a failure to build the layout can be told apart from a failure to reason over it."],
   "right-this-way": [
     "Vision-language models describe images well, but they often answer even when the image does not hold the answer. A model that acts in the real world needs to notice when its current view is not enough and to know where to look next. We study both abilities in one task. Given a question and an image, the model judges whether the image can answer the question, and if it cannot, the model tells the user which way to move the camera. The task asks for a simple form of active perception, and it matters directly to blind and low-vision users, who cannot see what their camera caught.",
     "We release a human-labeled benchmark for this directional guidance task and a framework that generates synthetic training data by simulating \u201cwhere to know\u201d scenarios. Fine-tuning on this data significantly improves mainstream VLMs."],

@@ -1,8 +1,8 @@
-import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HB, KEY, ECHO, HEADLINE, PHOTOS } from "./content.js?v=20261024l";
-import { ABSTRACTS } from "./abstracts.js?v=20261024l";
-import { STORY } from "./story.js?v=20261024l";
-import { guideHTML, mountGuide } from "./guide-demo.js?v=20261024l";
-import { printScrollHTML, mountPrintScroll } from "./print-scroll.js?v=20261024l";
+import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HB, KEY, ECHO, HEADLINE, PHOTOS, LENSES } from "./content.js?v=20261024n";
+import { ABSTRACTS } from "./abstracts.js?v=20261024n";
+import { STORY } from "./story.js?v=20261024n";
+import { guideHTML, mountGuide } from "./guide-demo.js?v=20261024n";
+import { printScrollHTML, mountPrintScroll } from "./print-scroll.js?v=20261024n";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -225,6 +225,7 @@ function renderProject(p) {
     <div class="d-body">
       <div class="d-main">${KEY[p.slug] ? `<p class="key"><b>Key finding.</b> ${KEY[p.slug]}</p>` : ""}<h2>Overview</h2>${(OVERVIEW[p.slug] || OVERVIEW_EARLY[p.slug] || [p.line]).map(x => `<p>${x}</p>`).join("")}
         ${ECHO[p.slug] ? `<div class="echo" role="note"><h3>${ECHO[p.slug].title}</h3><p>${ECHO[p.slug].text}</p><p class="echo-l">${ECHO[p.slug].links.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join("")}</p></div>` : ""}
+        ${LENSES[p.slug] ? `<h2>${LENSES[p.slug].title}</h2><ol class="lenses">${LENSES[p.slug].items.map(([h, x]) => `<li><h3>${h}</h3><p>${x}</p></li>`).join("")}</ol>` : ""}
         ${TECH[p.slug] ? `<h2>How it works</h2><dl class="tech">${TECH[p.slug].map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl>` : ""}
         ${PHOTOS[p.slug] ? photoMosaic(p, PHOTOS[p.slug]) : ""}
         ${(VIDEOS[p.slug] && T && !p.videoHero ? [[p.img, ""], ...(p.figs || [])] : p.figs || []).map(([k, cap]) => `<figure class="pfig">${lbBtn({ img: k, title: p.name, sub: cap, links: lbLinks(p.slug, p.links || [], 1) }, "pimg", `<img src="${TEASERS[k].full || TEASERS[k].a}" alt="${esc(cap || p.name)}">`)}${cap ? `<figcaption>${cap}</figcaption>` : ""}</figure>`).join("")}
@@ -342,7 +343,7 @@ function renderProjects() {
   };
   document.getElementById("p-projects").innerHTML = `
     <h1>Projects</h1>
-    <p class="pstate">I work on spatial intelligence for multimodal models and agents, and on collaboration that runs both ways.</p>
+    <p class="pstate">I work on spatial intelligence for multimodal models and agents, and on how agents and people guide each other.</p>
     <p class="lede">Agents guide people through space, and people inspect and correct what agents know. Across projects, the model and the person share something both can read and check.</p>
     <div class="pwrap"><div class="prail"><nav class="psnav" aria-label="Project categories"><span class="psnav-h">Categories</span>${THEMES.map(([k, h, , ks, , nav]) => `<button class="text" data-sec="${k}">${nav || h}<span class="n">${inTheme(k, ks).length}</span></button>`).join("")}</nav></div><div>
     ${THEMES.map(([k, h, d, ks, q]) => q

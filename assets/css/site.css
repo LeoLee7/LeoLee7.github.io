@@ -477,6 +477,11 @@ a.proj:hover .nm { color: var(--accent); }
 }
 
 /* project tech summary: label column beside the text */
+.lenses { list-style: none; margin: 0 0 28px; padding: 0; counter-reset: lens; display: grid; gap: 22px; }
+.lenses li { counter-increment: lens; position: relative; padding-left: 40px; }
+.lenses li::before { content: counter(lens); position: absolute; left: 0; top: 1px; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-wash); color: var(--accent); font-size: 13.5px; font-weight: 650; }
+.lenses h3 { margin: 0; font-size: 17px; line-height: 1.4; color: var(--ink); }
+.lenses p { margin: 4px 0 0; }
 .tech { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 12px 20px; margin: 0 0 28px; }
 .tech dt { font-weight: 650; color: var(--ink); font-size: 15px; }
 .tech dd { margin: 0; font-size: 15.5px; line-height: 1.6; }
