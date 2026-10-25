@@ -206,15 +206,27 @@ details.phase > div { margin-top: 10px; padding: 12px 14px; background: var(--fr
 @media (max-width: 860px) { .d-body { grid-template-columns: minmax(0, 1fr); gap: 28px; } .d-side { position: static; } }
 .pgh { margin: 44px 0 0; font-size: 20px; }
 .pfield { display: block; margin: 4px 0 0; color: var(--accent); font-size: 14.5px; font-weight: 500; }
+/* Projects opener: one large statement, then the three research threads as a map of who guides whom */
+.pstate { margin: 22px 0 0; max-width: 26em; font-size: clamp(24px, 3.1vw, 32px); line-height: 1.22; font-weight: 500; letter-spacing: -.022em; color: var(--ink); }
+.pstate + .lede { max-width: 44em; margin-top: 16px; font-size: 17px; }
+/* chapter openers for the three threads; the two later groups stay quiet */
+.ptheme.main .pch { padding-top: 40px; border-top: 1px solid var(--line); }
+.ptheme.main .pgh { margin: 0; max-width: 20em; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.14; letter-spacing: -.025em; }
+.ptheme.main .pfield { margin-top: 10px; font-size: 15.5px; }
+.ptheme.main .pgd { max-width: 42em; margin-top: 12px; font-size: 17px; line-height: 1.6; color: var(--text); }
+.ptheme.main .pgd + .pgrid { margin-top: 32px; }
+.ptheme.main + .ptheme { margin-top: 96px; }
+.ptheme.minor .pgh { padding-top: 40px; border-top: 1px solid var(--line); }
 .ptheme + .ptheme { margin-top: 64px; }
 .pwrap { position: relative; }
 .prail { display: contents; }
 /* category navigation: a tab bar under the header by default, a side rail outside the content width on wide screens */
-.psnav { position: sticky; top: 60px; z-index: 10; display: flex; gap: 24px; overflow-x: auto; scrollbar-width: none; margin: 28px 0 0; border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--bg) 94%, transparent); backdrop-filter: blur(8px); }
-.psnav button { flex: none; display: flex; gap: 6px; align-items: baseline; padding: 12px 0 10px; margin-bottom: -1px; border-bottom: 2px solid transparent; color: var(--muted); font-size: 15px; font-weight: 500; white-space: nowrap; }
-.psnav button:hover { color: var(--ink); }
-.psnav button.on { color: var(--accent); border-bottom-color: var(--accent); }
+.psnav { position: sticky; top: 60px; z-index: 10; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin: 28px 0 0; padding: 12px 0; border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--bg) 94%, transparent); backdrop-filter: blur(8px); }
+.psnav button { flex: none; display: flex; gap: 6px; align-items: baseline; padding: 8px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--text); font-size: 15px; font-weight: 500; white-space: nowrap; transition: background .15s, border-color .15s; }
+.psnav button:hover { color: var(--ink); border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+.psnav button.on { color: #fff; background: var(--accent); border-color: var(--accent); }
 .psnav .n { color: var(--muted); font-weight: 400; font-size: 13.5px; font-variant-numeric: tabular-nums; }
+.psnav button.on .n { color: rgba(255, 255, 255, .75); }
 .psnav-h { display: none; }
 @media (min-width: 1560px) {
   .prail { display: block; position: absolute; top: 0; bottom: 0; right: calc(100% + 32px); width: 208px; }
@@ -226,6 +238,9 @@ details.phase > div { margin-top: 10px; padding: 12px 14px; background: var(--fr
   .psnav button.on::before { left: -0.5px; width: 2px; background: var(--accent); border-radius: 2px; }
   .psnav button.on .n { color: var(--accent); }
   .psnav .n { font-size: 12.5px; }
+  .psnav { padding: 0; }
+  .psnav button, .psnav button.on { background: none; border-radius: 0; color: var(--muted); }
+  .psnav button.on { color: var(--ink); }
 }
 .pgd { margin: 6px 0 0; color: var(--muted); font-size: 15.5px; }
 .pgd + .pgrid { margin-top: 24px; }

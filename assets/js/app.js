@@ -1,8 +1,8 @@
-import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HB, KEY, ECHO, HEADLINE, PHOTOS } from "./content.js?v=20261024b";
-import { ABSTRACTS } from "./abstracts.js?v=20261024b";
-import { STORY } from "./story.js?v=20261024b";
-import { guideHTML, mountGuide } from "./guide-demo.js?v=20261024b";
-import { printScrollHTML, mountPrintScroll } from "./print-scroll.js?v=20261024b";
+import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HB, KEY, ECHO, HEADLINE, PHOTOS } from "./content.js?v=20261024l";
+import { ABSTRACTS } from "./abstracts.js?v=20261024l";
+import { STORY } from "./story.js?v=20261024l";
+import { guideHTML, mountGuide } from "./guide-demo.js?v=20261024l";
+import { printScrollHTML, mountPrintScroll } from "./print-scroll.js?v=20261024l";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -333,16 +333,21 @@ function renderAbout() {
 }
 /* ---------- projects ---------- */
 function renderProjects() {
+  const inTheme = (k, ks) => PROJECTS.filter(p => (ks || [k]).includes(p.theme));
+  const card = p => {
+    const frame = p.art ? `<span class="frame"><img src="${ART[p.art]}" alt=""></span>`
+      : p.img ? `<span class="frame${p.cover ? " photo" : ""}"><img src="${TEASERS[p.img].a}" alt=""></span>` : `<span class="frame word"><span>${p.name}</span></span>`;
+    const href = p.art ? "#art" : `#project-${p.slug}`;
+    return `<a class="proj" href="${href}">${frame}<span class="pt"><span class="nm">${HEADLINE[p.slug] || p.name}</span><span class="vn">${HEADLINE[p.slug] ? `${p.name} · ` : ""}${p.venue}</span><p>${p.line}</p></span></a>`;
+  };
   document.getElementById("p-projects").innerHTML = `
     <h1>Projects</h1>
-    <p class="lede">I work on spatial intelligence for multimodal models and agents, and on collaboration that runs both ways: agents that guide people through space, and people who inspect and correct what agents know. Across projects, the common piece is an explicit representation that both can read and check: a camera direction, an ASCII layout, a map under the finger, a typed agent skill.</p>
-    <div class="pwrap"><div class="prail"><nav class="psnav" aria-label="Project categories"><span class="psnav-h">Categories</span>${THEMES.map(([k, h, , ks, , nav]) => `<button class="text" data-sec="${k}">${nav || h}<span class="n">${PROJECTS.filter(p => (ks || [k]).includes(p.theme)).length}</span></button>`).join("")}</nav></div><div>
-    ${THEMES.map(([k, h, d, ks, q]) => `<section class="ptheme" id="sec-${k}"><h2 class="pgh">${h}</h2>${q ? `<span class="pfield">${q}</span>` : ""}<p class="pgd">${d}</p><div class="pgrid${ks ? " compact" : ""}">${PROJECTS.filter(p => (ks || [k]).includes(p.theme)).map(p => {
-      const frame = p.art ? `<span class="frame"><img src="${ART[p.art]}" alt=""></span>`
-        : p.img ? `<span class="frame${p.cover ? " photo" : ""}"><img src="${TEASERS[p.img].a}" alt=""></span>` : `<span class="frame word"><span>${p.name}</span></span>`;
-      const href = p.art ? "#art" : `#project-${p.slug}`;
-      return `<a class="proj" href="${href}">${frame}<span class="pt"><span class="nm">${HEADLINE[p.slug] || p.name}</span><span class="vn">${HEADLINE[p.slug] ? `${p.name} · ` : ""}${p.venue}</span><p>${p.line}</p></span></a>`;
-    }).join("")}</div></section>`).join("")}</div></div>`;
+    <p class="pstate">I work on spatial intelligence for multimodal models and agents, and on collaboration that runs both ways.</p>
+    <p class="lede">Agents guide people through space, and people inspect and correct what agents know. Across projects, the model and the person share something both can read and check.</p>
+    <div class="pwrap"><div class="prail"><nav class="psnav" aria-label="Project categories"><span class="psnav-h">Categories</span>${THEMES.map(([k, h, , ks, , nav]) => `<button class="text" data-sec="${k}">${nav || h}<span class="n">${inTheme(k, ks).length}</span></button>`).join("")}</nav></div><div>
+    ${THEMES.map(([k, h, d, ks, q]) => q
+      ? `<section class="ptheme main" id="sec-${k}"><div class="pch"><h2 class="pgh">${h}</h2><span class="pfield">${q}</span><p class="pgd">${d}</p></div><div class="pgrid">${inTheme(k, ks).map(card).join("")}</div></section>`
+      : `<section class="ptheme minor" id="sec-${k}"><h2 class="pgh">${h}</h2><p class="pgd">${d}</p><div class="pgrid${ks ? " compact" : ""}">${inTheme(k, ks).map(card).join("")}</div></section>`).join("")}</div></div>`;
   /* highlight the category in view */
   addEventListener("scroll", markSection, { passive: true });
 }
