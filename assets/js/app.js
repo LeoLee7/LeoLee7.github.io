@@ -1,8 +1,9 @@
-import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HB, KEY, ECHO, HEADLINE, PHOTOS, LENSES, CORE_IDEA } from "./content.js?v=20261024t";
-import { ABSTRACTS } from "./abstracts.js?v=20261024t";
-import { STORY } from "./story.js?v=20261024t";
-import { guideHTML, mountGuide } from "./guide-demo.js?v=20261024t";
-import { printScrollHTML, mountPrintScroll } from "./print-scroll.js?v=20261024t";
+import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HB, KEY, ECHO, HEADLINE, PHOTOS, LENSES, CORE_IDEA } from "./content.js?v=20261024u";
+import { ABSTRACTS } from "./abstracts.js?v=20261024u";
+import { STORY } from "./story.js?v=20261024u";
+import { guideHTML, mountGuide } from "./guide-demo.js?v=20261024u";
+import { printScrollHTML, mountPrintScroll } from "./print-scroll.js?v=20261024u";
+import { asciiHeroHTML, asciiLabHTML, asciiRolesHTML, mountAscii } from "./ascii-scene.js?v=20261024u";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -222,6 +223,7 @@ function renderProject(p) {
     ${VIDEOS[p.slug] ? `<div class="pp-video">${videoBlock(p.slug, 1)}</div>` : T ? lbBtn({ img: p.img, title: p.name, sub: p.venue, links: lbLinks(p.slug, p.links || [], 1) }, "pp-hero", `<img src="${T.full || T.a}" alt="${p.name} figure">`) : `<div class="pp-hero word"><span>${p.name}</span></div>`}
     ${p.scene === "print-scroll" ? printScrollHTML() : ""}
     ${p.slug === "right-this-way" ? guideHTML() : ""}
+    ${p.scene === "ascii" ? asciiLabHTML() + asciiHeroHTML() + asciiRolesHTML() : ""}
     <div class="d-body">
       <div class="d-main">${KEY[p.slug] ? `<p class="key"><b>${CORE_IDEA.includes(p.slug) ? "Core idea" : "Key finding"}.</b> ${KEY[p.slug]}</p>` : ""}<h2>Overview</h2>${(OVERVIEW[p.slug] || OVERVIEW_EARLY[p.slug] || [p.line]).map(x => `<p>${x}</p>`).join("")}
         ${ECHO[p.slug] ? `<div class="echo" role="note"><h3>${ECHO[p.slug].title}</h3><p>${ECHO[p.slug].text}</p><p class="echo-l">${ECHO[p.slug].links.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join("")}</p></div>` : ""}
@@ -398,7 +400,7 @@ function show() {
   const h = location.hash.replace("#", "");
   const post = h.startsWith("news-") && NEWS.find(n => "news-" + n.slug === h);
   const proj = h.startsWith("project-") && PROJECTS.find(p => "project-" + p.slug === h);
-  if (proj) document.getElementById("p-proj").innerHTML = renderProject(proj), mountGuide(document.getElementById("p-proj")), mountPrintScroll(document.getElementById("p-proj"));
+  if (proj) document.getElementById("p-proj").innerHTML = renderProject(proj), mountGuide(document.getElementById("p-proj")), mountPrintScroll(document.getElementById("p-proj")), mountAscii(document.getElementById("p-proj"));
   if (h === "news" || post) document.getElementById("p-news").innerHTML = post ? renderPost(post) : renderNewsIndex();
   const page = proj ? "proj" : h === "news" || post ? "news" : PAGES.includes(h) ? h : "about";
   PAGES.forEach(k => { document.getElementById("p-" + k).hidden = k !== page; });

@@ -79,7 +79,7 @@ export const PROJECTS = [
   { slug: "right-this-way", theme: "spa", pub: "Right This Way", name: "Right This Way", img: "rtw", venue: "NeurIPS 2024", short: "VLMs answer even when the image cannot support an answer. We trained them to tell the user how to move the camera, raising the accuracy of open VLMs by up to 16 percentage points. Two years later, Google shipped a similar behavior in Gemini Live.",
     line: "A new task, directional guidance, with an open 821-sample human-labeled benchmark and a label-free synthetic data pipeline. Fine-tuning raises the accuracy of open VLMs by up to 16 percentage points, and the best fine-tuned model exceeds GPT-4o.",
     links: [["Paper", "https://proceedings.neurips.cc/paper_files/paper/2024/file/efe4e50d492fedc0dfd2959f3320a974-Paper-Conference.pdf"], ["Code", "https://github.com/LeoLee7/Directional_guidance"]] },
-  { slug: "ascii", theme: "spa", pub: "Learning to Draw", name: "Learning to Draw ASCII", img: "colm", venue: "COLM 2026", short: "Across six LLMs, reading spatial layouts beats building them. Training models to build ASCII layouts more than doubles layout-construction accuracy and improves text-only spatial reasoning.",
+  { slug: "ascii", theme: "spa", pub: "Learning to Draw", name: "Learning to Draw ASCII", img: "colm", scene: "ascii", venue: "COLM 2026", short: "Across six LLMs, reading spatial layouts beats building them. Training models to build ASCII layouts more than doubles layout-construction accuracy and improves text-only spatial reasoning.",
     line: "Across six LLMs, accuracy in reading ASCII layouts exceeds accuracy in constructing them by 13 to 27 percentage points. Training on construction more than doubles construction accuracy, improves text-only spatial reasoning, and transfers to three external benchmarks.",
     links: [["Project page", "https://aiea-lab.github.io/Text2Space/"], ["arXiv", "https://arxiv.org/abs/2604.14641"], ["Code", "https://github.com/aiea-lab/Text2Space"], ["Dataset", "https://huggingface.co/datasets/ShiyuanHuang/Text2Space"]] },
   { slug: "touchingspace", theme: "acc", pub: "\u201cI didn", name: "TouchingSpace", img: "ts_overview", videoHero: 1, figs: [["2609.36404", "System pipeline: map retrieval, map transformation, and exploration on the trackpad."]], venue: "Under review, 2026", short: "A real-time voice-and-touch agent on Gemini native audio that grounds its answers in a map, tested with blind and low-vision users.",
@@ -192,11 +192,6 @@ export const OVERVIEW_EARLY = {
 
 /* project-page section that reads one project from several angles, in causal order */
 export const LENSES = {
-  ascii: { title: "Three ways to read the sketchpad", items: [
-    ["Drawing teaches more than reading", "Models read ASCII layouts far better than they draw them, by 13 to 27 percentage points across six models. Training them to draw raises construction accuracy from 29.2% to 67.9% and improves spatial reasoning from text alone by over 7 points, with no sketch at inference, and the gains transfer to three external benchmarks. Training them only to read does not reliably help."],
-    ["A sketch as a reasoning step", "Drawing first helps only if the drawing is right. The base models' own sketches are 12% to 50% accurate and pull answers down, while a correct sketch beats text alone. After construction training, the model's own sketches start to help."],
-    ["A sketch others can check", "ASCII is human-readable and can be checked relation by relation, so a wrong answer can be traced to a wrong layout or to wrong reasoning over a right one. When the model's sketch and its answer agree, accuracy is much higher, so agreement is a label-free signal of which answers to trust."],
-  ] },
 };
 /* technical summary shown under Overview on a project page, as [label, text] rows */
 export const TECH = {
