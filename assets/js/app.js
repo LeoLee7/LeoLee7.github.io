@@ -1,8 +1,8 @@
-import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HB, KEY, ECHO, HEADLINE, PHOTOS, LENSES } from "./content.js?v=20261024o";
-import { ABSTRACTS } from "./abstracts.js?v=20261024o";
-import { STORY } from "./story.js?v=20261024o";
-import { guideHTML, mountGuide } from "./guide-demo.js?v=20261024o";
-import { printScrollHTML, mountPrintScroll } from "./print-scroll.js?v=20261024o";
+import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HB, KEY, ECHO, HEADLINE, PHOTOS, LENSES } from "./content.js?v=20261024q";
+import { ABSTRACTS } from "./abstracts.js?v=20261024q";
+import { STORY } from "./story.js?v=20261024q";
+import { guideHTML, mountGuide } from "./guide-demo.js?v=20261024q";
+import { printScrollHTML, mountPrintScroll } from "./print-scroll.js?v=20261024q";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -328,7 +328,6 @@ function renderAbout() {
     </section>
     <section>
       <div class="sechead"><h2>Research highlights</h2><a href="#projects">All projects</a></div>
-      <p class="seclead">Spatial intelligence in multimodal models, and the agents built on it.</p>
       <div class="pgrid home">${hl}</div>
     </section>`;
 }
@@ -344,7 +343,6 @@ function renderProjects() {
   document.getElementById("p-projects").innerHTML = `
     <h1>Projects</h1>
     <p class="pstate">I work on spatial intelligence for multimodal models and agents, and on how agents and people guide each other.</p>
-    <p class="lede">Agents guide people through space, and people inspect and correct what agents know. Across projects, the model and the person share something both can read and check.</p>
     <div class="pwrap"><div class="prail"><nav class="psnav" aria-label="Project categories"><span class="psnav-h">Categories</span>${THEMES.map(([k, h, , ks, , nav]) => `<button class="text" data-sec="${k}">${nav || h}<span class="n">${inTheme(k, ks).length}</span></button>`).join("")}</nav></div><div>
     ${THEMES.map(([k, h, d, ks, q]) => q
       ? `<section class="ptheme main" id="sec-${k}"><div class="pch"><h2 class="pgh">${h}</h2><span class="pfield">${q}</span><p class="pgd">${d}</p></div><div class="pgrid">${inTheme(k, ks).map(card).join("")}</div></section>`

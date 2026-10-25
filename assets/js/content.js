@@ -57,7 +57,7 @@ export const HEADLINE = {
 export const HB = {
   "right-this-way": ["VLMs answer even when the image cannot support it.", "Trained them to tell the user how to move the camera for a better view."],
   ascii: ["LLMs read spatial layouts far better than they build them.", "Learning to build layouts improves their spatial reasoning from text alone."],
-  touchingspace: ["A real-time sensing loop on a laptop trackpad: an assistive companion tracks the finger, grounds each spoken answer in the map around it, and responds through sound and vibration.", "Built the app from zero and tested it with 14 blind and low-vision users."],
+  touchingspace: ["A real-time voice agent that grounds each answer in the map under a person's finger, on an ordinary laptop trackpad.", "Built from zero and tested with 14 blind and low-vision users."],
   "skills-on-board": ["Agent skills as typed data that people can trace and edit.", "Edit a step once, and the agent follows."],
 };
 /* a related development elsewhere, shown after Overview on a project page */
@@ -68,8 +68,7 @@ export const ECHO = {
 };
 /* one-line finding shown at the top of a project page */
 export const KEY = {
-  ascii: "Read-write asymmetry: across six LLMs, accuracy in reading ASCII layouts exceeds accuracy in constructing them from text by 13 to 27 percentage points. Training on construction, rather than comprehension alone, is what improves spatial reasoning.",
-  "right-this-way": "Vision-language models answer even when the image cannot support an answer. They can learn instead to tell the user how to move the camera.",
+  "right-this-way": "Fine-tuning on synthetic directional-guidance data raises the accuracy of open VLMs by up to 16 percentage points, and the best fine-tuned model exceeds GPT-4o.",
   touchingspace: "Spatial answers anchored at the finger are the most reliable: 96% accuracy on direction and distance from the finger, compared with 49% on relations between two named places.",
   "skills-on-board": "Stable identity, provenance, and deterministic projection are what make an agent skill maintainable.",
 };
@@ -81,8 +80,8 @@ export const PROJECTS = [
   { slug: "ascii", theme: "spa", pub: "Learning to Draw", name: "Learning to Draw ASCII", img: "colm", venue: "COLM 2026", short: "Across six LLMs, reading spatial layouts beats building them. Training models to build ASCII layouts more than doubles layout-construction accuracy and improves text-only spatial reasoning.",
     line: "Across six LLMs, accuracy in reading ASCII layouts exceeds accuracy in constructing them by 13 to 27 percentage points. Training on construction more than doubles construction accuracy, improves text-only spatial reasoning, and transfers to three external benchmarks.",
     links: [["Project page", "https://aiea-lab.github.io/Text2Space/"], ["arXiv", "https://arxiv.org/abs/2604.14641"], ["Code", "https://github.com/aiea-lab/Text2Space"], ["Dataset", "https://huggingface.co/datasets/ShiyuanHuang/Text2Space"]] },
-  { slug: "touchingspace", theme: "acc", pub: "\u201cI didn", name: "TouchingSpace", img: "ts_overview", videoHero: 1, figs: [["2609.36404", "System pipeline: map retrieval, map transformation, and exploration on the trackpad."]], venue: "Under review, 2026", short: "A real-time voice-and-touch agent on Gemini native audio that grounds its answers in a map, with 83% accuracy on 393 spoken spatial questions, tested with blind and low-vision users.",
-    line: "A voice-and-touch map agent on Gemini native audio. People explore a place by hand on a laptop trackpad and ask open questions; the agent reaches 83% accuracy on 393 spoken spatial questions. Built from zero with a blind co-designer and studied with 14 blind and low-vision adults.",
+  { slug: "touchingspace", theme: "acc", pub: "\u201cI didn", name: "TouchingSpace", img: "ts_overview", videoHero: 1, figs: [["2609.36404", "System pipeline: map retrieval, map transformation, and exploration on the trackpad."]], venue: "Under review, 2026", short: "A real-time voice-and-touch agent on Gemini native audio that grounds its answers in a map, tested with blind and low-vision users.",
+    line: "People explore a place by hand on a laptop trackpad and ask a voice agent open questions about it. Built from zero with a blind co-designer and studied with 14 blind and low-vision adults.",
     links: [["arXiv", "https://arxiv.org/abs/2609.36404"], ["Video", "https://youtu.be/SRBqu2IxBNY"]] },
   { slug: "tactile-annotation", theme: "acc", pub: "From Anonymous", name: "Tactile Map Annotation", img: "named-places", scene: "print-scroll", videoHero: 1, figs: [["2608.23820", "Printed tactile maps (A, B), the annotation editor (C), and the exported legend, map content, and annotation files (D to F)."]], venue: "ASSETS 2026 Demo", short: "Braille and place labels for 3D-printed tactile maps.",
     line: "A web tool that lets a sighted helper add Braille and place labels to a generated 3D-printed tactile map, so each footprint can be identified by touch. Ten blind and low-vision readers compared unlabeled and annotated prints in formative sessions.",
@@ -98,7 +97,7 @@ export const PROJECTS = [
     line: "A system that turns a free-text SKILL.md into a typed meta file, rendered as a board for people and compiled into a structured skill for agents. On SkillLearnBench, agents use half the output tokens at equal or better task performance. Built during my internship at Amazon.",
     links: [["Video", "https://youtu.be/G_XJpzWnH_c"]] },
   { slug: "ser", theme: "hai", name: "SER", img: "ser", venue: "Amazon internship, 2024", short: "Search for what reviews know: who a product is for, how it feels, and the occasion it fits.",
-    line: "A search system that turns customer reviews into search facets, each linked to the review sentence behind it, for needs catalogs do not record. On recipes it finds 18% more facet matches than keyword search. Built during my internship at Amazon.",
+    line: "A search system that turns customer reviews into search facets, each linked to the review sentence behind it, for needs catalogs do not record. On recipes it finds 18% more facet matches than keyword search.",
     links: [["Video", "https://youtu.be/TGy4yoTbdyI"]] },
   { slug: "swinmm", theme: "hea", pub: "SwinMM", name: "SwinMM", img: "swinmm", venue: "MICCAI 2023",
     short: "Self-supervised multi-view pre-training for 3D medical image segmentation.",
@@ -189,7 +188,6 @@ export const OVERVIEW_EARLY = {
     "In pre-training, a masked multi-view encoder learns from several proxy tasks: image reconstruction, rotation, contrastive learning, and a mutual learning task that exploits the consistency between predictions from different views. In fine-tuning, a cross-view decoder aggregates the views with cross-attention. SwinMM outperforms the previous state-of-the-art self-supervised method, Swin UNETR, on several medical image segmentation tasks."],
 };
 
-/* technical summary shown under Overview on a project page, as [label, text] rows */
 /* project-page section that reads one project from several angles, in causal order */
 export const LENSES = {
   ascii: { title: "Three ways to read the sketchpad", items: [
@@ -198,13 +196,13 @@ export const LENSES = {
     ["A sketch others can check", "ASCII is human-readable and can be checked relation by relation, so a wrong answer can be traced to a wrong layout or to wrong reasoning over a right one. When the model's sketch and its answer agree, accuracy is much higher, so agreement is a label-free signal of which answers to trust."],
   ] },
 };
+/* technical summary shown under Overview on a project page, as [label, text] rows */
 export const TECH = {
   touchingspace: [
     ["Model", "Gemini 2.5 Flash native audio, streamed over the Live API, with Google Search grounding."],
     ["Context", "Each turn, the agent sees where the finger is and how every place relates to it, in direction, distance, and containment computed from map geometry."],
     ["Map", "OpenStreetMap places, scaled onto the trackpad and revealed in four stages."],
     ["Feedback", "A hum grows louder near a place; vibration marks its edge."],
-    ["Result", "83% accuracy on 393 spoken spatial questions."],
   ],
 };
 
@@ -237,7 +235,7 @@ export const OVERVIEW = {
   "tactile-annotation": [
     "On a 3D-printed tactile map, a building felt under the finger is an anonymous shape. Touch alone cannot tell which footprint is which, and a spoken description cannot reliably tie a shape to a specific place.",
     "We built a web-based tool that lets a sighted helper add Braille and place labels to a generated map model. Labeling happens after geometry generation, so the person doing it can account for the reader and the local Braille standard.",
-    "We demonstrated it on five printed maps of different place types, from a downtown core to a college campus and a small dining mall. In formative sessions at a blind services center, ten blind and low-vision readers, one of them a Braille instructor, compared an unlabeled print with an annotated print of the same area. Four of the ten read Braille fluently, so the same per-label record is built to also drive an audio readout or a non-Braille code."],
+    "In formative sessions at a blind services center, ten blind and low-vision readers compared an unlabeled print with an annotated print of the same area. Only four of them read Braille fluently, so each label is stored in a form that can also drive an audio readout."],
   "pattern-insights": [
     "Discovering patterns in unfamiliar text is circular: extraction needs a taxonomy, but the taxonomy needs the patterns, and there are no ground-truth labels to resolve it. Pattern Insights Explorer alternates between a wide-lens view of where candidate patterns cluster and a sharp-focus check of whether each pattern is extracted correctly.",
     "I built it during my 2025 Applied Scientist internship at Amazon with Omar Alonso and Giorgio Ballardin. The framework grows a validated taxonomy over unlabeled conversation logs from a few seed keywords, with every pattern traceable to its source, and was demonstrated on 5,000 customer-service conversations."],
@@ -261,7 +259,7 @@ export const NEWS = [
     title: "TouchingSpace preprint, tested in person with 14 blind and low-vision users, and shown at PitchAbility 2026",
     h: "New preprint on <b>TouchingSpace</b>, a real-time voice agent on Gemini native audio that grounds its answers in the map under the user's finger, tested in person with <b>14 blind and low-vision users</b>. We also presented it at <b>PitchAbility 2026</b>.",
     body: [
-      "TouchingSpace turns an outdoor place into an audio-haptic map on an everyday laptop trackpad. People explore the map by hand with sound and vibration, and ask a real-time voice agent on Gemini native audio open-ended questions about what is under their finger. The agent grounds each answer in the map, and it was correct on 83% of 393 spoken spatial questions in our benchmark.",
+      "TouchingSpace turns an outdoor place into an audio-haptic map on an everyday laptop trackpad. People explore the map by hand with sound and vibration, and ask a real-time voice agent on Gemini native audio open-ended questions about what is under their finger. The agent grounds each answer in the map.",
       "We tested it in person with 14 blind and low-vision users at Vista Center and across San Jose, Santa Cruz, and Palo Alto. They used sound and vibration to locate places and speech to identify and describe them, and they expected this awareness to support their future travel. The preprint is on arXiv.",
       "Our AIEA Lab team presented TouchingSpace at the Exhibit & Demo Hall of PitchAbility 2026, the international pitch competition hosted by Vista Center for the Blind and Visually Impaired.",
       "PitchAbility drew applicants from more than 8 countries, and more than 35 companies exhibited assistive technology for people who are blind, have low vision, or are DeafBlind. Vista Center's recap of the event, sent to more than 6,000 people, listed the AIEA Lab among the exhibitors.",
