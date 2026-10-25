@@ -1,8 +1,8 @@
-import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HB, KEY, ECHO, HEADLINE, PHOTOS, LENSES } from "./content.js?v=20261024q";
-import { ABSTRACTS } from "./abstracts.js?v=20261024q";
-import { STORY } from "./story.js?v=20261024q";
-import { guideHTML, mountGuide } from "./guide-demo.js?v=20261024q";
-import { printScrollHTML, mountPrintScroll } from "./print-scroll.js?v=20261024q";
+import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HB, KEY, ECHO, HEADLINE, PHOTOS, LENSES, CORE_IDEA } from "./content.js?v=20261024t";
+import { ABSTRACTS } from "./abstracts.js?v=20261024t";
+import { STORY } from "./story.js?v=20261024t";
+import { guideHTML, mountGuide } from "./guide-demo.js?v=20261024t";
+import { printScrollHTML, mountPrintScroll } from "./print-scroll.js?v=20261024t";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -223,7 +223,7 @@ function renderProject(p) {
     ${p.scene === "print-scroll" ? printScrollHTML() : ""}
     ${p.slug === "right-this-way" ? guideHTML() : ""}
     <div class="d-body">
-      <div class="d-main">${KEY[p.slug] ? `<p class="key"><b>Key finding.</b> ${KEY[p.slug]}</p>` : ""}<h2>Overview</h2>${(OVERVIEW[p.slug] || OVERVIEW_EARLY[p.slug] || [p.line]).map(x => `<p>${x}</p>`).join("")}
+      <div class="d-main">${KEY[p.slug] ? `<p class="key"><b>${CORE_IDEA.includes(p.slug) ? "Core idea" : "Key finding"}.</b> ${KEY[p.slug]}</p>` : ""}<h2>Overview</h2>${(OVERVIEW[p.slug] || OVERVIEW_EARLY[p.slug] || [p.line]).map(x => `<p>${x}</p>`).join("")}
         ${ECHO[p.slug] ? `<div class="echo" role="note"><h3>${ECHO[p.slug].title}</h3><p>${ECHO[p.slug].text}</p><p class="echo-l">${ECHO[p.slug].links.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join("")}</p></div>` : ""}
         ${LENSES[p.slug] ? `<h2>${LENSES[p.slug].title}</h2><ol class="lenses">${LENSES[p.slug].items.map(([h, x]) => `<li><h3>${h}</h3><p>${x}</p></li>`).join("")}</ol>` : ""}
         ${TECH[p.slug] ? `<h2>How it works</h2><dl class="tech">${TECH[p.slug].map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl>` : ""}
@@ -307,7 +307,7 @@ function renderAbout() {
         <ul class="bio-pts">
           <li><b>Perceive.</b> Vision-language models answer even when an image cannot support an answer; I trained them to say how to move the camera instead (<a href="https://arxiv.org/abs/2411.00394">NeurIPS 2024</a>).</li>
           <li><b>Represent.</b> Language models read spatial layouts far better than they build them; learning to build layouts improves their spatial reasoning (<a href="https://arxiv.org/abs/2604.14641">COLM 2026</a>).</li>
-          <li><b>Act.</b> I built from zero a real-time voice-and-touch agent on Gemini native audio that grounds its answers in a map, and tested it in studies with 14 blind and low-vision adults (<a href="https://arxiv.org/abs/2609.36404">TouchingSpace</a>).</li>
+          <li><b>Act.</b> I built from zero a real-time voice-and-touch agent on Gemini native audio that grounds each answer in the place under the user's finger on a map, and tested it in studies with 14 blind and low-vision adults (<a href="https://arxiv.org/abs/2609.36404">TouchingSpace</a>).</li>
         </ul>
         <div class="job"><svg class="smile" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 14.2c1 1.4 2.4 2.1 4 2.1s3-.7 4-2.1"/><circle cx="9" cy="9.6" r="1.1" class="eye"/><circle cx="15" cy="9.6" r="1.1" class="eye"/></svg><span>I am on the 2027 job market for Research Scientist, Applied Scientist, and ML Engineer roles. Happy to chat!</span></div>
       </div>

@@ -23,7 +23,7 @@ export const VENUE = {
 export const TIER = { "NeurIPS": 1, "COLM": 1, "MICCAI": 2, "ACM TIST": 2, "IEEE TIM": 3, "IEEE Sensors": 3, "ICASSP": 3,
   "WWW": 4, "ASSETS": 4, "EJR Open": 4, "Sensors": 5, "arXiv": 6, "Under review": 6 };
 
-export const TOPICS = [["acc", "Accessibility"], ["spa", "Spatial intelligence"], ["llm", "Language and vision models"], ["hai", "Agents and human-in-the-loop"], ["hea", "Health and sensing"]];
+export const TOPICS = [["acc", "Touch and accessibility"], ["spa", "Spatial intelligence"], ["llm", "Language and vision models"], ["hai", "Agents and human-in-the-loop"], ["hea", "Health and sensing"]];
 
 export const SCHOLAR = "https://scholar.google.com/citations?user=hLHzhqkAAAAJ";
 
@@ -33,8 +33,8 @@ export const HIGHLIGHTS = ["right-this-way", "ascii", "touchingspace", "skills-o
 export const HEADLINE = {
   "right-this-way": "Directional Guidance for Vision-Language Models",
   ascii: "Spatial Reasoning in LLMs through Layout Construction",
-  touchingspace: "Real-Time Multimodal Agent for Non-Visual Maps",
-  "tactile-annotation": "Braille and Semantic Annotation for 3D-Printed Maps",
+  touchingspace: "Real-Time Multimodal Agent Grounded in Touch",
+  "tactile-annotation": "Grounding Place Names in 3D-Printed Tactile Maps",
   "hai-survey": "Human-AI Collaboration with Foundation Models: A Survey",
   "pattern-insights": "Human-in-the-Loop Pattern Discovery in Unlabeled Conversations",
   "skills-on-board": "Agent Skills as Typed, Inspectable Data",
@@ -66,10 +66,12 @@ export const ECHO = {
     text: "Congratulations to the Gemini team on launching Guided Vision in Gemini Live on October&nbsp;1,&nbsp;2026. It gives blind and low-vision users spoken cues to pan, tilt, or step back when Gemini needs a better view. We are glad to see progress on a question this paper also explored in 2024: what a model should do when the image is not enough.",
     links: [["Google announcement", "https://blog.google/innovation-and-ai/products/gemini-app/guided-vision-gemini-live/"], ["Help Center: Use Guided Vision", "https://support.google.com/accessibility/android/answer/18365638"]] },
 };
-/* one-line finding shown at the top of a project page */
+/* one-line finding shown at the top of a project page; projects listed in CORE_IDEA show a design idea instead */
+export const CORE_IDEA = ["skills-on-board", "tactile-annotation"];
 export const KEY = {
   "right-this-way": "Fine-tuning on synthetic directional-guidance data raises the accuracy of open VLMs by up to 16 percentage points, and the best fine-tuned model exceeds GPT-4o.",
   touchingspace: "Spatial answers anchored at the finger are the most reliable: 96% accuracy on direction and distance from the finger, compared with 49% on relations between two named places.",
+  "tactile-annotation": "A printed map carries shapes a finger can feel but no names. Each label the tool places is one record that links a footprint's print geometry, in millimeters, to its map coordinates and place semantics, so the same physical map can be read as Braille by touch or as data by software.",
   "skills-on-board": "Stable identity, provenance, and deterministic projection are what make an agent skill maintainable.",
 };
 
@@ -84,7 +86,7 @@ export const PROJECTS = [
     line: "People explore a place by hand on a laptop trackpad and ask a voice agent open questions about it. Built from zero with a blind co-designer and studied with 14 blind and low-vision adults.",
     links: [["arXiv", "https://arxiv.org/abs/2609.36404"], ["Video", "https://youtu.be/SRBqu2IxBNY"]] },
   { slug: "tactile-annotation", theme: "acc", pub: "From Anonymous", name: "Tactile Map Annotation", img: "named-places", scene: "print-scroll", videoHero: 1, figs: [["assets-2026", "Our ASSETS 2026 demo poster."]], venue: "ASSETS 2026 Demo", short: "Braille and place labels for 3D-printed tactile maps.",
-    line: "A web tool that lets a sighted helper add Braille and place labels to a generated 3D-printed tactile map, so each footprint can be identified by touch. Ten blind and low-vision readers compared unlabeled and annotated prints in formative sessions.",
+    line: "A web tool that grounds place names in a 3D-printed tactile map: a sighted helper clicks a footprint, matches it to OpenStreetMap, and places print-safe Braille on the shape. Each label is a record linking print geometry to place semantics, so it can also drive an audio readout.",
     links: [["Paper", "https://doi.org/10.1145/3797867.3841235"], ["Demo", "https://leolee7.github.io/Annotate_Braille/"], ["Video", "https://youtu.be/4KqVa0DeqdM"], ["Poster", "https://leolee7.github.io/Annotate_Braille/poster/ASSETS26_1266_poster.pdf"]] },
   { slug: "hai-survey", theme: "hai", pub: "A Survey on Human-AI", name: "Human-AI Collaboration Survey", img: "tist", figs: [["tist-lifecycle", "The lifecycle of human-AI collaboration with large foundation models, as organized in the survey."]], venue: "ACM TIST 2026",
     short: "How people and large foundation models work together, from model building to deployment.",
@@ -234,7 +236,8 @@ export const OVERVIEW = {
     "We release a human-labeled benchmark for this directional guidance task and a framework that generates synthetic training data by simulating \u201cwhere to know\u201d scenarios. Fine-tuning on this data significantly improves mainstream VLMs."],
   "tactile-annotation": [
     "On a 3D-printed tactile map, a building felt under the finger is an anonymous shape. Touch alone cannot tell which footprint is which, and a spoken description cannot reliably tie a shape to a specific place.",
-    "We built a web-based tool that lets a sighted helper add Braille and place labels to a generated map model. Labeling happens after geometry generation, so the person doing it can account for the reader and the local Braille standard.",
+    "We built a web-based tool that lets a sighted helper add Braille and place labels to a generated map model. Labeling happens after geometry generation, so the person doing it can account for the reader and the local Braille standard. The helper clicks a footprint on the model, matches it to OpenStreetMap, shortens the name to fit the shape, and reviews the Braille dots before printing.",
+    "Every label is stored as one record that ties the shape on the print, in millimeters, to its coordinates and its meaning as a place. That link between physical geometry and semantics is what lets one annotation drive Braille, an audio readout, or a non-Braille code.",
     "In formative sessions at a blind services center, ten blind and low-vision readers compared an unlabeled print with an annotated print of the same area. Only four of them read Braille fluently, so each label is stored in a form that can also drive an audio readout."],
   "pattern-insights": [
     "Discovering patterns in unfamiliar text is circular: extraction needs a taxonomy, but the taxonomy needs the patterns, and there are no ground-truth labels to resolve it. Pattern Insights Explorer alternates between a wide-lens view of where candidate patterns cluster and a sharp-focus check of whether each pattern is extracted correctly.",
@@ -338,7 +341,7 @@ export const EDUCATION = [
    guide agents); the field line names the research area in the words research job postings use. */
 export const THEMES = [
   ["spa", "Models that reason about space and know their limits", "Models often answer when the image cannot support an answer, and they read spatial layouts far better than they build them. We build benchmarks and training data for both gaps and post-train models to close them. Either way, the model produces something a person can check: an action, such as which way to move the camera, or a verifiable representation, such as an ASCII layout.", null, "Active perception and spatial reasoning in vision-language models", "Models that know their limits"],
-  ["acc", "Agents that guide people", "Voice-and-touch agents on Gemini native audio ground each answer in a map that the person explores by hand, so the agent and the person refer to the same places. We evaluate them on a benchmark of 16 spoken spatial question types, asked from the finger, one place, two places, or the whole map, and study them with blind and low-vision adults.", null, "Real-time multimodal agents grounded in space"],
+  ["acc", "Agents that guide people", "Voice-and-touch agents on Gemini native audio ground each answer in a map that the person explores by hand, so the agent and the person refer to the same places. We evaluate them on a benchmark of 16 spoken spatial question types, asked from the finger, one place, two places, or the whole map, and study them with blind and low-vision adults. For printed tactile maps, a labeling tool ties each footprint to its place name, as Braille on the surface and as data a system can read.", null, "Multimodal agents and tactile interfaces grounded in physical space"],
   ["hai", "People who guide agents", "Agent skills, discovered patterns, and search facets are written as typed records linked to their evidence. People and agents then read the same structure: a workflow the agent follows, which a person can trace step by step and correct in one place.", null, "Inspectable agents and human-AI collaboration"],
   ["make", "Design and making", "Things I designed and built by hand."],
   ["early", "Earlier work", "Clinical imaging, biosignals, electronic noses, and reliable prediction, from my master's and early Ph.D.", ["hea", "tml"]],
@@ -346,7 +349,7 @@ export const THEMES = [
 
 export const GROUPS = [
   ["spa", "Spatial intelligence", "Benchmarks, data, and training methods for spatial intelligence in language and vision-language models."],
-  ["acc", "Accessibility", "Audio-haptic and tactile systems that help blind and low-vision people understand places."],
+  ["acc", "Touch and accessibility", "Tactile, audio-haptic, and touch-grounded systems that help blind and low-vision people understand places."],
   ["hai", "Agents and human-in-the-loop", "Agent systems, human-in-the-loop tools, and surveys on people working with AI."],
   ["tml", "Trustworthy ML", "Conformal prediction and robust training for reliable predictions."],
   ["hea", "Health and sensing", "Models for clinical, physiological, and electronic-nose sensor data."],

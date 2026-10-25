@@ -24,7 +24,7 @@ const person = {
   affiliation: { "@type": "CollegeOrUniversity", name: "University of California, Santa Cruz" },
   alumniOf: { "@type": "CollegeOrUniversity", name: "Zhejiang University" },
   sameAs: SAME, description: BIO,
-  knowsAbout: ["Spatial intelligence", "Multimodal large language models", "Vision-language models", "AI agents", "Spatial reasoning", "Accessibility", "Human-in-the-loop systems", "Conformal prediction"],
+  knowsAbout: ["Spatial intelligence", "Multimodal large language models", "Vision-language models", "AI agents", "Spatial reasoning", "Tactile interfaces", "Haptics", "Accessibility", "Human-in-the-loop systems", "Conformal prediction"],
 };
 const papers = PUBS.filter(p => url(p)).map(p => ({
   "@type": "ScholarlyArticle", headline: strip(p.t), author: p.a.replace(/\*/g, "").split(/,\s*/).map(n => ({ "@type": "Person", name: n })),
