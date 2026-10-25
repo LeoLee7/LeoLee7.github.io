@@ -327,11 +327,13 @@ export const EDUCATION = [
   { logo: "zju", org: "Zhejiang University", role: "B.S., Chu Kochen Honors College", y: "2015 to 2019" },
 ];
 
-/* Projects page sections, in display order */
+/* Projects page sections, in display order: [key, plain heading, description, extra theme keys, field line, short nav label].
+   The plain headings read as one thread (models that know their limits, agents that guide people, people who
+   guide agents); the field line names the research area in the words research job postings use. */
 export const THEMES = [
-  ["spa", "Spatial intelligence in multimodal models", "How vision-language and language models perceive space, build an internal map of it, and act when what they see is not enough."],
-  ["acc", "Grounded spatial agents", "Real-time agents that ground what they say in a map and convey space without vision."],
-  ["hai", "Agents and human-in-the-loop systems", "Agent skills, search, and pattern discovery built at Amazon, and a survey of human-AI collaboration with foundation models."],
+  ["spa", "Models that reason about space and know their limits", "Benchmarks, training data, and post-training for two gaps: models answer when the image cannot support an answer, and they read spatial layouts far better than they build them.", null, "Active perception and spatial reasoning in vision-language models", "Models that know their limits"],
+  ["acc", "Agents that guide people", "Voice-and-touch agents on Gemini native audio that ground each answer in a map, evaluated on 393 spoken spatial questions and with 14 blind and low-vision adults.", null, "Real-time multimodal agents grounded in space"],
+  ["hai", "People who guide agents", "Agent skills, discovered patterns, and search facets written as typed records linked to their evidence, so people and agents read the same structure and can trace and edit each step.", null, "Inspectable agents and human-AI collaboration"],
   ["make", "Design and making", "Things I designed and built by hand."],
   ["early", "Earlier work", "Clinical imaging, biosignals, electronic noses, and reliable prediction, from my master's and early Ph.D.", ["hea", "tml"]],
 ];

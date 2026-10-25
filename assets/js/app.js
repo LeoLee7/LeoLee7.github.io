@@ -1,8 +1,8 @@
-import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HB, KEY, ECHO, HEADLINE, PHOTOS } from "./content.js?v=20261023q";
-import { ABSTRACTS } from "./abstracts.js?v=20261023q";
-import { STORY } from "./story.js?v=20261023q";
-import { guideHTML, mountGuide } from "./guide-demo.js?v=20261023q";
-import { printScrollHTML, mountPrintScroll } from "./print-scroll.js?v=20261023q";
+import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HB, KEY, ECHO, HEADLINE, PHOTOS } from "./content.js?v=20261024b";
+import { ABSTRACTS } from "./abstracts.js?v=20261024b";
+import { STORY } from "./story.js?v=20261024b";
+import { guideHTML, mountGuide } from "./guide-demo.js?v=20261024b";
+import { printScrollHTML, mountPrintScroll } from "./print-scroll.js?v=20261024b";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -263,22 +263,11 @@ function renderPost(n) {
 }
 /* ---------- about ---------- */
 const logo = k => `<span class="logo ${k}"><img src="${LOGOS[k]}" alt=""></span>`;
-let homeTopic = "all";
-function homePubs() {
-  const list = homeTopic === "all" ? PUBS.filter(p => p.sel) : PUBS.filter(p => p.tags.includes(homeTopic));
-  /* a paper with `pin: n` is shown at position n among the selected papers */
-  if (homeTopic === "all") list.filter(p => p.pin).forEach(p => { list.splice(list.indexOf(p), 1); list.splice(p.pin - 1, 0, p); });
-  const total = homeTopic === "all" ? PUBS.length : list.length;
-  const n = k => k === "all" ? PUBS.filter(p => p.sel).length : PUBS.filter(p => p.tags.includes(k)).length;
-  return `<div class="hfilter">${btn("data-home", "all", `Selected <span class="n">${n("all")}</span>`, homeTopic === "all")}${GROUPS.map(([k, nm]) => btn("data-home", k, `${nm} <span class="n">${n(k)}</span>`, homeTopic === k)).join("")}</div>
-    ${list.slice(0, 5).map(p => pubHTML(p, "a")).join("")}
-    <p class="more"><a href="#publications">${homeTopic === "all" ? `All ${total} publications` : `All ${total} papers on ${GNAME[homeTopic]}`}, by year or topic</a></p>`;
-}
 function renderAbout() {
-  const hl = HIGHLIGHTS.map(k => PROJECTS.find(p => p.slug === k)).map(p => `<a class="card" href="#project-${p.slug}">
+  const hl = HIGHLIGHTS.map(k => PROJECTS.find(p => p.slug === k)).map(p => `<a class="proj" href="#project-${p.slug}">
       <span class="frame"><img src="${TEASERS[p.img].a}" alt=""></span>
-      <span class="nm">${HEADLINE[p.slug] || p.name}</span><span class="vn">${HEADLINE[p.slug] ? `${p.name} · ` : ""}${p.venue}</span>
-      ${HB[p.slug] ? `<ul class="hb">${HB[p.slug].map(b => `<li>${b}</li>`).join("")}</ul>` : `<span class="ln">${p.short}</span>`}</a>`).join("");
+      <span class="pt"><span class="nm">${HEADLINE[p.slug] || p.name}</span><span class="vn">${HEADLINE[p.slug] ? `${p.name} · ` : ""}${p.venue}</span>
+      ${HB[p.slug] ? `<ul class="hb">${HB[p.slug].map(b => `<li>${b}</li>`).join("")}</ul>` : `<p>${p.short}</p>`}</span></a>`).join("");
   const news = newsList(NEWS.slice(0, 6));
   /* roadmap: two lanes on one year grid; past years squeezed into 24%, Ph.D. years fill the rest */
   const d = new Date(), GRAD = 2027.37, START = 2022.67;
@@ -339,20 +328,16 @@ function renderAbout() {
     <section>
       <div class="sechead"><h2>Research highlights</h2><a href="#projects">All projects</a></div>
       <p class="seclead">Spatial intelligence in multimodal models, and the agents built on it.</p>
-      <div class="cards">${hl}</div>
-    </section>
-    <section>
-      <div class="sechead"><h2>Publications</h2><a href="#publications">Full list</a></div>
-      <div id="homepubs">${homePubs()}</div>
+      <div class="pgrid home">${hl}</div>
     </section>`;
 }
 /* ---------- projects ---------- */
 function renderProjects() {
   document.getElementById("p-projects").innerHTML = `
     <h1>Projects</h1>
-    <p class="lede">Spatial intelligence in multimodal models, and the agents built on it.</p>
-    <div class="pwrap"><div class="prail"><nav class="psnav" aria-label="Project categories"><span class="psnav-h">Categories</span>${THEMES.map(([k, h, , ks]) => `<button class="text" data-sec="${k}">${h}<span class="n">${PROJECTS.filter(p => (ks || [k]).includes(p.theme)).length}</span></button>`).join("")}</nav></div><div>
-    ${THEMES.map(([k, h, d, ks]) => `<section class="ptheme" id="sec-${k}"><h2 class="pgh">${h}</h2><p class="pgd">${d}</p><div class="pgrid${ks ? " compact" : ""}">${PROJECTS.filter(p => (ks || [k]).includes(p.theme)).map(p => {
+    <p class="lede">I work on spatial intelligence for multimodal models and agents, and on collaboration that runs both ways: agents that guide people through space, and people who inspect and correct what agents know. Across projects, the common piece is an explicit representation that both can read and check: a camera direction, an ASCII layout, a map under the finger, a typed agent skill.</p>
+    <div class="pwrap"><div class="prail"><nav class="psnav" aria-label="Project categories"><span class="psnav-h">Categories</span>${THEMES.map(([k, h, , ks, , nav]) => `<button class="text" data-sec="${k}">${nav || h}<span class="n">${PROJECTS.filter(p => (ks || [k]).includes(p.theme)).length}</span></button>`).join("")}</nav></div><div>
+    ${THEMES.map(([k, h, d, ks, q]) => `<section class="ptheme" id="sec-${k}"><h2 class="pgh">${h}</h2>${q ? `<span class="pfield">${q}</span>` : ""}<p class="pgd">${d}</p><div class="pgrid${ks ? " compact" : ""}">${PROJECTS.filter(p => (ks || [k]).includes(p.theme)).map(p => {
       const frame = p.art ? `<span class="frame"><img src="${ART[p.art]}" alt=""></span>`
         : p.img ? `<span class="frame${p.cover ? " photo" : ""}"><img src="${TEASERS[p.img].a}" alt=""></span>` : `<span class="frame word"><span>${p.name}</span></span>`;
       const href = p.art ? "#art" : `#project-${p.slug}`;
@@ -491,7 +476,6 @@ document.addEventListener("click", e => {
     return;
   }
   if (t.dataset.sec) { const s = document.getElementById("sec-" + t.dataset.sec); scrollTo({ top: s.getBoundingClientRect().top + scrollY - 84, behavior: "smooth" }); return; }
-  if (t.dataset.home) { homeTopic = t.dataset.home; document.getElementById("homepubs").innerHTML = homePubs(); return; }
   if (t.dataset.view) state.view = t.dataset.view;
   else if (t.dataset.first) state.firstOnly = !state.firstOnly;
   else if (t.dataset.scope) state.scope = t.dataset.scope;

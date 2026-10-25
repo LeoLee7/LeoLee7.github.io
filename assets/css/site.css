@@ -108,8 +108,8 @@ section + section, .block + .block { margin-top: 72px; }
 .kv { color: var(--text); }
 .kv i { font-style: normal; color: var(--muted); font-size: 11.5px; font-weight: 600; margin-right: 6px; }
 .kv.hl { color: var(--accent); font-weight: 600; }
-.hfilter { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 15px; margin-bottom: 6px; }
-.hfilter .n, .filters .n { color: var(--muted); font-weight: 400; font-size: 13.5px; margin-left: 2px; }
+
+.filters .n { color: var(--muted); font-weight: 400; font-size: 13.5px; margin-left: 2px; }
 .more { margin: 18px 0 0; font-size: 15px; }
 /* highlights */
 .cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
@@ -205,6 +205,7 @@ details.phase > div { margin-top: 10px; padding: 12px 14px; background: var(--fr
 .stats.side span { font-size: 12px; }
 @media (max-width: 860px) { .d-body { grid-template-columns: minmax(0, 1fr); gap: 28px; } .d-side { position: static; } }
 .pgh { margin: 44px 0 0; font-size: 20px; }
+.pfield { display: block; margin: 4px 0 0; color: var(--accent); font-size: 14.5px; font-weight: 500; }
 .ptheme + .ptheme { margin-top: 64px; }
 .pwrap { position: relative; }
 .prail { display: contents; }
@@ -228,6 +229,7 @@ details.phase > div { margin-top: 10px; padding: 12px 14px; background: var(--fr
 }
 .pgd { margin: 6px 0 0; color: var(--muted); font-size: 15.5px; }
 .pgd + .pgrid { margin-top: 24px; }
+.pgrid.home { margin-top: 0; }
 .frame.word, .pp-hero.word { display: grid; place-items: center; background: linear-gradient(135deg, var(--accent-wash), var(--frame)); }
 .frame.word span, .pp-hero.word span { font-size: 22px; font-weight: 700; color: var(--accent); letter-spacing: -.01em; text-align: center; padding: 0 24px; }
 .pp-hero.word { aspect-ratio: 16 / 5; }
@@ -477,9 +479,9 @@ a.proj:hover .nm { color: var(--accent); }
 .echo p { margin: 0; font-size: 15.5px; line-height: 1.6; text-wrap: pretty; }
 .echo .echo-l { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 10px; font-size: 14.5px; }
 
-.card .hb { margin: 6px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; }
-.card .hb li { position: relative; padding-left: 14px; font-size: 15px; line-height: 1.5; }
-.card .hb li::before { content: ""; position: absolute; left: 0; top: .62em; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+.card .hb, .proj .hb { margin: 6px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.card .hb li, .proj .hb li { position: relative; padding-left: 14px; font-size: 15px; line-height: 1.5; }
+.card .hb li::before, .proj .hb li::before { content: ""; position: absolute; left: 0; top: .62em; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
 
 /* bio: one sentence of prose, then three short points */
 .bio-pts { margin: 2px 0 10px; padding: 0; list-style: none; display: grid; gap: 4px; font-size: 16px; line-height: 1.5; }
