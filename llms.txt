@@ -33,7 +33,7 @@ Homepage: https://leolee7.github.io/ · Email: lliu112@ucsc.edu · Google Schola
 
 ## Publications
 - Learning to Draw ASCII Improves Spatial Reasoning in Language Models. Shiyuan Huang, Li Liu, Jincheng He, Leilani H. Gilpin. Conference on Language Modeling (COLM), 2026. https://arxiv.org/abs/2604.14641
-- From Anonymous Shapes to Named Places: A Tool for Braille and Place-Semantic Annotation of Tactile Maps. Li Liu, Ashmita Dua, Jiaming Qu, David T. Lee, Leilani H. Gilpin. ASSETS, Posters and Demonstrations, 2026. https://arxiv.org/abs/2608.23820
+- From Anonymous Shapes to Named Places: A Tool for Braille and Place-Semantic Annotation of Tactile Maps. Li Liu, Ashmita Dua, Jiaming Qu, David T. Lee, Leilani H. Gilpin. ASSETS, Posters and Demonstrations, 2026. https://doi.org/10.1145/3797867.3841235
 - Pattern Discovery with Wide-Lens Analysis and Sharp-Focus Validation. Li Liu, Omar Alonso, Giorgio Ballardin. The Web Conference (WWW), Demo Track, 2026. https://doi.org/10.1145/3774905.3793105
 - Skills on Board: Maintaining Agent Skills as Typed Data. Li Liu, Jiaming Qu, Zhiyu Chen, Pei Zhang, Omar Alonso. Under review, 2026. https://youtu.be/G_XJpzWnH_c
 - “I didn’t know how to read a map, but now I can”: TouchingSpace, an Audio-Haptic Map for Blind and Low-Vision Readers. Li Liu, Yihe Wang, Jiaming Qu, Ashmita Dua, David T. Lee, Leilani H. Gilpin. arXiv preprint, 2026. https://arxiv.org/abs/2609.36404
