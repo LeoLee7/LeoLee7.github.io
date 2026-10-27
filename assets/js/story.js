@@ -135,7 +135,7 @@ export const STORY = {
     pullArt: MAP,
     /* the whole experience, from blind and low-vision participants after using the system.
        One quote at a time in a spotlight; the [[...]] part is set in the accent color. */
-    saidNote: "Real feedback from blind and low-vision participants after using TouchingSpace, in their own words.",
+    saidNote: "What 14 blind and low-vision adults, recruited through <a href=\"https://vistacenter.org/\" target=\"_blank\" rel=\"noopener\">Vista Center for the Blind and Visually Impaired</a>, said after using TouchingSpace, in their own words.",
     said: [
       { q: "It'll help many people, [[maybe even millions]]." },
       { q: "I think of anything I've seen, this has [[the best possibility]] of doing that.", note: "On conveying how to approach a hard-to-find entrance." },
