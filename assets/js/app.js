@@ -1,9 +1,9 @@
-import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HB, KEY, ECHO, HEADLINE, PHOTOS, LENSES, CORE_IDEA } from "./content.js?v=20261027a";
-import { ABSTRACTS } from "./abstracts.js?v=20261027a";
-import { STORY } from "./story.js?v=20261027a";
-import { guideHTML, mountGuide } from "./guide-demo.js?v=20261027a";
-import { printScrollHTML, mountPrintScroll } from "./print-scroll.js?v=20261027a";
-import { asciiHeroHTML, asciiLabHTML, asciiRolesHTML, mountAscii } from "./ascii-scene.js?v=20261027a";
+import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HB, KEY, ECHO, HEADLINE, PHOTOS, LENSES, CORE_IDEA } from "./content.js?v=20261028a";
+import { ABSTRACTS } from "./abstracts.js?v=20261028a";
+import { STORY } from "./story.js?v=20261028a";
+import { guideHTML, mountGuide } from "./guide-demo.js?v=20261028a";
+import { printScrollHTML, mountPrintScroll } from "./print-scroll.js?v=20261028a";
+import { asciiHeroHTML, asciiLabHTML, asciiRolesHTML, mountAscii } from "./ascii-scene.js?v=20261028a";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -181,7 +181,7 @@ function flowSet(el, x, smooth) {
 }
 function flowStep(el, d) {
   const f = flowState(el), stops = [...el.querySelectorAll(".st-track figure:not([aria-hidden])")].map(g => g.offsetLeft - FLOW_INSET);
-  const cur = f.x, i = stops.findLastIndex(v => v <= cur + 2);
+  const cur = f.x; let i = stops.length - 1; while (i >= 0 && stops[i] > cur + 2) i--;
   let to = d > 0 ? (stops[i + 1] ?? flowSpan(el) - FLOW_INSET) : (cur - stops[Math.max(i, 0)] > 8 ? stops[Math.max(i, 0)] : (stops[i - 1] ?? stops[stops.length - 1] - flowSpan(el)));
   if (d > 0 && cur < stops[0]) to = stops[0] > cur + 2 ? stops[0] : stops[1];
   flowSet(el, to, true);
@@ -428,6 +428,8 @@ document.addEventListener("mouseover", e => tlShow(e.target));
 document.addEventListener("focusin", e => tlShow(e.target));
 document.addEventListener("pointerdown", e => { if (e.target.closest(".tl")) tlShow(e.target); });
 const lbEl = document.getElementById("lb");
+/* <dialog> fallback for older Safari (before 15.4) */
+if (typeof lbEl.showModal !== "function") { lbEl.classList.add("nodialog"); lbEl.showModal = () => lbEl.setAttribute("open", ""); lbEl.close = () => lbEl.removeAttribute("open"); addEventListener("keydown", e => { if (e.key === "Escape") lbEl.close(); }); }
 lbEl.addEventListener("click", e => { if (e.target === lbEl) lbEl.close(); });
 /* zoom to the clicked point; drag to pan while zoomed */
 const box = lbEl.querySelector(".lb-img");
@@ -477,8 +479,10 @@ document.addEventListener("click", e => {
   }
   if (t.dataset.copy) {
     const pre = document.getElementById(t.dataset.copy).querySelector("pre");
+    const selectPre = () => { const r = document.createRange(); r.selectNodeContents(pre); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+    if (!navigator.clipboard) { selectPre(); return; }
     navigator.clipboard.writeText(pre.textContent).then(() => { t.textContent = "Copied"; setTimeout(() => { t.textContent = "Copy"; }, 1500); },
-      () => { const r = document.createRange(); r.selectNodeContents(pre); const s = getSelection(); s.removeAllRanges(); s.addRange(r); });
+      selectPre);
     return;
   }
   if (t.dataset.sec) { const s = document.getElementById("sec-" + t.dataset.sec); scrollTo({ top: s.getBoundingClientRect().top + scrollY - 84, behavior: "smooth" }); return; }
