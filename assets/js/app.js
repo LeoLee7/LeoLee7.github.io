@@ -1,9 +1,9 @@
-import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HB, KEY, ECHO, HEADLINE, PHOTOS, LENSES, CORE_IDEA } from "./content.js?v=20261028c";
-import { ABSTRACTS } from "./abstracts.js?v=20261028c";
-import { STORY } from "./story.js?v=20261028c";
-import { guideHTML, mountGuide } from "./guide-demo.js?v=20261028c";
-import { printScrollHTML, mountPrintScroll } from "./print-scroll.js?v=20261028c";
-import { asciiHeroHTML, asciiLabHTML, asciiRolesHTML, mountAscii } from "./ascii-scene.js?v=20261028c";
+import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HB, KEY, ECHO, HEADLINE, PHOTOS, LENSES, CORE_IDEA } from "./content.js?v=20261029a";
+import { ABSTRACTS } from "./abstracts.js?v=20261029a";
+import { STORY } from "./story.js?v=20261029a";
+import { guideHTML, mountGuide } from "./guide-demo.js?v=20261029a";
+import { printScrollHTML, mountPrintScroll } from "./print-scroll.js?v=20261029a";
+import { asciiHeroHTML, asciiLabHTML, asciiRolesHTML, mountAscii } from "./ascii-scene.js?v=20261029a";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -155,7 +155,7 @@ function storyBlock(s) {
   return `<section class="st">
     <h2>The story</h2>
     <div class="st-hero"><blockquote><p>&ldquo;${s.pull}&rdquo;</p><cite>${s.pullNote}</cite></blockquote><div class="sart">${s.pullArt}</div></div>
-    <h3 class="st-h">User feedback</h3>
+    <h3 class="st-h" data-sec="feedback">User feedback</h3>
     <p class="st-sub">${s.saidNote}</p>
     <div class="st-flow" role="region" aria-label="Participant quotes, scrolling">
       <div class="st-track">${[0, 1].map(k => s.said.map(x => `<figure${k ? ' aria-hidden="true"' : ""}><p>${mark(x.q)}</p>${x.tr ? `<span class="tr">${x.tr}</span>` : ""}${x.note ? `<figcaption>${x.note}</figcaption>` : ""}</figure>`).join("")).join("")}</div>
@@ -397,7 +397,8 @@ const PAGES = ["about", "publications", "projects", "cv", "art", "news", "proj"]
 const MOVED = { "project-clinical-ai": "project-trilight", "project-biosignals": "project-taste-xuser", "project-enose": "project-cpsc" };
 function show() {
   if (MOVED[location.hash.slice(1)]) { location.replace("#" + MOVED[location.hash.slice(1)]); return; }
-  const h = location.hash.replace("#", "");
+  /* "#project-slug/section" opens the page and scrolls to that section */
+  const [h, sec] = location.hash.replace("#", "").split("/");
   const post = h.startsWith("news-") && NEWS.find(n => "news-" + n.slug === h);
   const proj = h.startsWith("project-") && PROJECTS.find(p => "project-" + p.slug === h);
   if (proj) document.getElementById("p-proj").innerHTML = renderProject(proj), mountGuide(document.getElementById("p-proj")), mountPrintScroll(document.getElementById("p-proj")), mountAscii(document.getElementById("p-proj"));
@@ -408,6 +409,14 @@ function show() {
   window.scrollTo(0, 0);
   markSection();
   const pg = document.getElementById("p-" + page), h1 = pg.querySelector("h1");
+  const target = sec && pg.querySelector(`[data-sec="${sec.replace(/[^\w-]/g, "")}"]`);
+  if (target) {
+    const here = location.hash, go = () => location.hash === here && window.scrollTo(0, target.getBoundingClientRect().top + window.pageYOffset - document.querySelector(".top").offsetHeight - 16);
+    /* the 3D scene and images above can change height after render; re-aim until the reader takes over */
+    const timers = [0, 300, 800, 1500, 2500].map(t => setTimeout(go, t));
+    const stop = () => { timers.forEach(clearTimeout); ["wheel", "touchstart", "keydown"].forEach(e => removeEventListener(e, stop)); };
+    ["wheel", "touchstart", "keydown"].forEach(e => addEventListener(e, stop, { once: true, passive: true }));
+  }
   document.title = page === "about" ? BASE_TITLE : `${h1 ? h1.textContent : page} | Li Liu`;
   if (routed && h1) { h1.tabIndex = -1; h1.focus({ preventScroll: true }); }
   routed = true;
