@@ -9,7 +9,7 @@ const POSTER = "assets/img/full/named-places.png";
 const FFLATE = "assets/vendor/fflate-0.8.2.min.js"; // gzip fallback for browsers without DecompressionStream (Safari < 16.4)
 
 export function printScrollHTML() {
-  return `<section class="ps" aria-label="How a Braille label turns an anonymous shape into a named place">
+  return `<section class="ps" data-sec="idea" aria-label="How a Braille label turns an anonymous shape into a named place">
   <div class="ps-stage">
     <img class="ps-poster" src="${POSTER}" alt="A hand reads the Braille label of one building on a 3D-printed campus map; a callout names it ATC, Advanced Technology Center.">
     <canvas class="ps-gl" aria-hidden="true"></canvas>
