@@ -27,7 +27,7 @@ const QUESTIONS = [
   { t: "What's this card?", q: "What is the card on the left shelf?", n: "the card", b: [24, 390, 110, 496], a: "A handmade card with a flower on it." },
 ];
 const ARROW = '<svg viewBox="0 0 100 100" aria-hidden="true"><path d="M18 50h58M56 28l22 22-22 22"/></svg>';
-export const guideHTML = () => `<section class="rw" aria-labelledby="rw-t">
+export const guideHTML = () => `<section class="rw" data-sec="demo" aria-labelledby="rw-t">
   <div class="rw-head"><h2 id="rw-t">Try it: when the photo is not enough</h2>
     <p>For blind and low-vision users, a well-framed photo is hard to take. AI assistants answer well once the object is in frame, but getting it in frame is the hard part. This concept demo shows the ideal behavior we want from a model. Only the phone screen is in focus: take a photo, then follow the guidance.</p></div>
   <div class="rw-stage">
