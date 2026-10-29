@@ -650,9 +650,19 @@ html { overflow-x: clip; }
 .ps.static .ps-stage { position: relative; top: 0; height: auto; }
 .ps.static .ps-poster { position: static; height: auto; opacity: 1; }
 .ps.static .ps-gl, .ps.static .ps-ov { display: none; }
-/* reduced motion: one still frame with the ATC card complete, no scroll run */
-.ps.still { height: auto; }
-.ps.still .ps-stage { position: relative; top: 0; }
+/* no WebGL: scroll scrubs pre-rendered frames of the same scene */
+.ps-seq { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.ps.seq .ps-gl, .ps.seq .ps-ov { display: none; }
+/* reduced motion: four key frames side by side, nothing moves */
+.ps.board { height: auto; }
+.ps.board .ps-stage { position: relative; top: 0; height: auto; overflow: visible; }
+.ps.board .ps-poster, .ps.board .ps-gl, .ps.board .ps-ov { display: none; }
+.ps-board { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+.ps-board figure { margin: 0; }
+.ps-board img { display: block; width: 100%; height: auto; border-radius: 12px; background: var(--frame); }
+.ps-board figcaption { margin-top: 10px; font-size: 14.5px; line-height: 1.5; color: var(--muted); }
+.ps-board figcaption b { color: var(--ink); }
+@media (max-width: 720px) { .ps-board { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 760px) {
   .ps-copy { top: 4vh; width: auto; right: 20px; }
   .ps-card { width: 214px; padding: 12px 14px; }

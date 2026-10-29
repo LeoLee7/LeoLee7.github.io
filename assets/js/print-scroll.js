@@ -6,6 +6,7 @@
 const DIR = "assets/scene/print/";
 const VENDOR = ["assets/vendor/three-r147.min.js", "assets/vendor/GLTFLoader-r147.js"];
 const POSTER = "assets/img/full/named-places.png";
+const FFLATE = "assets/vendor/fflate-0.8.2.min.js"; // gzip fallback for browsers without DecompressionStream (Safari < 16.4)
 
 export function printScrollHTML() {
   return `<section class="ps" aria-label="How a Braille label turns an anonymous shape into a named place">
@@ -34,20 +35,26 @@ export function printScrollHTML() {
 </section>`;
 }
 
-const loadScript = src => new Promise((res, rej) => {
-  if (document.querySelector(`script[data-src="${src}"]`)) return res();
+const LOADING = {};
+const loadScript = src => LOADING[src] || (LOADING[src] = new Promise((res, rej) => {
   const s = document.createElement("script"); s.src = src; s.dataset.src = src; s.onload = res; s.onerror = rej; document.head.appendChild(s);
-});
-const gunzip = async url => new Response((await fetch(url)).body.pipeThrough(new DecompressionStream("gzip"))).arrayBuffer();
+}));
+const gunzip = async url => {
+  const r = await fetch(url);
+  if ("DecompressionStream" in window) return new Response(r.body.pipeThrough(new DecompressionStream("gzip"))).arrayBuffer();
+  await loadScript(FFLATE);
+  const u = window.fflate.gunzipSync(new Uint8Array(await r.arrayBuffer()));
+  return u.buffer.slice(u.byteOffset, u.byteOffset + u.byteLength);
+};
 
 export function mountPrintScroll(root) {
   const el = root.querySelector(".ps");
   if (!el || el.dataset.on) return;
   el.dataset.on = 1;
   const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (RM) el.classList.add("still");
+  if (RM) return board(el);
   const gl = (() => { try { const c = document.createElement("canvas"); return c.getContext("webgl2") || c.getContext("webgl"); } catch (e) { return null; } })();
-  if (!("DecompressionStream" in window) || !gl) { el.classList.add("static"); return; }
+  if (!gl) return frames(el);
   // load only when the section comes near
   const io = new IntersectionObserver(es => {
     if (!es[0].isIntersecting) return;
@@ -57,9 +64,34 @@ export function mountPrintScroll(root) {
       const [blank, dots, meta, wide, hand] = await Promise.all([gunzip(DIR + "blank.i16.gz"), gunzip(DIR + "dots.i16.gz"),
         fetch(DIR + "print.json").then(r => r.json()), fetch(DIR + "wide.json").then(r => r.json()), fetch(DIR + "hand.glb").then(r => r.arrayBuffer())]);
       build(el, { blank: new Int16Array(blank), dots: new Int16Array(dots), meta, wide, hand }, RM);
-    })().catch(e => { console.warn("print scene", e); el.classList.add("static"); });
+    })().catch(e => { console.warn("print scene", e); frames(el); });
   }, { rootMargin: "600px 0px" });
   io.observe(el);
+}
+
+/* Fallbacks drawn from 40 frames pre-rendered from this same scene (assets/scene/print/frames).
+ * frames(): no WebGL or the scene failed to load; scroll scrubs through the frames, so the story still plays.
+ * board(): reduced motion; four key frames side by side, nothing moves. */
+const FRAMES = 40, FRAME = i => `${DIR}frames/f${String(i).padStart(2, "0")}.jpg`;
+const BOARD = [[0, 0], [12, 1], [23, 2], [33, 3]];
+function frames(el) {
+  if (el.classList.contains("seq")) return;
+  el.classList.add("seq");
+  const stage = el.querySelector(".ps-stage"), img = new Image(), have = [];
+  img.className = "ps-seq"; img.alt = ""; img.setAttribute("aria-hidden", "true"); stage.appendChild(img);
+  const pick = () => {
+    const r = el.getBoundingClientRect(), run = r.height - stage.offsetHeight, top = parseFloat(getComputedStyle(stage).top) || 0;
+    const want = Math.round(Math.max(0, Math.min(1, run > 0 ? (top - r.top) / run : 0)) * (FRAMES - 1));
+    for (let d = 0; d < FRAMES; d++) for (const i of [want - d, want + d]) if (have[i]) { if (img.dataset.i !== String(i)) { img.src = FRAME(i); img.dataset.i = i; } return; }
+  };
+  for (let i = 0; i < FRAMES; i++) { const f = new Image(); f.onload = () => { have[i] = true; if (!el.classList.contains("ready")) el.classList.add("ready"); pick(); }; f.src = FRAME(i); }
+  addEventListener("scroll", pick, { passive: true }); addEventListener("resize", pick);
+}
+function board(el) {
+  el.classList.add("board");
+  const copies = [...el.querySelectorAll(".ps-copy")];
+  const figs = BOARD.map(([i, c]) => `<figure><img src="${FRAME(i)}" alt="" loading="lazy"><figcaption><b>${copies[c].querySelector("h2").textContent}</b> ${copies[c].querySelector("p").textContent}</figcaption></figure>`).join("");
+  el.querySelector(".ps-stage").insertAdjacentHTML("beforeend", `<div class="ps-board">${figs}</div>`);
 }
 
 function build(el, data, RM) {
@@ -79,10 +111,10 @@ function build(el, data, RM) {
 
   const canvas = el.querySelector(".ps-gl");
   let R3;
-  try { R3 = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true }); } catch (e) { el.classList.add("static"); return; }
+  try { R3 = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true }); } catch (e) { frames(el); return; }
   // phones and low-power devices: no real-time shadows and a lower pixel ratio, about half the GPU work
   const LOW = matchMedia("(pointer: coarse)").matches || innerWidth < 760 || (navigator.hardwareConcurrency || 8) <= 4;
-  canvas.addEventListener("webglcontextlost", () => el.classList.add("static"));
+  canvas.addEventListener("webglcontextlost", () => frames(el));
   THREE.ColorManagement.legacyMode = false;
   R3.outputEncoding = THREE.sRGBEncoding; R3.shadowMap.enabled = !LOW; R3.shadowMap.type = THREE.PCFSoftShadowMap;
   R3.setClearColor(0xffffff, 0); R3.toneMapping = THREE.ACESFilmicToneMapping; R3.toneMappingExposure = 1.05;
