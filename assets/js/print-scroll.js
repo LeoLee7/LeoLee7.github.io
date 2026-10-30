@@ -5,13 +5,13 @@
  * Surrounding map: OpenStreetMap, aligned to the print by a fit on labeled buildings. three.js r147 loads on demand. */
 const DIR = "assets/scene/print/";
 const VENDOR = ["assets/vendor/three-r147.min.js", "assets/vendor/GLTFLoader-r147.js"];
-const POSTER = "assets/img/full/named-places.png";
+const POSTER = DIR + "poster.jpg"; // the opening WebGL frame without text, so the hand-off to the live scene does not swap pictures
 const FFLATE = "assets/vendor/fflate-0.8.2.min.js"; // gzip fallback for browsers without DecompressionStream (Safari < 16.4)
 
 export function printScrollHTML() {
   return `<section class="ps" data-sec="idea" aria-label="How a Braille label turns an anonymous shape into a named place">
   <div class="ps-stage">
-    <img class="ps-poster" src="${POSTER}" alt="A hand reads the Braille label of one building on a 3D-printed campus map; a callout names it ATC, Advanced Technology Center.">
+    <img class="ps-poster" src="${POSTER}" alt="A hand rests on a 3D-printed tactile campus map; on a tactile map, a building under the finger is just a shape.">
     <canvas class="ps-gl" aria-hidden="true"></canvas>
     <div class="ps-ov">
       <div class="ps-copy"><h2>From anonymous shapes to <em>named places</em></h2><p>On a 3D-printed tactile map, a building under the finger is just a shape.</p></div>
@@ -31,6 +31,7 @@ export function printScrollHTML() {
       </div>
       <div class="ps-credit">Map data &copy; OpenStreetMap contributors</div>
     </div>
+    <div class="ps-hint" aria-hidden="true">Scroll to explore<svg viewBox="0 0 16 16"><path d="M8 3v10M4 9l4 4 4-4"/></svg></div>
   </div>
 </section>`;
 }
@@ -53,6 +54,9 @@ export function mountPrintScroll(root) {
   el.dataset.on = 1;
   const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (RM) return board(el);
+  /* the scroll hint fades once the reader starts scrolling through the scene */
+  const hint = () => el.classList.toggle("moved", el.getBoundingClientRect().top < -40);
+  addEventListener("scroll", hint, { passive: true }); hint();
   const gl = (() => { try { const c = document.createElement("canvas"); return c.getContext("webgl2") || c.getContext("webgl"); } catch (e) { return null; } })();
   if (!gl) return frames(el);
   // load only when the section comes near

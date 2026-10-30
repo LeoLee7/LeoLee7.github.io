@@ -644,6 +644,14 @@ html { overflow-x: clip; }
 .ps-row dd { margin: 0; }
 .ps-lead { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .ps-credit { position: absolute; left: max(20px, calc(50% - 520px)); bottom: 12px; font-size: 12px; color: var(--muted); }
+.ps-hint { position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%); display: flex; align-items: center; gap: 6px; white-space: nowrap; font-size: 12px; color: var(--muted); opacity: 0; transition: opacity .4s ease; pointer-events: none; }
+.ps.ready .ps-hint { opacity: 1; }
+.ps.ready.moved .ps-hint { opacity: 0; }
+.ps.board .ps-hint, .ps.static .ps-hint { display: none; }
+.ps-hint svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; -webkit-animation: ps-bob 1.6s ease-in-out infinite; animation: ps-bob 1.6s ease-in-out infinite; }
+@-webkit-keyframes ps-bob { 50% { -webkit-transform: translateY(3px); transform: translateY(3px); } }
+@keyframes ps-bob { 50% { transform: translateY(3px); } }
+@media (prefers-reduced-motion: reduce) { .ps-hint svg { -webkit-animation: none; animation: none; } }
 /* no WebGL or no decompression: the cover image stands in, at its own height */
 .ps.static { height: auto; }
 .ps.static { width: auto; margin-left: 0; }
