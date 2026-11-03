@@ -99,7 +99,7 @@ export const PROJECTS = [
     links: [["Video", "https://youtu.be/G_XJpzWnH_c"]] },
   { slug: "ser", theme: "hai", name: "SER", img: "ser", venue: "Amazon internship, 2024", short: "Search for what reviews know: who a product is for, how it feels, and the occasion it fits.",
     line: "A search system that turns customer reviews into search facets, each linked to the review sentence behind it, for needs catalogs do not record. On recipes it finds 18% more facet matches than keyword search.",
-    links: [["Video", "https://youtu.be/TGy4yoTbdyI"]] },
+    links: [["Video", "https://youtu.be/gwKzpr1FuOM"]] },
   { slug: "swinmm", theme: "hea", pub: "SwinMM", name: "SwinMM", img: "swinmm", venue: "MICCAI 2023",
     short: "Self-supervised multi-view pre-training for 3D medical image segmentation.",
     line: "Masked multi-view pre-training with Swin Transformers for accurate and data-efficient 3D medical image segmentation.",
@@ -357,7 +357,7 @@ export const EDU_THEME = [
   { logo: "ucsc", deg: `Ph.D., Computer Science and Engineering, UC Santa Cruz`, org: "Advised by Leilani H. Gilpin, Sep 2022 to May 2027", theme: "Spatial intelligence in multimodal models and agents" },
 ];
 
-export const VIDEOS = { touchingspace: { id: "SRBqu2IxBNY", thumb: "yt_ts" }, "skills-on-board": { id: "G_XJpzWnH_c", thumb: "yt_sob" }, "lotus-pavilion": { id: "9G6kR8N1WFM", thumb: "yt_lotus" }, "amazon-2026": { id: "G_XJpzWnH_c", thumb: "yt_sob" }, ser: { id: "TGy4yoTbdyI", thumb: "yt_ser" }, "tactile-annotation": { id: "4KqVa0DeqdM", thumb: "yt_tactile" } };
+export const VIDEOS = { touchingspace: { id: "SRBqu2IxBNY", thumb: "yt_ts" }, "skills-on-board": { id: "G_XJpzWnH_c", thumb: "yt_sob" }, "lotus-pavilion": { id: "9G6kR8N1WFM", thumb: "yt_lotus" }, "amazon-2026": { id: "G_XJpzWnH_c", thumb: "yt_sob" }, ser: { id: "gwKzpr1FuOM", thumb: "yt_ser" }, "tactile-annotation": { id: "4KqVa0DeqdM", thumb: "yt_tactile" } };
 
 export const PUBS = [
   { img: "colm", y: 2026, v: "COLM", vy: "2026", top: 1, sel: 1, first: 1, tags: ["spa","llm"],
@@ -438,7 +438,7 @@ export const PUBS = [
 export const AVATAR = "assets/img/avatar.jpg";
 export const TEASERS = {
  "yt_sob": { "a": "assets/img/video/skillsonboard.jpg" },
- "yt_ser": { "a": "assets/img/video/ser.jpg" },
+ "yt_ser": { "a": "assets/img/video/ser.jpg?v=20261102a" },
  "yt_tactile": { "a": "assets/img/video/tactile.jpg" },
  "fgsm": { "a": "assets/img/papers/fgsm.jpg", "full": "assets/img/full/fgsm.png" },
  "trilight-overview": { "a": "assets/img/papers/trilight-overview.jpg", "full": "assets/img/full/trilight-overview.jpg" },
