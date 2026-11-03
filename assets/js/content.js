@@ -98,8 +98,8 @@ export const PROJECTS = [
     line: "A system that turns a free-text SKILL.md into a typed meta file, rendered as a board for people and compiled into a structured skill for agents. On SkillLearnBench, agents use half the output tokens at equal or better task performance. Built during my internship at Amazon.",
     links: [["Video", "https://youtu.be/G_XJpzWnH_c"]] },
   { slug: "ser", theme: "hai", name: "SER", img: "ser", venue: "Amazon internship, 2024", short: "Search for what reviews know: who a product is for, how it feels, and the occasion it fits.",
-    line: "A search system that turns customer reviews into search facets, each linked to the review sentence behind it, for needs catalogs do not record. On recipes it finds 18% more facet matches than keyword search.",
-    links: [["Video", "https://youtu.be/gwKzpr1FuOM"]] },
+    line: "A search system that turns customer reviews into search facets, each linked to the review sentence behind it, for needs catalogs do not record. On recipes, 92% of its matches are correct, against 64% for keyword match.",
+    links: [["Demo", "https://leolee7.github.io/SER/"], ["Video", "https://youtu.be/gwKzpr1FuOM"]] },
   { slug: "swinmm", theme: "hea", pub: "SwinMM", name: "SwinMM", img: "swinmm", venue: "MICCAI 2023",
     short: "Self-supervised multi-view pre-training for 3D medical image segmentation.",
     line: "Masked multi-view pre-training with Swin Transformers for accurate and data-efficient 3D medical image segmentation.",
@@ -205,7 +205,7 @@ export const TECH = {
 export const OVERVIEW = {
   "ser": [
     "Search and recommendation systems handle specific goals well, but not subjective needs such as a healthy birthday meal for a parent or a movie worth watching. Product catalogs rarely hold that kind of insight. Reviews and other user-generated content do.",
-    "SER, an experiential search and retrieval system, extracts subjective information from user-generated content into EXP-DB, a domain-centric experiences database. A taxonomy of subjective needs and its classifiers connect user intent to item relevance, and the resulting experience index sits beside the catalog index to power faceted search by audience, feeling, and occasion."],
+    "SER answers these needs from EXP-DB, a database that annotates each item with catalog attributes and with experiential attributes extracted from its reviews, each linked to the review span it came from. An LLM keeps only the attributes a review asserts, and an agent skill merges the variants of each value. The experiential index sits beside the catalog index, so one query can use both. SER covers recipes, movies, and games."],
   "skills-on-board": [
     "Skills package the instructions an agent follows on a task, and most live as free-text Markdown in a SKILL.md file. That makes them hard to maintain: revising one step means searching a long document without knowing what depends on it, and reusing a skill means finding every value tied to the original task.",
     "Skills on Board treats skill maintenance as a data representation problem. A declared schema converts a skill into a typed meta file in which every step, learned rule, and source excerpt is a record with a stable identity. The meta file compiles into a structured SKILL.md for the agent and renders as a board for the user, who can trace a step to its evidence, edit it once to update it everywhere, and compare a new version with its parent record by record."],
@@ -318,7 +318,7 @@ export const EXPERIENCE = [
   { logo: "amazon", org: "Amazon", role: "Applied Scientist Intern", place: "Santa Clara, CA", y: "2025", dates: "June to Sept. 2025", t0: 2025.42, t1: 2025.67, topic: "Taxonomy discovery from unlabeled conversations (WWW 2026)", bullets: [
     "<b>Taxonomy discovery from unlabeled conversations (<a href=\"#project-pattern-insights\">WWW 2026 Demo</a>).</b> Designed a modular, human-in-the-loop framework that evolves its own taxonomy from a few seed keywords, alternating a wide-lens view of where patterns cluster with sharp-focus checks of each extraction; every pattern traces to its source."] },
   { logo: "amazon", org: "Amazon", role: "Applied Scientist Intern", place: "Palo Alto, CA", y: "2024", dates: "June to Sept. 2024", t0: 2024.42, t1: 2024.67, topic: "Evidence-grounded search from reviews (SER)", bullets: [
-    "<b>Evidence-grounded search from reviews (<a href=\"#project-ser\">SER</a>).</b> Built a search system that turns customer reviews into search facets, each linked to the review sentence behind it, to answer needs catalogs do not record. Later shown on recipes to find 18% more facet matches than keyword search."] },
+    "<b>Evidence-grounded search from reviews (<a href=\"#project-ser\">SER</a>).</b> Built a search system that turns customer reviews into search facets, each linked to the review sentence behind it, to answer needs catalogs do not record. On recipes, 92% of its matches are correct, against 64% for keyword match."] },
   { logo: "nissan", org: "Nissan Research Center", role: "Data Scientist Intern", place: "Santa Clara, CA", y: "2023", dates: "July to Sept. 2023", t0: 2023.5, t1: 2023.67, topic: "Driver engagement in autonomous driving", bullets: [
     "<b>Driver engagement in autonomous driving.</b> Developed a time-series model of driver engagement from real-world driving logs, improving prediction accuracy by 16 percentage points."] },
 ];
@@ -438,7 +438,7 @@ export const PUBS = [
 export const AVATAR = "assets/img/avatar.jpg";
 export const TEASERS = {
  "yt_sob": { "a": "assets/img/video/skillsonboard.jpg" },
- "yt_ser": { "a": "assets/img/video/ser.jpg?v=20261102a" },
+ "yt_ser": { "a": "assets/img/video/ser.jpg?v=20261102b" },
  "yt_tactile": { "a": "assets/img/video/tactile.jpg" },
  "fgsm": { "a": "assets/img/papers/fgsm.jpg", "full": "assets/img/full/fgsm.png" },
  "trilight-overview": { "a": "assets/img/papers/trilight-overview.jpg", "full": "assets/img/full/trilight-overview.jpg" },
