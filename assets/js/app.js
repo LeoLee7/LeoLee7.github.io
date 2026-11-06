@@ -1,9 +1,9 @@
-import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HB, KEY, ECHO, HEADLINE, PHOTOS, LENSES, CORE_IDEA } from "./content.js?v=20261105n";
-import { ABSTRACTS } from "./abstracts.js?v=20261105n";
-import { STORY } from "./story.js?v=20261105n";
-import { guideHTML, mountGuide } from "./guide-demo.js?v=20261105n";
-import { printScrollHTML, mountPrintScroll } from "./print-scroll.js?v=20261105n";
-import { asciiHeroHTML, asciiLabHTML, asciiRolesHTML, mountAscii } from "./ascii-scene.js?v=20261105n";
+import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HB, KEY, ECHO, HEADLINE, PHOTOS, LENSES, CORE_IDEA } from "./content.js?v=20261105o";
+import { ABSTRACTS } from "./abstracts.js?v=20261105o";
+import { STORY } from "./story.js?v=20261105o";
+import { guideHTML, mountGuide } from "./guide-demo.js?v=20261105o";
+import { printScrollHTML, mountPrintScroll } from "./print-scroll.js?v=20261105o";
+import { asciiHeroHTML, asciiLabHTML, asciiRolesHTML, mountAscii } from "./ascii-scene.js?v=20261105o";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -465,14 +465,15 @@ box.addEventListener("click", e => {
   const r = img.getBoundingClientRect();
   if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) return;
   const fx = (e.clientX - r.left) / r.width, fy = (e.clientY - r.top) / r.height;
-  /* show the original pixels (sharp on retina), never stretch past the source */
+  /* at least twice the fitted size, so small photos still zoom; large figures show their original pixels */
   const dpr = window.devicePixelRatio || 1;
-  const w = Math.min(img.naturalWidth, Math.max(img.naturalWidth / dpr, r.width * 2));
+  const w = Math.max(img.naturalWidth / dpr, r.width * 2);
   box.classList.add("zoomed");
   img.style.width = w + "px";
-  const h = w * img.naturalHeight / img.naturalWidth;
-  box.scrollLeft = fx * w + 16 - box.clientWidth / 2;
-  box.scrollTop = fy * h + 16 - box.clientHeight / 2;
+  /* keep the clicked point under the pointer */
+  const z = img.getBoundingClientRect();
+  box.scrollLeft += z.left + fx * z.width - e.clientX;
+  box.scrollTop += z.top + fy * z.height - e.clientY;
 });
 show();
 
