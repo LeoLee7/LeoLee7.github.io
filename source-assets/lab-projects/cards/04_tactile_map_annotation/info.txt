@@ -1,0 +1,17 @@
+Project name: Braille and Place Labels for 3D-Printed Tactile Maps
+Representative image: hero.jpg (2160 x 2160; alternate illustration: hero_print.jpg)
+People: Li Liu, Ashmita Dua, Jiaming Qu, David T. Lee, Leilani H. Gilpin
+Start date: TBD
+End date: TBD
+Venue: ASSETS 2026 Demo
+
+Short description:
+Tactile Map Annotation: On a tactile map, a building under the finger is an unnamed shape. Our tool gives it a name in Braille.
+Ten blind and low-vision readers compared labeled and unlabeled prints. Each label also links to a real place, so it can drive an audio readout.
+
+Resources:
+Project page: https://leolee7.github.io/#project-tactile-annotation/idea
+Paper: https://doi.org/10.1145/3797867.3841235
+Demo: https://leolee7.github.io/Annotate_Braille/
+Video: https://youtu.be/4KqVa0DeqdM
+Poster: poster.pdf

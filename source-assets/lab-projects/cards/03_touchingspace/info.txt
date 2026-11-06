@@ -1,0 +1,16 @@
+Project name: Real-Time Multimodal Agent Grounded in Touch
+Representative image: hero.jpg (2160 x 2160; alternate illustration: hero_print.jpg)
+People: Li Liu, Ashmita Dua, Jacob Wei (more undergraduates to confirm)
+Start date: TBD
+End date: TBD
+Venue: Under review, 2026
+
+Short description:
+TouchingSpace: Blind users explore a map by touch and ask a voice agent about the place under their finger.
+We built it with a blind co-designer and tested it in person with 14 blind and low-vision adults.
+
+Resources:
+Project page: https://leolee7.github.io/#project-touchingspace/feedback
+Paper: https://arxiv.org/abs/2609.36404
+Video: https://youtu.be/SRBqu2IxBNY
+Poster: TouchingSpace_GTC2027_poster.pdf

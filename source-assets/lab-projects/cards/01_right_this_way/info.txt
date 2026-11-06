@@ -1,0 +1,17 @@
+Project name: Camera Guidance for Vision-Language Models
+Representative image: hero.jpg
+People: Li Liu, Diji Yang, Sijia Zhong, Kalyana Suma Sree Tholeti, Lei Ding, Yi Zhang, Leilani H. Gilpin
+Start date: TBD
+End date: TBD
+Venue: NeurIPS 2024
+
+Short description:
+Right This Way: When a photo can't answer the question, our models tell blind users how to move the camera.
+Training on our label-free synthetic data raised open vision-language models by up to 16 points, and the best model beat GPT-4o.
+
+Resources:
+Project page: https://leolee7.github.io/#project-right-this-way/demo
+Paper: https://proceedings.neurips.cc/paper_files/paper/2024/file/efe4e50d492fedc0dfd2959f3320a974-Paper-Conference.pdf
+Code: https://github.com/LeoLee7/Directional_guidance
+Poster: poster.pdf
+Video: none yet

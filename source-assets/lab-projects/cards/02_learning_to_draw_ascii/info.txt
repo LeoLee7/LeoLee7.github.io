@@ -1,0 +1,18 @@
+Project name: Spatial Reasoning in Language Models Through ASCII Sketches
+Representative image: hero.jpg (2160 x 2160; alternate images: hero_words.jpg, hero_print.jpg)
+People: Shiyuan Huang, Li Liu, Jincheng He, Leilani H. Gilpin
+Start date: TBD
+End date: TBD
+Venue: COLM 2026
+
+Short description:
+Learning to Draw ASCII: Language models read spatial layouts better than they build them, so we taught them to draw.
+Training on ASCII layouts more than doubled drawing accuracy and improved spatial reasoning from text alone.
+
+Resources:
+Project page: https://aiea-lab.github.io/Text2Space/#sketch-heading
+Paper: https://arxiv.org/abs/2604.14641
+Code: https://github.com/aiea-lab/Text2Space
+Dataset: https://huggingface.co/datasets/ShiyuanHuang/Text2Space
+Poster: poster.pdf
+Video: none yet

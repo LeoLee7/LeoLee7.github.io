@@ -1,0 +1,15 @@
+Project name: Interpretable Scene Understanding for Autonomous Driving
+Representative image: hero.jpg (2160 x 2160; alternate illustration: hero_print.jpg)
+People: Li Liu, Leilani H. Gilpin
+Start date: TBD
+End date: TBD
+Venue: ACS 2025
+
+Short description:
+Frame-Based Scene Understanding: Self-driving systems detect objects, but they rarely say what a scene means.
+We organize raw driving data into sample, object, and scene frames that people can read.
+
+Resources:
+Paper: https://openreview.net/forum?id=ld73i8PBhh
+Poster: poster.pdf
+Video: none yet
