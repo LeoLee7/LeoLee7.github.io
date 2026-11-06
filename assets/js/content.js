@@ -193,12 +193,13 @@ export const OVERVIEW_EARLY = {
 export const LENSES = {
 };
 /* technical summary shown under Overview on a project page, as [label, text] rows */
+const ext = (t, u) => `<a href="${u}" target="_blank" rel="noopener">${t}</a>`;
 export const TECH = {
   touchingspace: [
-    ["Model", "Model-agnostic: it supports commercial and open vision-language models, including Gemini, GPT, Qwen3, and MiniMax. The user study used <a href=\"https://arxiv.org/abs/2507.06261\" target=\"_blank\" rel=\"noopener\">Gemini 2.5 Flash</a>."],
-    ["Voice", "It supports speech-to-speech models (Gemini 2.5 Flash native audio, OpenAI gpt-realtime), omni models (Qwen3-Omni), and vision-language models with text output, paired with cloud TTS or Apple's native speech recognition and voices."],
+    ["Model", `Model-agnostic: it supports commercial and open vision-language models, including ${ext("Gemini", "https://deepmind.google/models/gemini/")}, GPT, ${ext("Qwen3", "https://github.com/QwenLM/Qwen3-VL")}, and ${ext("MiniMax", "https://huggingface.co/MiniMaxAI")}. The user study used ${ext("Gemini 2.5 Flash", "https://arxiv.org/abs/2507.06261")}.`],
+    ["Voice", `It supports speech-to-speech models (${ext("Gemini 2.5 Flash native audio", "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-2-5-native-audio/")}, ${ext("OpenAI gpt-realtime", "https://developers.openai.com/api/docs/models/gpt-realtime")}), omni models (${ext("Qwen3-Omni", "https://arxiv.org/abs/2509.17765")}), and vision-language models with text output, paired with cloud TTS or Apple's native ${ext("speech recognition", "https://developer.apple.com/documentation/speech")} and ${ext("voices", "https://developer.apple.com/documentation/appkit/nsspeechsynthesizer")}.`],
     ["Context", "Each turn, the agent gets the finger's location, the revealed places from nearest to farthest with the direction and distance of each, recently visited places, recent conversation, and a map image annotated with a compass and the finger."],
-    ["Map", "OpenStreetMap data within 400 meters of a place, held at fixed trackpad positions and revealed in four cumulative stages."],
+    ["Map", `${ext("OpenStreetMap", "https://www.openstreetmap.org/")} data within 400 meters of a place, held at fixed trackpad positions and revealed in four cumulative stages.`],
     ["Feedback", "A hum grows louder near a place. Crossing its boundary starts a vibration and speaks its name."],
   ],
 };
