@@ -195,7 +195,8 @@ export const LENSES = {
 /* technical summary shown under Overview on a project page, as [label, text] rows */
 export const TECH = {
   touchingspace: [
-    ["Model", "Model-agnostic: it works with commercial or open models. The user study ran on Gemini 2.5 Flash Preview Native Audio Dialog (09-2025 build), and the open model Qwen3-Omni-30B-A3B also runs on our benchmark."],
+    ["Model", "Model-agnostic: it supports commercial and open models, including Gemini, GPT, and Qwen3-Omni. The user study used <a href=\"https://arxiv.org/abs/2507.06261\" target=\"_blank\" rel=\"noopener\">Gemini 2.5 Flash</a>."],
+    ["Voice", "It supports speech-to-speech models (Gemini 2.5 Flash native audio, OpenAI gpt-realtime), omni models (Qwen3-Omni), and vision-language models with text output, paired with cloud TTS or Apple's native speech recognition and voices."],
     ["Context", "Each turn, the agent gets the finger's location, the revealed places from nearest to farthest with the direction and distance of each, recently visited places, recent conversation, and a map image annotated with a compass and the finger."],
     ["Map", "OpenStreetMap data within 400 meters of a place, held at fixed trackpad positions and revealed in four cumulative stages."],
     ["Feedback", "A hum grows louder near a place. Crossing its boundary starts a vibration and speaks its name."],
