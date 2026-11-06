@@ -6,7 +6,7 @@
  * Speakers stay anonymous. Shapes use classes .k (ink), .a (accent), .g (soft gray), .ln (ink line), .al (accent line);
  * each print gets its own filter for a hand-cut edge and a grainy, printed fill.
  */
-const print = (id, body) => `<svg viewBox="0 0 240 150" aria-hidden="true">
+const print = (id, body, w = 240, h = 150) => `<svg viewBox="0 0 ${w} ${h}" aria-hidden="true">
   <defs><filter id="tx${id}" x="-6%" y="-6%" width="112%" height="112%">
     <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="${id * 7}" result="w"/>
     <feDisplacementMap in="SourceGraphic" in2="w" scale="3.2" xChannelSelector="R" yChannelSelector="G" result="d"/>
@@ -40,7 +40,7 @@ const STREETS = print(3, `
   <rect class="a" x="86" y="40" width="22" height="22"/><rect class="k" x="86" y="74" width="22" height="30"/>
   <rect class="a" x="124" y="84" width="32" height="20"/><rect class="k" x="168" y="90" width="18" height="14"/>`);
 
-/* layers of a place, read further down */
+/* layers of a place, read further down (not on the page now; kept for reuse) */
 const DEEPER = print(4, `
   <path class="k" d="M30 52 a22 22 0 0 1 44 0 z"/>
   <rect class="g" x="70" y="30" width="96" height="56"/>
@@ -128,15 +128,36 @@ const BEYOND = print(15, `
   <circle class="k" cx="146" cy="52" r="5"/><circle class="k" cx="190" cy="62" r="4"/><circle class="k" cx="158" cy="100" r="4"/>
   <rect class="a" x="174" y="84" width="22" height="22"/>`);
 
+
+/* what an agent reads, many places at once, narrowed into one spoken line for a person */
+const HEAD = "M595.3 29.8L587.2 34.9L582.1 40.8L578.3 49.8L576.6 59.1L575.3 60.8L574.0 64.7L569.7 71.5L569.7 72.8L571.0 74.5L575.3 76.6L575.7 84.7L577.0 87.7L578.7 88.9L578.7 93.6L580.8 95.7L581.2 101.7L583.4 104.2L585.1 105.1L595.3 105.5L602.1 106.8L603.4 114.5L603.4 118.7L604.2 119.6L604.6 123.0L634.0 123.0L634.0 104.2L636.1 101.7L639.1 99.6L643.4 94.0L645.1 90.6L645.1 88.9L648.0 81.3L648.9 69.8L647.6 58.3L645.9 53.2L642.5 46.4L636.1 38.3L631.0 34.0L625.9 31.1L617.4 28.1L612.3 27.2L600.4 28.1 Z";
+const BLOCKS = [[337, 52, 78, 78], [431, 57, 25, 25], [339, 143, 33, 75], [386, 148, 24, 24], [427, 98, 30, 78], [381, 188, 78, 78], [339, 235, 28, 28]];
+const DOT_X = [681, 731, 781, 832, 881, 931, 981, 1031, 1081];
+const DOT_R = [17, 16, 14, 13, 11, 10, 7, 5, 4];
+const DOT_ROWS = [[69, 69, 69, 68, 71, 68, 69, 62, 58], [114, 114, 114, 113, 116, 110, 110, 123, 127], [203, 203, 203, 202, 200, 208, 196, 205, 192], [247, 247, 247, 247, 250, 249, 243, 260, 238]];
+const u = v => +(v * .4255).toFixed(1);
+const SPEAK = print(16, `
+  <path class="g" fill-rule="evenodd" d="M50 40 h52 a10 10 0 0 1 10 10 v46 a10 10 0 0 1 -10 10 h-52 a10 10 0 0 1 -10 -10 v-46 a10 10 0 0 1 10 -10 z M90 55 a8 8 0 1 0 .01 0 z M72 84 v5 h30 v-5 z"/>
+  <rect class="g" x="73" y="28" width="4" height="12"/><circle class="g" cx="75" cy="26" r="5"/>
+  ${BLOCKS.map(([x, y, w, h]) => `<rect class="g" x="${u(x)}" y="${u(y)}" width="${u(w)}" height="${u(h)}"/>`).join("")}
+  ${[472, 516, 560, 605].flatMap(x => [54, 98, 142, 188, 232].map(y => (x === 605 && y === 142) ? "" : `<rect class="g" x="${u(x)}" y="${u(y)}" width="14" height="14"/>`)).join("")}
+  <rect class="a" x="${u(605)}" y="${u(142)}" width="14" height="14"/>
+  ${DOT_ROWS.flatMap(row => row.map((y, i) => `<circle class="k" cx="${u(DOT_X[i])}" cy="${u(y)}" r="${u(DOT_R[i])}" opacity="${(1 - i * .09).toFixed(2)}"/>`)).join("")}
+  ${DOT_X.map(x => `<circle class="a" cx="${u(x)}" cy="${u(159)}" r="4"/>`).join("")}
+  <circle class="a" cx="${u(1143)}" cy="${u(159)}" r="9.5"/>
+  <path class="al" stroke-width="4.5" stroke-linecap="round" d="M501 49 a24 24 0 0 1 0 38"/>
+  <path class="al" stroke-width="4" stroke-linecap="round" d="M511 38 a38 38 0 0 1 0 60"/>
+  <path class="al" stroke-width="3" stroke-linecap="round" d="M520 27 a54 54 0 0 1 0 82"/>
+  <path class="g" d="${HEAD}"/>`, 720, 134);
+
 export const STORY = {
   touchingspace: {
-    pull: "I didn't know how to read a map, but now I can.",
-    pullNote: "A participant, whose words became the title of our paper.",
-    pullArt: MAP,
+    band: SPEAK,
     /* the whole experience, from blind and low-vision participants after using the system.
        One quote at a time in a spotlight; the [[...]] part is set in the accent color. */
     saidNote: "What 14 blind and low-vision adults, recruited through <a href=\"https://vistacenter.org/\" target=\"_blank\" rel=\"noopener\">Vista Center for the Blind and Visually Impaired</a>, said after using TouchingSpace, in their own words.",
     said: [
+      { q: "I didn't know how to read a map, [[but now I can]]." },
       { q: "It'll help many people, [[maybe even millions]]." },
       { q: "I think of anything I've seen, this has [[the best possibility]] of doing that.", note: "On conveying how to approach a hard-to-find entrance." },
       { q: "Really nice work. It's going to [[help a lot of people]]." },
@@ -159,7 +180,7 @@ export const STORY = {
     senses: [
       { art: MULTI, label: "Multi-sensory", line: "A hum as the finger nears a place, a vibration at its edge, and its name when the finger arrives.",
         quote: "I think it's good to have a multimodal way because you're going to remember it more in general." },
-      { art: DEEPER, label: "Conversation", line: "A conversational agent answers open questions about any place.",
+      { art: MAP, label: "Conversation", line: "A conversational agent answers open questions about any place.",
         quote: "I really love that chatbot... having the map and it spelling out each of the buildings, but then you're able to go deeper." },
       { art: PAD, label: "No extra hardware", line: "It runs on the trackpad of an everyday laptop. Nothing to buy, print, or carry.",
         quote: "I can have it on my computer... the product itself is just software." },
@@ -172,7 +193,7 @@ export const STORY = {
         text: "A familiar place was often a single point, the spot someone drives you to. Tracing around it, the point filled with places.",
         quotes: ["In my mind there was only one spot... So now there are a lot of spots."] },
       { art: STREETS, title: "A picture of the streets",
-        text: "Tracing by hand, participants gave the area a shape of their own: an L of streets, a butterfly, a row of shops.",
+        text: "Tracing by hand, participants gave the area a shape of their own: an L of streets, a butterfly, two streets crossing.",
         quotes: ["I thought it would be hard for me to build a mental map, but I was able to kind of draw that L-shape or square shape of the streets."] },
       { art: NEAR, title: "Knowing the neighborhood",
         text: "Knowing what is around matters most when something goes wrong: where to sit down, where to ask for help. Around places they already visit, participants learned what else was there.",
@@ -181,7 +202,7 @@ export const STORY = {
         text: "You cannot ask about a place you do not know is there. On the map, places nobody asked for came up on their own, and some changed trips people already make.",
         quotes: ["Now that I know [the pharmacy] is right there and it's on my way home, I just stop there instead of going all the way home and coming all the way back.", "And no one tells you. It could be that way forever."] },
       { art: ROUTE, title: "Passing it on",
-        text: "What one person learned could reach others. At a front desk staffed by blind people, the most common call is how to get there, and they could barely answer it themselves.",
+        text: "What one person learned could reach others. Blind staff at an accessibility center take calls asking how to get there and what is around, and could barely answer themselves.",
         quotes: ["We have blind people who work here and they get phone calls. One of the biggest questions is \u201chow do I get here?\u201d... We don't know what's around here. We can barely answer that question ourselves.",
           "The only thing we know is our address... That's it. Period. Nothing else.",
           "I can tell someone sighted how to get somewhere now."] },

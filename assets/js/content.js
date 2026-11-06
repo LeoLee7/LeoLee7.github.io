@@ -70,7 +70,7 @@ export const ECHO = {
 export const CORE_IDEA = ["skills-on-board"];
 export const KEY = {
   "right-this-way": "Fine-tuning on synthetic directional-guidance data raises the accuracy of open VLMs by up to 16 percentage points, and the best fine-tuned model exceeds GPT-4o.",
-  touchingspace: "Spatial answers anchored at the finger are the most reliable: 96% accuracy on direction and distance from the finger, compared with 49% on relations between two named places.",
+  touchingspace: "Spatial answers anchored at the finger are the most reliable: 96% accuracy on questions measured from the finger, compared with 49% on relations between two named places.",
   "skills-on-board": "Stable identity, provenance, and deterministic projection are what make an agent skill maintainable.",
 };
 
@@ -81,7 +81,7 @@ export const PROJECTS = [
   { slug: "ascii", theme: "spa", pub: "Learning to Draw", name: "Learning to Draw ASCII", img: "colm", scene: "ascii", venue: "COLM 2026", short: "Across six LLMs, reading spatial layouts beats building them. Training models to build ASCII layouts more than doubles layout-construction accuracy and improves text-only spatial reasoning.",
     line: "Across six LLMs, accuracy in reading ASCII layouts exceeds accuracy in constructing them by 13 to 27 percentage points. Training on construction more than doubles construction accuracy, improves text-only spatial reasoning, and transfers to three external benchmarks.",
     links: [["Project page", "https://aiea-lab.github.io/Text2Space/"], ["arXiv", "https://arxiv.org/abs/2604.14641"], ["Code", "https://github.com/aiea-lab/Text2Space"], ["Dataset", "https://huggingface.co/datasets/ShiyuanHuang/Text2Space"]] },
-  { slug: "touchingspace", theme: "acc", pub: "\u201cI didn", name: "TouchingSpace", img: "ts_overview", videoHero: 1, figs: [["2609.36404", "System pipeline: map retrieval, map transformation, and exploration on the trackpad."]], venue: "Under review, 2026", short: "A real-time voice-and-touch agent on Gemini native audio that grounds its answers in a map, tested with blind and low-vision users.",
+  { slug: "touchingspace", theme: "acc", pub: "\u201cI didn", name: "TouchingSpace", img: "ts_overview", videoHero: 1, figs: [["2609.36404", "System pipeline: map retrieval, map transformation, and exploration on the trackpad."]], poster: ["ts-poster", "Translating Between the Senses: Multimodal AI for Spatial Perception."], venue: "Under review, 2026", short: "A real-time voice-and-touch agent on Gemini native audio that grounds its answers in a map, tested with blind and low-vision users.",
     line: "People explore a place by hand on a laptop trackpad and ask a voice agent open questions about it. Built from zero with a blind co-designer and studied with 14 blind and low-vision adults.",
     links: [["arXiv", "https://arxiv.org/abs/2609.36404"], ["Video", "https://youtu.be/SRBqu2IxBNY"]] },
   { slug: "tactile-annotation", theme: "acc", pub: "From Anonymous", name: "Tactile Map Annotation", img: "named-places", scene: "print-scroll", videoHero: 1, figs: [["assets-2026", "Our ASSETS 2026 demo poster."]], venue: "ASSETS 2026 Demo", short: "Braille and place labels for 3D-printed tactile maps.",
@@ -195,10 +195,10 @@ export const LENSES = {
 /* technical summary shown under Overview on a project page, as [label, text] rows */
 export const TECH = {
   touchingspace: [
-    ["Model", "Gemini 2.5 Flash native audio, streamed over the Live API, with Google Search grounding."],
-    ["Context", "Each turn, the agent sees where the finger is and how every place relates to it, in direction, distance, and containment computed from map geometry."],
-    ["Map", "OpenStreetMap places, scaled onto the trackpad and revealed in four stages."],
-    ["Feedback", "A hum grows louder near a place; vibration marks its edge."],
+    ["Model", "Model-agnostic: it works with commercial or open models. The user study ran on Gemini 2.5 Flash Preview Native Audio Dialog (09-2025 build), and the open model Qwen3-Omni-30B-A3B also runs on our benchmark."],
+    ["Context", "Each turn, the agent gets the finger's location, the revealed places from nearest to farthest with the direction and distance of each, recently visited places, recent conversation, and a map image annotated with a compass and the finger."],
+    ["Map", "OpenStreetMap data within 400 meters of a place, held at fixed trackpad positions and revealed in four cumulative stages."],
+    ["Feedback", "A hum grows louder near a place. Crossing its boundary starts a vibration and speaks its name."],
   ],
 };
 
@@ -221,7 +221,7 @@ export const OVERVIEW = {
   "touchingspace": [
     "Accessible map systems either make a layout explorable by hand or convey information through speech, and few combine both to support pre-travel spatial understanding for blind and low-vision (BLV) people. TouchingSpace retrieves map data for an outdoor place and renders its surroundings as bounded regions at fixed positions on a laptop trackpad. While exploring, people receive audio and haptic feedback and can ask a conversational agent open-ended questions.",
     "In a study with fourteen BLV participants, people used sound and vibration to locate places and speech to identify and describe them. The bounded surface supported discovery, revision, and spatial checks by hand, and participants expected this awareness to support future travel.",
-    "I led TouchingSpace from zero: I built the system with a blind co-designer, benchmarked its spatial grounding, and ran the in-person studies."],
+    "I led TouchingSpace from zero: I built the system with a blind co-designer, benchmarked its spatial grounding, and ran the in-person study."],
   "ascii": [
     "People sketch a layout to think about space, and drawing it sharpens what they understand. We give language models the same tool, an ASCII grid that works as a sketchpad made of text, and ask whether learning to draw it gives them spatial understanding that carries beyond the sketch.",
     "We introduce Text2Space, a dataset that pairs text descriptions with ground-truth ASCII layouts and spatial questions, so that a failure to build the layout can be told apart from a failure to reason over it."],
@@ -495,6 +495,10 @@ export const TEASERS = {
  "assets-2026": {
   "a": "assets/img/posters/assets-2026.jpg",
   "full": "assets/img/full/assets-2026.jpg"
+ },
+ "ts-poster": {
+  "a": "assets/img/posters/ts-poster.jpg",
+  "full": "assets/img/full/ts-poster.jpg"
  },
  "www": {
   "a": "assets/img/posters/www.jpg",

@@ -172,6 +172,7 @@ section + section, .block + .block { margin-top: 72px; }
 .pfig { margin: 6px 0 26px; }
 .pfig .pimg { padding: 14px; background: var(--frame); }
 .pfig figcaption { font-size: 13.5px; color: var(--muted); margin-top: 8px; }
+.st + h2 { margin-top: 48px; }
 /* a large 4:3 photo on top; below, 9:16 columns give a 3:4 portrait and a 4:3 landscape the same height */
 .pmosaic { display: grid; grid-template-columns: 9fr 16fr; gap: 12px; margin: 22px 0 26px; }
 .pmosaic .pimg:first-child { grid-column: 1 / -1; aspect-ratio: 4 / 3; }
@@ -428,9 +429,7 @@ a.proj:hover .nm { color: var(--accent); }
 .st q { quotes: "\201C" "\201D"; }
 .st .tr { display: block; margin-top: 8px; color: var(--muted); }
 .st cite { display: block; margin-top: 8px; font-style: normal; font-size: 13.5px; color: var(--muted); }
-.st-hero { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 28px; align-items: center; margin: 8px 0 8px; }
-.st-hero blockquote { margin: 0; }
-.st-hero p { margin: 0; font-size: 31px; line-height: 1.2; font-weight: 650; letter-spacing: -.015em; color: var(--ink); }
+.st-band { margin: 8px 0 8px; }
 .st-h { margin: 40px 0 14px; font-size: 17px; }
 .st-sub { margin: -6px 0 14px; color: var(--ink); }
 .st-flow { overflow: hidden; margin: 0 -8px; padding: 4px 8px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
@@ -473,9 +472,9 @@ a.proj:hover .nm { color: var(--accent); }
 .st-close .tr { font-size: 17px; }
 @media (max-width: 900px) { .st-senses { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 720px) {
-  .st-hero, .story li, .story li:nth-child(even) { grid-template-columns: minmax(0, 1fr); }
+  .story li, .story li:nth-child(even) { grid-template-columns: minmax(0, 1fr); }
   .story li:nth-child(even) .sart { order: 0; }
-  .st-hero p { font-size: 24px; } .st-track figure { width: 270px; } .story .sart { max-width: 320px; }
+  .st-track figure { width: 270px; } .story .sart { max-width: 320px; }
 }
 
 /* project tech summary: label column beside the text */

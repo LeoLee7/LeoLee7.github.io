@@ -1,9 +1,9 @@
-import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HB, KEY, ECHO, HEADLINE, PHOTOS, LENSES, CORE_IDEA } from "./content.js?v=20261102b";
-import { ABSTRACTS } from "./abstracts.js?v=20261102b";
-import { STORY } from "./story.js?v=20261102b";
-import { guideHTML, mountGuide } from "./guide-demo.js?v=20261102b";
-import { printScrollHTML, mountPrintScroll } from "./print-scroll.js?v=20261102b";
-import { asciiHeroHTML, asciiLabHTML, asciiRolesHTML, mountAscii } from "./ascii-scene.js?v=20261102b";
+import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HB, KEY, ECHO, HEADLINE, PHOTOS, LENSES, CORE_IDEA } from "./content.js?v=20261105c";
+import { ABSTRACTS } from "./abstracts.js?v=20261105c";
+import { STORY } from "./story.js?v=20261105c";
+import { guideHTML, mountGuide } from "./guide-demo.js?v=20261105c";
+import { printScrollHTML, mountPrintScroll } from "./print-scroll.js?v=20261105c";
+import { asciiHeroHTML, asciiLabHTML, asciiRolesHTML, mountAscii } from "./ascii-scene.js?v=20261105c";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -148,13 +148,13 @@ function videoBlock(slug, bare) {
     : `<a class="vframe vthumb" href="${url}" target="_blank" rel="noopener"><img src="${TEASERS[v.thumb].a}" alt="Demo video"><span class="vplay" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></span></a>`;
   return bare ? embed : `<h2>Video</h2>${embed}`;
 }
-/* illustrated story: hero quote, a spotlight of participant feedback, what makes it work, what changed */
+/* illustrated story: a wide print, a spotlight of participant feedback, what makes it work, what changed */
 const mark = q => q.replace(/\[\[(.+?)\]\]/g, "<mark>$1</mark>");
 function storyBlock(s) {
   const n = s.said.length;
   return `<section class="st">
     <h2>The story</h2>
-    <div class="st-hero"><blockquote><p>&ldquo;${s.pull}&rdquo;</p><cite>${s.pullNote}</cite></blockquote><div class="sart">${s.pullArt}</div></div>
+    <div class="sart st-band">${s.band}</div>
     <h3 class="st-h" data-sec="feedback">User feedback</h3>
     <p class="st-sub">${s.saidNote}</p>
     <div class="st-flow" role="region" aria-label="Participant quotes, scrolling">
@@ -216,6 +216,7 @@ function renderProject(p) {
   const T = p.img && TEASERS[p.img];
   const updates = NEWS.filter(n => n.to === p.slug || (n.rel || []).includes(p.slug));
   const topics = [...new Set(pubs.flatMap(x => x.tags.filter(t => GNAME[t]).map(t => GNAME[t])))].join(", ");
+  const fig = ([k, cap]) => `<figure class="pfig">${lbBtn({ img: k, title: p.name, sub: cap, links: lbLinks(p.slug, p.links || [], 1) }, "pimg", `<img src="${TEASERS[k].full || TEASERS[k].a}" alt="${esc(cap || p.name)}">`)}${cap ? `<figcaption>${cap}</figcaption>` : ""}</figure>`;
   return `<article class="detail">
     <a class="back" href="#projects">All projects</a>
     <div class="d-eyebrow">${HEADLINE[p.slug] ? `${p.name} · ` : ""}${p.venue}</div><h1>${HEADLINE[p.slug] || p.name}</h1>
@@ -230,9 +231,10 @@ function renderProject(p) {
         ${LENSES[p.slug] ? `<h2>${LENSES[p.slug].title}</h2><ol class="lenses">${LENSES[p.slug].items.map(([h, x]) => `<li><h3>${h}</h3><p>${x}</p></li>`).join("")}</ol>` : ""}
         ${TECH[p.slug] ? `<h2>How it works</h2><dl class="tech">${TECH[p.slug].map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl>` : ""}
         ${PHOTOS[p.slug] ? photoMosaic(p, PHOTOS[p.slug]) : ""}
-        ${(VIDEOS[p.slug] && T && !p.videoHero ? [[p.img, ""], ...(p.figs || [])] : p.figs || []).map(([k, cap]) => `<figure class="pfig">${lbBtn({ img: k, title: p.name, sub: cap, links: lbLinks(p.slug, p.links || [], 1) }, "pimg", `<img src="${TEASERS[k].full || TEASERS[k].a}" alt="${esc(cap || p.name)}">`)}${cap ? `<figcaption>${cap}</figcaption>` : ""}</figure>`).join("")}
+        ${(VIDEOS[p.slug] && T && !p.videoHero ? [[p.img, ""], ...(p.figs || [])] : p.figs || []).map(fig).join("")}
         ${pubs.length ? `<h2>${pubs.length > 1 ? "Papers" : "Paper"}</h2>${pubs.map(x => pubHTML(x, "pp")).join("")}` : ""}
-        ${STORY[p.slug] ? storyBlock(STORY[p.slug]) : ""}</div>
+        ${STORY[p.slug] ? storyBlock(STORY[p.slug]) : ""}
+        ${p.poster ? `<h2>Poster</h2>${fig(p.poster)}` : ""}</div>
       <div class="d-side">${facts([[pubs.length ? "Venue" : "Context", p.venue], ...(topics ? [["Topics", topics]] : [])])}
         ${updates.length ? `<h3>Updates</h3><ul class="upd">${updates.map(n => `<li><time>${n.d}</time>${n.to === p.slug || n.inline ? (n.links?.[0] ? `<a href="${n.links[0][1]}" target="_blank" rel="noopener">${n.title}</a>` : `<span>${n.title}</span>`) : `<a href="#news-${n.slug}">${n.title}</a>`}</li>`).join("")}</ul>` : ""}</div>
     </div>
