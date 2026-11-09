@@ -304,13 +304,6 @@ export const NEWS = [
     ],
     imgs: [["www", "Our WWW 2026 demo poster."]],
     links: [["Paper", "https://doi.org/10.1145/3774905.3793105"]] },
-  { slug: "amazon-2025", rel: ["pattern-insights"], d: "Sep 2025",
-    title: "Finished my 2025 internship at Amazon",
-    h: "Finished my Applied Scientist internship at <b>Amazon</b> on human-in-the-loop pattern discovery.",
-    body: [
-      "From June to September 2025 I worked as an Applied Scientist Intern at Amazon in Santa Clara. I developed a human-in-the-loop framework that grows a validated taxonomy over large unlabeled conversation logs from a few seed keywords, with every pattern traceable to its source.",
-      "The work became Pattern Insights Explorer, presented at the WWW 2026 Demo Track.",
-    ], imgs: [], links: [], facts: [["Role", "Applied Scientist Intern"], ["Location", "Santa Clara, CA, USA"], ["Dates", "June to Sept. 2025"], ["Outcome", "WWW 2026 demo paper"]] },
 ];
 
 export const EXPERIENCE = [
