@@ -155,6 +155,9 @@ export const STORY = {
     band: SPEAK,
     /* the whole experience, from blind and low-vision participants after using the system.
        One quote at a time in a spotlight; the [[...]] part is set in the accent color. */
+    /* why we need this: our own words, paraphrasing a design session with the co-designer (not a quote) */
+    why: { text: "Our blind co-designer once told us he is always short of information. He has to make sense of most of what is around him from a small piece of it, and the things that could anchor him, a pillar, a door, a rack of flyers, are things sighted people walk past without a thought, so no one mentions them. We build AI to close that gap: to find what a person cannot see, and hand it to them in a form they can use and check.",
+      note: "In our words, from a design session with our blind co-designer." },
     saidNote: "What 14 blind and low-vision adults, recruited through <a href=\"https://vistacenter.org/\" target=\"_blank\" rel=\"noopener\">Vista Center for the Blind and Visually Impaired</a>, said after using TouchingSpace, in their own words.",
     said: [
       { q: "I didn't know how to read a map, [[but now I can]]." },
@@ -182,7 +185,7 @@ export const STORY = {
         quote: "I think it's good to have a multimodal way because you're going to remember it more in general." },
       { art: MAP, label: "Conversation", line: "A conversational agent answers open questions about any place.",
         quote: "I really love that chatbot... having the map and it spelling out each of the buildings, but then you're able to go deeper." },
-      { art: PAD, label: "No extra hardware", line: "It runs on the trackpad of an everyday laptop. Nothing to buy, print, or carry.",
+      { art: PAD, label: "Off-the-shelf hardware", line: "It runs on an off-the-shelf Apple trackpad with a silicone rim that marks the map edge. Nothing to print or build.",
         quote: "I can have it on my computer... the product itself is just software." },
       { art: LAYERS, label: "A digital map", line: "Any place can be loaded, and layers of places can be added or taken away.",
         quote: "I like that it's dynamic — not a static map where you constantly have to print something out." },

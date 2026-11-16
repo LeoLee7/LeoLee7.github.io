@@ -155,6 +155,8 @@ function storyBlock(s) {
   return `<section class="st">
     <h2>The story</h2>
     <div class="sart st-band">${s.band}</div>
+    ${s.why ? `<h3 class="st-h">Why we need this</h3>
+    <div class="st-close st-why"><p>${s.why.text}</p><cite>${s.why.note}</cite></div>` : ""}
     <h3 class="st-h" data-sec="feedback">User feedback</h3>
     <p class="st-sub">${s.saidNote}</p>
     <div class="st-flow" role="region" aria-label="Participant quotes, scrolling">
