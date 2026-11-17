@@ -222,7 +222,7 @@ export const OVERVIEW = {
   "touchingspace": [
     "Accessible map systems either make a layout explorable by hand or convey information through speech, and few combine both to support pre-travel spatial understanding for blind and low-vision (BLV) people. TouchingSpace retrieves map data for an outdoor place and renders its surroundings as bounded regions at fixed positions on a laptop trackpad. While exploring, people receive audio and haptic feedback and can ask a conversational agent open-ended questions.",
     "In a study with fourteen BLV participants, people used sound and vibration to locate places and speech to identify and describe them. On the trackpad, people could find places, correct what they had assumed, and check positions by hand. Participants expected that knowing what lies around these places would help their future travel.",
-    "I led TouchingSpace from zero: I built the system with a blind co-designer, benchmarked its spatial grounding, and ran the in-person study."],
+    "I built the system with a blind co-designer, benchmarked its spatial grounding, and ran the in-person study."],
   "ascii": [
     "People sketch a layout to think about space, and drawing it sharpens what they understand. We give language models the same tool, an ASCII grid that works as a sketchpad made of text, and ask whether learning to draw it improves their spatial reasoning in text alone.",
     "We introduce Text2Space, a dataset that pairs text descriptions with ground-truth ASCII layouts and spatial questions, so that a failure to build the layout can be told apart from a failure to reason over it."],
