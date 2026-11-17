@@ -70,7 +70,6 @@ export const ECHO = {
 export const CORE_IDEA = ["skills-on-board"];
 export const KEY = {
   "right-this-way": "Fine-tuning on synthetic directional-guidance data raises the accuracy of open VLMs by up to 16 percentage points, and the best fine-tuned model exceeds GPT-4o.",
-  touchingspace: "Spatial answers anchored at the finger are the most reliable: 96% accuracy on questions measured from the finger, compared with 49% on relations between two named places.",
   "skills-on-board": "Each step of a skill is a record with a stable ID that links to its source, so a person can edit it once and the agent follows.",
 };
 

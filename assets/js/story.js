@@ -155,9 +155,12 @@ export const STORY = {
     band: SPEAK,
     /* the whole experience, from blind and low-vision participants after using the system.
        One quote at a time in a spotlight; the [[...]] part is set in the accent color. */
-    /* why we need this: our own words, paraphrasing a design session with the co-designer (not a quote) */
-    why: { text: "Information barriers are common in our lives: traveling abroad, having trouble reading, or not being able to see. Reading a map is one of them, and for someone who cannot see, the map is out of reach entirely. Our blind co-designer once told us he is always short of information. He pieces together most of what is around him from a small part of it, and when he loses his facing, he says, he is like a navigator on the open ocean with nothing to steer by. The things that could anchor him, a pillar, a door, a rack of flyers, are ones sighted people walk past without a thought, so no one ever mentions them. Without them he cannot place himself, and a street others stroll through together is hard for him to enjoy with them. AI agents can now read a map and describe a street, and we hope they can bridge this information gap. The question is how to give that information to a person in a form they can use and check for themselves. TouchingSpace is our answer for maps: on a trackpad, sound and vibration show where places are, speech says what they are, and a finger can check where each one is.",
-      note: "In our words, from design sessions and emails with our blind co-designer." },
+    /* why we need this: our own words, paraphrasing design sessions and emails with the co-designer (not a quote); shown under Overview */
+    why: [
+      "Information barriers are common in our lives: traveling abroad, having trouble reading, or not being able to see. Reading a map is one of them, and for someone who cannot see, the map is out of reach entirely.",
+      "Our blind co-designer once told us he is always short of information. He pieces together most of what is around him from a small part of it, and when he loses his facing, he says, he is like a navigator on the open ocean with nothing to steer by. The things that could anchor him, a pillar, a door, a rack of flyers, are ones sighted people walk past without a thought, so no one ever mentions them. Without them he cannot place himself, and a street others stroll through together is hard for him to enjoy with them.",
+      "AI agents can now read a map and describe a street, and we hope they can bridge this information gap. The question is how to give that information to a person in a form they can use and check for themselves. TouchingSpace is our answer for maps: on a trackpad, sound and vibration show where places are, speech says what they are, and a finger can check where each one is.",
+    ],
     saidNote: "What 14 blind and low-vision adults, recruited through <a href=\"https://vistacenter.org/\" target=\"_blank\" rel=\"noopener\">Vista Center for the Blind and Visually Impaired</a>, said after using TouchingSpace, in their own words.",
     said: [
       { q: "I didn't know how to read a map, [[but now I can]]." },

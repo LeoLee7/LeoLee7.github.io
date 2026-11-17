@@ -1,9 +1,9 @@
-import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HB, KEY, ECHO, HEADLINE, PHOTOS, LENSES, CORE_IDEA } from "./content.js?v=20261105p";
-import { ABSTRACTS } from "./abstracts.js?v=20261105p";
-import { STORY } from "./story.js?v=20261105p";
-import { guideHTML, mountGuide } from "./guide-demo.js?v=20261105p";
-import { printScrollHTML, mountPrintScroll } from "./print-scroll.js?v=20261105p";
-import { asciiHeroHTML, asciiLabHTML, asciiRolesHTML, mountAscii } from "./ascii-scene.js?v=20261105p";
+import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HB, KEY, ECHO, HEADLINE, PHOTOS, LENSES, CORE_IDEA } from "./content.js?v=20261105q";
+import { ABSTRACTS } from "./abstracts.js?v=20261105q";
+import { STORY } from "./story.js?v=20261105q";
+import { guideHTML, mountGuide } from "./guide-demo.js?v=20261105q";
+import { printScrollHTML, mountPrintScroll } from "./print-scroll.js?v=20261105q";
+import { asciiHeroHTML, asciiLabHTML, asciiRolesHTML, mountAscii } from "./ascii-scene.js?v=20261105q";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -155,8 +155,6 @@ function storyBlock(s) {
   return `<section class="st">
     <h2>The story</h2>
     <div class="sart st-band">${s.band}</div>
-    ${s.why ? `<h3 class="st-h">Why we need this</h3>
-    <div class="st-close st-why"><p>${s.why.text}</p><cite>${s.why.note}</cite></div>` : ""}
     <h3 class="st-h" data-sec="feedback">User feedback</h3>
     <p class="st-sub">${s.saidNote}</p>
     <div class="st-flow" role="region" aria-label="Participant quotes, scrolling">
@@ -229,6 +227,7 @@ function renderProject(p) {
     ${p.scene === "ascii" ? asciiLabHTML() + asciiHeroHTML() + asciiRolesHTML() : ""}
     <div class="d-body">
       <div class="d-main">${KEY[p.slug] ? `<p class="key"><b>${CORE_IDEA.includes(p.slug) ? "Core idea" : "Key finding"}.</b> ${KEY[p.slug]}</p>` : ""}<h2>Overview</h2>${(OVERVIEW[p.slug] || OVERVIEW_EARLY[p.slug] || [p.line]).map(x => `<p>${x}</p>`).join("")}
+        ${STORY[p.slug] && STORY[p.slug].why ? `<h3 class="ov-h">Why we need this</h3>${STORY[p.slug].why.map(x => `<p>${x}</p>`).join("")}` : ""}
         ${ECHO[p.slug] ? `<div class="echo" role="note"><h3>${ECHO[p.slug].title}</h3><p>${ECHO[p.slug].text}</p><p class="echo-l">${ECHO[p.slug].links.map(([n, u]) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join("")}</p></div>` : ""}
         ${LENSES[p.slug] ? `<h2>${LENSES[p.slug].title}</h2><ol class="lenses">${LENSES[p.slug].items.map(([h, x]) => `<li><h3>${h}</h3><p>${x}</p></li>`).join("")}</ol>` : ""}
         ${TECH[p.slug] ? `<h2>How it works</h2><dl class="tech">${TECH[p.slug].map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl>` : ""}

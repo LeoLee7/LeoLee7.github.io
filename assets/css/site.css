@@ -159,6 +159,7 @@ section + section, .block + .block { margin-top: 72px; }
 .d-main h2 { font-size: 19px; margin: 0 0 12px; }
 .d-main p { font-size: 16.5px; line-height: 1.7; margin: 0 0 16px; }
 .d-main p + h2, .d-main .vframe + h2 { margin-top: 30px; }
+.d-main .ov-h { font-size: 16.5px; font-weight: 650; color: var(--ink); margin: 28px 0 10px; }
 .d-main .pub { border-top: 0; padding-top: 4px; }
 .d-side { position: sticky; top: 84px; background: var(--frame); border-radius: 14px; padding: 20px; display: grid; gap: 18px; }
 .d-side h3 { font-size: 15px; font-weight: 650; color: var(--ink); margin: 0; }
@@ -470,9 +471,6 @@ a.proj:hover .nm { color: var(--accent); }
 .st-close { margin: 44px 0 0; padding: 30px 28px; background: var(--frame); border-radius: 14px; text-align: center; }
 .st-close p { margin: 0; font-size: 24px; line-height: 1.3; font-weight: 650; color: var(--ink); }
 .st-close .tr { font-size: 17px; }
-.st-why { margin-top: 12px; text-align: left; }
-.st-why p { font-size: 17px; line-height: 1.6; font-weight: 500; }
-.st-why cite { display: block; margin-top: 10px; font-size: 14px; font-style: normal; color: var(--muted, #667); }
 @media (max-width: 900px) { .st-senses { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 720px) {
   .story li, .story li:nth-child(even) { grid-template-columns: minmax(0, 1fr); }
