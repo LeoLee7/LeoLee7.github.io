@@ -63,7 +63,7 @@ export const HB = {
 /* a related development elsewhere, shown after Overview on a project page */
 export const ECHO = {
   "right-this-way": { title: "Gemini Live now guides the camera",
-    text: "Congratulations to the Gemini team on launching Guided Vision in Gemini Live on October&nbsp;1,&nbsp;2026. It gives blind and low-vision users spoken cues to pan, tilt, or step back when Gemini needs a better view. We are glad to see progress on a question this paper also explored in 2024: what a model should do when the image is not enough.",
+    text: "Congratulations to the Gemini team on launching Guided Vision in Gemini Live on October&nbsp;1,&nbsp;2026. It gives blind and low-vision users spoken cues to pan, tilt, or step back when Gemini needs a better view. We are glad to see progress on a question this paper also explored in 2024: telling the user how to move the camera when the image cannot answer the question.",
     links: [["Google announcement", "https://blog.google/innovation-and-ai/products/gemini-app/guided-vision-gemini-live/"], ["Help Center: Use Guided Vision", "https://support.google.com/accessibility/android/answer/18365638"]] },
 };
 /* one-line finding shown at the top of a project page; projects listed in CORE_IDEA show a design idea instead */
@@ -71,7 +71,7 @@ export const CORE_IDEA = ["skills-on-board"];
 export const KEY = {
   "right-this-way": "Fine-tuning on synthetic directional-guidance data raises the accuracy of open VLMs by up to 16 percentage points, and the best fine-tuned model exceeds GPT-4o.",
   touchingspace: "Spatial answers anchored at the finger are the most reliable: 96% accuracy on questions measured from the finger, compared with 49% on relations between two named places.",
-  "skills-on-board": "Stable identity, provenance, and deterministic projection are what make an agent skill maintainable.",
+  "skills-on-board": "Each step of a skill is a record with a stable ID that links to its source, so a person can edit it once and the agent follows.",
 };
 
 export const PROJECTS = [
@@ -219,17 +219,17 @@ export const OVERVIEW = {
     "The design grew from form studies of lotus leaves and flowers. I built a working prototype of the responsive unit and developed the canopy form step by step from a single leaf-like surface."],
   "hai-survey": [
     "Large foundation models greatly expand what people and AI systems can achieve together, but realizing that potential responsibly requires addressing persistent challenges in safety, fairness, and control. This survey reviews human-AI collaboration with large foundation models along four lines: human-guided model development, design principles for collaboration, ethical and governance frameworks, and applications in high-stakes domains.",
-    "At run time, it organizes collaboration into recurring patterns: human-steered AI, AI-augmented human work, mixed-initiative interaction, control handoff and delegation, and supervisory orchestration of agentic systems, a newer mode in which people monitor, guide, and intervene in multi-step AI workflows. The review finds that successful collaboration is not the automatic result of stronger models but the product of careful, human-centered design."],
+    "At run time, it organizes collaboration into recurring patterns: human-steered AI, AI-augmented human work, mixed-initiative interaction, control handoff and delegation, and supervisory orchestration of agentic systems, a newer mode in which people monitor, guide, and intervene in multi-step AI workflows."],
   "touchingspace": [
     "Accessible map systems either make a layout explorable by hand or convey information through speech, and few combine both to support pre-travel spatial understanding for blind and low-vision (BLV) people. TouchingSpace retrieves map data for an outdoor place and renders its surroundings as bounded regions at fixed positions on a laptop trackpad. While exploring, people receive audio and haptic feedback and can ask a conversational agent open-ended questions.",
-    "In a study with fourteen BLV participants, people used sound and vibration to locate places and speech to identify and describe them. The bounded surface supported discovery, revision, and spatial checks by hand, and participants expected this awareness to support future travel.",
+    "In a study with fourteen BLV participants, people used sound and vibration to locate places and speech to identify and describe them. On the trackpad, people could find places, correct what they had assumed, and check positions by hand. Participants expected that knowing what lies around these places would help their future travel.",
     "I led TouchingSpace from zero: I built the system with a blind co-designer, benchmarked its spatial grounding, and ran the in-person study."],
   "ascii": [
-    "People sketch a layout to think about space, and drawing it sharpens what they understand. We give language models the same tool, an ASCII grid that works as a sketchpad made of text, and ask whether learning to draw it gives them spatial understanding that carries beyond the sketch.",
+    "People sketch a layout to think about space, and drawing it sharpens what they understand. We give language models the same tool, an ASCII grid that works as a sketchpad made of text, and ask whether learning to draw it improves their spatial reasoning in text alone.",
     "We introduce Text2Space, a dataset that pairs text descriptions with ground-truth ASCII layouts and spatial questions, so that a failure to build the layout can be told apart from a failure to reason over it."],
   "right-this-way": [
     "Vision-language models describe images well, but they often answer even when the image does not hold the answer. A model that acts in the real world needs to notice when its current view is not enough and to know where to look next. We study both abilities in one task. Given a question and an image, the model judges whether the image can answer the question, and if it cannot, the model tells the user which way to move the camera. The task asks for a simple form of active perception, and it matters directly to blind and low-vision users, who cannot see what their camera caught.",
-    "We release a human-labeled benchmark for this directional guidance task and a framework that generates synthetic training data by simulating \u201cwhere to know\u201d scenarios. Fine-tuning on this data significantly improves mainstream VLMs."],
+    "We release a human-labeled benchmark for this directional guidance task and a framework that generates synthetic training data by simulating cases where what the question needs lies outside the frame. Fine-tuning on this data significantly improves mainstream VLMs."],
   "tactile-annotation": [
     "On a 3D-printed tactile map, a building felt under the finger is an anonymous shape. Touch alone cannot tell which footprint is which, and a spoken description cannot reliably tie a shape to a specific place.",
     "We built a web-based tool that lets a sighted helper add Braille and place labels to a generated map model. Labeling happens after geometry generation, so the person doing it can account for the reader and the local Braille standard. The helper clicks a footprint on the model, matches it to OpenStreetMap, shortens the name to fit the shape, and reviews the Braille dots before printing.",
@@ -258,7 +258,7 @@ export const NEWS = [
     h: "New preprint on <b>TouchingSpace</b>, a real-time voice agent on Gemini native audio that grounds its answers in the map under the user's finger, tested in person with <b>14 blind and low-vision users</b>. We also presented it at <b>PitchAbility 2026</b>.",
     body: [
       "TouchingSpace turns an outdoor place into an audio-haptic map on an everyday laptop trackpad. People explore the map by hand with sound and vibration, and ask a real-time voice agent on Gemini native audio open-ended questions about what is under their finger. The agent grounds each answer in the map.",
-      "We tested it in person with 14 blind and low-vision users at Vista Center and across San Jose, Santa Cruz, and Palo Alto. They used sound and vibration to locate places and speech to identify and describe them, and they expected this awareness to support their future travel. The preprint is on arXiv.",
+      "We tested it in person with 14 blind and low-vision users at Vista Center and across San Jose, Santa Cruz, and Palo Alto. They used sound and vibration to locate places and speech to identify and describe them, and they expected that knowing what lies around these places would help their future travel. The preprint is on arXiv.",
       "Our AIEA Lab team presented TouchingSpace at the Exhibit & Demo Hall of PitchAbility 2026, the international pitch competition hosted by Vista Center for the Blind and Visually Impaired.",
       "PitchAbility drew applicants from more than 8 countries, and more than 35 companies exhibited assistive technology for people who are blind, have low vision, or are DeafBlind. Vista Center's recap of the event, sent to more than 6,000 people, listed the AIEA Lab among the exhibitors.",
     ],
@@ -278,7 +278,7 @@ export const NEWS = [
     title: "Survey on human-AI collaboration published in ACM TIST",
     h: "Our survey <b>A Survey on Human-AI Collaboration with Large Foundation Models</b> is published in <b>ACM Transactions on Intelligent Systems and Technology</b>.",
     body: [
-      "The survey reviews how people and large foundation models work together, from human-guided model development and collaboration patterns to governance and high-stakes applications. It finds that successful human-AI systems are not the automatic result of stronger models but the product of careful, human-centered design.",
+      "The survey reviews how people and large foundation models work together, from human-guided model development and collaboration patterns to governance and high-stakes applications.",
     ],
     imgs: [["tist", "Collaboration patterns and role allocation."]],
     links: [["Paper", "https://doi.org/10.1145/3841472"]] },

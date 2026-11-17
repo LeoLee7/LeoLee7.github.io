@@ -1,9 +1,9 @@
-import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HB, KEY, ECHO, HEADLINE, PHOTOS, LENSES, CORE_IDEA } from "./content.js?v=20261105o";
-import { ABSTRACTS } from "./abstracts.js?v=20261105o";
-import { STORY } from "./story.js?v=20261105o";
-import { guideHTML, mountGuide } from "./guide-demo.js?v=20261105o";
-import { printScrollHTML, mountPrintScroll } from "./print-scroll.js?v=20261105o";
-import { asciiHeroHTML, asciiLabHTML, asciiRolesHTML, mountAscii } from "./ascii-scene.js?v=20261105o";
+import { VENUE, HIGHLIGHTS, TOPICS, SCHOLAR, PROJECTS, OVERVIEW_EARLY, OVERVIEW, NEWS, EXPERIENCE, EDUCATION, GROUPS, THEMES, TIER, PRIMARY, EDU_THEME, VIDEOS, PUBS, AVATAR, TEASERS, ART, LOGOS, TECH, HB, KEY, ECHO, HEADLINE, PHOTOS, LENSES, CORE_IDEA } from "./content.js?v=20261105p";
+import { ABSTRACTS } from "./abstracts.js?v=20261105p";
+import { STORY } from "./story.js?v=20261105p";
+import { guideHTML, mountGuide } from "./guide-demo.js?v=20261105p";
+import { printScrollHTML, mountPrintScroll } from "./print-scroll.js?v=20261105p";
+import { asciiHeroHTML, asciiLabHTML, asciiRolesHTML, mountAscii } from "./ascii-scene.js?v=20261105p";
 
 const state = { scope: "sel", topic: "all" };
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
