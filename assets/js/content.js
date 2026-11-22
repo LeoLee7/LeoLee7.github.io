@@ -12,7 +12,7 @@
  */
 export const VENUE = {
   "COLM": "Conference on Language Modeling (COLM)", "ASSETS": "ASSETS, Posters and Demonstrations",
-  "WWW": "The Web Conference (WWW), Demo Track", "arXiv": "arXiv preprint", "ACS": "Advances in Cognitive Systems",
+  "WWW": "The Web Conference (WWW), Demo Track", "WSDM": "Web Search and Data Mining (WSDM), Demo Track", "arXiv": "arXiv preprint", "ACS": "Advances in Cognitive Systems",
   "NeurIPS": "Neural Information Processing Systems (NeurIPS)", "EJR Open": "European Journal of Radiology Open",
   "MICCAI": "MICCAI", "ICASSP": "ICASSP", "IEEE TIM": "IEEE Transactions on Instrumentation and Measurement",
   "IEEE Sensors": "IEEE Sensors Journal", "Sensors": "Sensors",
@@ -21,7 +21,7 @@ export const VENUE = {
 
 /* venue weight used to order papers within a topic (lower comes first) */
 export const TIER = { "NeurIPS": 1, "COLM": 1, "MICCAI": 2, "ACM TIST": 2, "IEEE TIM": 3, "IEEE Sensors": 3, "ICASSP": 3,
-  "WWW": 4, "ASSETS": 4, "EJR Open": 4, "Sensors": 5, "arXiv": 6, "Under review": 6 };
+  "WWW": 4, "WSDM": 4, "ASSETS": 4, "EJR Open": 4, "Sensors": 5, "arXiv": 6, "Under review": 6 };
 
 export const TOPICS = [["acc", "Touch and accessibility"], ["spa", "Spatial intelligence"], ["llm", "Language and vision models"], ["hai", "Agents and human-in-the-loop"], ["hea", "Health and sensing"]];
 
@@ -83,7 +83,7 @@ export const PROJECTS = [
   { slug: "touchingspace", theme: "acc", pub: "\u201cI didn", name: "TouchingSpace", img: "ts_overview", videoHero: 1, figs: [["2609.36404", "System pipeline: map retrieval, map transformation, and exploration on the trackpad."]], poster: ["ts-poster", "Translating Maps Between the Senses: Multimodal AI for Spatial Understanding."], venue: "Under review, 2026", short: "A real-time voice-and-touch agent on Gemini native audio that grounds its answers in a map, tested with blind and low-vision users.",
     line: "People explore a place by hand on a laptop trackpad and ask a voice agent open questions about it. Built from zero with a blind co-designer and studied with 14 blind and low-vision adults.",
     links: [["arXiv", "https://arxiv.org/abs/2609.36404"], ["Video", "https://youtu.be/SRBqu2IxBNY"]] },
-  { slug: "tactile-annotation", theme: "acc", pub: "From Anonymous", name: "Tactile Map Annotation", img: "tactile-hands", scene: "print-scroll", videoHero: 1, figs: [["assets-2026", "Our ASSETS 2026 demo poster."]], venue: "ASSETS 2026 Demo", short: "Braille and place labels for 3D-printed tactile maps.",
+  { slug: "tactile-annotation", theme: "acc", pub: "From Anonymous", name: "Tactile Map Annotation", img: "tactile-hands", scene: "print-scroll", videoHero: 1, figs: [["assets-2026", "Our ASSETS 2026 demo poster. Thanks to our friend Anika Jain for presenting it for us in Porto."]], venue: "ASSETS 2026 Demo", short: "Braille and place labels for 3D-printed tactile maps.",
     line: "A web tool that grounds place names in a 3D-printed tactile map: a sighted helper clicks a footprint, matches it to OpenStreetMap, and places print-safe Braille on the shape. Each label is a record linking print geometry to place semantics, so it can also drive an audio readout.",
     links: [["Paper", "https://doi.org/10.1145/3797867.3841235"], ["Demo", "https://leolee7.github.io/Annotate_Braille/"], ["Video", "https://youtu.be/4KqVa0DeqdM"], ["Poster", "https://leolee7.github.io/Annotate_Braille/poster/ASSETS26_1266_poster.pdf"]] },
   { slug: "hai-survey", theme: "hai", pub: "A Survey on Human-AI", name: "Human-AI Collaboration Survey", img: "tist", figs: [["tist-lifecycle", "The lifecycle of human-AI collaboration with large foundation models, as organized in the survey."]], venue: "ACM TIST 2026",
@@ -93,11 +93,11 @@ export const PROJECTS = [
   { slug: "pattern-insights", theme: "hai", pub: "Pattern Discovery", name: "Pattern Insights Explorer", img: "www", venue: "WWW 2026 Demo, Amazon",
     line: "A modular framework that pairs wide-lens views of where candidate patterns cluster with sharp-focus checks of whether they are meaningful, for unlabeled data without ground truth.",
     links: [["Paper", "https://doi.org/10.1145/3774905.3793105"]] },
-  { slug: "skills-on-board", theme: "hai", pub: "Skills on Board", name: "Skills on Board", img: "sob", venue: "Under review, 2026", short: "A human-in-the-loop harness for agent skills: trace any step to its evidence and edit it once. On SkillLearnBench, agents use half the output tokens at equal or better task performance.",
+  { slug: "skills-on-board", theme: "hai", pub: "Skills on Board", name: "Skills on Board", img: "sob", venue: "WSDM 2027 Demo", short: "A human-in-the-loop harness for agent skills: trace any step to its evidence and edit it once. On SkillLearnBench, agents use half the output tokens at equal or better task performance.",
     line: "A system that turns a free-text SKILL.md into a typed meta file, rendered as a board for people and compiled into a structured skill for agents. On SkillLearnBench, agents use half the output tokens at equal or better task performance. Built during my internship at Amazon.",
     links: [["Video", "https://youtu.be/G_XJpzWnH_c"]] },
   { slug: "ser", theme: "hai", name: "SER", img: "ser", venue: "Amazon internship, 2024", short: "Search for what reviews know: who a product is for, how it feels, and the occasion it fits.",
-    line: "A search system that turns customer reviews into search facets, each linked to the review sentence behind it, for needs catalogs do not record. On recipes, 92% of its matches are correct, against 64% for keyword match.",
+    line: "A search system that turns customer reviews into search facets, each linked to the review sentence behind it, for needs catalogs do not record. On recipes, it reaches 92% precision, against 64% for keyword matching.",
     links: [["Demo", "https://leolee7.github.io/SER/"], ["Video", "https://youtu.be/gwKzpr1FuOM"]] },
   { slug: "swinmm", theme: "hea", pub: "SwinMM", name: "SwinMM", img: "swinmm", venue: "MICCAI 2023",
     short: "Self-supervised multi-view pre-training for 3D medical image segmentation.",
@@ -205,8 +205,9 @@ export const TECH = {
 
 export const OVERVIEW = {
   "ser": [
-    "Search and recommendation systems handle specific goals well, but not subjective needs such as a healthy birthday meal for a parent or a movie worth watching. Product catalogs rarely hold that kind of insight. Reviews and other user-generated content do.",
-    "SER answers these needs from EXP-DB, a database that annotates each item with catalog attributes and with experiential attributes extracted from its reviews, each linked to the review span it came from. An LLM keeps only the attributes a review asserts, and an agent skill merges the variants of each value. The experiential index sits beside the catalog index, so one query can use both. SER covers recipes, movies, and games."],
+    "People often search for properties that catalogs do not record but reviews do, such as whether children will like a dish. A recipe lists ingredients, steps, and tags, not who enjoyed it. A review does: \u201cmy picky kids devoured it.\u201d",
+    "SER answers such searches with EXP-DB, a database of each item's catalog attributes and the experiential attributes extracted from its reviews, each linked to the review text it came from. An LLM extracts only what a review says about the item, and an agent skill merges different wordings of the same value. SER indexes the experiential attributes alongside the catalog, so one query can use both. A faceted demo covers recipes, movies, and games and shows the evidence for every match.",
+    "Compared with keyword matching over the same reviews, SER is more precise in all three domains: 92% against 64% on recipes, 92% against 52% on movies, and 97% against 65% on games. On recipes, 13% of its matches are recipes whose reviews never contain the value word, and these reach 88% precision."],
   "skills-on-board": [
     "Skills package the instructions an agent follows on a task, and most live as free-text Markdown in a SKILL.md file. That makes them hard to maintain: revising one step means searching a long document without knowing what depends on it, and reusing a skill means finding every value tied to the original task.",
     "Skills on Board treats skill maintenance as a data representation problem. A declared schema converts a skill into a typed meta file in which every step, learned rule, and source excerpt is a record with a stable identity. The meta file compiles into a structured SKILL.md for the agent and renders as a board for the user, who can trace a step to its evidence, edit it once to update it everywhere, and compare a new version with its parent record by record."],
@@ -239,6 +240,15 @@ export const OVERVIEW = {
 };
 
 export const NEWS = [
+  { slug: "wsdm-2027", to: "skills-on-board", d: "Nov 2026", img: "sob",
+    title: "Skills on Board accepted to the WSDM 2027 Demo Track",
+    h: "Our paper <b>Skills on Board: Maintaining Agent Skills as Typed Data</b> is accepted to the <b>WSDM 2027</b> Demo Track. Paper coming soon.",
+    body: [], imgs: [], links: [["Video", "https://youtu.be/G_XJpzWnH_c"]] },
+  { slug: "assets-present-2026", to: "tactile-annotation", d: "Oct 2026", img: "tactile-hands",
+    title: "Our Braille annotation tool presented at ASSETS 2026 in Porto",
+    h: "Our Braille annotation tool was presented at <b>ASSETS 2026</b> in Porto.",
+    body: [], imgs: [["assets-2026", "Our ASSETS 2026 demo poster."]],
+    links: [["Paper", "https://doi.org/10.1145/3797867.3841235"], ["Try the tool", "https://leolee7.github.io/Annotate_Braille/"], ["Video", "https://youtu.be/4KqVa0DeqdM"], ["Poster", "https://leolee7.github.io/Annotate_Braille/poster/ASSETS26_1266_poster.pdf"]] },
   { slug: "colm-2026", to: "ascii", d: "Oct 2026", img: "colm",
     title: "Presented Learning to Draw ASCII at COLM 2026",
     h: "Presented <b>Learning to Draw ASCII</b> at <b>COLM 2026</b> in San Francisco.",
@@ -307,12 +317,12 @@ export const NEWS = [
 
 export const EXPERIENCE = [
   { logo: "amazon", org: "Amazon", role: "Applied Scientist Intern", place: "Seattle, WA", y: "2026", dates: "June to Sept. 2026", t0: 2026.42, t1: 2026.67, topic: "Skills on Board, agent skills as typed data", bullets: [
-    "<b>Skills on Board (<a href=\"#project-skills-on-board\">project</a>, under review).</b> Proposed and built a system that stores agent skills as typed, versioned data instead of free text, so people can trace and edit each step and agents follow the same source. Halved agent output tokens on SkillLearnBench at equal or better task performance.",
+    "<b>Skills on Board (<a href=\"#project-skills-on-board\">WSDM 2027 Demo</a>).</b> Proposed and built a system that stores agent skills as typed, versioned data instead of free text, so people can trace and edit each step and agents follow the same source. Halved agent output tokens on SkillLearnBench at equal or better task performance.",
     "<b>Pipeline-wide failure attribution.</b> Linked each skill to its evidence and rollouts so a failure can be traced to the agent, the task, or the benchmark; this found defects in SkillLearnBench itself."] },
   { logo: "amazon", org: "Amazon", role: "Applied Scientist Intern", place: "Santa Clara, CA", y: "2025", dates: "June to Sept. 2025", t0: 2025.42, t1: 2025.67, topic: "Taxonomy discovery from unlabeled conversations (WWW 2026)", bullets: [
     "<b>Taxonomy discovery from unlabeled conversations (<a href=\"#project-pattern-insights\">WWW 2026 Demo</a>).</b> Designed a modular, human-in-the-loop framework that evolves its own taxonomy from a few seed keywords, alternating a wide-lens view of where patterns cluster with sharp-focus checks of each extraction; every pattern traces to its source."] },
   { logo: "amazon", org: "Amazon", role: "Applied Scientist Intern", place: "Palo Alto, CA", y: "2024", dates: "June to Sept. 2024", t0: 2024.42, t1: 2024.67, topic: "Evidence-grounded search from reviews (SER)", bullets: [
-    "<b>Evidence-grounded search from reviews (<a href=\"#project-ser\">SER</a>).</b> Built a search system that turns customer reviews into search facets, each linked to the review sentence behind it, to answer needs catalogs do not record. On recipes, 92% of its matches are correct, against 64% for keyword match."] },
+    "<b>Evidence-grounded search from reviews (<a href=\"#project-ser\">SER</a>).</b> Built a search system that turns customer reviews into search facets, each linked to the review sentence behind it, to answer needs catalogs do not record. On recipes, it reaches 92% precision, against 64% for keyword matching."] },
   { logo: "nissan", org: "Nissan Research Center", role: "Data Scientist Intern", place: "Santa Clara, CA", y: "2023", dates: "July to Sept. 2023", t0: 2023.5, t1: 2023.67, topic: "Driver engagement in autonomous driving", bullets: [
     "<b>Driver engagement in autonomous driving.</b> Developed a time-series model of driver engagement from real-world driving logs, improving prediction accuracy by 16 percentage points."] },
 ];
@@ -366,7 +376,7 @@ export const PUBS = [
     t: "Pattern Discovery with Wide-Lens Analysis and Sharp-Focus Validation",
     a: "Li Liu, Omar Alonso, Giorgio Ballardin",
     l: [["Paper","https://doi.org/10.1145/3774905.3793105"]] },
-  { img: "sob", y: 2026, v: "Under review", vy: "2026", first: 1, tags: ["hai"],
+  { img: "sob", y: 2027, v: "WSDM", vy: "2027 Demo", top: 1, first: 1, tags: ["hai"],
     t: "Skills on Board: Maintaining Agent Skills as Typed Data",
     a: "Li Liu, Jiaming Qu, Zhiyu Chen, Pei Zhang, Omar Alonso",
     l: [["Video","https://youtu.be/G_XJpzWnH_c"]] },
@@ -519,7 +529,7 @@ export const TEASERS = {
   "full": "assets/img/full/swinmm.png"
  },
  "sob": { "a": "assets/img/papers/sob.jpg", "full": "assets/img/full/sob.png" },
- "ser": { "a": "assets/img/papers/ser.jpg", "full": "assets/img/full/ser.png" },
+ "ser": { "a": "assets/img/papers/ser-v4.jpg", "full": "assets/img/full/ser-v4.png" }, /* paper Figure 1a; ser.jpg and ser.png are the earlier figure */
  "ts_overview": {
   "a": "assets/img/papers/ts-overview.jpg",
   "full": "assets/img/full/ts-overview.png"
