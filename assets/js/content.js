@@ -242,7 +242,7 @@ export const OVERVIEW = {
 export const NEWS = [
   { slug: "wsdm-2027", to: "skills-on-board", d: "Nov 2026", img: "sob",
     title: "Skills on Board accepted to the WSDM 2027 Demo Track",
-    h: "<b>Skills on Board</b>, built during my Applied Scientist internship at <b>Amazon</b> in Seattle, is accepted to the <b>WSDM 2027</b> Demo Track. Paper coming soon.",
+    h: "<b>Skills on Board</b>, built during my Applied Scientist internship at <b>Amazon</b> in Seattle, is accepted to the <b>WSDM 2027</b> Demo Track.",
     body: [], imgs: [], links: [["Video", "https://youtu.be/G_XJpzWnH_c"]] },
   { slug: "assets-present-2026", to: "tactile-annotation", d: "Oct 2026", img: "tactile-hands",
     title: "Our Braille annotation tool presented at ASSETS 2026 in Porto",
