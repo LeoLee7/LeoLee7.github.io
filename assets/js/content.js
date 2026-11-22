@@ -242,7 +242,7 @@ export const OVERVIEW = {
 export const NEWS = [
   { slug: "wsdm-2027", to: "skills-on-board", d: "Nov 2026", img: "sob",
     title: "Skills on Board accepted to the WSDM 2027 Demo Track",
-    h: "Our paper <b>Skills on Board: Maintaining Agent Skills as Typed Data</b> is accepted to the <b>WSDM 2027</b> Demo Track. Paper coming soon.",
+    h: "<b>Skills on Board</b>, built during my Applied Scientist internship at <b>Amazon</b> in Seattle, is accepted to the <b>WSDM 2027</b> Demo Track. Paper coming soon.",
     body: [], imgs: [], links: [["Video", "https://youtu.be/G_XJpzWnH_c"]] },
   { slug: "assets-present-2026", to: "tactile-annotation", d: "Oct 2026", img: "tactile-hands",
     title: "Our Braille annotation tool presented at ASSETS 2026 in Porto",
@@ -250,8 +250,8 @@ export const NEWS = [
     body: [], imgs: [["assets-2026", "Our ASSETS 2026 demo poster."]],
     links: [["Paper", "https://doi.org/10.1145/3797867.3841235"], ["Try the tool", "https://leolee7.github.io/Annotate_Braille/"], ["Video", "https://youtu.be/4KqVa0DeqdM"], ["Poster", "https://leolee7.github.io/Annotate_Braille/poster/ASSETS26_1266_poster.pdf"]] },
   { slug: "colm-2026", to: "ascii", d: "Oct 2026", img: "colm",
-    title: "Presented Learning to Draw ASCII at COLM 2026",
-    h: "Presented <b>Learning to Draw ASCII</b> at <b>COLM 2026</b> in San Francisco.",
+    title: "Presented our paper Learning to Draw ASCII at COLM 2026",
+    h: "Presented our paper <b>Learning to Draw ASCII</b> at <b>COLM 2026</b> in San Francisco.",
     body: [
       "People sketch layouts to organize their thinking about space. We asked whether learning to build explicit layouts from spatial descriptions can give language models real spatial understanding.",
       "We introduce Text2Space, a dataset that pairs text descriptions with ASCII grid layouts, and find a read-write asymmetry: models read ASCII layouts well but struggle to construct them from text. Training on layout construction improves spatial reasoning from text alone, and the gains transfer to three external benchmarks. This is joint work with Shiyuan Huang (co-first author), Jincheng He, and Leilani H. Gilpin.",
@@ -260,7 +260,7 @@ export const NEWS = [
     links: [["Project page", "https://aiea-lab.github.io/Text2Space/"], ["arXiv", "https://arxiv.org/abs/2604.14641"], ["Code", "https://github.com/aiea-lab/Text2Space"], ["Dataset", "https://huggingface.co/datasets/ShiyuanHuang/Text2Space"]] },
   { slug: "gemini-guided-vision-2026", to: "right-this-way", d: "Oct 2026",
     title: "Congratulations to the Gemini team on Guided Vision in Gemini Live",
-    h: "Congratulations to the Gemini team on launching <b>Guided Vision</b> in <b>Gemini Live</b>, which helps blind and low-vision users frame the camera with spoken cues. We are glad to see progress on a problem we also explored in our <b>NeurIPS 2024</b> paper <b>Right This Way</b>.",
+    h: "Glad to see <b>Guided Vision</b> launch in <b>Gemini Live</b>, giving blind and low-vision users spoken cues to frame the camera. Congratulations to the Gemini team! The same need motivated our <b>NeurIPS 2024</b> paper <b>Right This Way</b>.",
     body: [], imgs: [], links: [["Google announcement", "https://blog.google/innovation-and-ai/products/gemini-app/guided-vision-gemini-live/"]] },
   { slug: "pitchability-2026", rel: ["touchingspace"], d: "Sep 2026", img: "pitch",
     title: "TouchingSpace preprint, tested in person with 14 blind and low-vision users, and shown at PitchAbility 2026",
@@ -275,14 +275,6 @@ export const NEWS = [
     extra: "pitchability", about: "touchingspace",
     facts: [["Event", "PitchAbility 2026"], ["Host", "Vista Center for the Blind and Visually Impaired"], ["Where we were", "Exhibit & Demo Hall"]],
     links: [["arXiv", "https://arxiv.org/abs/2609.36404"], ["Video", "https://youtu.be/SRBqu2IxBNY"], ["Phase 1 on arXiv", "https://arxiv.org/abs/2604.14637"], ["Event page", "https://vistacenter.org/pitchability-vista-international-pitch-competition-2026/"]] },
-  { slug: "amazon-2026", d: "Sep 2026",
-    title: "Wrapping up my Applied Scientist internship at Amazon",
-    h: "Finished my Applied Scientist internship at <b>Amazon</b> in Seattle, building <b>Skills on Board</b> for structured skill engineering for agents.", rel: ["skills-on-board"],
-    body: [
-      "From June to September 2026 I worked as an Applied Scientist Intern at Amazon in Seattle on structured skill engineering for agents.",
-      "I encoded free-text SKILL.md prompts as typed, versioned graphs of each skill's solution approach and key steps. The same graph serves as documentation for people and as executable instructions for agents, and on SkillLearnBench it halved agent output tokens at equal or better task performance.",
-      "I also linked each skill to its evidence and rollouts, so that every failure can be traced to the agent, the task, or the benchmark. This surfaced defects in the benchmarks themselves.",
-    ], imgs: [], links: [["Video", "https://youtu.be/G_XJpzWnH_c"]], facts: [["Role", "Applied Scientist Intern"], ["Location", "Seattle, WA, USA"], ["Dates", "June to Sept. 2026"], ["Focus", "Structured skill engineering for agents"]] },
   { slug: "tist-2026", to: "hai-survey", d: "Sep 2026", img: "tist",
     title: "Survey on human-AI collaboration published in ACM TIST",
     h: "Our survey <b>A Survey on Human-AI Collaboration with Large Foundation Models</b> is published in <b>ACM Transactions on Intelligent Systems and Technology</b>.",
@@ -361,7 +353,7 @@ export const EDU_THEME = [
   { logo: "ucsc", deg: `Ph.D., Computer Science and Engineering, UC Santa Cruz`, org: "Advised by Leilani H. Gilpin, Sep 2022 to May 2027", theme: "Spatial intelligence in multimodal models and agents" },
 ];
 
-export const VIDEOS = { touchingspace: { id: "SRBqu2IxBNY", thumb: "yt_ts" }, "skills-on-board": { id: "G_XJpzWnH_c", thumb: "yt_sob" }, "lotus-pavilion": { id: "9G6kR8N1WFM", thumb: "yt_lotus" }, "amazon-2026": { id: "G_XJpzWnH_c", thumb: "yt_sob" }, ser: { id: "gwKzpr1FuOM", thumb: "yt_ser" }, "tactile-annotation": { id: "4KqVa0DeqdM", thumb: "yt_tactile" } };
+export const VIDEOS = { touchingspace: { id: "SRBqu2IxBNY", thumb: "yt_ts" }, "skills-on-board": { id: "G_XJpzWnH_c", thumb: "yt_sob" }, "lotus-pavilion": { id: "9G6kR8N1WFM", thumb: "yt_lotus" }, ser: { id: "gwKzpr1FuOM", thumb: "yt_ser" }, "tactile-annotation": { id: "4KqVa0DeqdM", thumb: "yt_tactile" } };
 
 export const PUBS = [
   { img: "colm", y: 2026, v: "COLM", vy: "2026", top: 1, sel: 1, first: 1, tags: ["spa","llm"],
